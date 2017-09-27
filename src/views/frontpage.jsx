@@ -6,12 +6,10 @@ import {Header} from '../components/Header.jsx'
 export class Frontpage extends React.Component {
     render() {
         return (
-            <div className="Frontpage">
-                <h2 className="HeaderText">Welcome to iPIM</h2>
+            <Header navbarLocation="DASHBOARD"
+                    navbarLinks={<li><a href={"#"}>Notes</a></li>}
 
-                <Header/>
-
-            </div>
+            />
         );
     }
 }
