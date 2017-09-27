@@ -1,0 +1,15 @@
+.Note {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    border: black 1px solid;
+    margin: 5px;
+}
+
+.NoteHolder {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
