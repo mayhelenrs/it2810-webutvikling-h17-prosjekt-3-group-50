@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/styles/App.css';
 
 export class App extends React.Component {
   render() {
@@ -12,4 +11,4 @@ export class App extends React.Component {
       </div>
     );
   }
-}  
+}
