@@ -34,6 +34,10 @@
     vertical-align: bottom;
 }
 
+.Navbar h1, .Navbar h2 {
+    color: white;
+}
+
 .Note {
     min-width: 300px;
     min-height: 300px;
