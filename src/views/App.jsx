@@ -7,9 +7,9 @@ export class App extends React.Component {
     return (
       <div className="App">
         <h2 className="HeaderText">Welcome to iPIM</h2>
-        <p className="App-intro">
+
           <NoteHolder />
-        </p>
+
       </div>
     );
   }
