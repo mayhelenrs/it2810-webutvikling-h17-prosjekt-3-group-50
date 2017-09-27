@@ -1,0 +1,63 @@
+.Note {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+}
+
+.Note > input {
+    color: #EDEDED;
+    background-color: #ac9fd4;
+}
+.Note > textarea {
+    color: #EEEEEE;
+    background-color: #BDB0E5;
+}
+
+.NoteContent {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+    width: 100%;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.NoteContent:focus {
+    border: none;
+    outline: none;
+}
+
+.NoteTitle {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    padding: 3px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.NoteTitle:focus {
+    border: none;
+    outline: none;
+}
+
+.NoteHolder {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
