@@ -5,9 +5,9 @@ export class Tile extends React.Component {
     render() {
         return(
             <div className={"Frontpage-tile"}>
-                <img alt={"Icon for tile"}/>
+                <img alt={"Icon for tile"} src={required(this.props.tileImgSrc)}/>
                 <h3>{this.props.tileTitle}</h3>
-                <button>Enter <img/></button>
+                <button>Enter <img alt={"Arrow pointing to the right"} src={required("djeie")}/></button>
             </div>
         );
     }
