@@ -8,9 +8,7 @@ export class Header extends React.Component {
             <div className="Navbar">
                 <img alt={"icon of a speedometer"} src={require("../assets/images/navbar_lefticon.png")}/>
                 <h1>{this.props.navbarLocation}</h1>
-                <ul>
-                    {this.props.navbarLinks}
-                </ul>
+                {this.props.navbarLinks}
             </div>
         );
     }
