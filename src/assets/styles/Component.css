@@ -38,6 +38,24 @@
     color: white;
 }
 
+/* Tile container */
+
+#TileContainer {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background-color: red;
+}
+
+/* Tile */
+
+.Tile {
+    background-color: blue;
+    align-items:center;
+    text-align: center;
+}
+
 .Note {
     min-width: 300px;
     min-height: 300px;
