@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/styles/App.css';
 import {Navbar} from '../components/Navbar.jsx'
 import {Tile} from '../components/Tile'
+import {Pagetext} from "../components/Pagetext";
 
 export class Frontpage extends React.Component {
     render() {
@@ -19,19 +20,27 @@ export class Frontpage extends React.Component {
                                 <a><h2>Link 2</h2></a>
                             </li>
                         </ul>
-                    }/>
-            <Tile
-                tileTitle={"KALENDAR"}
+                    }
             />
-            <Tile
-                tileTitle={"TODO"}
-            />
-            <Tile
-                tileTitle={"NOTIFICATION"}
-            />
-            <Tile
-                tileTitle={"NOTES"}
-            />
+            <Pagetext pagetextContent={"VELKOMMEN!"}/>
+            <div id={"TileContainer"}>
+                <Tile
+                    tileTitle={"KALENDAR"}
+                    tileIcon={require("../assets/images/calendar.png")}
+                />
+                <Tile
+                    tileTitle={"TODO"}
+                    tileIcon={require("../assets/images/todo.png")}
+                />
+                <Tile
+                    tileTitle={"NOTIFICATION"}
+                    tileIcon={require("../assets/images/notifications.png")}
+                />
+                <Tile
+                    tileTitle={"NOTES"}
+                    tileIcon={require("../assets/images/notes.png")}
+                />
+            </div>
             </body>
         );
     }
