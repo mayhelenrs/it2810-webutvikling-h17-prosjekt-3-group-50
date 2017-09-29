@@ -1,0 +1,27 @@
+.NoteView {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: 100%;
+    margin: 30px;
+}
+
+.Left-Page {
+    min-width: 80%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.Right-Page {
+    max-width: 20%;
+    flex: 1;
+}
+
+.AddNote {
+
+}
+
+.Middle-Page {
+    flex: 1;
+}
