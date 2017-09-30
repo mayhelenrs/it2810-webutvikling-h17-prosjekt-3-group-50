@@ -13,7 +13,7 @@ export class Category extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '' + this.state.color}} className={"Category " + (this.state.selected ? "Selected" : "")} onClick={() => {
+            <div style={{backgroundColor: '' + this.state.color, border: (this.state.selected ? this.state.color + " solid 6px" : "none")}} className={"Category"} onClick={() => {
                 this.selectElement();
                 this.props.selectElement(this);
             }}>
@@ -24,8 +24,6 @@ export class Category extends React.Component {
 
     selectElement() {
         this.setState({selected: true});
-        console.log(this.state.selected);
     }
-
 
 }

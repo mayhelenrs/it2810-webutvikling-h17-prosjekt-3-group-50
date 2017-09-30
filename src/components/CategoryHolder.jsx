@@ -17,6 +17,7 @@ export class CategoryHolder extends React.Component {
     render() {
         return (
             <div className="NoteHolder">
+                <p><orange>Categories</orange> - Select to filter your notes</p>
                 <div className="Notes">
                     {this.state.categories}
                 </div>
@@ -29,15 +30,11 @@ export class CategoryHolder extends React.Component {
     }
 
     selectCategory(element) {
-        if (this.state.selectedCategory !== undefined && this.state.selectedCategory !== element)
+        if (this.state.selectedCategory !== undefined)
             this.state.selectedCategory.setState({selected: false});
         this.setState({
-            selectedCategory: element
-        });
+            selectedCategory: (this.state.selectedCategory === element ? undefined : element)
+        }, () => this.props.filterNotes());
     }
-
-    /*addCategory() {
-        this.setState(update(this.state.categories, {$push: [<Category/>]}))
-    }*/
 
 }

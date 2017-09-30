@@ -11,7 +11,8 @@ export class NoteHolder extends React.Component {
         this.handleClick = this.appendNote.bind(this);
         this.handleRemove = this.removeNote.bind(this);
         this.state = {
-            notes: [this.generateNote()]
+            notes: [this.generateNote("#016D91")],
+            displayedNotes: [this.generateNote("#016D91")]
         };
     }
 
@@ -19,7 +20,7 @@ export class NoteHolder extends React.Component {
         return (
             <div className="NoteHolder">
                 <div className="Notes">
-                    {this.state.notes}
+                    {this.state.displayedNotes}
                 </div>
             </div>
         );
@@ -34,12 +35,14 @@ export class NoteHolder extends React.Component {
     removeNote(element) {
         for (let i = 0; i < this.state.notes.length; i++) {
             if (this.state.notes[i].props.id === element.props.id) {
-                this.setState({notes: update(this.state.notes, {$splice: [[i, 1]]})});
+                this.setState({notes: update(this.state.notes, {$splice: [[i, 1]]})},
+                    () => this.props.filterNotes());
             }
         }
     }
 
     appendNote(color) {
-        this.setState({notes: update(this.state.notes, {$push: [this.generateNote(color)]})});
+        this.setState({notes: update(this.state.notes, {$push: [this.generateNote(color)]})},
+            () => this.props.filterNotes());
     }
 }

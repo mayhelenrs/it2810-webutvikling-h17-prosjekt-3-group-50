@@ -7,9 +7,10 @@ export class NoteView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.filterNotes = this.filterNotes.bind(this);
         this.state = {
-            noteHolder: <NoteHolder ref={instance => {this.noteHolder = instance}}/>,
-            categoryHolder: <CategoryHolder ref={instance => {this.categoryHolder = instance}}/>
+            noteHolder: <NoteHolder ref={instance => {this.noteHolder = instance}} filterNotes={this.filterNotes}/>,
+            categoryHolder: <CategoryHolder ref={instance => {this.categoryHolder = instance}} filterNotes={this.filterNotes}/>
         }
     }
 
@@ -32,6 +33,19 @@ export class NoteView extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    filterNotes() {
+        if (this.categoryHolder !== undefined && this.categoryHolder.state.selectedCategory !== undefined) {
+            const notes = [];
+            for (let i = 0; i < this.noteHolder.state.notes.length; i++) {
+                if (this.noteHolder.state.notes[i].props.color === this.categoryHolder.state.selectedCategory.props.color)
+                    notes.push(this.noteHolder.state.notes[i]);
+            }
+            this.noteHolder.setState({displayedNotes: notes});
+        } else {
+            this.noteHolder.setState({displayedNotes: this.noteHolder.state.notes})
+        }
     }
 
     appendNote() {
