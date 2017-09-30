@@ -42,6 +42,10 @@ export class NoteView extends React.Component {
         );
     }
 
+    componentDidMount() {
+        this.filterNotes();
+    }
+
     filterNotes() {
         if (this.categoryHolder !== undefined && this.categoryHolder.state.selectedCategory !== undefined) {
             const notes = [];

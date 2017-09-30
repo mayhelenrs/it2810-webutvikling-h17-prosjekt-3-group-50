@@ -1,4 +1,4 @@
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 525px) {
     .NoteView {
         display: flex;
         flex-direction: column;
@@ -18,7 +18,7 @@
     }
 }
 
-@media screen and (min-width: 751px) {
+@media screen and (min-width: 526px) {
     .NoteView {
         display: flex;
         flex-direction: row;
@@ -35,7 +35,8 @@
 }
 
 .Right-Page {
-    max-width: 40%;
+    min-width: 30%;
+    margin-left: 10px;
 }
 
 .AddNote {

@@ -18,7 +18,7 @@ export class CategoryHolder extends React.Component {
     render() {
         return (
             <div className="NoteHolder">
-                <p><orange>Categories</orange> - Select to filter your notes</p>
+                <p><orange>Categories</orange> - Select to filter your notes and add new ones!</p>
                 <div className="Notes">
                     {this.state.categories}
                 </div>
