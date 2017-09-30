@@ -57,12 +57,6 @@ orange {
     color: orange;
 }
 
-.Notes {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .RemoveNote {
     display: flex;
     cursor: pointer;
@@ -122,7 +116,7 @@ orange {
 .NoteFiller {
     min-width: 0;
     min-height: 0;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.3);
@@ -131,7 +125,7 @@ orange {
 .NoteDisplay {
     width: 0;
     height: 0;
-    position: absolute;
+    position: fixed;
     top: calc((100%/2) - 200px);
     left: calc((100%/2) - 200px);
     transition: all .5s ease-in-out;
@@ -139,4 +133,48 @@ orange {
     display: flex;
     flex-direction: row;
     color: white;
+}
+
+
+.Notes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.AddNote {
+    display: flex;
+    flex-direction: row;
+}
+
+.AddCategory {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 750px) {
+    .NoteHolder {
+        align-items: center;
+    }
+    .Notes {
+        justify-content: center;
+    }
+    .AddNote {
+        justify-content: center;
+    }
+    .CategoryCreatorHolder {
+        align-items: center;
+    }
+    .AddCategory {
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 751px) {
+    .NoteHolder {
+        align-items: left;
+    }
+    .AddNote {
+        justify-content: flex-start;
+    }
 }
