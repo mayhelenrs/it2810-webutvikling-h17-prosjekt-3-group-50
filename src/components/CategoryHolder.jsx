@@ -8,8 +8,9 @@ export class CategoryHolder extends React.Component {
         super();
         this.selectElement = this.selectCategory.bind(this);
         this.state = {
-            categories: [<Category />, <Category/>, <Category/>, <Category/>],
-            selectedCategory: ''
+            categories: [this.generateCategory(), this.generateCategory(), this.generateCategory(),
+                this.generateCategory()],
+            selectedCategory: undefined
         };
     }
 
@@ -23,10 +24,20 @@ export class CategoryHolder extends React.Component {
         );
     }
 
+    generateCategory() {
+        return <Category selectElement={this.selectElement}/>
+    }
+
     selectCategory(element) {
+        if (this.state.selectedCategory !== undefined && this.state.selectedCategory !== element)
+            this.state.selectedCategory.setState({selected: false});
         this.setState({
             selectedCategory: element
         });
     }
+
+    /*addCategory() {
+        this.setState(update(this.state.categories, {$push: [<Category/>]}))
+    }*/
 
 }

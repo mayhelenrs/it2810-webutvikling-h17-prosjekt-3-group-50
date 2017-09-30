@@ -12,16 +12,18 @@ export class Category extends React.Component {
 
     render() {
         return (
-            <div className={"Category " + (this.state.selected ? "Selected" : "")} onClick={() => this.selectElement()}>
+            <div className={"Category " + (this.state.selected ? "Selected" : "")} onClick={() => {
+                this.selectElement();
+                this.props.selectElement(this);
+            }}>
+                {this.state.selected}
             </div>
         );
     }
 
     selectElement() {
-        this.setState({
-            selected: true
-        });
-        this.props.selectElement(this);
+        this.setState({selected: true});
+        console.log(this.state.selected);
     }
 
 
