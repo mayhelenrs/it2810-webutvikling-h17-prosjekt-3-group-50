@@ -8,8 +8,8 @@ export class CategoryHolder extends React.Component {
         super();
         this.selectElement = this.selectCategory.bind(this);
         this.state = {
-            categories: [this.generateCategory(), this.generateCategory(), this.generateCategory(),
-                this.generateCategory()],
+            categories: [this.generateCategory("#016D91"), this.generateCategory("#E53F6F"), this.generateCategory("#686868"),
+                this.generateCategory("#F56376")],
             selectedCategory: undefined
         };
     }
@@ -24,8 +24,8 @@ export class CategoryHolder extends React.Component {
         );
     }
 
-    generateCategory() {
-        return <Category selectElement={this.selectElement}/>
+    generateCategory(color) {
+        return <Category selectElement={this.selectElement} color={color}/>;
     }
 
     selectCategory(element) {

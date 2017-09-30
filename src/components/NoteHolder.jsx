@@ -25,8 +25,10 @@ export class NoteHolder extends React.Component {
         );
     }
 
-    generateNote() {
-        return <Note handleClick={this.handleClick} handleRemove={this.handleRemove} id={this.noteCount++}/>;
+    generateNote(color) {
+        if (color === undefined)
+            return <Note handleClick={this.handleClick} handleRemove={this.handleRemove} id={this.noteCount++}/>;
+        return <Note handleClick={this.handleClick} handleRemove={this.handleRemove} id={this.noteCount++} color={color}/>;
     }
 
     removeNote(element) {
@@ -37,7 +39,7 @@ export class NoteHolder extends React.Component {
         }
     }
 
-    appendNote() {
-        this.setState({notes: update(this.state.notes, {$push: [this.generateNote()]})});
+    appendNote(color) {
+        this.setState({notes: update(this.state.notes, {$push: [this.generateNote(color)]})});
     }
 }

@@ -6,13 +6,14 @@ export class Category extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            color: props.color,
             selected: false
         }
     }
 
     render() {
         return (
-            <div className={"Category " + (this.state.selected ? "Selected" : "")} onClick={() => {
+            <div style={{backgroundColor: '' + this.state.color}} className={"Category " + (this.state.selected ? "Selected" : "")} onClick={() => {
                 this.selectElement();
                 this.props.selectElement(this);
             }}>

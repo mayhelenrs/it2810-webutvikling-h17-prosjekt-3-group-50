@@ -8,7 +8,8 @@ export class NoteView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            noteHolder: <NoteHolder ref={instance => {this.holder = instance}}/>
+            noteHolder: <NoteHolder ref={instance => {this.noteHolder = instance}}/>,
+            categoryHolder: <CategoryHolder ref={instance => {this.categoryHolder = instance}}/>
         }
     }
 
@@ -17,13 +18,13 @@ export class NoteView extends React.Component {
             <div className="NoteView">
                 <div className="Left-Page">
                     <div>
-                        <CategoryHolder/>
+                        {this.state.categoryHolder}
                     </div>
                     <div className="Middle-Page">
                         {this.state.noteHolder}
                     </div>
                     <div className="AddNote">
-                        <button onClick={() => this.holder.appendNote()}>Add</button>
+                        <button onClick={() => this.appendNote()}>Add</button>
                     </div>
                 </div>
                 <div className="Right-Page">
@@ -31,5 +32,13 @@ export class NoteView extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    appendNote() {
+        if (this.categoryHolder.state.selectedCategory !== undefined) {
+            this.noteHolder.appendNote(this.categoryHolder.state.selectedCategory.props.color);
+        } else {
+            alert("No category has been selected!");
+        }
     }
 }

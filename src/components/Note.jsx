@@ -5,7 +5,7 @@ export class Note extends React.Component {
 
     render() {
         return (
-            <div className="Note">
+            <div className="Note" style={{backgroundColor: this.props.color}}>
                 <div className="RemoveNote">
                     <img className="RemoveButton" onClick={() => this.props.handleRemove(this)} alt={'Remove'} src={require('../assets/img/close.png')}/>
                 </div>
