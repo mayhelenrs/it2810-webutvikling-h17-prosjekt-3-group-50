@@ -12,8 +12,9 @@ export class NoteHolder extends React.Component {
         this.handleRemove = this.removeNote.bind(this);
         this.state = {
             notes: [this.generateNote("#016D91", "Example note")],
-            displayedNotes: [this.generateNote("#016D91", "Example note")]
+            displayedNotes: []
         };
+        //TODO - this.props.filterNotes() when the state has been initialized
     }
 
     render() {

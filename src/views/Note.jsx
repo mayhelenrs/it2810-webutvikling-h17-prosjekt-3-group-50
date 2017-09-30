@@ -21,6 +21,7 @@ export class NoteView extends React.Component {
         return (
             <div className="NoteView">
                 <div className="Left-Page">
+                    <p>This is your notes for now</p>
                     <div>
                         {this.state.categoryHolder}
                     </div>

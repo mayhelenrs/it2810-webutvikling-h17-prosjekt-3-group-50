@@ -9,7 +9,7 @@ export class Category extends React.Component {
                 <div style={{backgroundColor: '' + this.props.color}} className={"CategoryColor"}>
                 </div>
                 <div>
-                    <input className={"CategoryName"} defaultValue="TODO"/>
+                    <input className={"CategoryName"} defaultValue={this.props.text}/>
                 </div>
             </div>
         );
