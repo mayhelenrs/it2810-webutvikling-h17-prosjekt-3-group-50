@@ -17,6 +17,20 @@
     -o-user-select: none;
 }
 
+.Category {
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    background-color: #016D91;
+}
+
 .NoteContent {
     display: flex;
     flex-direction: column;
@@ -52,4 +66,8 @@
     font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
     color: white;
+}
+
+.Selected {
+    border: black solid 2px;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/styles/NoteView.css';
 import {NoteHolder} from '../components/NoteHolder.jsx'
+import {CategoryHolder} from "../components/CategoryHolder";
 
 export class NoteView extends React.Component {
 
@@ -16,7 +17,7 @@ export class NoteView extends React.Component {
             <div className="NoteView">
                 <div className="Left-Page">
                     <div>
-                        Note category
+                        <CategoryHolder/>
                     </div>
                     <div className="Middle-Page">
                         {this.state.noteHolder}
