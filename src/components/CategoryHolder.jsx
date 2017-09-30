@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/styles/Component.css';
-import {Category} from '../components/Category.jsx';
+import {CategoryFilter} from './CategoryFilter.jsx';
 
 export class CategoryHolder extends React.Component {
 
@@ -26,7 +26,7 @@ export class CategoryHolder extends React.Component {
     }
 
     generateCategory(color) {
-        return <Category selectElement={this.selectElement} color={color}/>;
+        return <CategoryFilter selectElement={this.selectElement} color={color}/>;
     }
 
     selectCategory(element) {

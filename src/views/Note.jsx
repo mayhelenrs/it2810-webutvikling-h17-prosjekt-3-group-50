@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/styles/NoteView.css';
 import {NoteHolder} from '../components/NoteHolder.jsx'
 import {CategoryHolder} from "../components/CategoryHolder";
+import {CategoryCreatorHolder} from "../components/CategoryCreatorHolder";
 
 export class NoteView extends React.Component {
 
@@ -29,7 +30,7 @@ export class NoteView extends React.Component {
                     </div>
                 </div>
                 <div className="Right-Page">
-                    Categories
+                    <CategoryCreatorHolder/>
                 </div>
             </div>
         );

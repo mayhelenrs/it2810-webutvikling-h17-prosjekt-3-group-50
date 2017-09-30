@@ -16,7 +16,7 @@
     -o-user-select: none;
 }
 
-.Category {
+.CategoryFilter {
     min-width: 75px;
     min-height: 75px;
     max-width: 75px;
@@ -77,4 +77,39 @@ orange {
 
 .Selected {
     border: black solid 2px;
+}
+
+.CategoryCreatorHolder {
+    display: flex;
+    flex-direction: column;
+}
+
+.CategoryCreatorHolder > p {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 22px;
+}
+
+.Category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+.CategoryColor {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    margin-right: 10px;
+}
+
+.CategoryName {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
 }
