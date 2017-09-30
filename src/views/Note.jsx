@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/styles/NoteView.css';
+import update from 'react-addons-update'
 import {NoteHolder} from '../components/NoteHolder.jsx'
 import {CategoryHolder} from "../components/CategoryHolder";
 import {CategoryCreatorHolder} from "../components/CategoryCreatorHolder";
@@ -11,7 +12,8 @@ export class NoteView extends React.Component {
         this.filterNotes = this.filterNotes.bind(this);
         this.state = {
             noteHolder: <NoteHolder ref={instance => {this.noteHolder = instance}} filterNotes={this.filterNotes}/>,
-            categoryHolder: <CategoryHolder ref={instance => {this.categoryHolder = instance}} filterNotes={this.filterNotes}/>
+            categoryHolder: <CategoryHolder ref={instance => {this.categoryHolder = instance}} filterNotes={this.filterNotes}/>,
+            createCategoryHolder: <CategoryCreatorHolder ref={instance => {this.createCategoryHolder = instance}}/>
         }
     }
 
@@ -30,7 +32,10 @@ export class NoteView extends React.Component {
                     </div>
                 </div>
                 <div className="Right-Page">
-                    <CategoryCreatorHolder/>
+                    {this.state.createCategoryHolder}
+                    <div className={"AddCategory"}>
+                        <button onClick={() => this.appendCategory()}>Add</button>
+                    </div>
                 </div>
             </div>
         );
@@ -55,5 +60,13 @@ export class NoteView extends React.Component {
         } else {
             alert("No category has been selected!");
         }
+    }
+
+    appendCategory() {
+        this.createCategoryHolder.setState({
+            categories: update(this.createCategoryHolder.state.categories, {$push: [this.createCategoryHolder.generateCategory()]})
+        },
+            () => this.categoryHolder.appendCategory(this.createCategoryHolder.state.categories[this.createCategoryHolder.state.categories.length - 1].props.color)
+        );
     }
 }

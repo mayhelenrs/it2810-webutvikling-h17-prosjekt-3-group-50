@@ -19,9 +19,21 @@
 }
 
 .AddNote {
+    margin: 30px 10px 10px 10px;
+}
 
+.AddCategory {
+    margin: 5px;
 }
 
 .Middle-Page {
-    flex: 1;
+}
+
+button {
+    font-family: Verdana, Geneva, sans-serif;
+    border: none;
+    background-color: #3Cb54C;
+    color: white;
+    font-size: 18px;
+    padding: 5px 20px 5px 20px;
 }

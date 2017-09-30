@@ -14,7 +14,7 @@ export class Note extends React.Component {
                         <img className="RemoveButton" alt={'Remove'} src={require('../assets/img/note_icon.png')}/>
                     </div>
                     <div className="NoteName">
-                        <p>Name {this.props.id} </p>
+                        <p>{this.props.text}</p>
                     </div>
                 </div>
             </div>

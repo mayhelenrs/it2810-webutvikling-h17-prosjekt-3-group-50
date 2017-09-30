@@ -1,3 +1,8 @@
+div {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 16px;
+}
+
 .Note {
     min-width: 200px;
     min-height: 200px;
@@ -54,7 +59,6 @@ orange {
 
 .Notes {
     display: flex;
-    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -88,7 +92,7 @@ orange {
     font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
     color: black;
-    font-size: 22px;
+    font-size: 1.5em;
 }
 
 .Category {
@@ -112,4 +116,5 @@ orange {
 .CategoryName {
     border: none;
     background-color: rgba(0, 0, 0, 0);
+    font-weight: bold;
 }

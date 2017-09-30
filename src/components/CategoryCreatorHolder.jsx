@@ -4,10 +4,14 @@ import {Category} from "./Category";
 
 export class CategoryCreatorHolder extends React.Component {
 
+
     constructor() {
         super();
+        this.colors = ["#016D91", "#E53F6F", "#686868", "#F56376"];
+        this.colorIndex = 0;
         this.state = {
-            categories: [<Category color={"#E53F6F"}/>, <Category color={"#E53F6F"}/>, <Category color={"#E53F6F"}/>, <Category color={"#E53F6F"}/>]
+            categories: [this.generateCategory("School"), this.generateCategory("Shopping"),
+                        this.generateCategory("Home"), this.generateCategory("Friends")]
         };
     }
 
@@ -18,6 +22,26 @@ export class CategoryCreatorHolder extends React.Component {
                 {this.state.categories}
             </div>
         );
+    }
+
+    getNextColor() {
+        if (this.colorIndex >= this.colors.length)
+            return this.randomColor();
+        const color = this.colors[this.colorIndex];
+        this.colorIndex++;
+        return color;
+    }
+
+    randomColor() {
+        return "rgb(" + this.random(255) + ", " + this.random(255) + ", " + this.random(255) + ")";
+    }
+
+    random(range) {
+        return Math.floor(Math.random() * range);
+    }
+
+    generateCategory(text) {
+        return <Category text={text} color={this.getNextColor()}/>;
     }
 
 }

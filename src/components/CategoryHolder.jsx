@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/styles/Component.css';
 import {CategoryFilter} from './CategoryFilter.jsx';
+import update from 'react-addons-update';
 
 export class CategoryHolder extends React.Component {
 
@@ -35,6 +36,12 @@ export class CategoryHolder extends React.Component {
         this.setState({
             selectedCategory: (this.state.selectedCategory === element ? undefined : element)
         }, () => this.props.filterNotes());
+    }
+
+    appendCategory(color) {
+        this.setState({
+            categories: update(this.state.categories, {$push: [this.generateCategory(color)]})
+        });
     }
 
 }
