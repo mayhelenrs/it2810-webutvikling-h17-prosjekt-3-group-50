@@ -69,7 +69,7 @@ export class NoteView extends React.Component {
 
     appendCategory() {
         this.createCategoryHolder.setState({
-            categories: update(this.createCategoryHolder.state.categories, {$push: [this.createCategoryHolder.generateCategory()]})
+            categories: update(this.createCategoryHolder.state.categories, {$push: [this.createCategoryHolder.generateCategory("New category")]})
         },
             () => this.categoryHolder.appendCategory(this.createCategoryHolder.state.categories[this.createCategoryHolder.state.categories.length - 1].props.color)
         );
