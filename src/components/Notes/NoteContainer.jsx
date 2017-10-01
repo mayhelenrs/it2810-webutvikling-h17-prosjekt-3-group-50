@@ -1,9 +1,9 @@
 import React from 'react';
 import update from 'react-addons-update';
-import '../assets/styles/Component.css';
-import {Note} from '../components/Note.jsx';
+import './Notes.css';
+import {Note} from './Note.jsx';
 
-export class NoteHolder extends React.Component {
+export class NoteContainer extends React.Component {
 
     constructor() {
         super();
@@ -14,7 +14,6 @@ export class NoteHolder extends React.Component {
             notes: [this.generateNote("#016D91", "Example note")],
             displayedNotes: []
         };
-        //TODO - this.props.filterNotes() when the state has been initialized
     }
 
     render() {
@@ -28,9 +27,8 @@ export class NoteHolder extends React.Component {
     }
 
     generateNote(color, text) {
-        if (color === undefined)
-            return <Note text={text} handleClick={this.handleClick} handleRemove={this.handleRemove} id={this.noteCount++}/>;
-        return <Note text={text} handleClick={this.handleClick} handleRemove={this.handleRemove} id={this.noteCount++} color={color}/>;
+        const id = this.noteCount++;
+        return <Note text={text} handleClick={this.handleClick} handleRemove={this.handleRemove} key={id} id={id} color={color}/>;
     }
 
     removeNote(element) {

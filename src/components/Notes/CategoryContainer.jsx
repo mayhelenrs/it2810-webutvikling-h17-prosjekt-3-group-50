@@ -1,12 +1,13 @@
 import React from 'react';
-import '../assets/styles/Component.css';
+import './Notes.css';
 import {CategoryFilter} from './CategoryFilter.jsx';
 import update from 'react-addons-update';
 
-export class CategoryHolder extends React.Component {
+export class CategoryContainer extends React.Component {
 
     constructor() {
         super();
+        this.categoryCount = 0;
         this.selectElement = this.selectCategory.bind(this);
         this.state = {
             categories: [this.generateCategory("#016D91"), this.generateCategory("#E53F6F"), this.generateCategory("#686868"),
@@ -27,7 +28,7 @@ export class CategoryHolder extends React.Component {
     }
 
     generateCategory(color) {
-        return <CategoryFilter selectElement={this.selectElement} color={color}/>;
+        return <CategoryFilter selectElement={this.selectElement} key={this.categoryCount++} color={color}/>;
     }
 
     selectCategory(element) {

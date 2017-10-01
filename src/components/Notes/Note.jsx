@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/Component.css';
+import './Notes.css';
 import {NoteDisplay} from "./NoteDisplay";
 
 export class Note extends React.Component {
@@ -19,11 +19,11 @@ export class Note extends React.Component {
             <div className="Note" style={{backgroundColor: this.props.color}}>
                 <div className="RemoveNote">
                     <img className="RemoveButton" onClick={() => this.props.handleRemove(this)} alt={'Remove'}
-                         src={require('../assets/img/close.png')}/>
+                         src={require('../../assets/img/close.png')}/>
                 </div>
                 <div className="NoteContent" onClick={() => this.displayNote()}>
                     <div className="NoteIcon">
-                        <img className="RemoveButton" alt={'Remove'} src={require('../assets/img/note_icon.png')}/>
+                        <img className="RemoveButton" alt={'Remove'} src={require('../../assets/img/note_icon.png')}/>
                     </div>
                     <div className="NoteName">
                         <p>{this.props.text}</p>

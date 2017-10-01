@@ -1,9 +1,9 @@
 import React from 'react';
 import '../assets/styles/NoteView.css';
 import update from 'react-addons-update'
-import {NoteHolder} from '../components/NoteHolder.jsx'
-import {CategoryHolder} from "../components/CategoryHolder";
-import {CategoryCreatorHolder} from "../components/CategoryCreatorHolder";
+import {NoteContainer} from '../components/Notes/NoteContainer.jsx'
+import {CategoryContainer} from "../components/Notes/CategoryContainer";
+import {CategoryCreatorContainer} from "../components/Notes/CategoryCreatorContainer";
 
 export class NoteView extends React.Component {
 
@@ -11,9 +11,9 @@ export class NoteView extends React.Component {
         super(props);
         this.filterNotes = this.filterNotes.bind(this);
         this.state = {
-            noteHolder: <NoteHolder ref={instance => {this.noteHolder = instance}} filterNotes={this.filterNotes}/>,
-            categoryHolder: <CategoryHolder ref={instance => {this.categoryHolder = instance}} filterNotes={this.filterNotes}/>,
-            createCategoryHolder: <CategoryCreatorHolder ref={instance => {this.createCategoryHolder = instance}}/>
+            noteContainer: <NoteContainer ref={instance => {this.noteContainer = instance}} filterNotes={this.filterNotes}/>,
+            categoryContainer: <CategoryContainer ref={instance => {this.categoryContainer = instance}} filterNotes={this.filterNotes}/>,
+            createCategoryContainer: <CategoryCreatorContainer ref={instance => {this.createCategoryContainer = instance}}/>
         }
     }
 
@@ -23,17 +23,17 @@ export class NoteView extends React.Component {
                 <div className="Left-Page">
                     <p>This is your notes for now</p>
                     <div>
-                        {this.state.categoryHolder}
+                        {this.state.categoryContainer}
                     </div>
                     <div className="Middle-Page">
-                        {this.state.noteHolder}
+                        {this.state.noteContainer}
                     </div>
                     <div className="AddNote">
                         <button onClick={() => this.appendNote()}>Add</button>
                     </div>
                 </div>
                 <div className="Right-Page">
-                    {this.state.createCategoryHolder}
+                    {this.state.createCategoryContainer}
                     <div className={"AddCategory"}>
                         <button onClick={() => this.appendCategory()}>Add</button>
                     </div>
@@ -47,31 +47,31 @@ export class NoteView extends React.Component {
     }
 
     filterNotes() {
-        if (this.categoryHolder !== undefined && this.categoryHolder.state.selectedCategory !== undefined) {
+        if (this.categoryContainer !== undefined && this.categoryContainer.state.selectedCategory !== undefined) {
             const notes = [];
-            for (let i = 0; i < this.noteHolder.state.notes.length; i++) {
-                if (this.noteHolder.state.notes[i].props.color === this.categoryHolder.state.selectedCategory.props.color)
-                    notes.push(this.noteHolder.state.notes[i]);
+            for (let i = 0; i < this.noteContainer.state.notes.length; i++) {
+                if (this.noteContainer.state.notes[i].props.color === this.categoryContainer.state.selectedCategory.props.color)
+                    notes.push(this.noteContainer.state.notes[i]);
             }
-            this.noteHolder.setState({displayedNotes: notes});
+            this.noteContainer.setState({displayedNotes: notes});
         } else {
-            this.noteHolder.setState({displayedNotes: this.noteHolder.state.notes})
+            this.noteContainer.setState({displayedNotes: this.noteContainer.state.notes})
         }
     }
 
     appendNote() {
-        if (this.categoryHolder.state.selectedCategory !== undefined) {
-            this.noteHolder.appendNote(this.categoryHolder.state.selectedCategory.props.color);
+        if (this.categoryContainer.state.selectedCategory !== undefined) {
+            this.noteContainer.appendNote(this.categoryContainer.state.selectedCategory.props.color);
         } else {
             alert("No category has been selected!");
         }
     }
 
     appendCategory() {
-        this.createCategoryHolder.setState({
-            categories: update(this.createCategoryHolder.state.categories, {$push: [this.createCategoryHolder.generateCategory("New category")]})
+        this.createCategoryContainer.setState({
+            categories: update(this.createCategoryContainer.state.categories, {$push: [this.createCategoryContainer.generateCategory("New category")]})
         },
-            () => this.categoryHolder.appendCategory(this.createCategoryHolder.state.categories[this.createCategoryHolder.state.categories.length - 1].props.color)
+            () => this.categoryContainer.appendCategory(this.createCategoryContainer.state.categories[this.createCategoryContainer.state.categories.length - 1].props.color)
         );
     }
 }

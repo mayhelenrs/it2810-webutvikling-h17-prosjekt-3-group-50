@@ -1,12 +1,13 @@
 import React from 'react';
-import '../assets/styles/Component.css';
+import './Notes.css';
 import {Category} from "./Category";
 
-export class CategoryCreatorHolder extends React.Component {
+export class CategoryCreatorContainer extends React.Component {
 
 
     constructor() {
         super();
+        this.categoryCount = 0;
         this.colors = ["#016D91", "#E53F6F", "#686868", "#F56376"];
         this.colorIndex = 0;
         this.state = {
@@ -41,7 +42,7 @@ export class CategoryCreatorHolder extends React.Component {
     }
 
     generateCategory(text) {
-        return <Category text={text} color={this.getNextColor()}/>;
+        return <Category text={text} color={this.getNextColor()} key={this.categoryCount++}/>;
     }
 
 }
