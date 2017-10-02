@@ -1,0 +1,12 @@
+.wrapper-center {
+  background-color: red;
+  padding: 20px;
+  width: 20em;
+  margin: 2em;
+}
+.title{
+  text-align: center;
+}
+.fillText{
+  margin-left: 5px;
+}
