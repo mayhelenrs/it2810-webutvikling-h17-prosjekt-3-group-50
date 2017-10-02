@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/styles/ToDo.css';
 import {ToDoItem} from './ToDoItem.jsx';
+import {Navbar} from './Navbar.jsx';
 
 export class ToDo extends React.Component {
     constructor(props) {
@@ -64,16 +65,19 @@ export class ToDo extends React.Component {
     render() {
 
         return (
-            <div className="todo-list">
-                <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
-                <h1 id="titleToDos">THIS IS YOUR TODO'S FOR NOW</h1>
-                <p className="todo-info"><span id="yellow">CATEGORIES</span>- SELECT YOUR FILTER</p>
-                <ul id="todo-holder">
-                    {this.renderToDoItems()}
-                </ul>
-                <input type="text" placeholder="Write your TODO" value={this.state.value}
-                       onChange={this.handleChange}/>
-                <input type="submit" id="btn-green" value="Add" onClick={this.handleSubmit}/>
+            <div className="Body">
+                <Navbar/>
+                <div className="todo-list">
+                    <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
+                    <h1 id="titleToDos">THIS IS YOUR TODO'S FOR NOW</h1>
+                    <p className="todo-info"><span id="yellow">CATEGORIES</span>- SELECT YOUR FILTER</p>
+                    <ul id="todo-holder">
+                        {this.renderToDoItems()}
+                    </ul>
+                    <input type="text" placeholder="Write your TODO" value={this.state.value}
+                           onChange={this.handleChange}/>
+                    <input type="submit" id="btn-green" value="Add" onClick={this.handleSubmit}/>
+                </div>
             </div>
         );
     }
