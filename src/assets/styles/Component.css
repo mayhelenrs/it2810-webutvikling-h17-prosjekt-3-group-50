@@ -39,21 +39,23 @@
 }
 
 /* Tile container */
-
-#TileContainer {
-    margin: auto;
+.tilegrid {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
-    background-color: red;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 70%;
+    background-color: transparent;
 }
 
 /* Tile */
-
 .Tile {
     background-color: blue;
     align-items:center;
     text-align: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 250px;
+    margin: 10px;
 }
 
 .Note {

@@ -1,15 +1,12 @@
 import React from 'react';
 import '../assets/styles/App.css';
-import {Navbar} from '../components/Navbar.jsx'
-import {Tile} from '../components/Tile'
-import {Pagetext} from "../components/Pagetext";
+import {Navbar, Pagetext, TileGrid} from '../components';
 
 export class Frontpage extends React.Component {
     render() {
         return (
-            <body>
-            <Navbar navbarLocation={"DASHBOARD"}
-
+            <div className="body">
+                <Navbar navbarLocation={"DASHBOARD"}
                     /*Remove this later, this is just to help with styling and an example */
                     navbarLinks={
                         <ul className={"Navbar-links"}>
@@ -21,27 +18,10 @@ export class Frontpage extends React.Component {
                             </li>
                         </ul>
                     }
-            />
-            <Pagetext pagetextContent={"VELKOMMEN!"}/>
-            <div id={"TileContainer"}>
-                <Tile
-                    tileTitle={"KALENDAR"}
-                    tileIcon={require("../assets/images/calendar.png")}
                 />
-                <Tile
-                    tileTitle={"TODO"}
-                    tileIcon={require("../assets/images/todo.png")}
-                />
-                <Tile
-                    tileTitle={"NOTIFICATION"}
-                    tileIcon={require("../assets/images/notifications.png")}
-                />
-                <Tile
-                    tileTitle={"NOTES"}
-                    tileIcon={require("../assets/images/notes.png")}
-                />
+                <Pagetext pagetextContent={"VELKOMMEN!"}/>
+                <TileGrid/>
             </div>
-            </body>
         );
     }
 }
