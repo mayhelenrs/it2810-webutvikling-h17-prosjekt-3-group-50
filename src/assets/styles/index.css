@@ -12,3 +12,6 @@ html, body {
     flex-direction: row;
 }
 
+.body-fullwidth {
+	width: 100%;
+}

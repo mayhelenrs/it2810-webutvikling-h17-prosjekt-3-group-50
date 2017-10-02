@@ -29,13 +29,13 @@ export class NoteView extends React.Component {
                         {this.state.noteContainer}
                     </div>
                     <div className="AddNote">
-                        <button onClick={() => this.appendNote()}>Add</button>
+                        <button className="add-button" onClick={() => this.appendNote()}>Add</button>
                     </div>
                 </div>
                 <div className="Right-Page">
                     {this.state.createCategoryContainer}
                     <div className={"AddCategory"}>
-                        <button onClick={() => this.appendCategory()}>Add</button>
+                        <button className="add-button" onClick={() => this.appendCategory()}>Add</button>
                     </div>
                 </div>
             </div>
