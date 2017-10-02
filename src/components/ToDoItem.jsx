@@ -1,3 +1,5 @@
+import React from 'react';
+
 export class ToDoItem extends React.Component {
     constructor(props) {
         super(props);
@@ -9,17 +11,15 @@ export class ToDoItem extends React.Component {
 
     handleClick() {
         this.setState({checked: !this.state.checked});
-        console.log("HEI");
-    }
 
+    }
 
     render() {
         const text = this.state.checked;
-
-        handle
         return (
-            <li key={this.props.index} onClick={this.props.handleClick}>
-                <input type="checkbox" key={this.props.index} label={text} onClick={this.props.onClick}/>
+            <li key={this.props.index}>
+                <input type="checkbox" key={this.props.index} label={text} onClick={this.props.onClick}
+                       onChange={() => this.handleClick()}/>
                 {this.props.value}
             </li>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/styles/ToDo.css';
-
+import {ToDoItem} from './ToDoItem.jsx';
 
 export class ToDo extends React.Component {
     constructor(props) {
@@ -12,11 +12,10 @@ export class ToDo extends React.Component {
         this.state = {
             value: '',
             data: todos,
-            checked: false,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleClicks = this.handleClicks.bind(this);
 
     }
 
@@ -31,31 +30,39 @@ export class ToDo extends React.Component {
         if (this.state.value.length > 0) {
             data.push(this.state.value);
             this.setState({ data: data});
+            if (typeof(Storage) !== "undefined" ) {
+                localStorage.setItem("ToDo", data);
+            }
         }
-        if (typeof(Storage) !== "undefined" ) {
-            localStorage.setItem("ToDo", data);
-            console.log(localStorage.getItem("ToDo"));
-        }
+
+
         event.preventDefault();
 
 
     }
 
-   handleClick(id) {
-        console.log(id);
-
-
+   handleClicks(index) {
+        let todos = localStorage.getItem("ToDo").split(",");
+        let handledTodos = [];
+        for (let i = 0; i < todos.length; i++) {
+            if (i !== index) {
+                handledTodos.push(todos[i]);
+            }
+        }
+       this.setState({ data: handledTodos});
+       localStorage.setItem("ToDo", handledTodos);
     }
 
 
 
     renderToDoItems() {
         return this.state.data.map((todo, index) =>
-            <ToDoItem className="items" value={todo} key={index} onClick={() => this.handleClick(index)}/>
+            <ToDoItem className="items" value={todo} key={index} onClick={() => this.handleClicks(index)}/>
         );
     }
 
     render() {
+
         return (
             <div className="todo-list">
                 <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
@@ -73,28 +80,3 @@ export class ToDo extends React.Component {
 }
 
 
-export class ToDoItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            checked: false
-        };
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.setState({checked: !this.state.checked});
-
-    }
-
-
-    render() {
-        const text = this.state.checked;
-        return (
-            <li key={this.props.index} onClick={this.props.onClick}>
-                <input type="checkbox" key={this.props.index} label={text} onClick={this.props.onClick}/>
-                {this.props.value}
-            </li>
-        );
-    }
-}

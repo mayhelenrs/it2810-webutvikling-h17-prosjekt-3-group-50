@@ -59,9 +59,7 @@ input[type=checkbox] {
     margin-left: 3%;
 }
 
-input[type=checkbox]:checked {
-    background-color: goldenrod;
-}
+
 
 input[type=checkbox]:hover {
     background-color:  goldenrod;
