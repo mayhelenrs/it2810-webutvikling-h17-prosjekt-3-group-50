@@ -19,12 +19,6 @@ export class TileGrid extends React.Component {
         this.state = {
             tiles: standardTiles,
         };
-
-        //this is only nessecarry if you refer to the function without the ending (), for example this.appendTile instead of this.appendTile()
-        /* Commented out since the functions are not needed
-        this.appendTile = this.appendTile.bind(this);
-        this.filterTiles = this.filterTiles.bind(this);
-        */
     }
 
     render() {
@@ -45,40 +39,4 @@ export class TileGrid extends React.Component {
             </div>
         );
     }
-
-    /*
-    appendTile(title, icon, color, category, view) {
-        //use a function within the setState function to append new tile to prevState and update new state
-        this.setState(function (prevState) {
-            console.log(prevState);
-            let tempTiles = prevState.tiles;
-            tempTiles.push([title, icon, color, category, view]);
-            return {
-                tiles: tempTiles
-               };
-        });
-    }
-
-    //The following code is commented out since it is not necessary for the functionality on the frontpage
-    filterTiles(tiles, category) {
-        //create temperary array for holding items after filtering
-        const filteredItems = [];
-        //filter items using the tiles array from state
-        tiles.forEach(function (element) {
-            if (element[3] === category) {
-                filteredItems.push(element)
-            }
-        });
-        return filteredItems;
-    }
-
-    //handeling events
-    filterHandler(category) {
-        if (category !== "") {
-            this.setState({filteredTiles: this.filterTiles(this.state.tiles, category), filter: category});
-        } else {
-            this.setState({filteredTiles: this.state.tiles});
-        }
-    }
-    */
 }
