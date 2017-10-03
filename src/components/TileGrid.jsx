@@ -1,18 +1,19 @@
 import React from 'react';
 import {Tile} from '../components/Tile';
 import '../assets/styles/Component.css';
+import {frontpage, Note} from '../views';
 
 export class TileGrid extends React.Component {
 
-
 	constructor(props) {
 		super(props);
+		this.colorPool = ["#c7b9e5", "#006e8e", "#20c2af", "#f9a7a9" ];
 		//define starting tiles
 		const tileInfo = [
-			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "red"],
-			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "green"],
-			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "yellow"],
-			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "red"]
+			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "red", <Note/>],
+			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "green", <Note/>],
+			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "yellow", <Note/>],
+			["Title", require("../assets/images/calendar.png"), "#c7b9e5", "red", <Note/>]
 		];
 		//set state values
 		this.state = {
@@ -21,11 +22,12 @@ export class TileGrid extends React.Component {
 			filter: ""
 		};
 		//this is only nessecarry if you refer to the function without the ending (), for example this.appendTile instead of this.appendTile()
-		this.appendTile = this.appendTile.bind(this);
-		this.filterTiles = this.filterTiles.bind(this);
+		this.appendTile 	= this.appendTile.bind(this);
+		this.filterTiles 	= this.filterTiles.bind(this);
 	}
 
 	render() {
+
 		return (
 			<div className="tilegrid">
 				{
@@ -35,12 +37,13 @@ export class TileGrid extends React.Component {
 							tileTitle={info[0]}
 							tileIcon={info[1]}
 							color={info[2]}
+							view={info[4]}
 						/>
 					)
 				}
 				<br/>
 				<div>
-					<button className="add-button" onClick={() => this.appendTile("Hei", require("../assets/images/calendar.png"), "#c7b9e5", this.state.filter)}>Add</button>
+					<button className="add-button" onClick={() => this.appendTile("Hei", require("../assets/images/calendar.png"), this.colorPool[Math.floor((Math.random() * this.colorPool.length))], this.state.filter, <Note/>)}>Add</button>
 					<button className="add-button" onClick={() => this.filterHandler("red")}>red</button>
 					<button className="add-button" onClick={() => this.filterHandler("green")}>green</button>
 					<button className="add-button" onClick={() => this.filterHandler("")}>all</button>
@@ -49,11 +52,11 @@ export class TileGrid extends React.Component {
 		);
 	}
 
-	appendTile(title, icon, color, category) {
+	appendTile(title, icon, color, category, view) {
 		//use a function within the setState function to append new tile to prevState and update new state
 		this.setState(function(prevState){
-			prevState.tiles.push([title, icon, color, category])
-			if(prevState.filter != "") {
+			prevState.tiles.push([title, icon, color, category, view])
+			if(prevState.filter !== "") {
 				return {tiles: prevState.tiles, filteredTiles: this.filterTiles(prevState.tiles, prevState.filter)}	
 			}else {
 				return {tiles: prevState.tiles, filteredTiles: prevState.tiles}
@@ -65,14 +68,15 @@ export class TileGrid extends React.Component {
 		const filteredItems = []
 		//filter items using the tiles array from state
 		tiles.forEach(function(element) {
-			if (element[3] == category) {
+			if (element[3] === category) {
 				filteredItems.push(element)
 			}
 		});
 		return filteredItems;
 	}
+	//handeling events
 	filterHandler(category) {
-		if(category != "") {
+		if(category !== "") {
 			this.setState({filteredTiles: this.filterTiles(this.state.tiles, category), filter: category});
 		}else {
 			this.setState({filteredTiles: this.state.tiles});
