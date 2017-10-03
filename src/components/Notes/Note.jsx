@@ -7,9 +7,12 @@ export class Note extends React.Component {
     constructor(props) {
         super(props);
         this.toggleNote = this.toggleNote.bind(this);
+        this.updateTitle = this.updateTitle.bind(this);
         this.state = {
+            title: props.text,
             noteDisplay: <NoteDisplay ref={instance => {this.noteDisplay = instance}}
-                                      toggleNote={this.toggleNote}/>
+                                      toggleNote={this.toggleNote} color={props.color} title={props.text}
+                                      updateTitle={this.updateTitle}/>
         }
     }
 
@@ -25,12 +28,19 @@ export class Note extends React.Component {
                         <img className="NoteImage" alt={'Remove'} src={require('../../assets/img/note_icon.png')}/>
                     </div>
                     <div className="NoteName">
-                        <p>{this.props.text}</p>
+                        <p>{this.state.title}</p>
                     </div>
                 </div>
                 {this.state.noteDisplay}
             </div>
         );
+    }
+
+    updateTitle(title) {
+        console.log("asd" + title);
+        this.setState(() => {
+            return {title: title};
+        });
     }
 
     toggleNote() {
