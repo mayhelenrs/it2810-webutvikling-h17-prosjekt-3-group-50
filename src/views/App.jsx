@@ -7,8 +7,7 @@ import {Frontpage} from "./frontpage";
 export class App extends React.Component {
   render() {
     return (
-        <ToDo/>
-
+    	<ToDo/>
     );
   }
 }
