@@ -5,5 +5,5 @@ import {Frontpage} from './views';
 import registerServiceWorker from './service/registerServiceWorker';
 import {NoteView} from './views';
 
-ReactDOM.render(<Frontpage />, document.getElementById('root'));
+ReactDOM.render(<NoteView />, document.getElementById('root'));
 registerServiceWorker();

@@ -5,7 +5,7 @@ import {NoteContainer} from '../components/Notes/NoteContainer.jsx'
 import {CategoryContainer} from "../components/Notes/CategoryContainer";
 import {CategoryFilterContainer} from "../components/Notes/CategoryFilterContainer";
 
-export class Note extends React.Component {
+export class NoteView extends React.Component {
 
     constructor(props) {
         super(props);
