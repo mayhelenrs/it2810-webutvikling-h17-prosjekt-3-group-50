@@ -21,7 +21,7 @@ export class Frontpage extends React.Component {
                     />
                 <div className="frontpage-body">
                     <br/>
-                    <Pagetext pagetextContent={"VELKOMMEN TILBAKE, MARIUS!"}/>
+                    <Pagetext text={"VELKOMMEN!"}/>
                     <br/><br/>
                     <TileGrid/>
                 </div>
