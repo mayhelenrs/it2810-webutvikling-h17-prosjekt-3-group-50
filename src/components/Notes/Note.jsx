@@ -6,11 +6,10 @@ export class Note extends React.Component {
 
     constructor(props) {
         super(props);
-        this.hideNote = this.hideNote.bind(this);
+        this.toggleNote = this.toggleNote.bind(this);
         this.state = {
-            noteDisplay: <NoteDisplay ref={instance => {
-                this.noteDisplay = instance
-            }} hideNote={this.hideNote}/>
+            noteDisplay: <NoteDisplay ref={instance => {this.noteDisplay = instance}}
+                                      toggleNote={this.toggleNote}/>
         }
     }
 
@@ -21,7 +20,7 @@ export class Note extends React.Component {
                     <img className="RemoveButton" onClick={() => this.props.handleRemove(this)} alt={'Remove'}
                          src={require('../../assets/img/close.png')}/>
                 </div>
-                <div className="NoteContent" onClick={() => this.displayNote()}>
+                <div className="NoteContent" onClick={() => this.toggleNote()}>
                     <div className="NoteIcon">
                         <img className="NoteImage" alt={'Remove'} src={require('../../assets/img/note_icon.png')}/>
                     </div>
@@ -34,19 +33,10 @@ export class Note extends React.Component {
         );
     }
 
-    displayNote() {
-        this.noteDisplay.setState({
-            visible: true,
-            width: 400,
-            height: 400
+    toggleNote() {
+        this.noteDisplay.setState((prevState) => {
+            return {width: prevState.width === 400 ? 0 : 400, height: prevState.height === 400 ? 0 : 400};
         });
     }
 
-    hideNote() {
-        this.noteDisplay.setState({
-            visible: true,
-            width: 0,
-            height: 0
-        });
-    }
 }

@@ -14,16 +14,18 @@ export class CategoryFilter extends React.Component {
     render() {
         return (
             <div style={{backgroundColor: '' + this.state.color, border: (this.state.selected ? this.state.color + " solid 6px" : "none")}} className={"CategoryFilter"} onClick={() => {
-                this.selectElement();
-                this.props.selectElement(this);
+                this.toggleElement();
+                this.props.selectCategory(this);
             }}>
                 {this.state.selected}
             </div>
         );
     }
 
-    selectElement() {
-        this.setState({selected: true});
+    toggleElement() {
+        this.setState((prevState) => {
+            return {selected: !prevState.selected};
+        });
     }
 
 }

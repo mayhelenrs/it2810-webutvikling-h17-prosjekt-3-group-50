@@ -32,16 +32,19 @@ export class NoteContainer extends React.Component {
     }
 
     removeNote(element) {
-        for (let i = 0; i < this.state.notes.length; i++) {
-            if (this.state.notes[i].props.id === element.props.id) {
-                this.setState({notes: update(this.state.notes, {$splice: [[i, 1]]})},
-                    () => this.props.filterNotes());
+        this.state.notes.forEach((note, index) => {
+            if (note.props.id === element.props.id) {
+                this.setState((prevState) => {
+                    return {notes: update(prevState.notes, {$splice: [[index, 1]]})};
+                }, () => this.props.filterNotes());
             }
-        }
+        });
     }
 
     appendNote(color) {
-        this.setState({notes: update(this.state.notes, {$push: [this.generateNote(color, "Note")]})},
-            () => this.props.filterNotes());
+        this.setState((prevState) => console.log(update(prevState.notes, {$push: [this.generateNote(color, "Note")]})));
+        this.setState((prevState) => {
+                return {notes: update(prevState.notes, {$push: [this.generateNote(color, "Note")]})};
+        }, () => this.props.filterNotes());
     }
 }

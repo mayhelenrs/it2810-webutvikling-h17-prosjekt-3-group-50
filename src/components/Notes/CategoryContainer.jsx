@@ -1,48 +1,48 @@
 import React from 'react';
 import './Notes.css';
-import {CategoryFilter} from './CategoryFilter.jsx';
-import update from 'react-addons-update';
+import {Category} from "./Category";
 
 export class CategoryContainer extends React.Component {
+
 
     constructor() {
         super();
         this.categoryCount = 0;
-        this.selectElement = this.selectCategory.bind(this);
+        this.colors = ["#016D91", "#E53F6F", "#686868", "#F56376"];
+        this.colorIndex = 0;
         this.state = {
-            categories: [this.generateCategory("#016D91"), this.generateCategory("#E53F6F"), this.generateCategory("#686868"),
-                this.generateCategory("#F56376")],
-            selectedCategory: undefined
+            categories: [this.generateCategory("School"), this.generateCategory("Shopping"),
+                        this.generateCategory("Home"), this.generateCategory("Friends")]
         };
     }
 
     render() {
         return (
-            <div className="NoteHolder">
-                <p><orange>Categories</orange> - Select to filter your notes and add new ones!</p>
-                <div className="Notes">
-                    {this.state.categories}
-                </div>
+            <div className="CategoryCreatorHolder">
+                <p>Categories</p>
+                {this.state.categories}
             </div>
         );
     }
 
-    generateCategory(color) {
-        return <CategoryFilter selectElement={this.selectElement} key={this.categoryCount++} color={color}/>;
+    getNextColor() {
+        if (this.colorIndex >= this.colors.length)
+            return this.randomColor();
+        const color = this.colors[this.colorIndex];
+        this.colorIndex++;
+        return color;
     }
 
-    selectCategory(element) {
-        if (this.state.selectedCategory !== undefined)
-            this.state.selectedCategory.setState({selected: false});
-        this.setState({
-            selectedCategory: (this.state.selectedCategory === element ? undefined : element)
-        }, () => this.props.filterNotes());
+    randomColor() {
+        return "rgb(" + this.random(255) + ", " + this.random(255) + ", " + this.random(255) + ")";
     }
 
-    appendCategory(color) {
-        this.setState({
-            categories: update(this.state.categories, {$push: [this.generateCategory(color)]})
-        });
+    random(range) {
+        return Math.floor(Math.random() * range);
+    }
+
+    generateCategory(text) {
+        return <Category text={text} color={this.getNextColor()} key={this.categoryCount++}/>;
     }
 
 }
