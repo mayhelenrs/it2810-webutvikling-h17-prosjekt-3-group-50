@@ -53,13 +53,7 @@ export class NoteView extends React.Component {
 
     getFilteredNotes(filter) {
         if (filter !== undefined) {
-            const notes = [];
-            this.noteContainer.state.notes.forEach((note) =>  {
-                if (note.props.color === filter.props.color) {
-                    notes.push(note);
-                }
-            });
-            return notes;
+            return this.noteContainer.state.notes.filter((note) => note.props.color === filter.props.color);
         }
         return update(this.noteContainer.state.notes, {$push: []});
     }

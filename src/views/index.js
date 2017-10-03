@@ -1,2 +1,2 @@
 export * from './App.jsx';
-export * from './Note.jsx';
+export * from './NoteView.jsx';
