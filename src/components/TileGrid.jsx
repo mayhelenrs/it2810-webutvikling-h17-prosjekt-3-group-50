@@ -1,19 +1,19 @@
 import React from 'react';
 import {Tile} from '../components/Tile';
 import '../assets/styles/Component.css';
-import {frontpage, Note} from '../views';
+import {frontpage, Note, Todo, Calendar, Notification } from '../views';
 
 export class TileGrid extends React.Component {
 
     constructor(props) {
         super(props);
-        this.colorPool = ["#c7b9e5", "#006e8e", "#20c2af", "#f9a7a9"];
-        //define starting tiles
+
+        //define tiles
         const tileInfo = [
-            ["Title", require("../assets/images/calendar.png"), "#c7b9e5", "red", <Note/>],
-            ["Title", require("../assets/images/calendar.png"), "#006e8e", "green", <Note/>],
-            ["Title", require("../assets/images/calendar.png"), "#20c2af", "yellow", <Note/>],
-            ["Title", require("../assets/images/calendar.png"), "#f9a7a9", "red", <Note/>]
+            ["Calendar", require("../assets/images/calendar.png"), "#c7b9e5", "red", <Calendar/>],
+            ["Notifications", require("../assets/images/notifications.png.png"), "#006e8e", "green", <Notification/>],
+            ["Todo", require("../assets/images/todo.png"), "#20c2af", "yellow", <Todo/>],
+            ["Notes", require("../assets/images/notes.png"), "#f9a7a9", "red", <Note/>]
         ];
         //set state values
         this.state = {
@@ -21,7 +21,7 @@ export class TileGrid extends React.Component {
         };
 
         //this is only nessecarry if you refer to the function without the ending (), for example this.appendTile instead of this.appendTile()
-        /*
+        /* Commented out since the functions are not needed
         this.appendTile = this.appendTile.bind(this);
         this.filterTiles = this.filterTiles.bind(this);
         */
@@ -47,6 +47,7 @@ export class TileGrid extends React.Component {
         );
     }
 
+    /*
     appendTile(title, icon, color, category, view) {
         //use a function within the setState function to append new tile to prevState and update new state
         this.setState(function (prevState) {
@@ -56,19 +57,10 @@ export class TileGrid extends React.Component {
             return {
                 tiles: tempTiles
                };
-            /*
-            prevState.tiles.push([title, icon, color, category, view]);
-            if (prevState.filter !== "") {
-                return {tiles: prevState.tiles, filteredTiles: this.filterTiles(prevState.tiles, prevState.filter)}
-            } else {
-                return {tiles: prevState.tiles, filteredTiles: prevState.tiles}
-            }
-            */
         });
     }
 
     //The following code is commented out since it is not necessary for the functionality on the frontpage
-    /*
     filterTiles(tiles, category) {
         //create temperary array for holding items after filtering
         const filteredItems = [];
