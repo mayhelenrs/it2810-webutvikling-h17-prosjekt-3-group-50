@@ -5,7 +5,7 @@ import {NoteContainer} from '../components/Notes/NoteContainer.jsx'
 import {CategoryContainer} from "../components/Notes/CategoryContainer";
 import {CategoryFilterContainer} from "../components/Notes/CategoryFilterContainer";
 
-export class NoteView extends React.Component {
+export class Note extends React.Component {
 
     constructor(props) {
         super(props);
@@ -29,13 +29,13 @@ export class NoteView extends React.Component {
                         {this.state.noteContainer}
                     </div>
                     <div className="AddNote">
-                        <button onClick={() => this.appendNote()}>Add</button>
+                        <button className="add-button" onClick={() => this.appendNote()}>Add</button>
                     </div>
                 </div>
                 <div className="Right-Page">
                     {this.state.categoryContainer}
                     <div className={"AddCategory"}>
-                        <button onClick={() => this.appendCategory()}>Add</button>
+                        <button className="add-button" onClick={() => this.appendCategory()}>Add</button>
                     </div>
                 </div>
             </div>

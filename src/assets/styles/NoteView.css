@@ -60,7 +60,7 @@
     font-weight: bold;
 }
 
-button {
+.add-button {
     font-family: Verdana, Geneva, sans-serif;
     border: none;
     background-color: #3Cb54C;
