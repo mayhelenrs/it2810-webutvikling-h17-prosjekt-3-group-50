@@ -1,0 +1,102 @@
+.todo-list {
+    background-color: white;
+    width: 40%;
+    margin-left: 10%;
+    margin-top: 5%;
+
+}
+
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+
+#yellow {
+    color: goldenrod;
+}
+
+#titleToDos {
+    font-family: IntroRust, sans-serif;
+}
+
+li {
+    list-style-type: none;
+    font-family: IntroRust, sans-serif;
+    font-size: 14px;
+    height: 50px;
+    margin: 20px;
+    width: 100%;
+    padding-top: 3%;
+    -webkit-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+}
+
+li:hover {
+    background-color: #dddddd;
+}
+
+
+#todo-holder {
+    width: 100%;
+    padding-left: 0;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+input[type=checkbox] {
+    width: 1.8em;
+    height: 1.8em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 4%;
+    margin-left: 3%;
+}
+
+
+
+input[type=checkbox]:hover {
+    background-color:  goldenrod;
+}
+
+.toDo {
+    display: flex;
+}
+
+.todo-info {
+    font-size: 14px;
+
+}
+
+#btn-green {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#btn-green:hover {
+    background-color: darkgreen;
+}
+
+input[type=text] {
+    width: 83%;
+    padding: 13px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
