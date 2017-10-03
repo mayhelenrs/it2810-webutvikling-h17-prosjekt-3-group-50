@@ -9,7 +9,7 @@ export class TileGrid extends React.Component {
         super(props);
 
         //define tiles
-        const tileInfo = [
+        const standardTiles = [
             ["Calendar", require("../assets/images/calendar.png"), "#c7b9e5", "red", <Calendar/>],
             ["Notifications", require("../assets/images/notifications.png"), "#006e8e", "green", <Notification/>],
             ["Todo", require("../assets/images/todo.png"), "#20c2af", "yellow", <Todo/>],
@@ -17,7 +17,7 @@ export class TileGrid extends React.Component {
         ];
         //set state values
         this.state = {
-            tiles: tileInfo,
+            tiles: standardTiles,
         };
 
         //this is only nessecarry if you refer to the function without the ending (), for example this.appendTile instead of this.appendTile()
@@ -28,7 +28,6 @@ export class TileGrid extends React.Component {
     }
 
     render() {
-
         return (
             <div className="tilegrid">
                 {
