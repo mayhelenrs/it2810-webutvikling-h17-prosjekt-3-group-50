@@ -19,6 +19,7 @@ export class CategoryContainer extends React.Component {
         this.save();
     }
 
+    //When the component is finished mounting it adds the stored categories to its list
     componentDidMount() {
         const categories = [];
         const categoryIds = this.load();
@@ -31,9 +32,9 @@ export class CategoryContainer extends React.Component {
             this.colorIndex = categoryIds.length;
             this.setState(prevState => {
                return {...prevState, categories: categories}
-            });
+            }, () => this.props.updateCategoryFilter(this.state.categories));
         }
-        this.props.updateCategoryFilter(categories);
+        this.save();
     }
 
     render() {

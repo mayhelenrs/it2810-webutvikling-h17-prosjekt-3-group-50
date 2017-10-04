@@ -12,15 +12,12 @@ export class Category extends React.Component {
         }
     }
 
+    //When the component has loaded it will load its previous state back in
     componentDidMount() {
         const data = this.load();
         if (data != null) {
             this.setState(prevState => {
-                return {
-                    ...prevState,
-                    color: data.color,
-                    text: data.text
-                }
+                return {...prevState, data};
             });
         }
         this.save();

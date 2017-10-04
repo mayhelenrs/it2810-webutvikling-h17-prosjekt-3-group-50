@@ -30,7 +30,7 @@ export class Note extends React.Component {
         const data = this.load();
         if (data !== null) {
             this.setState(prevState => {
-                return {...prevState, title: data.title, color: data.color}
+                return {...prevState, data}
             });
         }
         this.save();
