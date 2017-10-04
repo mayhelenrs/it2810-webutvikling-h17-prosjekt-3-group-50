@@ -4,6 +4,7 @@ import update from 'react-addons-update'
 import {NoteContainer} from '../components/Notes/NoteContainer.jsx'
 import {CategoryContainer} from "../components/Notes/CategoryContainer";
 import {CategoryCreatorContainer} from "../components/Notes/CategoryCreatorContainer";
+import {Navbar} from "../components/Navbar";
 
 export class Note extends React.Component {
 
@@ -19,7 +20,8 @@ export class Note extends React.Component {
 
     render() {
         return (
-            <div className="NoteView">
+            <div className="body-fullwidth">
+                <Navbar />
                 <div className="Left-Page">
                     <p>This is your notes for now</p>
                     <div>
