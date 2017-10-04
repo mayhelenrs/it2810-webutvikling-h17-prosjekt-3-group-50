@@ -1,11 +1,15 @@
 import React from 'react';
+import {DayGrid} from "../components/Calendar/DayGrid";
 
 
 export class Calendar extends React.Component {
 
     render() {
         return(
-            null
+            <div className={"body-fullwidth"}>
+                <DayGrid/>
+            </div>
+
         )
     }
 
