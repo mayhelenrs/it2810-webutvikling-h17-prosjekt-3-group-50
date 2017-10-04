@@ -1,7 +1,8 @@
 import React from 'react';
-import {Event} from "./Event.jsx";
+import '../../assets/styles/Component.css';
+import {Slot} from "./Slot.jsx";
 
-export class EventGrid extends React.Component {
+export class SlotGrid extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,10 +18,10 @@ export class EventGrid extends React.Component {
     }
     render() {
         return(
-            <div className={"eventgrid"}>
+            <div className={"slotgrid"}>
                 {
                     this.state.hours.map((hour) =>
-                        <Event hour={hour}/>
+                        <Slot hour={hour}/>
                     )
                 }
             </div>

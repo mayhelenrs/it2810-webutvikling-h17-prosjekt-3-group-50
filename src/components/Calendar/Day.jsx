@@ -1,16 +1,17 @@
 import React from 'react';
-import {EventGrid} from "./SlotGrid.jsx";
+import '../../assets/styles/Component.css';
+import {SlotGrid} from "./SlotGrid.jsx";
 
-export class Date extends React.Component {
+export class Day extends React.Component {
 
     constructor(props) {
         super(props);
     }
     render() {
         return(
-            <div className={"date"}>
+            <div className={"day"}>
                 <p>{this.props.day}</p>
-                <EventGrid/>
+                <SlotGrid/>
             </div>
         )
     }

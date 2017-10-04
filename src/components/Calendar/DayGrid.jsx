@@ -1,20 +1,21 @@
 import React from 'react';
-import {Date} from "./Date.jsx";
+import '../../assets/styles/Component.css';
+import {Day} from "./Day.jsx";
 
 
-export class DateGrid extends React.Component {
+export class DayGrid extends React.Component {
     constructor(props) {
         super(props);
 
 
         const days = [
-            ["Monday"],
-            ["Tuesday"],
-            ["Wednesday"],
-            ["Thursday"],
-            ["Friday"],
-            ["Saturday"],
-            ["Sunday"]
+            ["Mo"],
+            ["Tu"],
+            ["We"],
+            ["Th"],
+            ["Fr"],
+            ["Sa"],
+            ["Su"]
         ];
 
         this.state = {
@@ -25,11 +26,11 @@ export class DateGrid extends React.Component {
     render() {
 
         return(
-            <div className={"dategrid"}>
+            <div className={"daygrid"}>
                 {
                     //Map days to Date component
                     this.state.days.map((info) =>
-                        <Date day={info[0]}/>
+                        <Day day={info[0]}/>
                     )
                 }
             </div>
