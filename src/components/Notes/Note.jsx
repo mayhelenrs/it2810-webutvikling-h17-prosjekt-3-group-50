@@ -10,17 +10,37 @@ export class Note extends React.Component {
         this.updateTitle = this.updateTitle.bind(this);
         this.state = {
             title: props.text,
+            color: this.props.color,
             noteDisplay: <NoteDisplay ref={instance => {this.noteDisplay = instance}}
-                                      toggleNote={this.toggleNote} color={props.color} title={props.text}
-                                      updateTitle={this.updateTitle}/>
+                                      toggleNote={this.toggleNote}
+                                      color={props.color}
+                                      title={props.text}
+                                      text={"Change your note text by typing it here!"}
+                                      updateTitle={this.updateTitle}
+                                      id={props.id}
+            />
         }
+    }
+
+    componentDidUpdate() {
+        this.save();
+    }
+
+    componentDidMount() {
+        const data = this.load();
+        if (data !== null) {
+            this.setState(prevState => {
+                return {...prevState, title: data.title, color: data.color}
+            });
+        }
+        this.save();
     }
 
     render() {
         return (
-            <div className="Note" style={{backgroundColor: this.props.color}}>
+            <div className="Note" style={{backgroundColor: this.state.color}}>
                 <div className="RemoveNote">
-                    <img className="RemoveButton" onClick={() => this.props.handleRemove(this)} alt={'Remove'}
+                    <img className="RemoveButton" onClick={() => {this.removeNote()}} alt={'Remove'}
                          src={require('../../assets/img/close.png')}/>
                 </div>
                 <div className="NoteContent" onClick={() => this.toggleNote()}>
@@ -36,17 +56,29 @@ export class Note extends React.Component {
         );
     }
 
+    removeNote() {
+        this.props.handleRemove(this);
+        localStorage.removeItem("Note" + this.props.id);
+        localStorage.removeItem("NoteDisplay" + this.props.id);
+    }
+
     updateTitle(title) {
-        console.log("asd" + title);
-        this.setState(() => {
-            return {title: title};
+        this.setState(prevState => {
+            return {...prevState, title: title};
         });
     }
 
     toggleNote() {
-        this.noteDisplay.setState((prevState) => {
-            return {width: prevState.width === 400 ? 0 : 400, height: prevState.height === 400 ? 0 : 400};
+        this.noteDisplay.setState(prevState => {
+            return {...prevState, color: prevState.color, width: prevState.width === 400 ? 0 : 400, height: prevState.height === 400 ? 0 : 400};
         });
     }
 
+    save() {
+        localStorage.setItem("Note" + this.props.id, JSON.stringify(this.state));
+    }
+
+    load() {
+        return JSON.parse(localStorage.getItem("Note" + this.props.id));
+    }
 }

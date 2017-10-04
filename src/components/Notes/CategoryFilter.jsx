@@ -23,8 +23,8 @@ export class CategoryFilter extends React.Component {
     }
 
     toggleElement() {
-        this.setState((prevState) => {
-            return {selected: !prevState.selected};
+        this.setState(prevState => {
+            return {...prevState, selected: !prevState.selected};
         });
     }
 

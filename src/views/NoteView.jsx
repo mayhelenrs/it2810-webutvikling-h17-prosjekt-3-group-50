@@ -10,11 +10,22 @@ export class NoteView extends React.Component {
     constructor(props) {
         super(props);
         this.filterNotes = this.filterNotes.bind(this);
+        this.updateCategoryFilter = this.updateCategoryFilter.bind(this);
         this.state = {
-            noteContainer: <NoteContainer ref={instance => {this.noteContainer = instance}} filterNotes={this.filterNotes}/>,
-            categoryFilterContainer: <CategoryFilterContainer ref={instance => {this.categoryFilterContainer = instance}} filterNotes={this.filterNotes}/>,
-            categoryContainer: <CategoryContainer ref={instance => {this.categoryContainer = instance}}/>
+            noteContainer: <NoteContainer ref={instance => {
+                this.noteContainer = instance
+            }} filterNotes={this.filterNotes}/>,
+            categoryFilterContainer: <CategoryFilterContainer ref={instance => {
+                this.categoryFilterContainer = instance
+            }} filterNotes={this.filterNotes}/>,
+            categoryContainer: <CategoryContainer ref={instance => {
+                this.categoryContainer = instance
+            }} updateCategoryFilter={this.updateCategoryFilter}/>
         }
+    }
+
+    componentDidMount() {
+        this.filterNotes();
     }
 
     render() {
@@ -42,20 +53,17 @@ export class NoteView extends React.Component {
         );
     }
 
-    componentDidMount() {
-        this.filterNotes();
-    }
-
     filterNotes() {
         const selectedCategory = this.categoryFilterContainer.state.selectedCategory;
-        this.noteContainer.setState({displayedNotes: this.getFilteredNotes(selectedCategory)});
+        this.noteContainer.setState(prevState => {
+            return {...prevState, displayedNotes: this.getFilteredNotes(selectedCategory)}
+        });
     }
 
     getFilteredNotes(filter) {
-        if (filter !== undefined) {
+        if (filter !== undefined)
             return this.noteContainer.state.notes.filter((note) => note.props.color === filter.props.color);
-        }
-        return update(this.noteContainer.state.notes, {$push: []});
+        return this.noteContainer.state.notes;
     }
 
     appendNote() {
@@ -69,10 +77,20 @@ export class NoteView extends React.Component {
     //Appends a new category to the createCategoryContainer, the callback updates the categoryContainer
     //to add the category to the filter
     appendCategory() {
-        this.categoryContainer.setState({
-            categories: update(this.categoryContainer.state.categories, {$push: [this.categoryContainer.generateCategory("New category")]})
-        },
-            () => this.categoryFilterContainer.appendCategory(this.categoryContainer.state.categories[this.categoryContainer.state.categories.length - 1].props.color)
+        this.categoryContainer.setState(prevState => {
+                return {...prevState, categories: update(this.categoryContainer.state.categories,
+                    {$push: [this.categoryContainer.generateCategory("New category")]})};
+            },
+            () => {
+                this.categoryFilterContainer.appendCategory(
+                    this.categoryContainer.state.categories[this.categoryContainer.state.categories.length - 1].props.color)
+            }
         );
     }
+
+    //Since our CategoryFilter is a 100% dumb component we load it from the CategoryContainer component
+    updateCategoryFilter(categories) {
+        this.categoryFilterContainer.addCategories(categories);
+    }
+
 }

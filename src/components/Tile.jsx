@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../assets/styles/Component.css';
-import {frontpage, Note} from '../views';
 
 export class Tile extends React.Component {
     render() {

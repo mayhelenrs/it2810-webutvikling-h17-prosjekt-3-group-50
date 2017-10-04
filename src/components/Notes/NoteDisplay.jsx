@@ -9,21 +9,22 @@ export class NoteDisplay extends React.Component {
         this.onTextAreaChange = this.onTextAreaChange.bind(this);
         this.state = {
             title: props.title,
-            text: "Change your note text by typing it here!",
+            text: props.text,
+            color: props.color,
             width: 0,
             height: 0
         }
     }
 
     onInputChange({target}) {
-        this.setState({
-           title: target.value
+        this.setState(prevState => {
+           return {...prevState, color: prevState.color, title: target.value, text: prevState.text};
         }, () => this.props.updateTitle(this.state.title));
     }
 
     onTextAreaChange({target}) {
-        this.setState({
-            text: target.value
+        this.setState(prevState => {
+            return {...prevState, color: prevState.color, text: target.value};
         });
     }
 
@@ -34,14 +35,36 @@ export class NoteDisplay extends React.Component {
                      style={{width: this.state.width/4 + "%", height: this.state.height/4 + "%", backgroundColor: "rgba(0, 0, 0, " + ((this.state.width/100) * 0.075) + ""}}>
                 </div>
                 <div className={"NoteDisplay"}
-                     style={{width: this.state.width + "px", height: this.state.height + "px", backgroundColor: '' + this.props.color, opacity: '0.95'}}>
+                     style={{width: this.state.width + "px", height: this.state.height + "px", backgroundColor: '' + this.state.color, opacity: '0.95'}}>
 
                     <input onChange={this.onInputChange}
-                           defaultValue={this.props.title}/>
+                           value={this.state.title}/>
                     <textarea style={{display: this.state.width === 0 ? 'none' : 'block'}}
-                              onChange={this.onTextAreaChange} spellCheck={"false"} defaultValue={this.state.text} />
+                              onChange={this.onTextAreaChange} spellCheck={"false"} value={this.state.text} />
                 </div>
             </div>
         );
+    }
+
+    componentDidMount() {
+        const data = this.load();
+        if (data !== null) {
+            this.setState(prevState => {
+                return {...prevState, color: data.color, text: data.text, title: data.title};
+            });
+        }
+        this.save();
+    }
+
+    componentDidUpdate() {
+        this.save();
+    }
+
+    save() {
+        localStorage.setItem("NoteDisplay" + this.props.id, JSON.stringify(this.state));
+    }
+
+    load() {
+        return JSON.parse(localStorage.getItem("NoteDisplay" + this.props.id));
     }
 }

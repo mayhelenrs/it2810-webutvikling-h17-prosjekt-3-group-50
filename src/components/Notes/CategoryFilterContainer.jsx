@@ -10,8 +10,7 @@ export class CategoryFilterContainer extends React.Component {
         this.categoryCount = 0;
         this.selectCategory = this.selectCategory.bind(this);
         this.state = {
-            categories: [this.generateCategory("#016D91"), this.generateCategory("#E53F6F"), this.generateCategory("#686868"),
-                this.generateCategory("#F56376")],
+            categories: [],
             selectedCategory: undefined
         };
     }
@@ -37,14 +36,24 @@ export class CategoryFilterContainer extends React.Component {
         if (selectedCategory !== undefined && selectedCategory !== element)
             this.state.selectedCategory.toggleElement();
 
-        this.setState((prevState) => {
-            return {selectedCategory: (prevState.selectedCategory === element ? undefined : element)};
+        this.setState(prevState => {
+            return {...prevState, selectedCategory: (prevState.selectedCategory === element ? undefined : element)};
         }, () => this.props.filterNotes());
     }
 
     appendCategory(color) {
-        this.setState((prevState) => {
-            return {categories: update(prevState.categories, {$push: [this.generateCategory(color)]})};
+        this.setState(prevState => {
+            return {...prevState, categories: update(prevState.categories, {$push: [this.generateCategory(color)]})};
+        });
+    }
+
+    addCategories(categories) {
+        const categoryList = [];
+        categories.forEach(category => {
+            categoryList.push(this.generateCategory(category.props.color));
+        });
+        this.setState(prevState => {
+            return {...prevState, categories: categoryList};
         });
     }
 
