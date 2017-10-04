@@ -26,14 +26,21 @@
     height: 50px;
     margin: 20px;
     width: 100%;
-    padding-top: 3%;
+    display: flex;
     -webkit-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
     box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
 }
 
+
+
 .todo-item:hover {
     background-color: #dddddd;
+}
+
+.category-todo {
+    height: 50px;
+    width: 11%;
 }
 
 
@@ -47,6 +54,10 @@
 
 .toDo {
     display: flex;
+}
+
+.todo-text {
+    margin-top: 17px;
 }
 
 .todo-info {
@@ -85,6 +96,7 @@ input[type=text] {
 }
 
 input[type=checkbox] {
+    margin-top: 4%;
     width: 1.8em;
     height: 1.8em;
     background-color: white;
@@ -104,10 +116,7 @@ input[type=checkbox]:hover {
     background-color:  goldenrod;
 }
 
-.category-todo {
-    width: 10%;
-    height: 90%;
-}
+
 
 
 @media screen and (max-width: 480px) {

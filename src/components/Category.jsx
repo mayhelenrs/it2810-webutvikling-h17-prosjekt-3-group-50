@@ -31,7 +31,7 @@ export class Category extends React.Component {
             <div className="Body">
                 <div id="category-list">
                     <h1 id="titleCategory">Categories</h1>
-                    <ul>
+                    <ul id="category-holder">
                         {this.renderCategoryItems()}
                     </ul>
                 </div>

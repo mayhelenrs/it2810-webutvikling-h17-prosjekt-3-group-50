@@ -23,7 +23,7 @@ export class ToDoItem extends React.Component {
                 <div className="category-todo" style={{backgroundColor: '' + this.props.color}}></div>
                 <input type="checkbox" key={this.props.index} label={text} onClick={this.props.onClick}
                        onChange={() => this.handleClick()}/>
-                {this.props.value}
+                <p className="todo-text">{this.props.value}</p>
             </li>
         );
     }

@@ -1,7 +1,12 @@
 #category-list {
-    width: 40%;
+    width: 35%;
     float: right;
     margin-top: 7%;
+
+
+}
+#category-list h1 {
+    font-size: 205%;
 
 }
 
@@ -24,19 +29,25 @@
 
 }
 
-
-
+#category-holder {
+    width: 100%;
+    padding-left: 0;
+    margin-left: -20px;
+    margin-top: 20px;
+}
 .btn-category {
 
-    height: 60px;
-    width: 60px;
+    height: 45px;
+    width: 45px;
     border: none;
     margin-right: 10px;
-    padding: 10px 25px;
+    padding: 20px 25px;
     text-decoration: none;
     display: inline-block;
 
     cursor: pointer;
 
 }
+
+
 

@@ -69,7 +69,7 @@ export class ToDo extends React.Component {
        this.setState({ data: handledTodos});
        this.setState({ color_data: handledColors});
        localStorage.setItem("ToDo", JSON.stringify(handledTodos));
-       localStorage.setItem("ToDo", JSON.stringify(handledColors));
+       localStorage.setItem("Colors", JSON.stringify(handledColors));
     }
 
 

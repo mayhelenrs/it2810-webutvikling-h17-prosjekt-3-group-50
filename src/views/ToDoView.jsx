@@ -3,6 +3,7 @@ import {ToDo} from '../components/ToDo.jsx';
 import {Navbar} from '../components/Navbar.jsx';
 import {Category} from '../components/Category.jsx';
 
+
 export class ToDoView extends React.Component {
     constructor(props) {
         super(props);
