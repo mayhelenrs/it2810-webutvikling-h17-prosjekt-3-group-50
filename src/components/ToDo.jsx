@@ -1,18 +1,22 @@
 import React from 'react';
 import '../assets/styles/ToDo.css';
 import {ToDoItem} from './ToDoItem.jsx';
-import {Navbar} from './Navbar.jsx';
+
 
 export class ToDo extends React.Component {
     constructor(props) {
         super(props);
         let todos = [];
-
+        let colors_todo = [];
         if (localStorage.getItem("ToDo") != null) {
             todos =  JSON.parse(localStorage.getItem("ToDo"));
+            colors_todo = JSON.parse(localStorage.getItem("Colors"));
         }
+        console.log(todos);
         this.state = {
             value: '',
+            current_color: '',
+            color_data: colors_todo,
             data: todos,
         };
         this.handleChange = this.handleChange.bind(this);
@@ -28,14 +32,23 @@ export class ToDo extends React.Component {
     }
 
     handleSubmit(event) {
-        const todos = this.state.data;
+        let todos = this.state.data;
+        let colors = this.state.color_data;
+        let color = "rgb(15, 110, 143)";
+        if(this.props.color != null) {
+            color = this.props.color;
+        }
         if (this.state.value.length > 0) {
             todos.push(this.state.value);
+            colors.push(color);
                 this.setState({ data: todos});
+                this.setState({color_data: colors});
             if (typeof(Storage) !== "undefined" ) {
                 localStorage.setItem("ToDo", JSON.stringify(todos));
+                localStorage.setItem("Colors", JSON.stringify(colors));
             }
         }
+
         this.setState({value: ""});
         event.preventDefault();
 
@@ -44,29 +57,35 @@ export class ToDo extends React.Component {
 
    handleClicks(index) {
         let todos = JSON.parse(localStorage.getItem("ToDo"));
+        let colors = JSON.parse(localStorage.getItem("Colors"));
         let handledTodos = [];
+        let handledColors = [];
         for (let i = 0; i < todos.length; i++) {
             if (i !== index) {
                 handledTodos.push(todos[i]);
+                handledColors.push(colors[i]);
             }
         }
        this.setState({ data: handledTodos});
+       this.setState({ color_data: handledColors});
        localStorage.setItem("ToDo", JSON.stringify(handledTodos));
+       localStorage.setItem("ToDo", JSON.stringify(handledColors));
     }
+
+
 
 
 
     renderToDoItems() {
         return this.state.data.map((todo, index) =>
-            <ToDoItem className="items" value={todo} key={index} onClick={() => this.handleClicks(index)}/>
+            <ToDoItem className="items" value={todo} key={index} color={this.state.color_data[index]}
+                      onClick={() => this.handleClicks(index)}/>
         );
     }
 
     render() {
-
         return (
             <div className="Body">
-                <Navbar/>
                 <div className="todo-list">
                     <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
                     <h1 id="titleToDos">THIS IS YOUR TODO'S FOR NOW</h1>
@@ -78,7 +97,6 @@ export class ToDo extends React.Component {
                            onChange={this.handleChange}/>
                     <input type="submit" id="btn-green" value="Add" onClick={this.handleSubmit}/>
                 </div>
-                
             </div>
         );
     }

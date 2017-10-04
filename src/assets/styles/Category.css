@@ -1,0 +1,42 @@
+#category-list {
+    width: 40%;
+    float: right;
+    margin-top: 7%;
+
+}
+
+
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+
+
+
+#titleCategory {
+    font-family: IntroRust, sans-serif;
+}
+
+
+.category-item {
+    list-style-type: none;
+    margin: 20px;
+
+}
+
+
+
+.btn-category {
+
+    height: 60px;
+    width: 60px;
+    border: none;
+    margin-right: 10px;
+    padding: 10px 25px;
+    text-decoration: none;
+    display: inline-block;
+
+    cursor: pointer;
+
+}
+
