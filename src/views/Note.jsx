@@ -21,7 +21,6 @@ export class Note extends React.Component {
     render() {
         return (
             <div className="body-fullwidth">
-                <Navbar />
                 <div className="Left-Page">
                     <p>This is your notes for now</p>
                     <div>
