@@ -6,7 +6,6 @@ export class Frontpage extends React.Component {
     render() {
         return (
             <div className="body-fullwidth">
-                <Navbar navbarLocation={"DASHBOARD"}/>
                 <div className="frontpage-body">
                     <br/>
                     <Pagetext text={"VELKOMMEN!"}/>

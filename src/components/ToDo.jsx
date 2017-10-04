@@ -66,10 +66,9 @@ export class ToDo extends React.Component {
 
         return (
             <div className="Body">
-                <Navbar/>
                 <div className="todo-list">
                     <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
-                    <h1 id="titleToDos">THIS IS YOUR TODO'S FOR NOW</h1>
+                    <h1 id="titleToDos">THIS IS YOUR TODOS FOR NOW</h1>
                     <p className="todo-info"><span id="yellow">CATEGORIES</span>- SELECT YOUR FILTER</p>
                     <ul id="todo-holder">
                         {this.renderToDoItems()}

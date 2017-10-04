@@ -1,9 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+//import routing components
+import {BrowserRouter} from 'react-router-dom';
+//import css
 import './assets/styles/index.css';
-import {Frontpage} from './views';
+//import services
 import registerServiceWorker from './service/registerServiceWorker';
-import {NoteView} from './views';
+//import views
+import {Frontpage, Note, App} from './views';
+import {ToDo} from './components';
 
-ReactDOM.render(<Frontpage />, document.getElementById('root'));
+//ReactDOM.render(<Frontpage />, document.getElementById('root'));
+
+render(
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>,
+	document.getElementById('root')
+);
+
 registerServiceWorker();
+
