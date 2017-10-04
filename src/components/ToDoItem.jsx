@@ -17,7 +17,7 @@ export class ToDoItem extends React.Component {
     render() {
         const text = this.state.checked;
         return (
-            <li key={this.props.index}>
+            <li key={this.props.index} className="todo-item">
                 <input type="checkbox" key={this.props.index} label={text} onClick={this.props.onClick}
                        onChange={() => this.handleClick()}/>
                 {this.props.value}

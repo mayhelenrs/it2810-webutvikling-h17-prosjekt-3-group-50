@@ -1,8 +1,7 @@
 .todo-list {
-    background-color: white;
     width: 40%;
     margin-left: 10%;
-    margin-top: 5%;
+    margin-top: 4%;
 
 }
 
@@ -19,7 +18,7 @@
     font-family: IntroRust, sans-serif;
 }
 
-li {
+.todo-item {
     list-style-type: none;
     font-family: IntroRust, sans-serif;
     font-size: 14px;
@@ -27,12 +26,12 @@ li {
     margin: 20px;
     width: 100%;
     padding-top: 3%;
-    -webkit-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
+    box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
 }
 
-li:hover {
+.todo-item:hover {
     background-color: #dddddd;
 }
 
@@ -44,25 +43,6 @@ li:hover {
     margin-top: 20px;
 }
 
-input[type=checkbox] {
-    width: 1.8em;
-    height: 1.8em;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 1px solid #ddd;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-    margin-right: 4%;
-    margin-left: 3%;
-}
-
-
-
-input[type=checkbox]:hover {
-    background-color:  goldenrod;
-}
 
 .toDo {
     display: flex;
@@ -74,6 +54,8 @@ input[type=checkbox]:hover {
 }
 
 #btn-green {
+    width: 16%;
+
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -99,4 +81,51 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+input[type=checkbox] {
+    width: 1.8em;
+    height: 1.8em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 4%;
+    margin-left: 3%;
+}
+
+
+
+input[type=checkbox]:hover {
+    background-color:  goldenrod;
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .todo-list {
+        width: 80%;
+    }
+    #btn-green {
+        width: 100%;
+    }
+    input[type=text] {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 1237px) {
+
+
+    #btn-green {
+        width: 100%;
+    }
+    input[type=text] {
+        width: 100%;
+    }
+
 }

@@ -7,8 +7,9 @@ export class ToDo extends React.Component {
     constructor(props) {
         super(props);
         let todos = [];
-        if(localStorage.getItem("ToDo") != null) {
-            todos = localStorage.getItem("ToDo").split(",");
+
+        if (localStorage.getItem("ToDo") != null) {
+            todos =  JSON.parse(localStorage.getItem("ToDo"));
         }
         this.state = {
             value: '',
@@ -27,23 +28,22 @@ export class ToDo extends React.Component {
     }
 
     handleSubmit(event) {
-        const data = this.state.data;
+        const todos = this.state.data;
         if (this.state.value.length > 0) {
-            data.push(this.state.value);
-            this.setState({ data: data});
+            todos.push(this.state.value);
+                this.setState({ data: todos});
             if (typeof(Storage) !== "undefined" ) {
-                localStorage.setItem("ToDo", data);
+                localStorage.setItem("ToDo", JSON.stringify(todos));
             }
         }
-
-
+        this.setState({value: ""});
         event.preventDefault();
 
 
     }
 
    handleClicks(index) {
-        let todos = localStorage.getItem("ToDo").split(",");
+        let todos = JSON.parse(localStorage.getItem("ToDo"));
         let handledTodos = [];
         for (let i = 0; i < todos.length; i++) {
             if (i !== index) {
@@ -51,7 +51,7 @@ export class ToDo extends React.Component {
             }
         }
        this.setState({ data: handledTodos});
-       localStorage.setItem("ToDo", handledTodos);
+       localStorage.setItem("ToDo", JSON.stringify(handledTodos));
     }
 
 
@@ -74,10 +74,11 @@ export class ToDo extends React.Component {
                     <ul id="todo-holder">
                         {this.renderToDoItems()}
                     </ul>
-                    <input type="text" placeholder="Write your TODO" value={this.state.value}
+                    <input id="text-field" type="text" placeholder="Write your TODO" value={this.state.value}
                            onChange={this.handleChange}/>
                     <input type="submit" id="btn-green" value="Add" onClick={this.handleSubmit}/>
                 </div>
+                
             </div>
         );
     }
