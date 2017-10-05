@@ -1,13 +1,15 @@
 .daygrid {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     background-color: transparent;
 }
 
 .day {
-    width: 14%;
+    width: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .day-text {
@@ -23,7 +25,8 @@
 }
 
 .slot {
-    margin: 3px;
+    margin: 5px;
+    padding: 5px;
     text-align: center;
     color: white;
 
@@ -44,14 +47,14 @@
     font-weight: bold;
 }
 
+.event {
+    display: flex;
+    flex-direction: column;
+}
+
 .event-title, .event-description {
     width: 80%;
     margin: auto;
     border-bottom: 1px solid white;
 
-}
-
-.event {
-    display: flex;
-    flex-direction: column;
 }

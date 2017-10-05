@@ -1,7 +1,6 @@
 import React from 'react';
 import '../assets/styles/ToDo.css';
 import {ToDoItem} from './ToDoItem.jsx';
-import {Navbar} from './Navbar.jsx';
 
 export class ToDo extends React.Component {
     constructor(props) {
