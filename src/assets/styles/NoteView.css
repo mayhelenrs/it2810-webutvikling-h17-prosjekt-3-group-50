@@ -44,6 +44,9 @@
 
 }
 
+.NoteView {
+    font-family: IntroRust;
+}
 .AddNote {
     margin: 30px 10px 10px 10px;
 }
@@ -61,7 +64,6 @@
 }
 
 .add-button {
-    font-family: Verdana, Geneva, sans-serif;
     border: none;
     background-color: #3Cb54C;
     color: white;

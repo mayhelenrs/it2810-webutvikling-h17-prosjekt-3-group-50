@@ -7,10 +7,7 @@ import './assets/styles/index.css';
 //import services
 import registerServiceWorker from './service/registerServiceWorker';
 //import views
-import {Frontpage, Note, App} from './views';
-import {ToDo} from './components';
-
-//ReactDOM.render(<Frontpage />, document.getElementById('root'));
+import {App} from './views';
 
 render(
 	<BrowserRouter>

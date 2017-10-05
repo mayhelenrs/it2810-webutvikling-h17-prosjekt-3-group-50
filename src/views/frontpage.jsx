@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/styles/App.css';
-import {Navbar, Pagetext, TileGrid} from '../components';
+import {Pagetext, TileGrid} from '../components';
 
 export class Frontpage extends React.Component {
     render() {
