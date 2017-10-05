@@ -1,5 +1,5 @@
 div {
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: IntroRust;
     font-size: 16px;
 }
 
@@ -21,19 +21,6 @@ div {
     -o-user-select: none;
 }
 
-.CategoryFilter {
-    min-width: 75px;
-    min-height: 75px;
-    max-width: 75px;
-    max-height: 75px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-}
-
 .NoteContent {
     display: flex;
     flex-direction: column;
@@ -49,7 +36,6 @@ div {
 }
 
 .NoteHolder > p {
-    font-family: Verdana, Geneva, sans-serif;
     font-size: 18px;
 }
 
@@ -80,50 +66,8 @@ orange {
 }
 
 .NoteName {
-    font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
     color: white;
-}
-
-.Selected {
-    border: black solid 2px;
-}
-
-.CategoryCreatorHolder {
-    display: flex;
-    flex-direction: column;
-}
-
-.CategoryCreatorHolder > p {
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight: bold;
-    color: black;
-    font-size: 1.5em;
-}
-
-.Category {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 5px;
-}
-
-.CategoryColor {
-    min-width: 40px;
-    min-height: 40px;
-    max-width: 40px;
-    max-height: 40px;
-    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    margin-right: 10px;
-}
-
-.CategoryName {
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-weight: bold;
-    outline: none;
 }
 
 .NoteFiller {
@@ -185,11 +129,6 @@ orange {
     flex-direction: row;
 }
 
-.AddCategory {
-    display: flex;
-    flex-direction: row;
-}
-
 @media screen and (max-width: 525px) {
     .NoteHolder {
         align-items: center;
@@ -198,12 +137,6 @@ orange {
         justify-content: center;
     }
     .AddNote {
-        justify-content: center;
-    }
-    .CategoryCreatorHolder {
-        align-items: center;
-    }
-    .AddCategory {
         justify-content: center;
     }
 }

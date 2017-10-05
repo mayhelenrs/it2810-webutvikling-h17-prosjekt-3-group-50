@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../assets/styles/Component.css';
 
 export class Tile extends React.Component {

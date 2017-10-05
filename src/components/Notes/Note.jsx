@@ -45,7 +45,7 @@ export class Note extends React.Component {
                 </div>
                 <div className="NoteContent" onClick={() => this.toggleNote()}>
                     <div className="NoteIcon">
-                        <img className="NoteImage" alt={'Remove'} src={require('../../assets/img/note_icon.png')}/>
+                        <img className="NoteImage" alt={'Remove'} src={require('../../assets/images/notes.png')}/>
                     </div>
                     <div className="NoteName">
                         <p>{this.state.title}</p>
