@@ -6,6 +6,7 @@ export class SlotGrid extends React.Component {
     constructor(props) {
         super(props);
 
+        this.i = -1;
 
         const hours = [
             ["08:00", "10:00"], ["10:00", "12:00"], ["12:00", "14:00"], ["14:00", "16:00"]
@@ -25,17 +26,24 @@ export class SlotGrid extends React.Component {
         return (
             <div className={"slotgrid"}>
                 {
-                    this.state.hours.map((interval) =>
-                        <Slot interval={interval} color={this.nextColor()}/>
-                    )
+                    this.state.hours.map((interval) => this.generateNewSlot(interval))
                 }
             </div>
         );
     }
 
+
+    generateNewSlot(interval) {
+        this.i++;
+        return <Slot day={this.props.day} id={this.i} interval={interval} color={this.nextColor()}/>
+    }
+
     nextColor() {
-        let i = Math.round(Math.random() * 3);
-        console.log(i);
-        return this.state.backgroundColors[i];
+        if(localStorage.getItem(this.props.day + this.i)) {
+            return localStorage.getItem(this.props.day + this.i);
+        } else {
+            let j = Math.round(Math.random() * 3);
+            return this.state.backgroundColors[j];
+        }
     }
 }
