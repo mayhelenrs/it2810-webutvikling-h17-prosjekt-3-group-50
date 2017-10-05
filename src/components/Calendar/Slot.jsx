@@ -6,24 +6,17 @@ export class Slot extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            event: ""
-        };
-
-        this.appendEvent = this.appendEvent.bind(this);
-
     }
+
+
     render() {
-        return(
-            <div className={"slot"} onClick={this.appendEvent}>
-                <p>{this.props.hour}</p>
+        return (
+            <div className={"slot"} style={{backgroundColor: '' + this.props.color}} >
+                <input className={"slot-interval"} defaultValue={this.props.interval[0] + " - " + this.props.interval[1]}/>
                 {
-                    this.state.event
+                    <Event/>
                 }
             </div>
         )
-    }
-    appendEvent() {
-        this.setState({event:<Event/>})
     }
 }

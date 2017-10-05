@@ -10,7 +10,7 @@ export class Day extends React.Component {
     render() {
         return(
             <div className={"day"}>
-                <p>{this.props.day}</p>
+                <p className={"day-text"}>{this.props.day}</p>
                 <SlotGrid/>
             </div>
         )
