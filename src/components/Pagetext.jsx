@@ -10,7 +10,7 @@ export class Pagetext extends React.Component {
                     <span className={"Pagetext-container-small-span"}>IPIM</span>
                     - DIN PERSONLIGE INFORMASJONSHJELPER
                 </p>
-                <p className={"Pagetext-container-big"}>{this.props.pagetextContent}</p>
+                <p className={"Pagetext-container-big"}>{this.props.text}</p>
             </div>
         )
     }
