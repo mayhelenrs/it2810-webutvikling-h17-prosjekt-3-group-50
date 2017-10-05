@@ -1,5 +1,5 @@
 import React from 'react';
-import './Notes.css';
+import '../Categories/Categories.css';
 
 export class CategoryFilter extends React.Component {
 

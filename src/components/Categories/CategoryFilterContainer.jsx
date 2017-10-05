@@ -1,5 +1,5 @@
 import React from 'react';
-import './Notes.css';
+import '../Categories/Categories.css';
 import {CategoryFilter} from './CategoryFilter.jsx';
 import update from 'react-addons-update';
 
@@ -47,13 +47,14 @@ export class CategoryFilterContainer extends React.Component {
         });
     }
 
-    addCategories(categories) {
+    addCategories(colors) {
         const categoryList = [];
-        categories.forEach(category => {
-            categoryList.push(this.generateCategory(category.props.color));
+        colors.forEach(color => {
+            categoryList.push(this.generateCategory(color));
         });
         this.setState(prevState => {
-            return {...prevState, categories: categoryList};
+            return {...prevState,
+                categories: update(this.state.categories, {$push: categoryList})};
         });
     }
 

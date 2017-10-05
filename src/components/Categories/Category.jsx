@@ -1,5 +1,5 @@
 import React from 'react';
-import './Notes.css';
+import '../Categories/Categories.css';
 
 export class Category extends React.Component {
 
@@ -46,13 +46,17 @@ export class Category extends React.Component {
     }
 
     save() {
-        localStorage.setItem("Category" + this.props.id, JSON.stringify(this.state));
+        localStorage.setItem(this.getSaveName(), JSON.stringify(this.state));
     }
 
     load() {
-        return "Category" + this.props.id in localStorage
-            ? JSON.parse(localStorage.getItem("Category" + this.props.id))
+        return this.getSaveName() in localStorage
+            ? JSON.parse(localStorage.getItem(this.getSaveName()))
             : null;
+    }
+
+    getSaveName() {
+        return "Category" + this.props.id + "-" + this.props.parentId;
     }
 
 }

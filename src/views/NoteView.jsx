@@ -1,26 +1,30 @@
 import React from 'react';
 import '../assets/styles/NoteView.css';
-import update from 'react-addons-update'
 import {NoteContainer} from '../components/Notes/NoteContainer.jsx'
-import {CategoryContainer} from "../components/Notes/CategoryContainer";
-import {CategoryFilterContainer} from "../components/Notes/CategoryFilterContainer";
+import {CategoryContainer} from "../components/Categories/CategoryContainer";
+import {CategoryFilterContainer} from "../components/Categories/CategoryFilterContainer";
 
 export class NoteView extends React.Component {
 
     constructor(props) {
         super(props);
+        //This method needs to be bound for it to filter
         this.filterNotes = this.filterNotes.bind(this);
+        //This function is required in order to update the categoryFilter once we have added
+        //A new category
         this.updateCategoryFilter = this.updateCategoryFilter.bind(this);
         this.state = {
             noteContainer: <NoteContainer ref={instance => {
                 this.noteContainer = instance
             }} filterNotes={this.filterNotes}/>,
+
             categoryFilterContainer: <CategoryFilterContainer ref={instance => {
                 this.categoryFilterContainer = instance
             }} filterNotes={this.filterNotes}/>,
-            categoryContainer: <CategoryContainer ref={instance => {
-                this.categoryContainer = instance
-            }} updateCategoryFilter={this.updateCategoryFilter}/>
+
+            //Category saving is determined by the ID, so the ID needs to be unique
+            categoryContainer: <CategoryContainer
+                updateCategoryFilter={this.updateCategoryFilter} id={6}/>
         }
     }
 
@@ -40,17 +44,22 @@ export class NoteView extends React.Component {
                         {this.state.noteContainer}
                     </div>
                     <div className="AddNote">
-                        <button className="add-button" onClick={() => this.appendNote()}>Add</button>
+                        <button className="add-button" onClick={() => this.appendNote()}>Add note</button>
                     </div>
                 </div>
                 <div className="Right-Page">
                     {this.state.categoryContainer}
-                    <div className={"AddCategory"}>
-                        <button className="add-button" onClick={() => this.appendCategory()}>Add</button>
-                    </div>
                 </div>
             </div>
         );
+    }
+
+    appendNote() {
+        if (this.categoryFilterContainer.state.selectedCategory !== undefined) {
+            this.noteContainer.appendNote(this.categoryFilterContainer.state.selectedCategory.props.color);
+        } else {
+            alert("No category has been selected!");
+        }
     }
 
     filterNotes() {
@@ -66,31 +75,9 @@ export class NoteView extends React.Component {
         return this.noteContainer.state.notes;
     }
 
-    appendNote() {
-        if (this.categoryFilterContainer.state.selectedCategory !== undefined) {
-            this.noteContainer.appendNote(this.categoryFilterContainer.state.selectedCategory.props.color);
-        } else {
-            alert("No category has been selected!");
-        }
-    }
-
-    //Appends a new category to the createCategoryContainer, the callback updates the categoryContainer
-    //to add the category to the filter
-    appendCategory() {
-        this.categoryContainer.setState(prevState => {
-                return {...prevState, categories: update(this.categoryContainer.state.categories,
-                    {$push: [this.categoryContainer.generateCategory("New category")]})};
-            },
-            () => {
-                this.categoryFilterContainer.appendCategory(
-                    this.categoryContainer.state.categories[this.categoryContainer.state.categories.length - 1].props.color)
-            }
-        );
-    }
-
     //Since our CategoryFilter is a 100% dumb component we load it from the CategoryContainer component
-    updateCategoryFilter(categories) {
-        this.categoryFilterContainer.addCategories(categories);
+    updateCategoryFilter(colors) {
+        this.categoryFilterContainer.addCategories(colors);
     }
 
 }
