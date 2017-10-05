@@ -1,6 +1,7 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom'
 import '../assets/styles/App.css';
-import {ToDo} from '../components';
+import {ToDo, Navbar} from '../components';
 import {Calendar, Frontpage, NoteView} from '../views';
 
 
@@ -19,6 +20,6 @@ export class App extends React.Component {
                     </Switch>
                 </div>
             </div>
-    );
+        );
     }
-    }
+}
