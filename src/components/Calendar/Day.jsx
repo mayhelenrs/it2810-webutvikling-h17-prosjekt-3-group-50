@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/styles/Component.css';
 import {SlotGrid} from "./SlotGrid.jsx";
 
 export class Day extends React.Component {

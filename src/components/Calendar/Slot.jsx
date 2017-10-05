@@ -1,6 +1,5 @@
 import React from "react";
 import {Event} from "./Event.jsx";
-import '../../assets/styles/Component.css';
 
 export class Slot extends React.Component {
     constructor(props) {
@@ -12,7 +11,11 @@ export class Slot extends React.Component {
     render() {
         return (
             <div className={"slot"} style={{backgroundColor: '' + this.props.color}} >
-                <input className={"slot-interval"} defaultValue={this.props.interval[0] + " - " + this.props.interval[1]}/>
+                <div>
+                    <input className={"slot-interval slot-interval-start"} defaultValue={this.props.interval[0]}/>
+                    -
+                    <input className={"slot-interval slot-interval-end"} defaultValue={this.props.interval[1]} />
+                </div>
                 {
                     <Event/>
                 }
