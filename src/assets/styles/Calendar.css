@@ -1,0 +1,57 @@
+.daygrid {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: transparent;
+}
+
+.day {
+    width: 14%;
+}
+
+.day-text {
+    color: orange;
+    width:100%;
+    text-align: center;
+}
+
+.slotgrid {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.slot {
+    margin: 3px;
+    text-align: center;
+    color: white;
+
+}
+
+.slot-interval, .event-title, .event-description {
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: none;
+
+}
+
+.slot-interval {
+    horiz-align: center;
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.event-title, .event-description {
+    width: 80%;
+    margin: auto;
+    border-bottom: 1px solid white;
+
+}
+
+.event {
+    display: flex;
+    flex-direction: column;
+}
