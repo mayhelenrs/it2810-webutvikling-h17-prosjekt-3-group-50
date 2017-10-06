@@ -35,7 +35,7 @@
 .dateText{
   height: inherit;
   padding: 0 1rem 0 1rem;
-  width: 10rem;
+  width: 20rem;
   border-width: thin;
   border-color: lightgrey;
   border-style: solid;
@@ -55,4 +55,21 @@
   list-style-type: none;
   margin: 2rem 0 0 -1.5rem;
   border-width: thin;
+}
+
+.formAppointment{
+  width: 30rem;
+  margin: 2rem;
+}
+.appointmentCards{
+  margin-top: 3rem;
+}
+.appointmentText{
+  margin: 3rem;
+}
+@media screen and (max-width: 525px) {
+    .formAppointment{
+      width: 100%;
+      margin-top: 2rem;
+    }
 }

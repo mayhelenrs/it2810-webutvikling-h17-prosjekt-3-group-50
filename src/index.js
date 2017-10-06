@@ -1,8 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+//import routing components
+import {BrowserRouter} from 'react-router-dom';
+//import css
 import './assets/styles/index.css';
-import {Appointment} from './views';
+//import services
 import registerServiceWorker from './service/registerServiceWorker';
+//import views
+import {App} from './views';
 
-ReactDOM.render(<Appointment />, document.getElementById('root'));
+render(
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>,
+	document.getElementById('root')
+);
+
 registerServiceWorker();

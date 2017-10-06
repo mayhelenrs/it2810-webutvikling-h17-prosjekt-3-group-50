@@ -50,10 +50,14 @@ export class Appointment extends React.Component {
     )
     return (
       <div>
-        <ul>
+        <div className="appointmentText">
+          <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
+          <h1 id="titleToDos">THIS IS YOUR APPOINTMENTS FOR NOW</h1>
+        </div>
+        <ul className="appointmentCards">
           {appointList}
         </ul>
-        <form onSubmit= {this.formSubmit}>
+        <form onSubmit= {this.formSubmit} className="formAppointment">
           <ul className="formList">
             <li>
               <input type="text"
@@ -80,7 +84,7 @@ export class Appointment extends React.Component {
               />
             </li>
             <li>
-              <button onSubmit={this.formSubmit}>
+              <button onSubmit={this.formSubmit} id="btn-green">
                 Add
               </button>
             </li>

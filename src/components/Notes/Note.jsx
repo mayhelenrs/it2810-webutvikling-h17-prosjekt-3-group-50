@@ -6,27 +6,49 @@ export class Note extends React.Component {
 
     constructor(props) {
         super(props);
-        this.hideNote = this.hideNote.bind(this);
+        this.toggleNote = this.toggleNote.bind(this);
+        this.updateTitle = this.updateTitle.bind(this);
         this.state = {
-            noteDisplay: <NoteDisplay ref={instance => {
-                this.noteDisplay = instance
-            }} hideNote={this.hideNote}/>
+            title: props.text,
+            color: this.props.color,
+            noteDisplay: <NoteDisplay ref={instance => {this.noteDisplay = instance}}
+                                      toggleNote={this.toggleNote}
+                                      color={props.color}
+                                      title={props.text}
+                                      text={"Change your note text by typing it here!"}
+                                      updateTitle={this.updateTitle}
+                                      id={props.id}
+            />
         }
+    }
+
+    componentDidUpdate() {
+        this.save();
+    }
+
+    componentDidMount() {
+        const data = this.load();
+        if (data !== null) {
+            this.setState(prevState => {
+                return {...prevState, data}
+            });
+        }
+        this.save();
     }
 
     render() {
         return (
-            <div className="Note" style={{backgroundColor: this.props.color}}>
+            <div className="Note" style={{backgroundColor: this.state.color}}>
                 <div className="RemoveNote">
-                    <img className="RemoveButton" onClick={() => this.props.handleRemove(this)} alt={'Remove'}
+                    <img className="RemoveButton" onClick={() => {this.removeNote()}} alt={'Remove'}
                          src={require('../../assets/img/close.png')}/>
                 </div>
-                <div className="NoteContent" onClick={() => this.displayNote()}>
+                <div className="NoteContent" onClick={() => this.toggleNote()}>
                     <div className="NoteIcon">
-                        <img className="NoteImage" alt={'Remove'} src={require('../../assets/img/note_icon.png')}/>
+                        <img className="NoteImage" alt={'Remove'} src={require('../../assets/images/notes.png')}/>
                     </div>
                     <div className="NoteName">
-                        <p>{this.props.text}</p>
+                        <p>{this.state.title}</p>
                     </div>
                 </div>
                 {this.state.noteDisplay}
@@ -34,19 +56,29 @@ export class Note extends React.Component {
         );
     }
 
-    displayNote() {
-        this.noteDisplay.setState({
-            visible: true,
-            width: 400,
-            height: 400
+    removeNote() {
+        this.props.handleRemove(this);
+        localStorage.removeItem("Note" + this.props.id);
+        localStorage.removeItem("NoteDisplay" + this.props.id);
+    }
+
+    updateTitle(title) {
+        this.setState(prevState => {
+            return {...prevState, title: title};
         });
     }
 
-    hideNote() {
-        this.noteDisplay.setState({
-            visible: true,
-            width: 0,
-            height: 0
+    toggleNote() {
+        this.noteDisplay.setState(prevState => {
+            return {...prevState, color: prevState.color, width: prevState.width === 400 ? 0 : 400, height: prevState.height === 400 ? 0 : 400};
         });
+    }
+
+    save() {
+        localStorage.setItem("Note" + this.props.id, JSON.stringify(this.state));
+    }
+
+    load() {
+        return JSON.parse(localStorage.getItem("Note" + this.props.id));
     }
 }
