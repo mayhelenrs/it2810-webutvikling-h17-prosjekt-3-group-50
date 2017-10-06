@@ -1,8 +1,8 @@
 import React from 'react';
-import {DayGrid} from "../components/Calendar/DayGrid";
+import {DayGrid} from "../components/Schedule/DayGrid";
 import {Pagetext} from "../components/Pagetext";
 import "../assets/styles/App.css"
-import "../assets/styles/Calendar.css"
+import "../assets/styles/Schedule.css"
 
 export class Schedule extends React.Component {
 
