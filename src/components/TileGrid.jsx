@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tile} from '../components/Tile';
 import '../assets/styles/Component.css';
-import {frontpage, Note, Todo, Calendar, Notification } from '../views';
+import { Note, Todo, Calendar, Notification } from '../views';
 
 export class TileGrid extends React.Component {
 

@@ -1,17 +1,20 @@
 import React from 'react';
-import '../assets/styles/appointmentItem.css';
+import '../assets/styles/appointment.css';
 
 export class AppointmentItem extends React.Component {
   render(){
     return(
-      <div  className="wrapper-center">
-        <h1 className="title">{this.props.title}</h1>
-        <div className="fillText">
-          <p>Sted: {this.props.location}</p>
-          <p>Klokkeslett: {this.props.time}</p>
-          <p>Beskrivelse: {this.props.description}</p>
+      <li className="tile-wrapper" key={this.props.index}>
+        <div className="color-tile"></div>
+        <div className="titleText">
+          <p>{this.props.description}</p>
         </div>
-      </div>
+        <div className="dateText">
+          <p>{this.props.time}</p>
+          <p>{this.props.date}</p>
+        </div>
+      </li>
+
     );
   }
 }
