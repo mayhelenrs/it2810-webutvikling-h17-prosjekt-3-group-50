@@ -15,19 +15,12 @@ export class Appointment extends React.Component {
       date:''
     }
     this.formSubmit = this.formSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event){
-    const t = event.target
-    const name = t.name
-    if(name === "desc"){
-      this.setState({desc: t.desc})
-    }else if (name === "time"){
-      this.setState({time: t.time})
-    }else if (name === "date"){
-      this.setState({date: t.date})
-    }
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
 
@@ -36,18 +29,19 @@ export class Appointment extends React.Component {
       this.state.time.length > 0 &&
       this.state.date.length > 0){
       const newList = this.state.list.slice()
+      const index = newList.length
       const newAppointment = <AppointmentItem
         description={this.state.desc}
         time={this.state.time}
         date={this.state.date}
+        key={index}
         />
       newList.push(newAppointment)
       this.setState({
         list: newList
       })
-      e.preventDefault()
     }
-
+    e.preventDefault()
   }
 
   render() {
@@ -65,7 +59,7 @@ export class Appointment extends React.Component {
               <input type="text"
                 name="desc"
                 value={this.state.desc}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
                 placeholder="Insert description"
               />
             </li>
@@ -73,7 +67,7 @@ export class Appointment extends React.Component {
               <input type="text"
                 name="time"
                 value={this.state.time}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
                 placeholder="Insert time"
               />
             </li>
@@ -81,12 +75,12 @@ export class Appointment extends React.Component {
               <input type="text"
                 name="date"
                 value={this.state.date}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
                 placeholder="Insert date"
               />
             </li>
             <li>
-              <button onClick={this.formSubmit}>
+              <button onSubmit={this.formSubmit}>
                 Add
               </button>
             </li>
