@@ -4,7 +4,7 @@ import {Pagetext} from "../components/Pagetext";
 import "../assets/styles/App.css"
 import "../assets/styles/Calendar.css"
 
-export class Calendar extends React.Component {
+export class Schedule extends React.Component {
 
     render() {
         return(
