@@ -19,7 +19,7 @@
     font-family: IntroRust, sans-serif;
 }
 
-li {
+.liItem{
     list-style-type: none;
     font-family: IntroRust, sans-serif;
     font-size: 14px;
@@ -32,7 +32,7 @@ li {
     box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
 }
 
-li:hover {
+.liItem:hover {
     background-color: #dddddd;
 }
 

@@ -1,0 +1,75 @@
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+
+.tile-wrapper{
+  height: 3rem;
+  margin: 1em;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.color-tile{
+  background-color: red;
+  width: 0.5rem;
+  height: inherit;
+  border-width: thin;
+  border-color: red;
+  border-style: solid;
+}
+
+.titleText{
+  height: inherit;
+  padding: 0 1rem 0 1rem;
+  font-family: IntroRust, sans-serif;
+  border-width: thin;
+  border-color: lightgrey;
+  border-style: solid;
+  border-left-style: none;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), -6px 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.dateText{
+  height: inherit;
+  padding: 0 1rem 0 1rem;
+  width: 20rem;
+  border-width: thin;
+  border-color: lightgrey;
+  border-style: solid;
+  border-left-style: none;
+  font-family: IntroRust, sans-serif;
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.tile-wrapper:hover > .titleText, .tile-wrapper:hover > .dateText{
+  background-color: #efefef;
+}
+
+.formList{
+  list-style-type: none;
+  margin: 2rem 0 0 -1.5rem;
+  border-width: thin;
+}
+
+.formAppointment{
+  width: 30rem;
+  margin: 2rem;
+}
+.appointmentCards{
+  margin-top: 3rem;
+}
+.appointmentText{
+  margin: 3rem;
+}
+@media screen and (max-width: 525px) {
+    .formAppointment{
+      width: 100%;
+      margin-top: 2rem;
+    }
+}
