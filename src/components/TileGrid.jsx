@@ -10,7 +10,7 @@ export class TileGrid extends React.Component {
 
         //define tiles
         const standardTiles = [
-            ["Calendar", require("../assets/images/calendar.png"), "#c7b9e5", "red", "calendar"],
+            ["Schedule", require("../assets/images/calendar.png"), "#c7b9e5", "red", "schedule"],
             ["Notifications", require("../assets/images/notifications.png"), "#006e8e", "green", "notifications"],
             ["Todo", require("../assets/images/todo.png"), "#20c2af", "yellow", "todo"],
             ["Notes", require("../assets/images/notes.png"), "#f9a7a9", "red", "note"]

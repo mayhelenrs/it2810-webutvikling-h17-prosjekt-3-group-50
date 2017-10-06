@@ -6,12 +6,12 @@ export class ToDo extends React.Component {
     constructor(props) {
         super(props);
         let todos = [];
-        if(localStorage.getItem("ToDo") != null) {
+        if(localStorage.getItem("ToDo") !== null) {
             todos = localStorage.getItem("ToDo").split(",");
         }
         this.state = {
             value: '',
-            data: todos,
+            data: todos
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
