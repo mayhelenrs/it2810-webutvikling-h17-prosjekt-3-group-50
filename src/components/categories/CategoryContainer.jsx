@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Categories/Categories.css';
+import './/Categories.css';
 import {Category} from "./Category";
 import update from 'react-addons-update';
 
