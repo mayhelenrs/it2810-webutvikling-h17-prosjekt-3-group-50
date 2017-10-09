@@ -6,7 +6,6 @@ export class Appointment extends React.Component {
   constructor(props) {
     super(props)
     let appointmentList = [
-      <AppointmentItem description="hei" time="now" date="then" key="32423" />
     ]
     this.state = {
       list: appointmentList,
