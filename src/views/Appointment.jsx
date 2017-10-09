@@ -8,7 +8,7 @@ export class Appointment extends React.Component {
     let appointmentList = [
     ]
     let colorList = [
-      'green', 'red', 'yellow', 'blue', 'orange', 'pink', 'purple'
+      '#f9a7a9', '#20c2af', '#006e8e', '#c7b9e5', '#bcb9e5', '#d7e5b9', '#e5d2b9'
     ]
     this.state = {
       colors: colorList,

@@ -1,12 +1,15 @@
 import React from 'react';
 import '../assets/styles/Component.css';
+import { Link } from 'react-router-dom';
 
 
 export class Navbar extends React.Component {
     render() {
         return (
             <div className="Navbar">
-                <img alt={"icon of a speedometer"} src={require("../assets/images/navbar_lefticon.png")}/>
+              <Link to={`/`}>
+                <img className="navImage" alt={"icon of a speedometer"} src={require("../assets/images/navbar_lefticon.png")}/>
+              </Link>
 
                 {/*navbarLocation: Name of the page the user is on. */}
                 <h1>{this.props.navbarLocation}</h1>
