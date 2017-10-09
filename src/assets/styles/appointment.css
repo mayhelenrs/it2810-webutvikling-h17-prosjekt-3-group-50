@@ -12,11 +12,9 @@
   align-items: center;
 }
 .color-tile{
-  background-color: red;
   width: 0.5rem;
   height: inherit;
   border-width: thin;
-  border-color: red;
   border-style: solid;
 }
 

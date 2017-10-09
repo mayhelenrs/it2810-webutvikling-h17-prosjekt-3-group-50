@@ -11,7 +11,8 @@ export class Appointment extends React.Component {
       list: appointmentList,
       desc: '',
       time:'',
-      date:''
+      date:'',
+      color:'green',
     }
     this.formSubmit = this.formSubmit.bind(this)
   }
@@ -34,6 +35,7 @@ export class Appointment extends React.Component {
         time={this.state.time}
         date={this.state.date}
         key={index}
+        color={this.state.color}
         />
       newList.push(newAppointment)
       this.setState({
