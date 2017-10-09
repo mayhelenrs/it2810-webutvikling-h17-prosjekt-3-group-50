@@ -7,12 +7,15 @@ export class Appointment extends React.Component {
     super(props)
     let appointmentList = [
     ]
+    let colorList = [
+      'green', 'red', 'yellow', 'blue', 'orange', 'pink', 'purple'
+    ]
     this.state = {
+      colors: colorList,
       list: appointmentList,
       desc: '',
       time:'',
-      date:'',
-      color:'green',
+      date:''
     }
     this.formSubmit = this.formSubmit.bind(this)
   }
@@ -28,6 +31,7 @@ export class Appointment extends React.Component {
     if(this.state.desc.length > 0 &&
       this.state.time.length > 0 &&
       this.state.date.length > 0){
+      const colors = this.state.colors.slice()
       const newList = this.state.list.slice()
       const index = newList.length
       const newAppointment = <AppointmentItem
@@ -35,7 +39,7 @@ export class Appointment extends React.Component {
         time={this.state.time}
         date={this.state.date}
         key={index}
-        color={this.state.color}
+        color={colors[Math.floor(Math.random()*7)]}
         />
       newList.push(newAppointment)
       this.setState({

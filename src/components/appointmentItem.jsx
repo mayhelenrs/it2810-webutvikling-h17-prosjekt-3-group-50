@@ -15,7 +15,7 @@ export class AppointmentItem extends React.Component {
   render(){
     return(
       <li className="tile-wrapper" key={this.props.index}>
-        <div className="color-tile" style={{backgroundColor: ''+this.state.color, bordercolor: ''+this.state.color}}></div>
+        <div className="color-tile" style={{backgroundColor: ''+this.state.color , borderColor: ''+this.state.color}}></div>
         <div className="titleText">
           <p>{this.props.description}</p>
         </div>
