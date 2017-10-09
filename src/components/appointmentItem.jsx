@@ -2,20 +2,10 @@ import React from 'react';
 import '../assets/styles/appointment.css';
 
 export class AppointmentItem extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          title: props.title,
-          text: props.text,
-          color: props.color,
-          width: 0,
-          height: 0
-      }
-  }
   render(){
     return(
       <li className="tile-wrapper" key={this.props.index}>
-        <div className="color-tile" style={{backgroundColor: ''+this.state.color , borderColor: ''+this.state.color}}></div>
+        <div className="color-tile" style={{backgroundColor: ''+this.props.color , borderColor: ''+this.props.color}}></div>
         <div className="titleText">
           <p>{this.props.description}</p>
         </div>
