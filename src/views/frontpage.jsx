@@ -4,9 +4,6 @@ import {Pagetext, TileGrid} from '../components';
 
 export class Frontpage extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="body-fullwidth">

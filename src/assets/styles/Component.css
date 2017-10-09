@@ -16,7 +16,7 @@
     font-family: IntroRust;
 }
 
-.Navbar > img {
+.navImage {
     width: 30px;
     height: 20px;
     margin: 0px 20px 0px 20px;

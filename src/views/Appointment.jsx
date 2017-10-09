@@ -6,9 +6,12 @@ export class Appointment extends React.Component {
   constructor(props) {
     super(props)
     let appointmentList = [
-      <AppointmentItem description="hei" time="now" date="then" key="32423" />
+    ]
+    let colorList = [
+      '#f9a7a9', '#20c2af', '#006e8e', '#c7b9e5', '#bcb9e5', '#d7e5b9', '#e5d2b9'
     ]
     this.state = {
+      colors: colorList,
       list: appointmentList,
       desc: '',
       time:'',
@@ -28,6 +31,7 @@ export class Appointment extends React.Component {
     if(this.state.desc.length > 0 &&
       this.state.time.length > 0 &&
       this.state.date.length > 0){
+      const colors = this.state.colors.slice()
       const newList = this.state.list.slice()
       const index = newList.length
       const newAppointment = <AppointmentItem
@@ -35,6 +39,7 @@ export class Appointment extends React.Component {
         time={this.state.time}
         date={this.state.date}
         key={index}
+        color={colors[Math.floor(Math.random()*7)]}
         />
       newList.push(newAppointment)
       this.setState({
