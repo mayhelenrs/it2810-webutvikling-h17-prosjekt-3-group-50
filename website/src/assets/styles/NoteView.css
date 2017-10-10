@@ -1,0 +1,72 @@
+@media screen and (max-width: 525px) {
+    .NoteView {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex: 1;
+        min-height: 100%;
+        margin: 30px;
+    }
+
+    .Left-Page {
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+    .Right-Page {
+        align-items: center;
+        min-width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 526px) {
+    .NoteView {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        min-height: 100%;
+        margin: 30px;
+    }
+
+    .Left-Page {
+        min-width: 60%;
+        max-width: 60%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Right-Page {
+        min-width: 30%;
+        max-width: 30%;
+        margin-left: 10px;
+    }
+
+}
+
+.NoteView {
+    font-family: IntroRust;
+}
+.AddNote {
+    margin: 30px 10px 10px 10px;
+}
+
+.AddCategory {
+    margin: 5px;
+}
+
+.Middle-Page {
+}
+
+.Left-Page > p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.add-button {
+    border: none;
+    background-color: #3Cb54C;
+    color: white;
+    font-size: 18px;
+    padding: 5px 20px 5px 20px;
+}

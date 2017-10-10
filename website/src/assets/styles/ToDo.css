@@ -1,0 +1,212 @@
+/* ToDo view */
+
+
+/* ToDo CSS */
+
+.todo-list {
+    width: 40%;
+    margin-left: 10%;
+    margin-top: 4%;
+    float: left;
+
+}
+
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+
+#yellow {
+    color: goldenrod;
+}
+
+#titleToDos {
+    font-family: IntroRust, sans-serif;
+}
+
+
+.todo-item {
+    list-style-type: none;
+    font-family: IntroRust, sans-serif;
+    font-size: 14px;
+    height: 50px;
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    -webkit-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
+    box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
+}
+
+
+
+
+.todo-item:hover {
+    background-color: #dddddd;
+}
+
+.category-todo {
+    height: 50px;
+    width: 11%;
+}
+
+
+#todo-holder {
+    width: 100%;
+    padding-left: 0;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+
+.toDo {
+    display: flex;
+}
+
+.todo-text {
+    margin-top: 17px;
+}
+
+.todo-info {
+    font-size: 14px;
+
+}
+
+#btn-green {
+    width: 16%;
+
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#btn-green:hover {
+    background-color: darkgreen;
+}
+
+input[type=text] {
+    width: 83%;
+    padding: 13px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=checkbox] {
+    margin-top: 3%;
+    width: 1.8em;
+    height: 1.8em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 4%;
+    margin-left: 3%;
+}
+
+
+
+input[type=checkbox]:hover {
+    background-color:  goldenrod;
+}
+
+
+
+
+@media screen and (max-width: 480px) {
+
+    .todo-list {
+        width: 80%;
+    }
+    #btn-green {
+        width: 100%;
+    }
+    input[type=text] {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 1237px) {
+
+
+    #btn-green {
+        width: 100%;
+    }
+    input[type=text] {
+        width: 100%;
+    }
+
+}
+
+
+
+
+/* Category CSS */
+
+#category-list {
+    width: 35%;
+    float: right;
+    margin-top: 50px;
+    margin-left: 140px;
+
+
+}
+#category-list h1 {
+    font-size: 205%;
+
+}
+
+
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+
+
+
+#titleCategory {
+    font-family: IntroRust, sans-serif;
+}
+
+
+.category-item {
+    list-style-type: none;
+    margin: 20px;
+
+}
+
+#category-holder {
+    width: 100%;
+    padding-left: 0;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+.btn-category {
+
+    height: 45px;
+    width: 45px;
+    border: none;
+    margin-right: 10px;
+    padding: 20px 25px;
+    text-decoration: none;
+    display: inline-block;
+
+    cursor: pointer;
+
+}
+
+

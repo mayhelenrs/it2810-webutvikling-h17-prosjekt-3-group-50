@@ -1,0 +1,155 @@
+/*fonts*/
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Rubik');
+
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+/* Navbar */
+.Navbar {
+    background-color: #00ACCE;
+    width:100%;
+    display: flex;
+    height:50px;
+    vertical-align: center;
+    align-items: center;
+    font-family: IntroRust;
+}
+
+.navImage {
+    width: 30px;
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+}
+.Navbar-links {
+    display: flex;
+    list-style: none;
+}
+
+.Navbar-links > li {
+    margin-right:20px;
+}
+.Navbar > h1 {
+    margin: 0;
+    vertical-align: bottom;
+}
+.Navbar h1, .Navbar h2 {
+    color: white;
+}
+.Pagetext-container {
+    font-family: IntroRust;
+}
+.Pagetext-container-small {
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    margin: 10px 0;
+}
+.Pagetext-container-small-span {
+    color: orange;
+}
+.Pagetext-container-big {
+    font-size: 30px;
+    margin: 0;
+}
+
+/* Tile container */
+.tilegrid {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: transparent;
+}
+
+/* Tile */
+.Tile {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 200px;
+    margin: 10px;
+    padding: 20px;
+    font-family: IntroRust;
+    -webkit-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.2);
+}
+.enter-button {
+    display: block;
+    margin: auto;
+    padding: 10px 30px;
+    text-decoration: none;
+    background-color: transparent;
+    border: 5px solid white;
+    color: white;
+    text-align: left;
+    font-family: IntroRust;
+}
+.enter-button img {
+    width: 15px;
+    float: right;
+}
+.Note {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+}
+.Note > input {
+    color: #EDEDED;
+    background-color: #ac9fd4;
+}
+.Note > textarea {
+    color: #EEEEEE;
+    background-color: #BDB0E5;
+}
+
+.NoteContent {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+    width: 100%;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.NoteContent:focus {
+    border: none;
+    outline: none;
+}
+
+.NoteTitle {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    padding: 3px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.NoteTitle:focus {
+    border: none;
+    outline: none;
+}
+
+.NoteHolder {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
