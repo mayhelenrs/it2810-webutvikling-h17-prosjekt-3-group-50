@@ -10,7 +10,7 @@ div {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,.75);
     -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
 }

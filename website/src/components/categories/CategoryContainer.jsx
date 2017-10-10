@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Categories/Categories.css';
+import './Categories.css';
 import {Category} from "./Category";
 import update from 'react-addons-update';
 
@@ -106,7 +106,8 @@ export class CategoryContainer extends React.Component {
             return localStorage.getItem("CategoryIds" + this.props.id).split(",").map((id) => {
                 return parseInt(id, 10);
             });
-        return null;
+        return [0, 1];  //Returning a list with the ID 0 and 1 because we always want the two
+        //Preloaded categories to be loaded
     }
 
 }

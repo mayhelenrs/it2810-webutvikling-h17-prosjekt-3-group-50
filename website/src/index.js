@@ -9,6 +9,7 @@ import registerServiceWorker from './service/registerServiceWorker';
 //import views
 import {App} from './views';
 
+
 render(
 	<BrowserRouter>
 		<App />
