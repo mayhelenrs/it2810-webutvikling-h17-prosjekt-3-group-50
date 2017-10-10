@@ -1,8 +1,8 @@
 import React from 'react';
 import '../assets/styles/NoteView.css';
-import {NoteContainer} from '../components/Notes/NoteContainer.jsx'
-import {CategoryContainer} from "../components/Categories/CategoryContainer";
-import {CategoryFilterContainer} from "../components/Categories/CategoryFilterContainer";
+import {NoteContainer} from '../components/notes/NoteContainer.jsx'
+import {CategoryContainer} from "../components/categories/CategoryContainer";
+import {CategoryFilterContainer} from "../components/categories/CategoryFilterContainer";
 
 export class NoteView extends React.Component {
 
