@@ -1,17 +1,24 @@
 import React from 'react';
-import '../assets/styles/Component.css';
+import {StyleSheet, Image, Text, View} from "react-native"
 
-export class Tile extends React.Component {
+export default class Tile extends React.Component {
     render() {
         return(
-            <div style={{backgroundColor: '' + this.props.color}} className={"Tile"} >
-                <p><img  src={this.props.tileIcon} alt={"Icon for tile"} className={"Tile-img"}/></p>
-                <h3>{this.props.tileTitle}</h3>
-                <a href={this.props.view} className="enter-button">
-                    Enter
-                    <img alt={"Arrow pointing to the right"} src={require("../assets/images/arrow_right.png")}/>
-                </a>
-            </div>
+            <View style={[{backgroundColor: '' + this.props.color},styles.tile]}>
+                <Text><Image  source ={this.props.tileIcon} alt={"Icon for tile"}/></Text>
+                <Text>{this.props.tileTitle}</Text>
+                {
+                    // Missing button to subpage here
+                }
+            </View>
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    tile: {
+        width:"40%"
+    }
+
+})

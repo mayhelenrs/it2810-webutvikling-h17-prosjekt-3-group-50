@@ -1,11 +1,10 @@
 import React from 'react';
-import {Tile} from '../components/Tile';
-import '../assets/styles/Component.css';
-
-//import {frontpage, NoteView, Todo, Calendar, Notification } from '../views';
+import Tile from './Tile';
+import {StyleSheet, View} from 'react-native';
 
 
-export class TileGrid extends React.Component {
+
+export default class TileGrid extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,11 +24,12 @@ export class TileGrid extends React.Component {
 
     render() {
         return (
-            <div className="tilegrid">
+            <View style={styles.tilegrid}>
                 {
                     //map tileInfo to Tile-components and render
-                    this.state.tiles.map((info) =>
+                    this.state.tiles.map((info, index) =>
                         <Tile
+                            key={index}
                             tileTitle={info[0]}
                             tileIcon={info[1]}
                             color={info[2]}
@@ -38,7 +38,16 @@ export class TileGrid extends React.Component {
                     )
 
                 }
-            </div>
+            </View>
         );
     }
 }
+const styles = StyleSheet.create({
+    tilegrid: {
+        justifyContent: "flex-start",
+        flexWrap: "wrap",
+        width: "100%",
+        backgroundColor: "transparent"
+
+    }
+});
