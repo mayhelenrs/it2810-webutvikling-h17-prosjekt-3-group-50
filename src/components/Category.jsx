@@ -1,5 +1,6 @@
 import React from 'react';
-import {Blaah} from './Blaah.jsx';
+import {CategoryItem} from './CategoryItem.jsx';
+
 export class Category extends React.Component {
     constructor(props) {
         super(props);
@@ -20,7 +21,7 @@ export class Category extends React.Component {
 
     renderCategoryItems() {
         return this.state.category.map((category, index) =>
-            <Blaah className="items" value={category} color={this.state.colors[index]}
+            <CategoryItem className="items" value={category} color={this.state.colors[index]}
             key={index} onClick={() => this.handleClicks(index)}/>
         );
     }

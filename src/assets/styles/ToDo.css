@@ -1,3 +1,8 @@
+/* ToDo view */
+
+
+/* ToDo CSS */
+
 .todo-list {
     width: 40%;
     margin-left: 10%;
@@ -96,7 +101,7 @@ input[type=text] {
 }
 
 input[type=checkbox] {
-    margin-top: 4%;
+    margin-top: 3%;
     width: 1.8em;
     height: 1.8em;
     background-color: white;
@@ -144,3 +149,62 @@ input[type=checkbox]:hover {
     }
 
 }
+
+
+
+
+/* Category CSS */
+
+#category-list {
+    width: 35%;
+    float: right;
+    margin-top: 50px;
+    margin-left: 140px;
+
+
+}
+#category-list h1 {
+    font-size: 205%;
+
+}
+
+
+@font-face {
+    font-family: IntroRust;
+    src: url(../fonts/IntroRust.otf);
+}
+
+
+
+#titleCategory {
+    font-family: IntroRust, sans-serif;
+}
+
+
+.category-item {
+    list-style-type: none;
+    margin: 20px;
+
+}
+
+#category-holder {
+    width: 100%;
+    padding-left: 0;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+.btn-category {
+
+    height: 45px;
+    width: 45px;
+    border: none;
+    margin-right: 10px;
+    padding: 20px 25px;
+    text-decoration: none;
+    display: inline-block;
+
+    cursor: pointer;
+
+}
+
+

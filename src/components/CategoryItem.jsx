@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Blaah extends React.Component {
+export class CategoryItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

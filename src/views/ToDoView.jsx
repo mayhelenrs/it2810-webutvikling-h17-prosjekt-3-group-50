@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/styles/ToDo.css';
 import {ToDo} from '../components/ToDo.jsx';
 import {Navbar} from '../components/Navbar.jsx';
 import {Category} from '../components/Category.jsx';
@@ -21,8 +22,10 @@ export class ToDoView extends React.Component {
         return (
             <div>
                 <Navbar/>
-                <ToDo color={this.state.current_color}/>
-                <Category  handleCategory={(color) => this.handleCategory(color)}/>
+                <div id="display-todo">
+                    <ToDo color={this.state.current_color}/>
+                    <Category  handleCategory={(color) => this.handleCategory(color)}/>
+                </div>
             </div>
 
         );

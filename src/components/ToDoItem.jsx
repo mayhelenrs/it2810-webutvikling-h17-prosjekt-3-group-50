@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/styles/Category.css';
 
 export class ToDoItem extends React.Component {
     constructor(props) {
