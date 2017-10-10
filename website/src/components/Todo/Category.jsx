@@ -1,5 +1,5 @@
 import React from 'react';
-import {CategoryItem} from './CategoryItem.jsx';
+import {CategoryItem} from './Items.jsx';
 
 export class Category extends React.Component {
     constructor(props) {

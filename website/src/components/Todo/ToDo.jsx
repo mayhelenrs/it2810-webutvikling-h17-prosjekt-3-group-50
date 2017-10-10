@@ -8,8 +8,9 @@ export class ToDo extends React.Component {
         let todos = [];
         let colors_todo = [];
         if (localStorage.getItem("ToDo") != null) {
-            todos =  JSON.parse(localStorage.getItem("ToDo"));
+            todos = JSON.parse(localStorage.getItem("ToDo"));
             colors_todo = JSON.parse(localStorage.getItem("Colors"));
+        }
         this.state = {
             value: '',
             current_color: '',
@@ -20,10 +21,11 @@ export class ToDo extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClicks = this.handleClicks.bind(this);
 
+
     }
 
 
-    handleChange(event) {
+    handleChange(event){
         this.setState({value: event.target.value});
 
     }
@@ -86,7 +88,6 @@ export class ToDo extends React.Component {
                 <div className="todo-list">
                     <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
                     <h1 id="titleToDos">THIS IS YOUR TODOS FOR NOW</h1>
-                    <p className="todo-info"><span id="yellow">CATEGORIES</span>- SELECT YOUR FILTER</p>
                     <ul id="todo-holder">
                         {this.renderToDoItems()}
                     </ul>
