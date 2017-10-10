@@ -1,5 +1,6 @@
 import React from "react";
-import {Event} from "./Event.jsx";
+import {StyleSheet, View, Text, TextInput} from 'react-native';
+import {Event} from "./Event.js";
 
 export class Slot extends React.Component {
     constructor(props) {
@@ -19,16 +20,18 @@ export class Slot extends React.Component {
 
     render() {
         return (
-            <div className={"slot"} style={{backgroundColor: '' + this.state.color}}>
-                <div>
-                    <input className={"slot-interval slot-interval-start"} value={this.state.interval[0]} onChange={this.onIntervalChange} />
+            <View style={[{backgroundColor: '' + this.state.color}, styles.slot]}>
+                <View>
+                    <TextInput style={[styles.slotInterval,styles.slotIntervalStart]}
+                               value={this.state.interval[0]} onChange={this.onIntervalChange} />
                     -
-                    <input className={"slot-interval slot-interval-end"} value={this.state.interval[1]} onChange={this.onIntervalChange}/>
-                </div>
+                    <TextInput style={[styles.slotInterval, styles.slotIntervalEnd]}
+                               value={this.state.interval[1]} onChange={this.onIntervalChange}/>
+                </View>
                 {
                     this.generateNewEvent()
                 }
-            </div>
+            </View>
         )
     }
 
@@ -84,3 +87,18 @@ export class Slot extends React.Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    slot: {
+
+    },
+    slotInterval:{
+
+    },
+    slotIntervalStart:{
+
+    },
+    slotIntervalEnd:{
+
+    }
+});

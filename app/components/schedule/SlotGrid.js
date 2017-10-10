@@ -1,5 +1,6 @@
 import React from 'react';
-import {Slot} from "./Slot.jsx";
+import {StyleSheet, View, Text, TextInput} from 'react-native';
+import {Slot} from "./Slot.js";
 
 export class SlotGrid extends React.Component {
 
@@ -24,7 +25,7 @@ export class SlotGrid extends React.Component {
 
     render() {
         return (
-            <div className={"slotgrid"}>
+            <div style={styles.slotGrid}>
                 {
                     this.state.hours.map((interval) => this.generateNewSlot(interval))
                 }
@@ -47,3 +48,9 @@ export class SlotGrid extends React.Component {
         }
     }
 }
+
+const styles = StyleSheet.create({
+    slotGrid:{
+
+    }
+});

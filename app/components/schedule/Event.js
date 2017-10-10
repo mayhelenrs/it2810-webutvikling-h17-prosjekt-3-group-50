@@ -1,4 +1,5 @@
 import React from "react";
+import {StyleSheet, View, TextInput} from 'react-native';
 
 export class Event extends React.Component {
 
@@ -16,16 +17,16 @@ export class Event extends React.Component {
 
     render() {
         return (
-            <div className={"event"}>
-                <input className={"event-title"}
+            <View style={styles.event}>
+                <TextInput style={styles.eventTitle}
                        value={this.state.eventTitle}
                        onChange={this.onTitleChange}
                 />
-                <input className={"event-description"}
+                <TextInput style={styles.eventDescription}
                        value={this.state.eventDescription}
                        onChange={this.onDescriptionChange}
                 />
-            </div>
+            </View>
         )
     }
 
@@ -65,3 +66,15 @@ export class Event extends React.Component {
         return "" + this.props.day + this.props.slotId + this.props.id;
     }
 }
+
+const styles= StyleSheet.create({
+    event: {
+
+    },
+    eventTitle: {
+
+    },
+    eventDescription: {
+
+    }
+})
