@@ -83,7 +83,7 @@ orange {
     width: 0;
     height: 0;
     position: fixed;
-    top: calc((100%/2) - 200px);
+    bottom: calc((100%/2) - 200px);
     left: calc((100%/2) - 200px);
     transition: all .5s ease-in-out;
     background-color: rgba(0, 0, 0, .8);
@@ -138,6 +138,10 @@ orange {
     }
     .AddNote {
         justify-content: center;
+    }
+    .NoteDisplay {
+        left: 0;
+        bottom: 0;
     }
 }
 
