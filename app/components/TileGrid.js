@@ -3,7 +3,6 @@ import Tile from './Tile';
 import {StyleSheet, View} from 'react-native';
 
 
-
 export default class TileGrid extends React.Component {
 
     constructor(props) {
@@ -25,6 +24,7 @@ export default class TileGrid extends React.Component {
     render() {
         return (
             <View style={styles.tilegrid}>
+
                 {
                     //map tileInfo to Tile-components and render
                     this.state.tiles.map((info, index) =>
@@ -34,6 +34,7 @@ export default class TileGrid extends React.Component {
                             tileIcon={info[1]}
                             color={info[2]}
                             view={info[4]}
+                            navigation={this.props.navigation}
                         />
                     )
 
@@ -44,6 +45,7 @@ export default class TileGrid extends React.Component {
 }
 const styles = StyleSheet.create({
     tilegrid: {
+        flex: 1,
         justifyContent: "flex-start",
         flexWrap: "wrap",
         width: "100%",
