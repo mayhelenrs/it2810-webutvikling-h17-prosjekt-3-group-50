@@ -5,6 +5,7 @@ export default class Schedule extends React.Component {
     static navigationOptions = {
         title: 'SCHEDULE'
     };
+
     render() {
         return (
             <DayGrid/>
