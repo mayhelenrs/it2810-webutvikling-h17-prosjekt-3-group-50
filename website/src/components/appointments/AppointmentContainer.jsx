@@ -23,6 +23,7 @@ export class AppointmentContainer extends React.Component {
         })
     }
 
+    
     filter() {
         const appointList = this.props.selectedColor() === undefined
             ? this.state.list.map((item) => item)
@@ -46,7 +47,7 @@ export class AppointmentContainer extends React.Component {
         if (this.state.desc.length > 0 && this.state.time.length > 0 && this.state.date.length > 0) {
             const newList = this.state.list.slice()
             const index = newList.length
-            const newAppointment = <AppointmentItem description={this.state.desc} time={this.state.time} date={this.state.date} key={index} color={this.getColor()}/>
+            const newAppointment = <AppointmentItem description={this.state.desc} time={this.state.time} date={this.state.date} key={index} id={index} color={this.getColor()}/>
             newList.push(newAppointment)
             this.setState({
                 list: newList
