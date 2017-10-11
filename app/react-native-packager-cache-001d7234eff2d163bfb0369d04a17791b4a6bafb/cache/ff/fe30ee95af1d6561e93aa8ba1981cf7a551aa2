@@ -1,0 +1,113 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Event = undefined;
+var _jsxFileName = "/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/components/schedule/Event.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var Event = exports.Event = function (_React$Component) {
+    babelHelpers.inherits(Event, _React$Component);
+
+    function Event(props) {
+        babelHelpers.classCallCheck(this, Event);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).call(this, props));
+
+        _this.state = {
+            eventTitle: "",
+            eventDescription: ""
+        };
+
+        _this.onTitleChange = _this.onTitleChange.bind(_this);
+        _this.onDescriptionChange = _this.onDescriptionChange.bind(_this);
+        return _this;
+    }
+
+    babelHelpers.createClass(Event, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.event, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 20
+                    }
+                },
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.eventTitle,
+                    value: this.state.eventTitle,
+                    onChange: this.onTitleChange,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 21
+                    }
+                }),
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.eventDescription,
+                    value: this.state.eventDescription,
+                    onChange: this.onDescriptionChange,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 25
+                    }
+                })
+            );
+        }
+    }, {
+        key: "onTitleChange",
+        value: function onTitleChange(_ref) {
+            var target = _ref.target;
+
+            this.setState({ eventTitle: target.value, eventDescription: this.state.eventDescription });
+        }
+    }, {
+        key: "onDescriptionChange",
+        value: function onDescriptionChange(_ref2) {
+            var target = _ref2.target;
+
+            this.setState({ eventTitle: this.state.eventTitle, eventDescription: target.value });
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            this.save();
+        }
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var data = this.load();
+            if (data !== null) {
+                this.setState(function () {
+                    return data;
+                });
+            } else {
+                this.save();
+            }
+        }
+    }, {
+        key: "save",
+        value: function save() {
+            localStorage.setItem(this.getSaveName(), JSON.stringify(this.state));
+        }
+    }, {
+        key: "load",
+        value: function load() {
+            return this.getSaveName() in localStorage ? JSON.parse(localStorage.getItem(this.getSaveName())) : null;
+        }
+    }, {
+        key: "getSaveName",
+        value: function getSaveName() {
+            return "" + this.props.day + this.props.slotId + this.props.id;
+        }
+    }]);
+    return Event;
+}(_react2.default.Component);
+
+var styles = _reactNative.StyleSheet.create({
+    event: {},
+    eventTitle: {},
+    eventDescription: {}
+});

@@ -1,0 +1,78 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SlotGrid = undefined;
+var _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/components/schedule/SlotGrid.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _Slot = require('./Slot.js');
+
+var SlotGrid = exports.SlotGrid = function (_React$Component) {
+    babelHelpers.inherits(SlotGrid, _React$Component);
+
+    function SlotGrid(props) {
+        babelHelpers.classCallCheck(this, SlotGrid);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (SlotGrid.__proto__ || Object.getPrototypeOf(SlotGrid)).call(this, props));
+
+        _this.i = -1;
+
+        var hours = [["08:00", "10:00"], ["10:00", "12:00"], ["12:00", "14:00"], ["14:00", "16:00"]];
+        var backgroundColors = ["#c7b9e5", "#006e8e", " #20c2af", "#f9a7a9"];
+
+        _this.state = {
+            hours: hours,
+            backgroundColors: backgroundColors
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(SlotGrid, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                { style: styles.slotGrid, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 28
+                    }
+                },
+                this.state.hours.map(function (interval) {
+                    return _this2.generateNewSlot(interval);
+                })
+            );
+        }
+    }, {
+        key: 'generateNewSlot',
+        value: function generateNewSlot(interval) {
+            this.i++;
+            return _react2.default.createElement(_Slot.Slot, { day: this.props.day, id: this.i, interval: interval, color: this.nextColor(), __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 39
+                }
+            });
+        }
+    }, {
+        key: 'nextColor',
+        value: function nextColor() {
+            if (localStorage.getItem(this.props.day + this.i)) {
+                return localStorage.getItem(this.props.day + this.i);
+            } else {
+                var j = Math.round(Math.random() * 3);
+                return this.state.backgroundColors[j];
+            }
+        }
+    }]);
+    return SlotGrid;
+}(_react2.default.Component);
+
+var styles = _reactNative.StyleSheet.create({
+    slotGrid: {}
+});

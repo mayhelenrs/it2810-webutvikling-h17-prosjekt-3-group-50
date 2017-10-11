@@ -1,0 +1,57 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.DayGrid = undefined;
+var _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/components/schedule/DayGrid.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _Day = require('./Day.js');
+
+var DayGrid = exports.DayGrid = function (_React$Component) {
+    babelHelpers.inherits(DayGrid, _React$Component);
+
+    function DayGrid(props) {
+        babelHelpers.classCallCheck(this, DayGrid);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (DayGrid.__proto__ || Object.getPrototypeOf(DayGrid)).call(this, props));
+
+        var days = [["Mo"], ["Tu"], ["We"], ["Th"], ["Fr"], ["Sa"], ["Su"]];
+
+        _this.state = {
+            days: days
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(DayGrid, [{
+        key: 'render',
+        value: function render() {
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.dayGrid, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 29
+                    }
+                },
+                this.state.days.map(function (info) {
+                    return _react2.default.createElement(_Day.Day, { day: info[0], __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 33
+                        }
+                    });
+                })
+            );
+        }
+    }]);
+    return DayGrid;
+}(_react2.default.Component);
+
+var styles = _reactNative.StyleSheet.create({
+    dayGrid: {}
+});
