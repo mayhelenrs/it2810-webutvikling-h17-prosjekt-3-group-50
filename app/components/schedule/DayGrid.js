@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Day} from "./Day.js";
+import {StyleSheet, View, Text} from 'react-native';
+import Day from "./Day.js";
 
 
-export class DayGrid extends React.Component {
+export default class DayGrid extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,12 +25,12 @@ export class DayGrid extends React.Component {
 
     render() {
 
-        return(
+        return (
             <View style={styles.dayGrid}>
                 {
                     //Map days to Date component
-                    this.state.days.map((info) =>
-                        <Day day={info[0]}/>
+                    this.state.days.map((info, index) => <Day day={info[0]} key={index}/>
+
                     )
                 }
             </View>
@@ -39,7 +39,5 @@ export class DayGrid extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    dayGrid: {
-
-    }
+    dayGrid: {}
 });

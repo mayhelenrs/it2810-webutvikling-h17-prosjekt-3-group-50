@@ -1,7 +1,7 @@
 import React from "react";
-import {StyleSheet, View, TextInput} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 
-export class Event extends React.Component {
+export default class Event extends React.Component {
 
     constructor(props) {
         super(props);
@@ -10,26 +10,24 @@ export class Event extends React.Component {
             eventTitle: "",
             eventDescription: ""
         };
-
+        /*
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onDescriptionChange = this.onDescriptionChange.bind(this);
+        */
     }
 
     render() {
         return (
             <View style={styles.event}>
                 <TextInput style={styles.eventTitle}
-                       value={this.state.eventTitle}
-                       onChange={this.onTitleChange}
                 />
                 <TextInput style={styles.eventDescription}
-                       value={this.state.eventDescription}
-                       onChange={this.onDescriptionChange}
                 />
             </View>
         )
     }
 
+    /*
     onTitleChange({target}) {
         this.setState({eventTitle: target.value, eventDescription: this.state.eventDescription});
     }
@@ -65,16 +63,11 @@ export class Event extends React.Component {
     getSaveName() {
         return "" + this.props.day + this.props.slotId + this.props.id;
     }
+    */
 }
 
-const styles= StyleSheet.create({
-    event: {
-
-    },
-    eventTitle: {
-
-    },
-    eventDescription: {
-
-    }
+const styles = StyleSheet.create({
+    event: {},
+    eventTitle: {},
+    eventDescription: {}
 })

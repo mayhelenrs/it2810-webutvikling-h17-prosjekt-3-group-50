@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text, TextInput} from 'react-native';
-import {Slot} from "./Slot.js";
+import {StyleSheet, View} from 'react-native';
+import Slot from "./Slot.js";
 
-export class SlotGrid extends React.Component {
+export default class SlotGrid extends React.Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export class SlotGrid extends React.Component {
             ["08:00", "10:00"], ["10:00", "12:00"], ["12:00", "14:00"], ["14:00", "16:00"]
         ];
         const backgroundColors = [
-            "#c7b9e5", "#006e8e", " #20c2af", "#f9a7a9"
+            "#c7b9e5", "#006e8e", "#20c2af", "#f9a7a9"
         ];
 
 
@@ -25,32 +25,39 @@ export class SlotGrid extends React.Component {
 
     render() {
         return (
-            <div style={styles.slotGrid}>
+            <View style={styles.slotGrid}>
                 {
-                    this.state.hours.map((interval) => this.generateNewSlot(interval))
+
+                    this.state.hours.map((interval, index) =>
+                        <Slot
+                            key={index}
+                            day={this.props.day}
+                            interval={interval}
+                            color={this.state.backgroundColors[index]}/>
+                    )
                 }
-            </div>
+            </View>
         );
     }
 
-
-    generateNewSlot(interval) {
-        this.i++;
-        return <Slot day={this.props.day} id={this.i} interval={interval} color={this.nextColor()}/>
-    }
-
-    nextColor() {
-        if(localStorage.getItem(this.props.day + this.i)) {
-            return localStorage.getItem(this.props.day + this.i);
-        } else {
-            let j = Math.round(Math.random() * 3);
-            return this.state.backgroundColors[j];
+    /*
+        generateNewSlot(interval) {
+            this.i++;
+            return <Slot day={this.props.day} id={this.i} interval={interval} color={this.nextColor()}/>
         }
-    }
+
+        nextColor() {
+            if(localStorage.getItem(this.props.day + this.i)) {
+                return localStorage.getItem(this.props.day + this.i);
+            } else {
+                let j = Math.round(Math.random() * 3);
+                return this.state.backgroundColors[j];
+            }
+        }
+    */
 }
 
-const styles = StyleSheet.create({
-    slotGrid:{
 
-    }
+const styles = StyleSheet.create({
+    slotGrid: {}
 });
