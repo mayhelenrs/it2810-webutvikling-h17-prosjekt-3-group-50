@@ -7,12 +7,15 @@ export class ToDo extends React.Component {
         super(props);
         let todos = [];
         let colors_todo = [];
+
+        this.value = "";
+
+
         if (localStorage.getItem("ToDo") != null) {
             todos = JSON.parse(localStorage.getItem("ToDo"));
             colors_todo = JSON.parse(localStorage.getItem("Colors"));
         }
         this.state = {
-            value: '',
             filter: '',
             current_color: '',
             color_data: colors_todo,
@@ -25,8 +28,6 @@ export class ToDo extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClicks = this.handleClicks.bind(this);
         this.filter = this.filter.bind(this);
-
-
     }
 
     filter() {
@@ -36,30 +37,23 @@ export class ToDo extends React.Component {
             color = "#016D91";
         }
         this.setState({current_color: color});
-
         let displayed_colors = this.props.selectedColor() === undefined ? this.state.color_data :
             this.state.color_data.filter((color, index) => color === this.props.selectedColor());
         let displayed_data = this.props.selectedColor() === undefined ? this.state.data :
             this.state.data.filter((todo, index) => this.state.color_data[index] === this.props.selectedColor());
-
         this.setState({displayed_colors: displayed_colors, displayed_data: displayed_data});
-
     }
 
-
-
-
     handleChange(event){
-        this.setState({value: event.target.value});
-
+        this.value = event.target.value;
     }
 
     handleSubmit(event) {
 
         let todos = this.state.data;
         let colors = this.state.color_data;
-        if (this.state.value.length > 0) {
-            todos.push(this.state.value);
+        if (this.value.length > 0) {
+            todos.push(this.value);
             colors.push(this.state.current_color);
                 this.setState({ data: todos, color_data: colors},() => this.filter());
 
@@ -68,10 +62,8 @@ export class ToDo extends React.Component {
                 localStorage.setItem("Colors", JSON.stringify(colors));
             }
         }
-        this.setState({value: ""});
+        this.value = "";
         event.preventDefault();
-
-
     }
 
    handleClicks(index) {
@@ -90,10 +82,6 @@ export class ToDo extends React.Component {
        localStorage.setItem("Colors", JSON.stringify(handledColors));
     }
 
-
-
-
-
     renderToDoItems() {
         return this.state.displayed_data.map((todo, index) =>
             <ToDoItem className="items" value={todo} key={index} color={this.state.displayed_colors[index]}
@@ -109,7 +97,7 @@ export class ToDo extends React.Component {
                     <ul id="todo-holder">
                         {this.renderToDoItems()}
                     </ul>
-                    <input id="todo-text-field" type="text" placeholder="Write your TODO" value={this.state.value}
+                    <input id="todo-text-field" type="text" placeholder="Write your TODO"
                            onChange={this.handleChange}/>
                     <input type="submit" id="btn-green" value="Add" onClick={this.handleSubmit}/>
                 </div>
