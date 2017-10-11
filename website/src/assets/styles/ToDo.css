@@ -74,7 +74,6 @@
 
 #btn-green {
     width: 16%;
-
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -208,5 +207,3 @@ input[type=checkbox]:hover {
     cursor: pointer;
 
 }
-
-

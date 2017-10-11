@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/appointment.css';
+import '../../assets/styles/appointment.css';
 
 export class AppointmentItem extends React.Component {
   render(){

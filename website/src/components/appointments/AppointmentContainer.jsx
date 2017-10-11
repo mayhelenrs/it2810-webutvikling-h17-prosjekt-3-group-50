@@ -1,23 +1,21 @@
 import React from 'react';
-import { AppointmentItem } from '../components/appointmentItem.jsx';
-import '../assets/styles/appointment.css';
+import { AppointmentItem } from './appointmentItem.jsx';
+import '../../assets/styles/appointment.css';
 
-export class Appointment extends React.Component {
+export class AppointmentContainer extends React.Component {
   constructor(props) {
     super(props)
     let appointmentList = [
     ]
-    let colorList = [
-      '#f9a7a9', '#20c2af', '#006e8e', '#c7b9e5', '#bcb9e5', '#d7e5b9', '#e5d2b9'
-    ]
     this.state = {
-      colors: colorList,
       list: appointmentList,
+      displayList: appointmentList,
       desc: '',
       time:'',
       date:''
     }
     this.formSubmit = this.formSubmit.bind(this)
+    this.filter = this.filter.bind(this)
   }
 
   handleChange(event){
@@ -26,12 +24,24 @@ export class Appointment extends React.Component {
     })
   }
 
+  filter(){
+    const appointList = this.props.selectedColor() === undefined
+                            ? this.state.list.map((item) => item)
+                            : this.state.list.filter((item) => item.props.color === this.props.selectedColor());
+    this.setState((prevState) => {
+      return {...prevState, displayList: appointList}
+    })
+  }
+
+  getColor(){
+    const color = this.props.selectedColor()
+    return color === undefined ? '#016D91':color
+  }
 
   formSubmit(e){
     if(this.state.desc.length > 0 &&
       this.state.time.length > 0 &&
       this.state.date.length > 0){
-      const colors = this.state.colors.slice()
       const newList = this.state.list.slice()
       const index = newList.length
       const newAppointment = <AppointmentItem
@@ -39,28 +49,22 @@ export class Appointment extends React.Component {
         time={this.state.time}
         date={this.state.date}
         key={index}
-        color={colors[Math.floor(Math.random()*7)]}
+        color={this.getColor()}
         />
       newList.push(newAppointment)
       this.setState({
         list: newList
-      })
+      }, () => this.filter())
+
     }
     e.preventDefault()
   }
 
   render() {
-    const appointList = this.state.list.map(
-      (item) => item
-    )
     return (
       <div>
-        <div className="appointmentText">
-          <p className="todo-info"><span id="yellow">IPIM</span> - YOUR PERSONAL INFORMATION MANAGER</p>
-          <h1 id="titleToDos">THIS IS YOUR APPOINTMENTS FOR NOW</h1>
-        </div>
         <ul className="appointmentCards">
-          {appointList}
+          {this.state.displayList}
         </ul>
         <form onSubmit= {this.formSubmit} className="formAppointment">
           <ul className="formList">
@@ -89,7 +93,7 @@ export class Appointment extends React.Component {
               />
             </li>
             <li>
-              <button onSubmit={this.formSubmit} id="btn-green">
+              <button onSubmit={this.formSubmit} id="formButton">
                 Add
               </button>
             </li>
