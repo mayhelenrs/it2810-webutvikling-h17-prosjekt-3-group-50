@@ -59,26 +59,26 @@ export class AppointmentContainer extends React.Component {
     render() {
         return (
             <div>
-                <ul className="appointmentCards">
+                <div className="appointmentCards">
                     {this.state.displayList}
-                </ul>
+                </div>
                 <form onSubmit={this.formSubmit} className="formAppointment">
-                    <ul className="formList">
-                        <li>
+                    <div className="formList">
+                        <div>
                             <input type="text" className="appointmentInput" name="desc" value={this.state.desc} onChange={this.handleChange.bind(this)} placeholder="Insert description"/>
-                        </li>
-                        <li>
+                        </div>
+                        <div>
                             <input type="text" className="appointmentInput" name="time" value={this.state.time} onChange={this.handleChange.bind(this)} placeholder="Insert time"/>
-                        </li>
-                        <li>
+                        </div>
+                        <div>
                             <input type="text" className="appointmentInput" name="date" value={this.state.date} onChange={this.handleChange.bind(this)} placeholder="Insert date"/>
-                        </li>
-                        <li>
+                        </div>
+                        <div>
                             <button onSubmit={this.formSubmit} id="formButton">
                                 Add
                             </button>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </form>
             </div>
         );
