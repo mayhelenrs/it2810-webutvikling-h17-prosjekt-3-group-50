@@ -1,6 +1,3 @@
-/* ToDo view */
-
-
 /* ToDo CSS */
 
 .todo-list {
@@ -91,7 +88,7 @@
     background-color: darkgreen;
 }
 
-input[type=text] {
+#todo-text-field {
     width: 83%;
     padding: 13px 20px;
     margin: 8px 0;
@@ -101,7 +98,7 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-input[type=checkbox] {
+.todo-checkbox {
     margin-top: 3%;
     width: 1.8em;
     height: 1.8em;
@@ -118,7 +115,7 @@ input[type=checkbox] {
 
 
 
-input[type=checkbox]:hover {
+.todo-checkbox:hover {
     background-color:  goldenrod;
 }
 

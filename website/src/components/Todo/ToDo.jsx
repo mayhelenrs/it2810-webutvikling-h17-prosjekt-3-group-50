@@ -109,7 +109,7 @@ export class ToDo extends React.Component {
                     <ul id="todo-holder">
                         {this.renderToDoItems()}
                     </ul>
-                    <input id="text-field" type="text" placeholder="Write your TODO" value={this.state.value}
+                    <input id="todo-text-field" type="text" placeholder="Write your TODO" value={this.state.value}
                            onChange={this.handleChange}/>
                     <input type="submit" id="btn-green" value="Add" onClick={this.handleSubmit}/>
                 </div>
