@@ -35,7 +35,7 @@ export class NoteDisplay extends React.Component {
                      style={{width: this.state.width/4 + "%", height: this.state.height/4 + "%", backgroundColor: "rgba(0, 0, 0, " + ((this.state.width/100) * 0.075) + ""}}>
                 </div>
                 <div className={"NoteDisplay"}
-                     style={{width: this.state.width + "px", height: this.state.height + "px", backgroundColor: '' + this.state.color, opacity: '0.95'}}>
+                     style={this.getStyle()}>
 
                     <input onChange={this.onInputChange}
                            value={this.state.title}/>
@@ -46,12 +46,22 @@ export class NoteDisplay extends React.Component {
         );
     }
 
+    getStyle() {
+        return {
+            width: window.innerWidth <= 525 ? this.state.width > 0 ? "100%" : this.state.width + "px" : this.state.width + "px",
+            height: window.innerWidth <= 525 ? this.state.height > 0 ? "300px" : this.state.height + "px" : this.state.height + "px",
+            backgroundColor: '' + this.state.color,
+            opacity: '0.95'
+
+        }
+    }
+
     componentDidMount() {
         const data = this.load();
         if (data !== null) {
             this.setState(prevState => {
                 return {...prevState, color: data.color, text: data.text, title: data.title};
-            });
+            }, () => this.props.updateTitle(this.state.title));
         }
         this.save();
     }
