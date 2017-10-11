@@ -1,11 +1,8 @@
-/* ToDo view */
-
-
 /* ToDo CSS */
 
 .todo-list {
-    width: 45%;
-    margin-left: 10%;
+    width: 80%;
+    margin-left: 2%;
     margin-top: 4%;
     float: left;
 
@@ -74,7 +71,6 @@
 
 #btn-green {
     width: 16%;
-
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -92,7 +88,7 @@
     background-color: darkgreen;
 }
 
-input[type=text] {
+#todo-text-field {
     width: 83%;
     padding: 13px 20px;
     margin: 8px 0;
@@ -102,7 +98,7 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-input[type=checkbox] {
+.todo-checkbox {
     margin-top: 3%;
     width: 1.8em;
     height: 1.8em;
@@ -119,17 +115,18 @@ input[type=checkbox] {
 
 
 
-input[type=checkbox]:hover {
+.todo-checkbox:hover {
     background-color:  goldenrod;
 }
 
 
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 736px) {
 
     .todo-list {
-        width: 80%;
+        width: 100%;
+        margin-left: 0;
     }
     #btn-green {
         width: 100%;
@@ -208,5 +205,3 @@ input[type=checkbox]:hover {
     cursor: pointer;
 
 }
-
-
