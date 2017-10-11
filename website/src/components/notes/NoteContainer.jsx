@@ -73,7 +73,7 @@ export class NoteContainer extends React.Component {
 
     appendNote(color) {
         this.setState(prevState => {
-            return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color, "Click me to edit ")]})};
+            return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color === undefined ? "#016D91" : color, "Click me to edit ")]})};
         }, () => {
             this.filter();
         });
