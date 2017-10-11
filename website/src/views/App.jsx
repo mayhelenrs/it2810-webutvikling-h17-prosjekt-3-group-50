@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import '../assets/styles/App.css';
 import {Navbar} from '../components';
-import {Schedule,Appointment, Frontpage, NoteView, ToDoView} from '../views';
+import {Schedule,AppointmentView, Frontpage, NoteView, ToDoView} from '../views';
 
 
 export class App extends React.Component {
@@ -15,9 +15,8 @@ export class App extends React.Component {
                         <Route exact path='/' component={Frontpage}/>
                         <Route exact path='/todo' component={ToDoView}/>
                         <Route exact path='/schedule' component={Schedule}/>
-                        <Route exact path='/appointments' component={Appointment}/>
+                        <Route exact path='/appointments' component={AppointmentView}/>
                         <Route exact path='/note' component={NoteView}/>
-                        <Route exact path='/todo' component={ToDoView}/>
                     </Switch>
                 </div>
             </div>
