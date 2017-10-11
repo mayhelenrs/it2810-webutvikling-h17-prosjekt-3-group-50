@@ -2,7 +2,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = undefined;
-var _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/views/frontpage.js';
+
+var _class,
+    _temp,
+    _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/views/frontpage.js';
 
 var _react = require('react');
 
@@ -18,7 +21,7 @@ var _TileGrid = require('../components/TileGrid');
 
 var _TileGrid2 = babelHelpers.interopRequireDefault(_TileGrid);
 
-var Frontpage = function (_React$Component) {
+var Frontpage = (_temp = _class = function (_React$Component) {
     babelHelpers.inherits(Frontpage, _React$Component);
 
     function Frontpage() {
@@ -33,42 +36,31 @@ var Frontpage = function (_React$Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 11
+                        lineNumber: 14
                     }
                 },
                 _react2.default.createElement(_Navbar2.default, { navbarLocation: "DASHBOARD", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 12
+                        lineNumber: 15
                     }
                 }),
-                _react2.default.createElement(
-                    _reactNative.Text,
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 13
-                        }
-                    },
-                    'Daniel, du er en dass!'
-                ),
-                _react2.default.createElement(_TileGrid2.default, {
-                    __source: {
+                _react2.default.createElement(_TileGrid2.default, { navigation: this.props.navigation, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 14
+                        lineNumber: 16
                     }
                 })
             );
         }
     }]);
     return Frontpage;
-}(_react2.default.Component);
-
+}(_react2.default.Component), _class.navigationOptions = {
+    title: 'DASHBOARD'
+}, _temp);
 exports.default = Frontpage;
 ;
 
 var styles = _reactNative.StyleSheet.create({
     container: {
-        marginTop: "auto",
         flex: 1,
         backgroundColor: '#fff',
         flexDirection: "column",

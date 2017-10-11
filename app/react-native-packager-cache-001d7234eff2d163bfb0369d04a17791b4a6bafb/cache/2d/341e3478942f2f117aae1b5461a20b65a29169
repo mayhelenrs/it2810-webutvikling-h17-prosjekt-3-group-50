@@ -1,7 +1,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Slot = undefined;
+exports.default = undefined;
 var _jsxFileName = "/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/components/schedule/Slot.js";
 
 var _react = require("react");
@@ -12,7 +12,9 @@ var _reactNative = require("react-native");
 
 var _Event = require("./Event.js");
 
-var Slot = exports.Slot = function (_React$Component) {
+var _Event2 = babelHelpers.interopRequireDefault(_Event);
+
+var Slot = function (_React$Component) {
     babelHelpers.inherits(Slot, _React$Component);
 
     function Slot(props) {
@@ -27,8 +29,6 @@ var Slot = exports.Slot = function (_React$Component) {
             interval: _this.props.interval
         };
 
-        _this.onIntervalChange = _this.onIntervalChange.bind(_this);
-        _this.generateNewEvent = _this.generateNewEvent.bind(_this);
         return _this;
     }
 
@@ -39,66 +39,78 @@ var Slot = exports.Slot = function (_React$Component) {
                 _reactNative.View,
                 { style: [{ backgroundColor: '' + this.state.color }, styles.slot], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 23
+                        lineNumber: 24
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 24
-                        }
-                    },
-                    _react2.default.createElement(_reactNative.TextInput, { style: [styles.slotInterval, styles.slotIntervalStart],
-                        value: this.state.interval[0], onChange: this.onIntervalChange, __source: {
+                    { style: [{ backgroundColor: '' + this.state.color }, styles.time], __source: {
                             fileName: _jsxFileName,
                             lineNumber: 25
                         }
-                    }),
-                    "-",
-                    _react2.default.createElement(_reactNative.TextInput, { style: [styles.slotInterval, styles.slotIntervalEnd],
-                        value: this.state.interval[1], onChange: this.onIntervalChange, __source: {
+                    },
+                    _react2.default.createElement(_reactNative.TextInput, { style: [styles.slotInterval, styles.slotIntervalStart],
+                        value: this.state.interval[0], __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 28
+                            lineNumber: 26
+                        }
+                    }),
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 28
+                            }
+                        },
+                        "-"
+                    ),
+                    _react2.default.createElement(_reactNative.TextInput, { style: [styles.slotInterval, styles.slotIntervalEnd],
+                        value: this.state.interval[1], __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 29
                         }
                     })
                 ),
-                this.generateNewEvent()
+                _react2.default.createElement(
+                    _reactNative.View,
+                    { style: styles.text, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 32
+                        }
+                    },
+                    _react2.default.createElement(_Event2.default, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 33
+                        }
+                    })
+                )
             );
-        }
-    }, {
-        key: "generateNewEvent",
-        value: function generateNewEvent() {
-            return _react2.default.createElement(_Event.Event, { day: this.props.day, slotId: this.props.id, id: this.i, __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 39
-                }
-            });
-        }
-    }, {
-        key: "onIntervalChange",
-        value: function onIntervalChange(_ref) {
-            var target = _ref.target;
-
-
-            var classNames = target.className.split(" ");
-            var tempInterval = [];
-            if (classNames[1] === "slot-interval-start") {
-                tempInterval.push(target.value);
-                tempInterval.push(this.state.interval[1]);
-            } else {
-                tempInterval.push(this.state.interval[0]);
-                tempInterval.push(target.value);
-            }
-            this.setState({ color: this.state.color, interval: tempInterval });
         }
     }]);
     return Slot;
 }(_react2.default.Component);
 
+exports.default = Slot;
+
+
 var styles = _reactNative.StyleSheet.create({
-    slot: {},
+    slot: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'row',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1 / _reactNative.PixelRatio.get()
+    },
+    text: {
+        flex: 2
+
+    },
+    time: {
+        flex: 1
+    },
+
     slotInterval: {},
     slotIntervalStart: {},
     slotIntervalEnd: {}

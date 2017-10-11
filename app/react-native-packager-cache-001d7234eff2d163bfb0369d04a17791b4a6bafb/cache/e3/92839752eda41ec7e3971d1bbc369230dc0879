@@ -2,17 +2,20 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = undefined;
-var _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/views/Schedule.js';
+
+var _class,
+    _temp,
+    _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/views/Schedule.js';
 
 var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
+var _DayGrid = require('../components/schedule/DayGrid.js');
 
-var _DayGrid = require('../components/schedule/DayGrid');
+var _DayGrid2 = babelHelpers.interopRequireDefault(_DayGrid);
 
-var Schedule = function (_React$Component) {
+var Schedule = (_temp = _class = function (_React$Component) {
     babelHelpers.inherits(Schedule, _React$Component);
 
     function Schedule() {
@@ -23,34 +26,16 @@ var Schedule = function (_React$Component) {
     babelHelpers.createClass(Schedule, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                _reactNative.View,
-                {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 9
-                    }
-                },
-                _react2.default.createElement(
-                    _reactNative.View,
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 10
-                        }
-                    },
-                    _react2.default.createElement(_DayGrid.DayGrid, {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 11
-                        }
-                    })
-                )
-            );
+            return _react2.default.createElement(_DayGrid2.default, {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 11
+                }
+            });
         }
     }]);
     return Schedule;
-}(_react2.default.Component);
-
+}(_react2.default.Component), _class.navigationOptions = {
+    title: 'SCHEDULE'
+}, _temp);
 exports.default = Schedule;
-;

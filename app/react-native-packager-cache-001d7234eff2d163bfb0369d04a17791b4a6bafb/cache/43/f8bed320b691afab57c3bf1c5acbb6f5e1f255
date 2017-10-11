@@ -8,7 +8,7 @@ var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
+var _reactNavigation = require('react-navigation');
 
 var _frontpage = require('./views/frontpage');
 
@@ -17,10 +17,6 @@ var _frontpage2 = babelHelpers.interopRequireDefault(_frontpage);
 var _Schedule = require('./views/Schedule');
 
 var _Schedule2 = babelHelpers.interopRequireDefault(_Schedule);
-
-var _Navbar = require('./components/Navbar');
-
-var _Navbar2 = babelHelpers.interopRequireDefault(_Navbar);
 
 var App = function (_React$Component) {
     babelHelpers.inherits(App, _React$Component);
@@ -33,25 +29,12 @@ var App = function (_React$Component) {
     babelHelpers.createClass(App, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                _reactNative.View,
-                { style: styles.container, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 12
-                    }
-                },
-                _react2.default.createElement(_Navbar2.default, { navbarLocation: "DASHBOARD", __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 13
-                    }
-                }),
-                _react2.default.createElement(_Schedule2.default, {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 14
-                    }
-                })
-            );
+            return _react2.default.createElement(Navigator, {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 11
+                }
+            });
         }
     }]);
     return App;
@@ -60,12 +43,7 @@ var App = function (_React$Component) {
 exports.default = App;
 ;
 
-var styles = _reactNative.StyleSheet.create({
-    container: {
-        marginTop: "auto",
-        flex: 1,
-        backgroundColor: '#fff',
-        flexDirection: 'column',
-        alignItems: 'center'
-    }
+var Navigator = (0, _reactNavigation.StackNavigator)({
+    Home: { screen: _frontpage2.default },
+    Schedule: { screen: _Schedule2.default }
 });

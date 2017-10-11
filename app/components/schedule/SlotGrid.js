@@ -33,7 +33,8 @@ export default class SlotGrid extends React.Component {
                             key={index}
                             day={this.props.day}
                             interval={interval}
-                            color={this.state.backgroundColors[index]}/>
+                            color={this.state.backgroundColors[index]}
+                        />
                     )
                 }
             </View>
@@ -59,5 +60,9 @@ export default class SlotGrid extends React.Component {
 
 
 const styles = StyleSheet.create({
-    slotGrid: {}
+    slotGrid: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1
+    }
 });

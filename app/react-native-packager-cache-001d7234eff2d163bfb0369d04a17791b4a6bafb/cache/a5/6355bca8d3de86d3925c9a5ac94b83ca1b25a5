@@ -33,11 +33,13 @@ var TileGrid = function (_React$Component) {
     babelHelpers.createClass(TileGrid, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 _reactNative.View,
                 { style: styles.tilegrid, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 27
+                        lineNumber: 26
                     }
                 },
                 this.state.tiles.map(function (info, index) {
@@ -47,6 +49,7 @@ var TileGrid = function (_React$Component) {
                         tileIcon: info[1],
                         color: info[2],
                         view: info[4],
+                        navigation: _this2.props.navigation,
                         __source: {
                             fileName: _jsxFileName,
                             lineNumber: 31
@@ -63,11 +66,11 @@ exports.default = TileGrid;
 
 var styles = _reactNative.StyleSheet.create({
     tilegrid: {
+        flex: 1,
         justifyContent: "flex-start",
         flexWrap: "wrap",
         width: "100%",
-        backgroundColor: "transparent",
-        flexWrap: 'wrap',
-        flexDirection: 'row'
+        backgroundColor: "transparent"
+
     }
 });

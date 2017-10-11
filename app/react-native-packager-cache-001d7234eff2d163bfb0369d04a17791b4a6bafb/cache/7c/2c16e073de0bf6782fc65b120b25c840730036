@@ -1,7 +1,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Day = undefined;
+exports.default = undefined;
 var _jsxFileName = '/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/components/schedule/Day.js';
 
 var _react = require('react');
@@ -12,7 +12,9 @@ var _reactNative = require('react-native');
 
 var _SlotGrid = require('./SlotGrid.js');
 
-var Day = exports.Day = function (_React$Component) {
+var _SlotGrid2 = babelHelpers.interopRequireDefault(_SlotGrid);
+
+var Day = function (_React$Component) {
     babelHelpers.inherits(Day, _React$Component);
 
     function Day() {
@@ -31,17 +33,25 @@ var Day = exports.Day = function (_React$Component) {
                     }
                 },
                 _react2.default.createElement(
-                    _reactNative.Text,
+                    _reactNative.View,
                     { style: styles.dayText, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 10
                         }
                     },
-                    this.props.day
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        { style: { color: 'white' }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 11
+                            }
+                        },
+                        this.props.day
+                    )
                 ),
-                _react2.default.createElement(_SlotGrid.SlotGrid, { day: this.props.day, __source: {
+                _react2.default.createElement(_SlotGrid2.default, { day: this.props.day, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 11
+                        lineNumber: 13
                     }
                 })
             );
@@ -50,7 +60,19 @@ var Day = exports.Day = function (_React$Component) {
     return Day;
 }(_react2.default.Component);
 
+exports.default = Day;
+
+
 var styles = _reactNative.StyleSheet.create({
-    day: {},
-    dayText: {}
+    day: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1
+
+    },
+    dayText: {
+        borderBottomWidth: 1 / _reactNative.PixelRatio.get(),
+        borderBottomColor: 'black',
+        backgroundColor: '#6bbbd6'
+    }
 });

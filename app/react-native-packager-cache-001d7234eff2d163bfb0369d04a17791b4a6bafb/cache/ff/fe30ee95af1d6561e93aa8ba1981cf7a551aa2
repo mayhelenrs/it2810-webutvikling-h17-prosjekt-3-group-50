@@ -1,7 +1,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Event = undefined;
+exports.default = undefined;
 var _jsxFileName = "/Users/Fredrik/Documents/Webutvikling/it2810-webutvikling-h17-prosjekt-3-group-50/app/components/schedule/Event.js";
 
 var _react = require("react");
@@ -10,7 +10,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require("react-native");
 
-var Event = exports.Event = function (_React$Component) {
+var Event = function (_React$Component) {
     babelHelpers.inherits(Event, _React$Component);
 
     function Event(props) {
@@ -22,9 +22,6 @@ var Event = exports.Event = function (_React$Component) {
             eventTitle: "",
             eventDescription: ""
         };
-
-        _this.onTitleChange = _this.onTitleChange.bind(_this);
-        _this.onDescriptionChange = _this.onDescriptionChange.bind(_this);
         return _this;
     }
 
@@ -35,79 +32,43 @@ var Event = exports.Event = function (_React$Component) {
                 _reactNative.View,
                 { style: styles.event, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 20
-                    }
-                },
-                _react2.default.createElement(_reactNative.TextInput, { style: styles.eventTitle,
-                    value: this.state.eventTitle,
-                    onChange: this.onTitleChange,
-                    __source: {
-                        fileName: _jsxFileName,
                         lineNumber: 21
                     }
-                }),
-                _react2.default.createElement(_reactNative.TextInput, { style: styles.eventDescription,
-                    value: this.state.eventDescription,
-                    onChange: this.onDescriptionChange,
+                },
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.eventTitle, placeholder: 'Event title',
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 25
+                        lineNumber: 22
+                    }
+                }),
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.eventDescription, placeholder: 'Event description',
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 24
                     }
                 })
             );
-        }
-    }, {
-        key: "onTitleChange",
-        value: function onTitleChange(_ref) {
-            var target = _ref.target;
-
-            this.setState({ eventTitle: target.value, eventDescription: this.state.eventDescription });
-        }
-    }, {
-        key: "onDescriptionChange",
-        value: function onDescriptionChange(_ref2) {
-            var target = _ref2.target;
-
-            this.setState({ eventTitle: this.state.eventTitle, eventDescription: target.value });
-        }
-    }, {
-        key: "componentDidUpdate",
-        value: function componentDidUpdate() {
-            this.save();
-        }
-    }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var data = this.load();
-            if (data !== null) {
-                this.setState(function () {
-                    return data;
-                });
-            } else {
-                this.save();
-            }
-        }
-    }, {
-        key: "save",
-        value: function save() {
-            localStorage.setItem(this.getSaveName(), JSON.stringify(this.state));
-        }
-    }, {
-        key: "load",
-        value: function load() {
-            return this.getSaveName() in localStorage ? JSON.parse(localStorage.getItem(this.getSaveName())) : null;
-        }
-    }, {
-        key: "getSaveName",
-        value: function getSaveName() {
-            return "" + this.props.day + this.props.slotId + this.props.id;
         }
     }]);
     return Event;
 }(_react2.default.Component);
 
+exports.default = Event;
+
+
 var styles = _reactNative.StyleSheet.create({
-    event: {},
-    eventTitle: {},
-    eventDescription: {}
+    event: {
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: 'white'
+    },
+    eventTitle: {
+        flex: 1,
+        borderBottomWidth: 1 / _reactNative.PixelRatio.get()
+    },
+    eventDescription: {
+        flex: 1
+    }
 });
