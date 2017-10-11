@@ -1,28 +1,28 @@
 import React from 'react';
-import './Categories.css';
-import {CategoryFilter} from './CategoryFilter.jsx';
+import {View, Text, StyleSheet} from 'react-native';
+import CategoryFilter from './CategoryFilter.js';
 import update from 'react-addons-update';
 
-export class CategoryFilterContainer extends React.Component {
+export default class CategoryFilterContainer extends React.Component {
 
     constructor() {
         super();
         this.categoryCount = 0;
         this.selectCategory = this.selectCategory.bind(this);
         this.state = {
-            categories: [],
+            categories: [this.generateCategory('#000'), this.generateCategory('#000'), this.generateCategory('#000'), this.generateCategory('#000'), this.generateCategory('#000')],
             selectedCategory: undefined
         };
     }
 
     render() {
         return (
-            <div className="NoteHolder">
-                <p><orange>Categories</orange> - Select to filter your notes and add new ones!</p>
-                <div className="Notes">
+            <View style={styles.NoteHolder}>
+                <Text>Categories - Select to filter your notes and add new ones!</Text>
+                <View style={styles.Notes}>
                     {this.state.categories}
-                </div>
-            </div>
+                </View>
+            </View>
         );
     }
 
@@ -56,3 +56,15 @@ export class CategoryFilterContainer extends React.Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    NoteHolder: {
+        margin: 10,
+    },
+    Notes: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+    },
+});

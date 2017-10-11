@@ -9,18 +9,18 @@ export class NoteView extends React.Component {
     constructor(props) {
         super(props);
         //This method needs to be bound for it to filter
-        this.filterNotes = this.filterNotes.bind(this);
+        this.filter = this.filter.bind(this);
         //This function is required in order to update the categoryFilter once we have added
         //A new category
         this.updateCategoryFilter = this.updateCategoryFilter.bind(this);
         this.state = {
             noteContainer: <NoteContainer ref={instance => {
                 this.noteContainer = instance
-            }} filterNotes={this.filterNotes}/>,
+            }} filterNotes={this.filter}/>,
 
             categoryFilterContainer: <CategoryFilterContainer ref={instance => {
                 this.categoryFilterContainer = instance
-            }} filterNotes={this.filterNotes}/>,
+            }} filterItems={this.filter}/>,
 
             //Category saving is determined by the ID, so the ID needs to be unique
             categoryContainer: <CategoryContainer
@@ -29,7 +29,7 @@ export class NoteView extends React.Component {
     }
 
     componentDidMount() {
-        this.filterNotes();
+        this.filter();
     }
 
     render() {
@@ -54,15 +54,8 @@ export class NoteView extends React.Component {
         );
     }
 
-    appendNote() {
-        if (this.categoryFilterContainer.state.selectedCategory !== undefined) {
-            this.noteContainer.appendNote(this.categoryFilterContainer.state.selectedCategory.props.color);
-        } else {
-            alert("No category has been selected!");
-        }
-    }
 
-    filterNotes() {
+    filter() {
         const selectedCategory = this.categoryFilterContainer.state.selectedCategory;
         this.noteContainer.setState(prevState => {
             return {...prevState, displayedNotes: this.getFilteredNotes(selectedCategory)}
@@ -73,6 +66,15 @@ export class NoteView extends React.Component {
         if (filter !== undefined)
             return this.noteContainer.state.notes.filter((note) => note.props.color === filter.props.color);
         return this.noteContainer.state.notes;
+    }
+
+
+    appendNote() {
+        if (this.categoryFilterContainer.state.selectedCategory !== undefined) {
+            this.noteContainer.appendNote(this.categoryFilterContainer.state.selectedCategory.props.color);
+        } else {
+            alert("No category has been selected!");
+        }
     }
 
     //Since our CategoryFilter is a 100% dumb component we load it from the CategoryContainer component

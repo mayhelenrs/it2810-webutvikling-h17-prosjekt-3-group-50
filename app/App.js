@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
+import CategoryContainer from './components/categories/CategoryContainer';
+import CategoryFilterContainer from './components/categories/CategoryFilterContainer';
 
 export default class App extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <Text>Shake your phone to open the developer menu.</Text>
-            </View>
+            <ScrollView contentContainerStyle={styles.container}>
+                <CategoryFilterContainer filter={() => console.log("asd")}/>
+                <CategoryContainer filter={() => console.log("The beast")}/>
+            </ScrollView>
         );
     }
 }
@@ -16,8 +17,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
+        flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
     },
 });
