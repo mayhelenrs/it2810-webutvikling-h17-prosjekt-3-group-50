@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet, Image, Text, View} from "react-native"
+import {Button, Image, StyleSheet, Text, View} from "react-native"
 
 export default class Tile extends React.Component {
     render() {
-        return(
-            <View style={[{backgroundColor: '' + this.props.color},styles.tile]}>
-                <Text><Image  source ={this.props.tileIcon} alt={"Icon for tile"}/></Text>
-                <Text>{this.props.tileTitle}</Text>
+        const {navigate} = this.props.navigation;
+        return (
+            <View style={[{backgroundColor: '' + this.props.color}, styles.tile]}>
+                <Text style={styles.tiletext}><Image source={this.props.tileIcon} alt={"Icon for tile"}/></Text>
+                <Text style={styles.tiletext}>{this.props.tileTitle}</Text>
                 {
-                    // Missing button to subpage here
+                    <Button title={"ENTER"} onPress={() => navigate(this.props.tileTitle)}/>
                 }
             </View>
         );
@@ -18,7 +19,11 @@ export default class Tile extends React.Component {
 
 const styles = StyleSheet.create({
     tile: {
-        width:"40%"
+        width: "40%"
+
+    },
+    tiletext: {
+
     }
 
-})
+});

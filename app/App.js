@@ -1,29 +1,20 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Navbar from './components/Navbar'
-import TileGrid from "./components/TileGrid"
+import {StackNavigator} from 'react-navigation';
+import Frontpage from "./views/frontpage";
+import Schedule from "./views/Schedule";
+
 
 export default class App extends React.Component {
 
     render() {
         return (
-
-            <View style={styles.container}>
-                <Navbar navbarLocation={"DASHBOARD"}/>
-                <Text>Daniel, du er en dass!</Text>
-                <TileGrid/>
-            </View>
+            <Navigator/>
         );
     }
 };
 
-const styles = StyleSheet.create({
-    container: {
-        marginTop:"auto",
-        flex: 1,
-        backgroundColor: '#fff',
-        flexDirection: "column",
-        alignItems: 'center',
-    },
+const Navigator = StackNavigator({
+    Home: {screen: Frontpage},
+    Schedule: {screen: Schedule},
 });
 
