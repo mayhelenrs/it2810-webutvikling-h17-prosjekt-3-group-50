@@ -1,19 +1,13 @@
 import React from 'react';
-import {View} from 'react-native';
-import {DayGrid} from "../components/Schedule/DayGrid";
+import DayGrid from "../components/schedule/DayGrid.js";
 
-export class Schedule extends React.Component {
-
+export default class Schedule extends React.Component {
+    static navigationOptions = {
+        title: 'SCHEDULE'
+    };
     render() {
-        return(
-            <View>
-                <View>
-                    <br/>
-                    <br/><br/>
-                    <DayGrid/>
-                </View>
-            </View>
-
+        return (
+            <DayGrid/>
         )
     }
 }

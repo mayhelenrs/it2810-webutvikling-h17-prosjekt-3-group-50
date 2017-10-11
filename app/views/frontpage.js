@@ -1,17 +1,19 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import Navbar from '../components/Navbar';
 import TileGrid from "../components/TileGrid";
 
 export default class Frontpage extends React.Component {
+    static navigationOptions = {
+        title: 'DASHBOARD'
+    };
 
     render() {
         return (
 
             <View style={styles.container}>
                 <Navbar navbarLocation={"DASHBOARD"}/>
-                <Text>Daniel, du er en dass!</Text>
-                <TileGrid/>
+                <TileGrid navigation={this.props.navigation}/>
             </View>
         );
     }
@@ -19,7 +21,6 @@ export default class Frontpage extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop:"auto",
         flex: 1,
         backgroundColor: '#fff',
         flexDirection: "column",
