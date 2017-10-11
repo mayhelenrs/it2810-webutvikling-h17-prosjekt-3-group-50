@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         flexWrap: "wrap",
         width: "100%",
-        backgroundColor: "transparent"
-
+        backgroundColor: "transparent",
+        flexWrap: 'wrap',
+        flexDirection: 'row'
     }
 });

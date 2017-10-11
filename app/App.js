@@ -10,7 +10,6 @@ export default class App extends React.Component {
 
             <View style={styles.container}>
                 <Navbar navbarLocation={"DASHBOARD"}/>
-                <Text>Daniel, du er en dass!</Text>
                 <TileGrid/>
             </View>
         );
@@ -22,8 +21,7 @@ const styles = StyleSheet.create({
         marginTop:"auto",
         flex: 1,
         backgroundColor: '#fff',
-        flexDirection: "column",
+        flexDirection: 'column',
         alignItems: 'center',
     },
 });
-
