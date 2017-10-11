@@ -1,6 +1,8 @@
 import React from 'react';
-import Frontpage from "views/frontpage";
-import {StackNavigator} from 'react-navigator';
+import {StackNavigator} from 'react-navigation';
+import Frontpage from "./views/frontpage";
+import Schedule from "./views/Schedule";
+
 
 export default class App extends React.Component {
 
@@ -12,7 +14,7 @@ export default class App extends React.Component {
 };
 
 const Navigator = StackNavigator({
-    Home:{screen: Frontpage},
-    Schedule: {screen:Schedule}
+    Home: {screen: Frontpage},
+    Schedule: {screen: Schedule},
 });
 
