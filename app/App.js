@@ -1,9 +1,14 @@
 import React from 'react';
+
 import {StyleSheet, ScrollView} from 'react-native';
 import CategoryContainer from './components/categories/CategoryContainer';
 import CategoryFilterContainer from './components/categories/CategoryFilterContainer';
+import {StackNavigator} from 'react-navigation';
+import Frontpage from "./views/frontpage";
+import Schedule from "./views/Schedule";
 
 export default class App extends React.Component {
+
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
@@ -12,7 +17,12 @@ export default class App extends React.Component {
             </ScrollView>
         );
     }
-}
+};
+
+const Navigator = StackNavigator({
+    Home: {screen: Frontpage},
+    Schedule: {screen: Schedule},
+});
 
 const styles = StyleSheet.create({
     container: {

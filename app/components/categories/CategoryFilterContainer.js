@@ -10,7 +10,7 @@ export default class CategoryFilterContainer extends React.Component {
         this.categoryCount = 0;
         this.selectCategory = this.selectCategory.bind(this);
         this.state = {
-            categories: [this.generateCategory('#000'), this.generateCategory('#000'), this.generateCategory('#000'), this.generateCategory('#000'), this.generateCategory('#000')],
+            categories: [this.generateCategory('#016D91'), this.generateCategory('#E53F6F'), this.generateCategory('#686868'), this.generateCategory('#F56376')],
             selectedCategory: undefined
         };
     }

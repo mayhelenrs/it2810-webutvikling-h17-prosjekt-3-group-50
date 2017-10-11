@@ -16,11 +16,14 @@ export class ToDoItem extends React.Component {
 
     render() {
         const text = this.state.checked;
+
         return (
-            <li key={this.props.index} className="liItem">
-                <input type="checkbox" key={this.props.index} label={text} onClick={this.props.onClick}
-                       onChange={() => this.handleClick()}/>
-                {this.props.value}
+
+            <li key={this.props.index} className="todo-item">
+                <div className="category-todo" style={{backgroundColor: '' + this.props.color}}></div>
+                <input type="checkbox" className="todo-checkbox" key={this.props.index} label={text}
+                       onClick={this.props.onClick} onChange={() => this.handleClick()}/>
+                <p className="todo-text">{this.props.value}</p>
             </li>
         );
     }
