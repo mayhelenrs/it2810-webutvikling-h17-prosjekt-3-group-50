@@ -44,7 +44,8 @@ export default class TileGrid extends React.Component {
 }
 const styles = StyleSheet.create({
     tilegrid: {
-        justifyContent: "flex-start",
+        justifyContent: 'center',
+        alignItems: 'center',
         flexWrap: "wrap",
         width: "100%",
         backgroundColor: "transparent",

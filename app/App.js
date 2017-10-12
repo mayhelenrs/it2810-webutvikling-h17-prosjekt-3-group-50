@@ -10,7 +10,9 @@ export default class App extends React.Component {
 
             <View style={styles.container}>
                 <Navbar navbarLocation={"DASHBOARD"}/>
-                <TileGrid/>
+                <View style={styles.content}>
+                    <TileGrid style= {styles.tiles}/>
+                </View>
             </View>
         );
     }
@@ -18,10 +20,14 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop:"auto",
+        marginTop: 'auto',
         flex: 1,
         backgroundColor: '#fff',
         flexDirection: 'column',
-        alignItems: 'center',
+
     },
+    content: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
