@@ -1,14 +1,20 @@
 import React from 'react';
-import {StyleSheet, Image, Text, View} from "react-native"
+import {Button, Image, StyleSheet, Text, View, TouchableOpacity} from "react-native"
+
 
 export default class Tile extends React.Component {
     render() {
+        const {navigate} = this.props.navigation;
         return(
             <View style={[{backgroundColor: '' + this.props.color},styles.tile]}>
-                <Image  style={styles.image} source ={this.props.tileIcon} alt={"Icon for tile"}/>
-                <View style={styles.text}>
-                  <Text style={{color: '' + this.props.color}}>{this.props.tileTitle}</Text>
-                </View>
+                <TouchableOpacity onPress={() => navigate(this.props.tileTitle)}>
+                    <View style={{}}>
+                        <Image  style={styles.image} source ={this.props.tileIcon} alt={"Icon for tile"}/>
+                        <View style={styles.textWrapper}>
+                          <Text style={styles.text}>{this.props.tileTitle}</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -17,7 +23,7 @@ export default class Tile extends React.Component {
 
 const styles = StyleSheet.create({
     tile: {
-        width:'40%',
+        width: '40%',
         margin: 3,
         height: 150,
         borderRadius: 10,
@@ -29,18 +35,19 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'black'
     },
-    image:{
+    image: {
         margin: 15,
         height: 75,
         width: 75
     },
-    text: {
+    textWrapper: {
         width: '100%',
         height: '25%',
-        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
-        borderBottomRightRadius: 10,
-        borderBottomLeftRadius: 10,
+    },
+    text: {
+        color: 'white',
+        fontFamily: 'IntroRust'
     }
 })

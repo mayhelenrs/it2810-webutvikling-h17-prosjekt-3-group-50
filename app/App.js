@@ -1,33 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Navbar from './components/Navbar'
-import TileGrid from "./components/TileGrid"
+import {StackNavigator} from 'react-navigation';
+import Frontpage from "./views/frontpage";
+import Schedule from "./views/Schedule";
+import {Font} from 'expo';
+
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fontLoaded: false
+        }
+    }
+    async componentDidMount() {
+    await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
+    this.setState({
+        fontLoaded: true
+    })
+    }
 
     render() {
-        return (
-
-            <View style={styles.container}>
-                <Navbar navbarLocation={"DASHBOARD"}/>
-                <View style={styles.content}>
-                    <TileGrid style= {styles.tiles}/>
-                </View>
-            </View>
+        let app = this.state.fontLoaded ? <Navigator/> : null
+        return(
+            app
         );
     }
 };
 
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 'auto',
-        flex: 1,
-        backgroundColor: '#fff',
-        flexDirection: 'column',
-
-    },
-    content: {
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
+const Navigator = StackNavigator({
+    Home: {screen: Frontpage},
+    Schedule: {screen: Schedule},
 });
