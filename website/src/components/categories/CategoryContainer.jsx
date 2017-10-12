@@ -12,7 +12,7 @@ export class CategoryContainer extends React.Component {
         this.colors = ["#016D91", "#E53F6F", "#686868", "#F56376"];
         this.colorIndex = 0;
         this.state = {
-            categories: [this.generateCategory("School"), this.generateCategory("Home")]
+            categories: [this.generateCategory("Other"), this.generateCategory("School")]
         };
     }
 
