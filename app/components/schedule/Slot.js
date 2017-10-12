@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, TextInput, View, PixelRatio} from 'react-native';
 import Event from "./Event.js";
 
 export default class Slot extends React.Component {
@@ -22,22 +22,16 @@ export default class Slot extends React.Component {
     render() {
         return (
             <View style={[{backgroundColor: '' + this.state.color}, styles.slot]}>
-                <View>
+                <View style={[{backgroundColor: '' + this.state.color}, styles.time]}>
                     <TextInput style={[styles.slotInterval, styles.slotIntervalStart]}
                                value={this.state.interval[0]}/>
                     <Text>-</Text>
                     <TextInput style={[styles.slotInterval, styles.slotIntervalEnd]}
                                value={this.state.interval[1]}/>
                 </View>
-                {
-
-                    <Event
-                        day={this.props.day}
-                        slotId={this.props.id}
-                        key={this.i}
-                    />
-
-                }
+                <View style={styles.text}>
+                    <Event/>
+                </View>
             </View>
         )
     }
@@ -96,7 +90,20 @@ export default class Slot extends React.Component {
 
 const styles = StyleSheet.create({
     slot: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'row',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1 / PixelRatio.get()
     },
+    text: {
+        flex: 2
+
+    },
+    time: {
+        flex: 1
+    },
+
     slotInterval: {},
     slotIntervalStart: {},
     slotIntervalEnd: {}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import Day from "./Day.js";
 
 
@@ -27,17 +27,25 @@ export default class DayGrid extends React.Component {
 
         return (
             <View style={styles.dayGrid}>
+                <ScrollView 
+                    contentContainerStyle={styles.contentContainer}
+                    keyboardDismissMode={'on-drag'}
+                    pagingEnabled={false} 
+                >
                 {
                     //Map days to Date component
                     this.state.days.map((info, index) => <Day day={info[0]} key={index}/>
-
                     )
                 }
+                </ScrollView>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    dayGrid: {}
+    dayGrid: {
+    },
+    contentContainer: {
+    }
 });
