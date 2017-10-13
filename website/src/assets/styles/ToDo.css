@@ -30,13 +30,10 @@
     margin: 20px;
     width: 100%;
     display: flex;
-    -webkit-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
-    box-shadow: 0 0 51px -20px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0 51px -20px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 0 51px -20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 51px -20px rgba(0,0,0,0.4);
 }
-
-
-
 
 .todo-item:hover {
     background-color: #dddddd;
@@ -54,7 +51,6 @@
     margin-left: -20px;
     margin-top: 20px;
 }
-
 
 .toDo {
     display: flex;
@@ -113,17 +109,11 @@
     margin-left: 3%;
 }
 
-
-
 .todo-checkbox:hover {
     background-color:  goldenrod;
 }
 
-
-
-
 @media screen and (max-width: 736px) {
-
     .todo-list {
         width: 100%;
         margin-left: 0;
@@ -138,8 +128,6 @@
 }
 
 @media screen and (max-width: 1237px) {
-
-
     #btn-green {
         width: 100%;
     }
@@ -150,40 +138,29 @@
 }
 
 
-
-
 /* Category CSS */
-
 #category-list {
     width: 35%;
     float: right;
     margin-top: 50px;
     margin-left: 140px;
-
-
 }
 #category-list h1 {
     font-size: 205%;
-
 }
-
 
 @font-face {
     font-family: IntroRust;
     src: url(../fonts/IntroRust.otf);
 }
 
-
-
 #titleCategory {
     font-family: IntroRust, sans-serif;
 }
 
-
 .category-item {
     list-style-type: none;
     margin: 20px;
-
 }
 
 #category-holder {
@@ -193,7 +170,6 @@
     margin-top: 20px;
 }
 .btn-category {
-
     height: 45px;
     width: 45px;
     border: none;
@@ -201,7 +177,5 @@
     padding: 20px 25px;
     text-decoration: none;
     display: inline-block;
-
     cursor: pointer;
-
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View, PixelRatio} from 'react-native';
 
 export default class Event extends React.Component {
 
@@ -19,10 +19,10 @@ export default class Event extends React.Component {
     render() {
         return (
             <View style={styles.event}>
-                <TextInput style={styles.eventTitle}
+                <TextInput style={styles.eventTitle} placeholder={'Event title'}
                 />
-                <TextInput style={styles.eventDescription}
-                />
+                <TextInput style={styles.eventDescription} placeholder={'Event description'}
+                /> 
             </View>
         )
     }
@@ -67,7 +67,18 @@ export default class Event extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    event: {},
-    eventTitle: {},
-    eventDescription: {}
+    event: {
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: 'white',
+    },
+    eventTitle: {
+        flex: 1,
+        borderBottomWidth: 1 / PixelRatio.get(),
+    },
+    eventDescription: {
+        flex: 1
+    }
 })
