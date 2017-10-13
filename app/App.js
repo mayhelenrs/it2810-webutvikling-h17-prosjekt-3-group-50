@@ -13,10 +13,10 @@ export default class App extends React.Component {
         }
     }
     async componentDidMount() {
-    await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
-    this.setState({
-        fontLoaded: true
-    })
+        await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
+        this.setState({
+            fontLoaded: true
+        })
     }
 
     render() {
