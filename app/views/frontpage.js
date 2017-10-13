@@ -5,15 +5,22 @@ import TileGrid from "../components/TileGrid";
 
 export default class Frontpage extends React.Component {
     static navigationOptions = {
-        title: 'DASHBOARD'
+        title: 'DASHBOARD',
+        headerTitleStyle: {
+            color: 'black',
+            fontFamily: 'IntroRust'
+        },
+        headerStyle: {
+            backgroundColor: '#00ACCE',
+        }
     };
 
     render() {
         return (
-
             <View style={styles.container}>
-                <Navbar navbarLocation={"DASHBOARD"}/>
-                <TileGrid navigation={this.props.navigation}/>
+                <View style={styles.content}>
+                    <TileGrid style={styles.tiles} navigation={this.props.navigation}/>
+                </View>
             </View>
         );
     }
@@ -21,9 +28,13 @@ export default class Frontpage extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 'auto',
         flex: 1,
         backgroundColor: '#fff',
-        flexDirection: "column",
-        alignItems: 'center',
+        flexDirection: 'column'
     },
+    content: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
