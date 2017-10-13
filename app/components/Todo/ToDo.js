@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoItem from './ToDoItem.js';
-import {View, Button, TextInput, StyleSheet} from 'react-native';
+import {View, Button, TextInput, StyleSheet, AsyncStorage} from 'react-native';
 
 
 export default class ToDo extends React.Component {
@@ -8,10 +8,8 @@ export default class ToDo extends React.Component {
         super(props);
         let todos = [];
         let colors_todo = [];
-        /*if (localStorage.getItem("ToDo") != null) {
-            todos = JSON.parse(localStorage.getItem("ToDo"));
-            colors_todo = JSON.parse(localStorage.getItem("Colors"));
-        }*/
+        console.log(this.getItems());
+        console.log("I did not wait");
         this.state = {
             value: '',
             filter: '',
@@ -26,8 +24,25 @@ export default class ToDo extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClicks = this.handleClicks.bind(this);
         this.filter = this.filter.bind(this);
+        this.getItems();
 
 
+    }
+
+    async getItems() {
+        let todos;
+        let colors;
+        try {
+            todos = await AsyncStorage.getItem('ToDo');
+            //const colors = JSON.parse(AsyncStorage.getItem('Colors'));
+            if (todos !== null){
+                // We have data!!
+                todos = JSON.parse(todos);
+                this.setState({data: todos});
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     filter() {
@@ -53,7 +68,6 @@ export default class ToDo extends React.Component {
     handleChange(event){
 
         this.setState({value: event.target.value});
-        console.log(event.target.value);
     }
 
     handleSubmit(event) {
@@ -63,34 +77,47 @@ export default class ToDo extends React.Component {
             todos.push(this.state.value);
             colors.push(this.state.current_color);
             this.setState({data: todos, color_data: colors});
+            try {
+                AsyncStorage.setItem("ToDo", JSON.stringify(todos));
+                AsyncStorage.setItem("Colors", JSON.stringify(todos));
+            } catch (error) {
+                console.log(error);
+            }
         }
-            /*if (typeof(Storage) !== "undefined" ) {
-                localStorage.setItem("ToDo", JSON.stringify(todos));
-                localStorage.setItem("Colors", JSON.stringify(colors));
-            }*/
-
         this.setState({value: ""});
         event.preventDefault();
 
 
     }
 
-   handleClicks(index) {
-        /*let todos = JSON.parse(localStorage.getItem("ToDo"));
-        let colors = JSON.parse(localStorage.getItem("Colors"));*/
-
-        console.log("I was clicked");
-        let handledTodos = this.state.data;
-        let handledColors = this.state.color_data;
-        for (let i = 0; i < todos.length; i++) {
-            if (i !== index) {
-                handledTodos.push(this.state.data[i]);
+   async handleClicks(index) {
+       let todos;
+       let colors;
+       try {
+           todos = await AsyncStorage.getItem('ToDo');
+           //const colors = JSON.parse(AsyncStorage.getItem('Colors'));
+           if (todos !== null){
+               // We have data!!
+               todos = JSON.parse(todos);
+           }
+       } catch (error) {
+           console.log(error);
+       }
+       let handledTodos = [];
+       let handledColors = [];
+       for (let i = 0; i < todos.length; i++) {
+           if (i !== index) {
+                handledTodos.push(todos[i]);
                 //handledColors.push(colors[i]);
             }
         }
        this.setState({ data: handledTodos, color_data: handledColors});
-      /* localStorage.setItem("ToDo", JSON.stringify(handledTodos));
-       localStorage.setItem("Colors", JSON.stringify(handledColors));*/
+       try {
+           AsyncStorage.setItem("ToDo", JSON.stringify(handledTodos));
+           AsyncStorage.setItem("Colors", JSON.stringify(handledColors));
+       } catch (error) {
+           console.log(error);
+       }
     }
 
 

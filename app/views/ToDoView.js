@@ -26,7 +26,8 @@ export default class ToDoView extends React.Component {
 }
 const styles = StyleSheet.create({
     todoHolder: {
-        display: "flex"
+        display: "flex",
+        backgroundColor: 'white',
     }
 
 
