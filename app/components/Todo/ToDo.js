@@ -1,6 +1,7 @@
 import React from 'react';
 import ToDoItem from './ToDoItem.js';
-import {View, Button, TextInput, StyleSheet, AsyncStorage} from 'react-native';
+import {View, TextInput, StyleSheet, AsyncStorage} from 'react-native';
+import {Button} from 'react-native-elements';
 
 
 export default class ToDo extends React.Component {
@@ -144,13 +145,16 @@ export default class ToDo extends React.Component {
                     <TextInput
                         style={styles.todoText}
                         onChangeText={(text) => this.setState({value: text})}
+                        placeholder="Write your todo's here"
                         value={this.state.value}
                     />
+
                     <Button
+                        large
                         onPress={this.handleSubmit}
-                        title="Add"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
+                        title='ADD'
+                        backgroundColor="#4CAF50"
+                        containerViewStyle={styles.todoButton}
                     />
                 </View>
             </View>
@@ -161,10 +165,16 @@ export default class ToDo extends React.Component {
 const styles = StyleSheet.create({
     todoText: {
         height: 40,
-        borderColor: 'grey',
+        borderColor: 'lightgrey',
         backgroundColor: 'white',
-        borderWidth: 1
+        borderWidth: 0.5
+    },
+    todoButton: {
+        width:  '100%',
+        marginLeft: 0,
     }
+
+
 });
 
 
