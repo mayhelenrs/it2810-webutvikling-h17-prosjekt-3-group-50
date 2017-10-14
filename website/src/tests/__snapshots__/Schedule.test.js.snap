@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Schedule Components renders the Event Component 1`] = `
+<div
+  className="event"
+>
+  <input
+    className="event-title"
+    onChange={[Function]}
+    value=""
+  />
+  <input
+    className="event-description"
+    onChange={[Function]}
+    value=""
+  />
+</div>
+`;
+
+exports[`Schedule Components renders the Slot Component 1`] = `
+<div
+  className="slot"
+  style={
+    Object {
+      "backgroundColor": "#c7b9e5",
+    }
+  }
+>
+  <div>
+    <input
+      className="slot-interval slot-interval-start"
+      onChange={[Function]}
+      value={undefined}
+    />
+    -
+    <input
+      className="slot-interval slot-interval-end"
+      onChange={[Function]}
+      value={undefined}
+    />
+  </div>
+  <div
+    className="event"
+  >
+    <input
+      className="event-title"
+      onChange={[Function]}
+      value=""
+    />
+    <input
+      className="event-description"
+      onChange={[Function]}
+      value=""
+    />
+  </div>
+</div>
+`;
