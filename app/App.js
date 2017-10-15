@@ -6,18 +6,24 @@ import CategoryFilterContainer from './components/categories/CategoryFilterConta
 import {StackNavigator} from 'react-navigation';
 import Frontpage from "./views/frontpage";
 import Schedule from "./views/Schedule";
+import {Categories} from "./components/categories/Categories";
 
 export default class App extends React.Component {
 
     render() {
         return (
-            <ScrollView contentContainerStyle={styles.container}>
-                <CategoryFilterContainer filter={() => console.log("asd")}/>
-                <CategoryContainer filter={() => console.log("The beast")}/>
-            </ScrollView>
+            <Categories/>
         );
     }
 };
+
+/**
+ *
+ <ScrollView contentContainerStyle={styles.container}>
+ <CategoryFilterContainer filter={() => console.log("asd")}/>
+ <CategoryContainer filter={() => console.log("The beast")}/>
+ </ScrollView>
+ */
 
 const Navigator = StackNavigator({
     Home: {screen: Frontpage},
