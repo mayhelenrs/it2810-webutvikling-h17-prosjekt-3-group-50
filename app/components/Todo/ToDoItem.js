@@ -22,7 +22,6 @@ export default class ToDoItem extends React.Component {
 
                 <View style={styles.categoryColorTodo}/>
                 <CheckBox
-                    center
                     title={this.props.value}
                     key={this.props.index}
                     checkedIcon='dot-circle-o'
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
     checkboxTodo: {
         width: '100%',
         height:'100%',
-        borderRadius: 0,
         marginTop: 0,
         marginLeft: 0,
         backgroundColor: 'white',
@@ -59,11 +57,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         marginBottom: 30,
-        marginTop: 10,
-        shadowOffset:{  width: 5,  height: 5,  },
+        marginTop: 0,
+        shadowOffset: { width: 2, height: 2 },
         shadowColor: 'grey',
         shadowOpacity: 0.5,
-
 
     }
 });

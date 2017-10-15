@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
     todoHolder: {
         display: "flex",
         backgroundColor: 'white',
+        height: '100%',
+        width: '100%',
     }
 
 

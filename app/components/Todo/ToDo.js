@@ -9,8 +9,6 @@ export default class ToDo extends React.Component {
         super(props);
         let todos = [];
         let colors_todo = [];
-        console.log(this.getItems());
-        console.log("I did not wait");
         this.state = {
             value: '',
             filter: '',
