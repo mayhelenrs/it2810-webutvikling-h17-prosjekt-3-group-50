@@ -30,7 +30,11 @@ export default class Slot extends React.Component {
                                value={this.state.interval[1]}/>
                 </View>
                 <View style={styles.text}>
-                    <Event/>
+                    <Event
+                        id={this.props.slotId}
+                        day={this.props.day}
+                        slotId={this.props.slotId}
+                    />
                 </View>
             </View>
         )

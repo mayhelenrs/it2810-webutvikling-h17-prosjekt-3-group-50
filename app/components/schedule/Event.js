@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, TextInput, View, PixelRatio} from 'react-native';
+import {StyleSheet, TextInput, View, PixelRatio, AsyncStorage} from 'react-native';
 
 export default class Event extends React.Component {
 
@@ -10,60 +10,65 @@ export default class Event extends React.Component {
             eventTitle: "",
             eventDescription: ""
         };
-        /*
+        
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onDescriptionChange = this.onDescriptionChange.bind(this);
-        */
+        this.getKey = this.getKey.bind(this);
+    
     }
 
     render() {
         return (
             <View style={styles.event}>
-                <TextInput style={styles.eventTitle} placeholder={'Event title'}
-                />
-                <TextInput style={styles.eventDescription} placeholder={'Event description'}
-                /> 
+                <TextInput style={styles.eventTitle} placeholder={'Event title'} value={this.state.eventTitle} onChangeText={(text) => this.onTitleChange(text)} />
+                <TextInput style={styles.eventDescription} placeholder={'Event description'} value={this.state.eventDescription} onChangeText={(text) => this.onDescriptionChange(text)} /> 
             </View>
         )
     }
 
-    /*
-    onTitleChange({target}) {
-        this.setState({eventTitle: target.value, eventDescription: this.state.eventDescription});
+    onTitleChange({text}) {
+        this.setState({eventTitle: text});
     }
-
-    onDescriptionChange({target}) {
-        this.setState({eventTitle: this.state.eventTitle, eventDescription: target.value});
+    onDescriptionChange({text}) {
+        this.setState({eventDescription: text});
     }
-
     componentDidUpdate() {
         this.save();
     }
-
     componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(() => data);
-        } else {
-            this.save();
-        }
+        this.load();
     }
-
-
     save() {
-        localStorage.setItem(this.getSaveName(), JSON.stringify(this.state))
+        let eventData_obj = {
+            eventTitle: this.state.eventTitle,
+            eventDescription: this.state.eventDescription
+        };
+        AsyncStorage.setItem(this.getKey(), JSON.stringify(eventData_obj), () => {
+            //data is saved
+        });
     }
-
     load() {
-        return this.getSaveName() in localStorage
-            ? JSON.parse(localStorage.getItem(this.getSaveName()))
-            : null;
+        //default value
+        let eventData_obj = {
+            eventTitle: "heia",
+            eventDescription: "hva skjer"
+        };
+        //check if load is possible
+        AsyncStorage.getItem(this.getKey(), (err, result) => {
+                eventData_obj = result;
+                this.setState({
+                    eventTitle: eventData_obj['eventTitle'],
+                    eventDescription: eventData_obj['eventDescription']
+                })
+        });
+        //set state to the eventual loaded value
+
     }
 
-    getSaveName() {
-        return "" + this.props.day + this.props.slotId + this.props.id;
+    getKey() {
+        //return unique key for the event
+        return "" + this.props.day + this.props.slotId;
     }
-    */
 }
 
 const styles = StyleSheet.create({
