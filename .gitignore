@@ -32,5 +32,5 @@ prosjekt3.iml
 app/.expo/
 app/npm-debug.*
 app/README.md
-app/react-native-packager-cache-001d7234eff2d163bfb0369d04a17791b4a6bafb
+app/react-native-packager-cache*
 app/haste*
