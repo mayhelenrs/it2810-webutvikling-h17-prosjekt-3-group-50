@@ -3,7 +3,7 @@
 With this application you get your very own Personal Information Manager, PIM. 
 It lets you keep track of your weekly schedule, appointments, notes and todos.
 
-###Table of contents:
+### Table of contents:
 1. [file structure](#FileStruct)
 2. [setup](#Setup)
 
@@ -44,12 +44,12 @@ To run the application you need:
 * A web server to host the website
 * A web browser to access the website
 
-####Source code:
+#### Source code:
 * https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-50 (Will probably be downloaded to our own repos at some point)
 
 Dependencies:
 
-#####Website:
+##### Website:
 
     "react": "^15.6.1",
     "react-addons-update": "^15.6.2",
@@ -58,7 +58,7 @@ Dependencies:
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13"
 
-#####App:
+##### App:
 
 Dev. dependencies:
 
@@ -74,7 +74,7 @@ Dependencies:
     "react-navigation": "^1.0.0-beta.13"
     
     
-#####Setup:
+##### Setup:
 * Website (assuming webserver has react and node installed):
     * Upload the source code to the server
     * If he webserver does not do so automatically, download all the necessary dependencies.
