@@ -26,7 +26,6 @@ export class AppointmentContainer extends React.Component {
         })
     }
 
-
     filter() {
         const appointList = this.props.selectedColor() === undefined
             ? this.state.list.map((item) => item)
@@ -60,14 +59,13 @@ export class AppointmentContainer extends React.Component {
         e.preventDefault()
     }
 
-    generateAppointment(desc, time, date, color){
+    generateAppointment(desc, time, date, color) {
         const id = this.appointmentCount++;
         return this.generateAppointmentWithId(desc, time, date, color, id);
     }
 
-    generateAppointmentWithId(desc, time, date, color, id){
-        return <AppointmentItem description={desc} time={time} date={date}
-                                key={id} color={color} id={id}/>
+    generateAppointmentWithId(desc, time, date, color, id) {
+        return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id}/>
     }
 
     componentDidUpdate() {
@@ -78,13 +76,17 @@ export class AppointmentContainer extends React.Component {
         const appointments = [];
         const appointmentIds = this.load();
         if (appointmentIds !== null) {
-            appointmentIds.forEach( id => {
+            appointmentIds.forEach(id => {
                 const appointment = JSON.parse(localStorage.getItem("Appointment" + id));
                 appointments.push(this.generateAppointmentWithId(appointment.description, appointment.time, appointment.date, appointment.color, id));
 
             });
             this.setState(prevState => {
-                return {...prevState, list: appointments, displayList: appointments};
+                return {
+                    ...prevState,
+                    list: appointments,
+                    displayList: appointments
+                };
             }, () => this.filter());
         }
     }
@@ -96,21 +98,27 @@ export class AppointmentContainer extends React.Component {
             localStorage.setItem("AppointmentIds", this.state.list.map(appointment => {
                 return appointment.props.id
             }));
-    }
+        }
 
     load() {
-        if("AppointmentIds" in localStorage)
+        if ("AppointmentIds" in localStorage)
             return localStorage.getItem("AppointmentIds").split(",").map((id) => {
                 return parseInt(id, 10)
             });
         return null;
     }
 
-    removeAppointment(element){
+    removeAppointment(element) {
         this.state.list.forEach((appointment, index) => {
             if (appointment.props.id === element.props.id) {
                 this.setState(prevState => {
-                    return {list: update(prevState.list, {$splice: [[index, 1]]})};
+                    return {
+                        list: update(prevState.list, {
+                            $splice: [
+                                [index, 1]
+                            ]
+                        })
+                    };
                 }, () => this.filter());
             }
         });
