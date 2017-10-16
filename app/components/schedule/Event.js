@@ -10,27 +10,18 @@ export default class Event extends React.Component {
             eventTitle: "",
             eventDescription: ""
         };
-        
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onDescriptionChange = this.onDescriptionChange.bind(this);
         this.getKey = this.getKey.bind(this);
-    
+        this.load = this.load.bind(this);
+        this.save = this.save.bind(this);
     }
 
     render() {
         return (
             <View style={styles.event}>
-                <TextInput style={styles.eventTitle} placeholder={'Event title'} value={this.state.eventTitle} onChangeText={(text) => this.onTitleChange(text)} />
-                <TextInput style={styles.eventDescription} placeholder={'Event description'} value={this.state.eventDescription} onChangeText={(text) => this.onDescriptionChange(text)} /> 
+                <TextInput style={styles.eventTitle} placeholder={'Event title'} value={this.state.eventTitle} onChangeText={(text) => this.setState({eventTitle: text})} />
+                <TextInput style={styles.eventDescription} placeholder={'Event description'} value={this.state.eventDescription} onChangeText={(text) => this.setState({eventDescription: text})} /> 
             </View>
         )
-    }
-
-    onTitleChange({text}) {
-        this.setState({eventTitle: text});
-    }
-    onDescriptionChange({text}) {
-        this.setState({eventDescription: text});
     }
     componentDidUpdate() {
         this.save();
@@ -39,32 +30,28 @@ export default class Event extends React.Component {
         this.load();
     }
     save() {
-        let eventData_obj = {
-            eventTitle: this.state.eventTitle,
-            eventDescription: this.state.eventDescription
-        };
-        AsyncStorage.setItem(this.getKey(), JSON.stringify(eventData_obj), () => {
-            //data is saved
-        });
+        let eventData_obj = [this.state.eventTitle, this.state.eventDescription];
+        try {
+            AsyncStorage.setItem(this.getKey(), JSON.stringify(eventData_obj));
+        } catch (error) {
+            console.log(error);
+        }
     }
-    load() {
-        //default value
-        let eventData_obj = {
-            eventTitle: "heia",
-            eventDescription: "hva skjer"
-        };
-        //check if load is possible
-        AsyncStorage.getItem(this.getKey(), (err, result) => {
-                eventData_obj = result;
+    async load() {
+        try {
+            let eData = await AsyncStorage.getItem(this.getKey());
+            if (eData !== null){
+                // We have data!!
+                eData = JSON.parse(eData);
                 this.setState({
-                    eventTitle: eventData_obj['eventTitle'],
-                    eventDescription: eventData_obj['eventDescription']
-                })
-        });
-        //set state to the eventual loaded value
-
+                    eventTitle: eData[0],
+                    eventDescription: eData[1]
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
-
     getKey() {
         //return unique key for the event
         return "" + this.props.day + this.props.slotId;

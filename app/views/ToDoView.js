@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import ToDo from '../components/Todo/ToDo'
+import ToDo from '../components/Todo/ToDo.js';
 
 
 export default class ToDoView extends React.Component {
