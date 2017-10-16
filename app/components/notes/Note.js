@@ -1,8 +1,8 @@
 import React from 'react';
-import './Notes.css';
+import {View, Text, StyleSheet} from 'react-native';
 import {NoteDisplay} from "./NoteDisplay";
 
-export class Note extends React.Component {
+export default class Note extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,44 +22,30 @@ export class Note extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        this.save();
-    }
-
-    componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(prevState => {
-                return {...prevState, data}
-            });
-        }
-        this.save();
-    }
-
     render() {
         return (
-            <div className="Note" style={{backgroundColor: this.state.color}}>
-                <div className="RemoveNote">
-                    <img className="RemoveButton" onClick={() => {this.removeNote()}} alt={'Remove'}
+            <View style={[styles.Note, {backgroundColor: this.state.color}]}>
+                <View style={styles.RemoveNote}>
+                    <img style={styles.RemoveButton} onClick={() => {this.removeNote()}} alt={'Remove'}
                          src={require('../../assets/img/close.png')}/>
-                </div>
-                <div className="NoteContent" onClick={() => this.toggleNote()}>
-                    <div className="NoteIcon">
-                        <img className="NoteImage" alt={'Remove'} src={require('../../assets/images/notes.png')}/>
-                    </div>
-                    <div className="NoteName">
-                        <p>{this.state.title}</p>
-                    </div>
-                </div>
+                </View>
+                <View style={styles.NoteContent} onClick={() => this.toggleNote()}>
+                    <View style={styles.NoteIcon} className="NoteIcon">
+                        <img style={styles.NoteImage} alt={'Remove'} src={require('../../assets/images/notes.png')}/>
+                    </View>
+                    <View style={styles.NoteName}>
+                        <Text>{this.state.title}</Text>
+                    </View>
+                </View>
                 {this.state.noteDisplay}
-            </div>
+            </View>
         );
     }
 
     removeNote() {
-        this.props.handleRemove(this);
-        localStorage.removeItem("Note" + this.props.id);
-        localStorage.removeItem("NoteDisplay" + this.props.id);
+        //this.props.handleRemove(this);
+        //localStorage.removeItem("Note" + this.props.id);
+        //localStorage.removeItem("NoteDisplay" + this.props.id);
     }
 
     updateTitle(title) {
@@ -73,12 +59,24 @@ export class Note extends React.Component {
             return {...prevState, color: prevState.color, width: prevState.width === 400 ? 0 : 400, height: prevState.height === 400 ? 0 : 400};
         });
     }
-
-    save() {
-        localStorage.setItem("Note" + this.props.id, JSON.stringify(this.state));
-    }
-
-    load() {
-        return JSON.parse(localStorage.getItem("Note" + this.props.id));
-    }
 }
+
+const styles = StyleSheet.create({
+    Note: {
+        width: 140,
+        height: 140,
+        margin: 10,
+        flexDirection: 'column',
+    },
+    Category: {
+        margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+    CategoryInput: {
+        height: 40,
+        width: '70%',
+        marginLeft: 3,
+    },
+});

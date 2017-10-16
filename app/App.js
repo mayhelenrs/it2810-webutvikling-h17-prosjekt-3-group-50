@@ -6,6 +6,7 @@ import CategoryFilterContainer from './components/categories/CategoryFilterConta
 import {StackNavigator} from 'react-navigation';
 import Frontpage from "./views/frontpage";
 import Schedule from "./views/Schedule";
+import Note from "./components/notes/Note";
 import {Categories} from "./components/categories/Categories";
 
 export default class App extends React.Component {

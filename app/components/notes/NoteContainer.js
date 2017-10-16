@@ -1,7 +1,6 @@
 import React from 'react';
-import update from 'react-addons-update';
-import './Notes.css';
-import {Note} from './Note.js';
+import Note from './Note.js';
+import {View, StyleSheet} from 'react-native';
 
 export class NoteContainer extends React.Component {
 
@@ -16,32 +15,13 @@ export class NoteContainer extends React.Component {
         };
     }
 
-    componentDidUpdate() {
-        this.save();
-    }
-
-    componentDidMount() {
-        const notes = [];
-        const noteIds = this.load();
-        if (noteIds !== null) {
-            noteIds.forEach(id => {
-                const note = JSON.parse(localStorage.getItem("Note" + id));
-                notes.push(this.generateNoteWithId(note.color, note.title, id));
-                this.noteCount = id + 1;
-            });
-            this.setState(prevState => {
-                return {...prevState, notes: notes, displayNotes: notes}
-            }, () => this.props.filterNotes());
-        }
-    }
-
     render() {
         return (
-            <div className="NoteHolder">
-                <div className="Notes">
+            <View style={styles.NoteFilter}>
+                <View style={styles.Notes}>
                     {this.state.displayedNotes}
-                </div>
-            </div>
+                </View>
+            </View>
         );
     }
 
@@ -67,28 +47,28 @@ export class NoteContainer extends React.Component {
 
     appendNote(color) {
         this.setState(prevState => {
-            return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color, "Click me to edit ")]})};
+            return {
+                ...prevState,
+                notes: update(prevState.notes, {$push: [this.generateNote(color, "Click me to edit")]})
+            };
         }, () => {
             this.props.filterNotes();
         });
     }
-
-    //Saves the IDs for the notes in the container
-    save() {
-        if (this.state.notes.length === 0)
-            localStorage.removeItem("NoteIds");
-        else
-            localStorage.setItem("NoteIds", this.state.notes.map(note => {
-                return note.props.id
-            }));
-    }
-
-    //Loads the ids for the notes in the container
-    load() {
-        if ("NoteIds" in localStorage)
-            return localStorage.getItem("NoteIds").split(",").map((id) => {
-                return parseInt(id, 10);
-            });
-        return null;
-    }
 }
+
+
+const styles = StyleSheet.create({
+    NoteContainer: {
+        width: 140,
+        height: 140,
+        margin: 10,
+        flexDirection: 'column',
+    },
+    Notes: {
+        margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    }
+});
