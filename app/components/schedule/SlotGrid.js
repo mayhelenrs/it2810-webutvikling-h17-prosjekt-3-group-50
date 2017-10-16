@@ -31,6 +31,7 @@ export default class SlotGrid extends React.Component {
                     this.state.hours.map((interval, index) =>
                         <Slot
                             key={index}
+                            slotId={index}
                             day={this.props.day}
                             interval={interval}
                             color={this.state.backgroundColors[index]}
