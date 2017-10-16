@@ -1,20 +1,23 @@
 import React from 'react';
+import update from 'react-addons-update';
 import {AppointmentItem} from './appointmentItem.jsx';
 import '../../assets/styles/appointment.css';
 
 export class AppointmentContainer extends React.Component {
+
     constructor(props) {
         super(props)
-        let appointmentList = []
+        this.appointmentCount = 0;
+        this.handleRemove = this.removeAppointment.bind(this)
+        this.formSubmit = this.formSubmit.bind(this)
+        this.filter = this.filter.bind(this)
         this.state = {
-            list: appointmentList,
-            displayList: appointmentList,
+            list: [],
+            displayList: [],
             desc: '',
             time: '',
             date: ''
         }
-        this.formSubmit = this.formSubmit.bind(this)
-        this.filter = this.filter.bind(this)
     }
 
     handleChange(event) {
@@ -23,7 +26,7 @@ export class AppointmentContainer extends React.Component {
         })
     }
 
-    
+
     filter() {
         const appointList = this.props.selectedColor() === undefined
             ? this.state.list.map((item) => item)
@@ -47,7 +50,7 @@ export class AppointmentContainer extends React.Component {
         if (this.state.desc.length > 0 && this.state.time.length > 0 && this.state.date.length > 0) {
             const newList = this.state.list.slice()
             const index = newList.length
-            const newAppointment = <AppointmentItem description={this.state.desc} time={this.state.time} date={this.state.date} key={index} id={index} color={this.getColor()}/>
+            const newAppointment = this.generateAppointmentWithId(this.state.desc, this.state.time, this.state.date, this.getColor(), index);
             newList.push(newAppointment)
             this.setState({
                 list: newList
@@ -55,6 +58,62 @@ export class AppointmentContainer extends React.Component {
 
         }
         e.preventDefault()
+    }
+
+    generateAppointment(desc, time, date, color){
+        const id = this.appointmentCount++;
+        return this.generateAppointmentWithId(desc, time, date, color, id);
+    }
+
+    generateAppointmentWithId(desc, time, date, color, id){
+        return <AppointmentItem description={desc} time={time} date={date}
+                                key={id} color={color} id={id}/>
+    }
+
+    componentDidUpdate() {
+        this.save();
+    }
+
+    componentDidMount() {
+        const appointments = [];
+        const appointmentIds = this.load();
+        if (appointmentIds !== null) {
+            appointmentIds.forEach( id => {
+                const appointment = JSON.parse(localStorage.getItem("Appointment" + id));
+                appointments.push(this.generateAppointmentWithId(appointment.description, appointment.time, appointment.date, appointment.color, id));
+
+            });
+            this.setState(prevState => {
+                return {...prevState, list: appointments, displayList: appointments};
+            }, () => this.filter());
+        }
+    }
+
+    save() {
+        if (this.state.list.length === 0)
+            localStorage.removeItem("AppointmentIds");
+        else
+            localStorage.setItem("AppointmentIds", this.state.list.map(appointment => {
+                return appointment.props.id
+            }));
+    }
+
+    load() {
+        if("AppointmentIds" in localStorage)
+            return localStorage.getItem("AppointmentIds").split(",").map((id) => {
+                return parseInt(id, 10)
+            });
+        return null;
+    }
+
+    removeAppointment(element){
+        this.state.list.forEach((appointment, index) => {
+            if (appointment.props.id === element.props.id) {
+                this.setState(prevState => {
+                    return {list: update(prevState.list, {$splice: [[index, 1]]})};
+                }, () => this.filter());
+            }
+        });
     }
 
     render() {

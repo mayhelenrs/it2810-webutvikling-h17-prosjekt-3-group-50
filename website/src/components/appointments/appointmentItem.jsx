@@ -5,7 +5,7 @@ export class AppointmentItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            description: props.description,
+            description: this.props.description,
             color: this.props.color,
             time: this.props.time,
             date: this.props.date
@@ -19,10 +19,7 @@ export class AppointmentItem extends React.Component {
         const data = this.load();
         if (data !== null) {
             this.setState(prevState => {
-                return {
-                    ...prevState,
-                    data
-                }
+                return {...prevState, data}
             });
         }
         this.save();
@@ -36,6 +33,10 @@ export class AppointmentItem extends React.Component {
         return JSON.parse(localStorage.getItem("Appointment" + this.props.id));
     }
 
+    removeAppointment() {
+        this.props.handleRemove(this);
+        localStorage.removeItem("Appointment" + this.props.id)
+    }
     render() {
         return (
             <div className="tile-wrapper" key={this.props.index}>
