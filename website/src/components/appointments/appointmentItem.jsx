@@ -8,8 +8,13 @@ export class AppointmentItem extends React.Component {
             description: this.props.description,
             color: this.props.color,
             time: this.props.time,
-            date: this.props.date
+            date: this.props.date,
+            checked: false
         }
+    }
+
+    handleClick() {
+        this.setState({checked: !this.state.checked})
     }
     componentDidUpdate() {
         this.save();
@@ -38,21 +43,27 @@ export class AppointmentItem extends React.Component {
         localStorage.removeItem("Appointment" + this.props.id)
     }
     render() {
+        const text = this.state.checked;
         return (
             <div className="tile-wrapper" key={this.props.index}>
                 <div className="color-tile" style={{
                     backgroundColor: '' + this.state.color,
                     borderColor: '' + this.state.color
                 }}></div>
-                <div className="titleText">
-                    <p>{this.state.description}</p>
-                </div>
-                <div className="dateText">
-                    <p>{this.state.time}</p>
-                    <p>{this.state.date}</p>
+                <div className="textComponents">
+                    <div className="titleText">
+                        <p>{this.state.description}</p>
+                    </div>
+                    <div className="timeText">
+                        <p>{this.state.time}</p>
+                    </div>
+                    <div className="dateText">
+                        <p>{this.state.date}</p>
+                    </div>
                 </div>
                 <div className="deleteButtonWrap">
-                    <img src={require("../../assets/images/close_red.png")} alt={"Delete button"} id="deleteButton"/>
+                    <input type="button" className="deleteButton" label={text}
+                        onClick={() => {this.removeAppointment()}} onChange={() => this.handleClick()}/>
                 </div>
             </div>
         );
