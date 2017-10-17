@@ -9,8 +9,8 @@ export class AppointmentView extends React.Component {
         super(props);
         this.state = {
             appointmentContainer: <AppointmentContainer ref={instance => {
-                this.appointmentContainer = instance
-            }}/>
+                    this.appointmentContainer = instance
+                }}/>
         }
     }
 
