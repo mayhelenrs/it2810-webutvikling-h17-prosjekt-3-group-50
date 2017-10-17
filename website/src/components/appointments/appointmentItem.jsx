@@ -62,7 +62,7 @@ export class AppointmentItem extends React.Component {
                     </div>
                 </div>
                 <div className="deleteButtonWrap">
-                    <input type="checkbox" className="deleteButton" label={text}
+                    <input type="button" className="deleteButton" label={text}
                         onClick={() => {this.removeAppointment()}} onChange={() => this.handleClick()}/>
                 </div>
             </div>
