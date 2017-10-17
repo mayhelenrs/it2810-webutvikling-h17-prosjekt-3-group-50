@@ -1,7 +1,7 @@
 import React from 'react';
 import {ToDoItem} from './ToDoItem.jsx';
 
-
+//Parent of TodoItem and child of views/TodoView
 export class ToDo extends React.Component {
     constructor(props) {
         super(props);
@@ -10,13 +10,15 @@ export class ToDo extends React.Component {
 
         this.value = "";
 
-
+        //Checking if localStorage has data, if it does it gets the stored data
         if (localStorage.getItem("ToDo") != null) {
             todos = JSON.parse(localStorage.getItem("ToDo"));
             colors_todo = JSON.parse(localStorage.getItem("Colors"));
         }
+        //Intiating states
         this.state = {
             filter: '',
+            value: '',
             current_color: '',
             color_data: colors_todo,
             data: todos,
@@ -30,6 +32,8 @@ export class ToDo extends React.Component {
         this.filter = this.filter.bind(this);
     }
 
+    //Handles the color from category selection and shows all elements if no category is chosen.
+    //If a category is chosen, then filter will ensure that only the given category items is shown.
     filter() {
         let color = this.props.selectedColor();
         this.setState({filter: color});
@@ -44,16 +48,18 @@ export class ToDo extends React.Component {
         this.setState({displayed_colors: displayed_colors, displayed_data: displayed_data});
     }
 
+    //Fires everytime the input text field change, updates value
     handleChange(event){
-        this.value = event.target.value;
+        this.setState({value: event.target.value});
     }
 
+    //Fires when Add button is clicked, updates states and stores data in localstorage.
     handleSubmit(event) {
 
         let todos = this.state.data;
         let colors = this.state.color_data;
-        if (this.value.length > 0) {
-            todos.push(this.value);
+        if (this.state.value.length > 0) {
+            todos.push(this.state.value);
             colors.push(this.state.current_color);
                 this.setState({ data: todos, color_data: colors},() => this.filter());
 
@@ -62,11 +68,12 @@ export class ToDo extends React.Component {
                 localStorage.setItem("Colors", JSON.stringify(colors));
             }
         }
-        this.value = "";
+        this.setState({value:  ""});
         event.preventDefault();
     }
 
-   handleClicks(index) {
+    //Handles checkbox clicks from child and removes the clicked item.
+    handleClicks(index) {
         let todos = JSON.parse(localStorage.getItem("ToDo"));
         let colors = JSON.parse(localStorage.getItem("Colors"));
         let handledTodos = [];
@@ -82,6 +89,7 @@ export class ToDo extends React.Component {
        localStorage.setItem("Colors", JSON.stringify(handledColors));
     }
 
+    //Render the child elements from ToDoItem, sends down the displayed todoData and colors.
     renderToDoItems() {
         return this.state.displayed_data.map((todo, index) =>
             <ToDoItem className="items" value={todo} key={index} color={this.state.displayed_colors[index]}
