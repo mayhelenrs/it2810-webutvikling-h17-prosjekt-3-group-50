@@ -43,12 +43,11 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     checkboxTodo: {
-        width: '100%',
+        width: '90%',
         height:'100%',
         marginTop: 0,
         marginLeft: 0,
         backgroundColor: 'white',
-
 
     },
     itemTodo: {
@@ -56,9 +55,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 15,
         marginTop: 0,
-        shadowOffset: { width: 2, height: 2 },
+        width: '95%',
+        shadowOffset: { width: 1, height: 1 },
         shadowColor: 'grey',
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.15,
 
     }
 });
