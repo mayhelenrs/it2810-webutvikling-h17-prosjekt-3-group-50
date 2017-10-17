@@ -18,11 +18,7 @@ export default class NoteContainer extends React.Component {
     }
 
     componentDidMount() {
-        //this.load();
-    }
-
-    componentDidUpdate() {
-        //this.save();
+        this.load();
     }
 
     render() {
@@ -53,7 +49,10 @@ export default class NoteContainer extends React.Component {
             if (note.props.id === element.props.id) {
                 this.setState(prevState => {
                     return {notes: update(prevState.notes, {$splice: [[index, 1]]})};
-                }, () => this.filter());
+                }, () => {
+                    this.save();
+                    this.filter();
+                });
             }
         });
     }
@@ -62,6 +61,7 @@ export default class NoteContainer extends React.Component {
         this.setState(prevState => {
             return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color === undefined ? "#016D91" : color, "Click me to edit ")]})};
         }, () => {
+            this.save();
             this.filter();
         });
     }
@@ -72,12 +72,14 @@ export default class NoteContainer extends React.Component {
         });
     }
 
+
     getFilteredNotes(color) {
         if (color !== undefined)
             return this.state.notes.filter((note) => note.props.color === color);
         return this.state.notes;
     }
 
+    //Saves all the note ids
     save() {
         try {
             AsyncStorage.setItem("Notes", JSON.stringify(this.state.notes.map((note) => note.props.id)));
@@ -86,13 +88,23 @@ export default class NoteContainer extends React.Component {
         }
     }
 
-    async load() {
+    //Loads the different notes by ID
+    load() {
         try {
-            console.log("Loading note container");
-            let data = await AsyncStorage.getItem("Notes");
-            if (data !== null && data !== undefined) {
-                data = JSON.parse(data).map((index) => "Note" + index);
-            }
+            AsyncStorage.getItem("Notes").then((data) => {
+                let notes = [];
+                if (data !== null && data !== undefined) {
+                    JSON.parse(data).forEach((index) => {
+                        notes.push(this.generateNoteWithId(null, null, index));
+                        this.noteCount = index + 1;
+                    });
+                    this.setState((prevState) => {
+                        return {...prevState, notes: notes};
+                    }, () => this.filter());
+                }
+            }).catch((ex) => {
+
+            });
         } catch (error) {
         }
     }
@@ -101,8 +113,6 @@ export default class NoteContainer extends React.Component {
 
 
 const styles = StyleSheet.create({
-    NoteContainer: {
-    },
     AddButton: {
         backgroundColor: '#3Cb54C',
         color: 'white',

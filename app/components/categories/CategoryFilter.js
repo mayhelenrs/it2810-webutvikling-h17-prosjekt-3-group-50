@@ -25,6 +25,7 @@ export default class CategoryFilter extends React.Component {
         );
     }
 
+    //Toggles the selected state of the element
     toggleElement() {
         this.setState(prevState => {
             return {...prevState, selected: !prevState.selected};

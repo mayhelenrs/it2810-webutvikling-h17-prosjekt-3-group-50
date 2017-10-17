@@ -17,11 +17,14 @@ export default class Categories extends React.Component {
         }
     }
 
+    //Filters the component its wrapping once it is mounted
     componentDidMount() {
         this.props.filter();
     }
 
     render() {
+        //Clones the element and adds a function prop that returns the selected category color
+        //This way the wrapped component can filter based on the selected category color
         const child = React.cloneElement(this.props.children,
             {selectedColor: this.getSelectedColor}
         );
