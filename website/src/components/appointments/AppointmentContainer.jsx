@@ -7,10 +7,6 @@ export class AppointmentContainer extends React.Component {
 
     constructor(props) {
         super(props)
-        this.appointmentCount = 0;
-        this.handleRemove = this.removeAppointment.bind(this)
-        this.formSubmit = this.formSubmit.bind(this)
-        this.filter = this.filter.bind(this)
         this.state = {
             list: [],
             displayList: [],
@@ -18,6 +14,10 @@ export class AppointmentContainer extends React.Component {
             time: '',
             date: ''
         }
+        this.appointmentCount = 0;
+        this.handleRemove = this.removeAppointment.bind(this)
+        this.formSubmit = this.formSubmit.bind(this)
+        this.filter = this.filter.bind(this)
     }
 
     handleChange(event) {
@@ -65,7 +65,7 @@ export class AppointmentContainer extends React.Component {
     }
 
     generateAppointmentWithId(desc, time, date, color, id) {
-        return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id}/>
+        return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id} handleRemove={this.handleRemove}/>
     }
 
     componentDidUpdate() {
@@ -131,22 +131,12 @@ export class AppointmentContainer extends React.Component {
                     {this.state.displayList}
                 </div>
                 <form onSubmit={this.formSubmit} className="formAppointment">
-                    <div className="formList">
-                        <div>
-                            <input type="text" className="appointmentInput" name="desc" value={this.state.desc} onChange={this.handleChange.bind(this)} placeholder="Insert description"/>
-                        </div>
-                        <div>
-                            <input type="text" className="appointmentInput" name="time" value={this.state.time} onChange={this.handleChange.bind(this)} placeholder="Insert time"/>
-                        </div>
-                        <div>
-                            <input type="text" className="appointmentInput" name="date" value={this.state.date} onChange={this.handleChange.bind(this)} placeholder="Insert date"/>
-                        </div>
-                        <div>
-                            <button onSubmit={this.formSubmit} id="formButton">
-                                Add
-                            </button>
-                        </div>
-                    </div>
+                    <input type="text" className="appointmentInput" name="desc" value={this.state.desc} onChange={this.handleChange.bind(this)} placeholder="Insert description"/>
+                    <input type="text" className="appointmentInput" name="time" value={this.state.time} onChange={this.handleChange.bind(this)} placeholder="Insert time"/>
+                    <input type="text" className="appointmentInput" name="date" value={this.state.date} onChange={this.handleChange.bind(this)} placeholder="Insert date"/>
+                    <button onSubmit={this.formSubmit} id="formButton">
+                        Add
+                    </button>
                 </form>
             </div>
         );

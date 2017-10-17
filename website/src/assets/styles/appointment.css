@@ -4,123 +4,117 @@
 }
 
 .tile-wrapper {
-    height: 3rem;
     margin: 1em;
     font-size: 10px;
+    width:inherit;
+    height: auto;
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .color-tile {
     width: 0.5rem;
-    height: inherit;
     border-width: thin;
     border-style: solid;
+}
+
+.textComponents {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 27.5rem;
 }
 
 .titleText {
-    height: inherit;
+    width: inherit;
     padding: 0 1rem 0 1rem;
     font-family: IntroRust, sans-serif;
     border-width: thin;
     border-color: lightgrey;
     border-style: solid;
-    border-left-style: none;
     flex-wrap: wrap;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+.timeText {
+    padding: 0 1rem 0 1rem;
+    font-family: IntroRust, sans-serif;
+    border-width: thin;
+    border-color: lightgrey;
+    border-style: solid;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .dateText {
-    height: inherit;
     padding: 0 1rem 0 1rem;
-    width: 20rem;
+    font-family: IntroRust, sans-serif;
     border-width: thin;
     border-color: lightgrey;
     border-style: solid;
-    border-left-style: none;
-    font-family: IntroRust, sans-serif;
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-around;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-.tile-wrapper:hover>.titleText, .tile-wrapper:hover>.dateText, .tile-wrapper:hover>.deleteButtonWrap {
+.tile-wrapper:hover>.textComponents>.titleText, .tile-wrapper:hover>.textComponents>.dateText,
+ .tile-wrapper:hover>.textComponents>.timeText, .tile-wrapper:hover>.deleteButtonWrap {
     background-color: #efefef;
 }
 
-.formList {
-    list-style-type: none;
-    margin: 1rem 0 0 -1.5rem;
-    border-width: thin;
-}
-
 .formAppointment {
-    width: 30rem;
-    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    margin: 1em;
+    max-width: 30rem;
+    min-width: 10rem;
 }
 
 .appointmentCards {
     margin-top: 3rem;
 }
 
-.appointmentText {
-    margin: 3rem;
-}
-
 .appointmentInput {
-    width: 100%;
     padding: 13px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 #formButton {
-    width: 100%;
     background-color: #4CAF50;
     border: none;
     color: white;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
 }
 
 .deleteButtonWrap {
-    width: 2rem;
-    height: inherit;
-    padding: 0 1rem 0 1rem;
     border-width: thin;
     border-color: lightgrey;
     border-style: solid;
     border-left-style: none;
-    flex-wrap: wrap;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 6px 6px 15px 0 rgba(0, 0, 0, 0.19);
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
-.deleteButtonWrap:active>#deleteButton {
-    margin-top: 40%;
-    height: 1.5rem;
-    width: 1.5rem;
-    margin-left: 15%;
+.deleteButton {
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    background-color: white;
+    -webkit-appearance: none;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
 }
 
-#deleteButton {
-    margin-top: 30%;
-}
-
-@media screen and (max-width: 525px) {
-    .formAppointment {
-        width: 100%;
-        margin-top: 2rem;
-        justify-content: center;
-        margin-left: -0.5rem;
-    }
+.deleteButton:hover {
+    background-color:  goldenrod;
 }
