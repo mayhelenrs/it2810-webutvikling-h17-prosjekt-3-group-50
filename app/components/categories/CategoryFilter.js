@@ -15,7 +15,7 @@ export default class CategoryFilter extends React.Component {
         return (
             <TouchableOpacity onPress={() => {
                 this.toggleElement();
-                //this.props.selectCategory(this);
+                this.props.selectCategory(this);
             }}>
                 <View style={[styles.CategoryFilter, {backgroundColor: '' + this.state.color,
                     width: (this.state.selected ? 100 : 75), height: (this.state.selected ? 100 : 75)}]}>

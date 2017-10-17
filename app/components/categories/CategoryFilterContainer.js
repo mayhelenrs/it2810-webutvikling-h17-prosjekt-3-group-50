@@ -10,14 +10,14 @@ export default class CategoryFilterContainer extends React.Component {
         this.categoryCount = 0;
         this.selectCategory = this.selectCategory.bind(this);
         this.state = {
-            categories: [this.generateCategory('#016D91'), this.generateCategory('#E53F6F'), this.generateCategory('#686868'), this.generateCategory('#F56376')],
+            categories: [],
             selectedCategory: undefined
         };
     }
 
     render() {
         return (
-            <View style={styles.NoteHolder}>
+            <View>
                 <Text>Categories - Select to filter your notes and add new ones!</Text>
                 <View style={styles.Notes}>
                     {this.state.categories}
@@ -38,7 +38,7 @@ export default class CategoryFilterContainer extends React.Component {
 
         this.setState(prevState => {
             return {...prevState, selectedCategory: (prevState.selectedCategory === element ? undefined : element)};
-        }, () => this.props.filterItems());
+        }, () => this.props.filter());
     }
 
     appendCategory(color) {
@@ -59,7 +59,6 @@ export default class CategoryFilterContainer extends React.Component {
 
 const styles = StyleSheet.create({
     NoteHolder: {
-        margin: 10,
     },
     Notes: {
         flexDirection: 'row',

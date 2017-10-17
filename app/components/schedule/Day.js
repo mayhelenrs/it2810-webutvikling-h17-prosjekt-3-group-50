@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native'
+import {Text, View, StyleSheet, PixelRatio} from 'react-native'
 import SlotGrid from "./SlotGrid.js";
 
 export default class Day extends React.Component {
@@ -7,6 +7,9 @@ export default class Day extends React.Component {
     render() {
         return(
             <View style={styles.day}>
+                <View style={styles.dayText}>
+                    <Text style={{color: 'white'}}>{this.props.day}</Text>
+                </View>
                 <SlotGrid day={this.props.day}/>
             </View>
         )
@@ -15,9 +18,14 @@ export default class Day extends React.Component {
 
 const styles = StyleSheet.create({
     day: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1
 
     },
     dayText:{
-
+        borderBottomWidth: 1 / PixelRatio.get(),
+        borderBottomColor: 'black',
+        backgroundColor: '#6bbbd6',
     }
 });

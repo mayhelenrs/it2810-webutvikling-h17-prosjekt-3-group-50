@@ -1,41 +1,38 @@
 import React from 'react';
 
-import {StyleSheet, ScrollView} from 'react-native';
-import CategoryContainer from './components/categories/CategoryContainer';
-import CategoryFilterContainer from './components/categories/CategoryFilterContainer';
 import {StackNavigator} from 'react-navigation';
 import Frontpage from "./views/frontpage";
 import Schedule from "./views/Schedule";
-import Note from "./components/notes/Note";
-import {Categories} from "./components/categories/Categories";
+import NoteView from "./views/NoteView";
+import TodoView from "./views/ToDoView";
+import {Font} from 'expo';
+
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fontLoaded: false
+        }
+    }
+    async componentDidMount() {
+        await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
+        this.setState({
+            fontLoaded: true
+        })
+    }
 
     render() {
-        return (
-            <Categories/>
+        let app = this.state.fontLoaded ? <Navigator/> : null
+        return(
+            app
         );
     }
 };
 
-/**
- *
- <ScrollView contentContainerStyle={styles.container}>
- <CategoryFilterContainer filter={() => console.log("asd")}/>
- <CategoryContainer filter={() => console.log("The beast")}/>
- </ScrollView>
- */
-
 const Navigator = StackNavigator({
     Home: {screen: Frontpage},
     Schedule: {screen: Schedule},
-});
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+    Todo: {screen: TodoView},
+    Notes: {screen: NoteView},
 });

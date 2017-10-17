@@ -11,9 +11,9 @@ div {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    -webkit-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 68px -7px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
+    -moz-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
+    box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
     user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -83,7 +83,7 @@ orange {
     width: 0;
     height: 0;
     position: fixed;
-    top: calc((100%/2) - 200px);
+    bottom: calc((100%/2) - 200px);
     left: calc((100%/2) - 200px);
     transition: all .5s ease-in-out;
     background-color: rgba(0, 0, 0, .8);
@@ -138,6 +138,10 @@ orange {
     }
     .AddNote {
         justify-content: center;
+    }
+    .NoteDisplay {
+        left: 0;
+        bottom: 0;
     }
 }
 

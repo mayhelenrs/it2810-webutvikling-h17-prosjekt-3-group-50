@@ -3,7 +3,7 @@ import CategoryContainer from "./CategoryContainer";
 import CategoryFilterContainer from "./CategoryFilterContainer";
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
-export class Categories extends React.Component {
+export default class Categories extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,8 +12,8 @@ export class Categories extends React.Component {
         this.state = {
             categoryFilterContainer: <CategoryFilterContainer ref={instance => {
                 this.categoryFilterContainer = instance
-            }} filterNotes={this.props.filter}/>,
-            categoryContainer: <CategoryContainer updateCategoryFilter={this.updateCategoryFilter} id={this.props.id}/>
+            }} filter={this.props.filter}/>,
+            categoryContainer: <CategoryContainer filter={this.props.filter} updateCategoryFilter={this.updateCategoryFilter} id={this.props.id}/>
         }
     }
 
@@ -22,11 +22,19 @@ export class Categories extends React.Component {
     }
 
     render() {
+        const child = React.cloneElement(this.props.children,
+            {selectedColor: this.getSelectedColor}
+        );
         return (
-            <ScrollView>
+            <ScrollView style={styles.View}>
                 <View style={styles.Categories}>
-                    <Text>This is your TODO for now</Text>
-                    {this.state.categoryFilterContainer}
+                    <Text style={{fontSize: 20}}>This is your categories for now</Text>
+                    <View style={styles.MarginTop}>
+                        {this.state.categoryFilterContainer}
+                    </View>
+                    <View style={styles.MarginTop}>
+                        {child}
+                    </View>
                     {this.state.categoryContainer}
                 </View>
             </ScrollView>
@@ -46,8 +54,13 @@ export class Categories extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    MarginTop: {
+        marginTop: 20,
+    },
+    View: {
+        margin: 10,
+    },
     Categories: {
-        flex: 1,
         flexDirection: 'column',
     },
     Category: {

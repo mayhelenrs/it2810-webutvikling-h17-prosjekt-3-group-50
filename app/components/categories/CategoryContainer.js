@@ -16,6 +16,12 @@ export default class CategoryContainer extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.props.updateCategoryFilter(this.state.categories.map(category => {
+            return category.props.color;
+        }));
+    }
+
     render() {
         return (
             <ScrollView style={styles.CategoryCreatorHolder}>
@@ -36,7 +42,7 @@ export default class CategoryContainer extends React.Component {
                     {$push: [this.generateCategory("New category")]})};
             },
             () => {
-                this.props.filter([this.state.categories[this.state.categories.length - 1].props.color]);
+                this.props.updateCategoryFilter([this.state.categories[this.state.categories.length - 1].props.color]);
             }
         );
     }
@@ -66,11 +72,13 @@ export default class CategoryContainer extends React.Component {
         return this.generateCategoryWithId(text, id, this.getNextColor());
     }
 
+
+
 }
 
 const styles = StyleSheet.create({
     AddCategory: {
-        margin: 10,
+        marginTop: 10,
     },
     CategoryCreatorHolder: {
         flex: 1,
