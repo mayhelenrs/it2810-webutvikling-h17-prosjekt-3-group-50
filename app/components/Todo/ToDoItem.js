@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         marginTop: 0,
         shadowOffset: { width: 2, height: 2 },
         shadowColor: 'grey',
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.3,
 
     }
 });
