@@ -72,6 +72,8 @@ orange {
 .CategoryName {
     border: none;
     background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px solid black;
+    padding-bottom: 3px;
     font-weight: bold;
     outline: none;
 }

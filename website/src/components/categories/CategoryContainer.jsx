@@ -1,6 +1,6 @@
 import React from 'react';
-import './Categories.css';
 import {Category} from "./Category";
+import '../../assets/styles/Categories.css';
 import update from 'react-addons-update';
 
 export class CategoryContainer extends React.Component {
