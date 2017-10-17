@@ -57,11 +57,11 @@ export default class Note extends React.Component {
                                 }} alt={'Remove'}
                                        source={require('../../assets/images/arrow_right.png')}/>
                             </TouchableOpacity>
-                            <TextInput style={styles.TitleInput} onChangeText={this.onInputChange}
+                            <TextInput style={[styles.TitleInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onInputChange}
                                        value={this.state.title}
                                        underlineColorAndroid={'rgba(0, 0, 0, 0)'}/>
                         </View>
-                        <TextInput style={styles.TextInput} onChangeText={this.onTextChange} value={this.state.text}
+                        <TextInput style={[styles.TextInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onTextChange} value={this.state.text}
                                    underlineColorAndroid={'rgba(0, 0, 0, 0)'} multiline={true} numberOfLines={10}
                                    blurOnSubmit={false}/>
                     </View>
@@ -86,7 +86,7 @@ export default class Note extends React.Component {
                                    source={require('../../assets/images/notes.png')}/>
                         </View>
                         <View style={styles.NoteName}>
-                            <Text style={styles.TitleText}>{this.state.title}</Text>
+                            <Text style={[styles.TitleText, {fontFamily: 'IntroRust'}]}>{this.state.title}</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
