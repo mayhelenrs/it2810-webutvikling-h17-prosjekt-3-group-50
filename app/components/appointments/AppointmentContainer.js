@@ -21,13 +21,6 @@ export default class AppointmentContainer extends React.Component {
         this.filter = this.filter.bind(this);
     }
 
-    handleChange(event) {
-        console.log(event.target.name);
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
     filter() {
         const appointList = this.props.selectedColor() === undefined
             ? this.state.list.map((item) => item)
