@@ -54,7 +54,7 @@ export class ToDo extends React.Component {
     }
 
     //Fires when Add button is clicked, updates states and stores data in localstorage.
-    handleSubmit(event) {
+    handleSubmit() {
 
         let todos = this.state.data;
         let colors = this.state.color_data;
@@ -69,7 +69,6 @@ export class ToDo extends React.Component {
             }
         }
         this.setState({value:  ""});
-        event.preventDefault();
     }
 
     //Handles checkbox clicks from child and removes the clicked item.
