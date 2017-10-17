@@ -11,7 +11,7 @@ export default class Frontpage extends React.Component {
             fontFamily: 'IntroRust'
         },
         headerStyle: {
-            backgroundColor: '#00ACCE',
+            backgroundColor: 'white',
         }
     };
 
@@ -28,13 +28,7 @@ export default class Frontpage extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 'auto',
         flex: 1,
-        backgroundColor: '#fff',
-        flexDirection: 'column'
-    },
-    content: {
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor: 'white',
     }
 });
