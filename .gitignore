@@ -35,3 +35,4 @@ app/npm-debug.*
 app/README.md
 app/react-native-packager-cache*
 app/haste*
+app/jest_0/

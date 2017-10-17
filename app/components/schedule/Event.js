@@ -18,8 +18,8 @@ export default class Event extends React.Component {
     render() {
         return (
             <View style={styles.event}>
-                <TextInput style={styles.eventTitle} placeholder={'Event title'} value={this.state.eventTitle} onChangeText={(text) => this.setState({eventTitle: text})} />
-                <TextInput style={styles.eventDescription} placeholder={'Event description'} value={this.state.eventDescription} onChangeText={(text) => this.setState({eventDescription: text})} /> 
+                <TextInput style={styles.eventTitle} placeholder={'Title'} value={this.state.eventTitle} onChangeText={(text) => this.setState({eventTitle: text})} />
+                <TextInput style={styles.eventDescription} placeholder={'Description'} value={this.state.eventDescription} onChangeText={(text) => this.setState({eventDescription: text})} /> 
             </View>
         )
     }
