@@ -19,8 +19,6 @@ export default class Tile extends React.Component {
         );
     }
 }
-
-
 const styles = StyleSheet.create({
     tile: {
         width: '40%',

@@ -11,7 +11,6 @@ export default class Navbar extends React.Component {
         );
     }
 }
-
 const styles = StyleSheet.create({
     navbar: {
         width: '100%',
@@ -26,5 +25,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         flex: 1
     }
-
 });

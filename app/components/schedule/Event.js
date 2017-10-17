@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, TextInput, View, PixelRatio} from 'react-native';
+import {StyleSheet, TextInput, View, PixelRatio, AsyncStorage} from 'react-native';
 
 export default class Event extends React.Component {
 
@@ -10,60 +10,52 @@ export default class Event extends React.Component {
             eventTitle: "",
             eventDescription: ""
         };
-        /*
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onDescriptionChange = this.onDescriptionChange.bind(this);
-        */
+        this.getKey = this.getKey.bind(this);
+        this.load = this.load.bind(this);
+        this.save = this.save.bind(this);
     }
 
     render() {
         return (
             <View style={styles.event}>
-                <TextInput style={styles.eventTitle} placeholder={'Event title'}
-                />
-                <TextInput style={styles.eventDescription} placeholder={'Event description'}
-                /> 
+                <TextInput style={styles.eventTitle} placeholder={'Event title'} value={this.state.eventTitle} onChangeText={(text) => this.setState({eventTitle: text})} />
+                <TextInput style={styles.eventDescription} placeholder={'Event description'} value={this.state.eventDescription} onChangeText={(text) => this.setState({eventDescription: text})} /> 
             </View>
         )
     }
-
-    /*
-    onTitleChange({target}) {
-        this.setState({eventTitle: target.value, eventDescription: this.state.eventDescription});
-    }
-
-    onDescriptionChange({target}) {
-        this.setState({eventTitle: this.state.eventTitle, eventDescription: target.value});
-    }
-
     componentDidUpdate() {
         this.save();
     }
-
     componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(() => data);
-        } else {
-            this.save();
+        this.load();
+    }
+    save() {
+        let eventData_obj = [this.state.eventTitle, this.state.eventDescription];
+        try {
+            AsyncStorage.setItem(this.getKey(), JSON.stringify(eventData_obj));
+        } catch (error) {
+            console.log(error);
         }
     }
-
-
-    save() {
-        localStorage.setItem(this.getSaveName(), JSON.stringify(this.state))
+    async load() {
+        try {
+            let eData = await AsyncStorage.getItem(this.getKey());
+            if (eData !== null){
+                // We have data!!
+                eData = JSON.parse(eData);
+                this.setState({
+                    eventTitle: eData[0],
+                    eventDescription: eData[1]
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
-
-    load() {
-        return this.getSaveName() in localStorage
-            ? JSON.parse(localStorage.getItem(this.getSaveName()))
-            : null;
+    getKey() {
+        //return unique key for the event
+        return "" + this.props.day + this.props.slotId;
     }
-
-    getSaveName() {
-        return "" + this.props.day + this.props.slotId + this.props.id;
-    }
-    */
 }
 
 const styles = StyleSheet.create({

@@ -21,7 +21,6 @@ export default class App extends React.Component {
             fontLoaded: true
         })
     }
-
     render() {
         let app = this.state.fontLoaded ? <Navigator/> : null
         return(
@@ -29,7 +28,6 @@ export default class App extends React.Component {
         );
     }
 };
-
 const Navigator = StackNavigator({
     Home: {screen: Frontpage},
     Schedule: {screen: Schedule},
