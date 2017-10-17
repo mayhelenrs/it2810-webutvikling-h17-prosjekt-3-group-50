@@ -52,7 +52,10 @@ export class AppointmentContainer extends React.Component {
             const newAppointment = this.generateAppointmentWithId(this.state.desc, this.state.time, this.state.date, this.getColor(), index);
             newList.push(newAppointment)
             this.setState({
-                list: newList
+                list: newList,
+                desc:'',
+                time:'',
+                date:''
             }, () => this.filter())
 
         }
