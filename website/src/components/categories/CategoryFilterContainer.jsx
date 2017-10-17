@@ -38,7 +38,7 @@ export class CategoryFilterContainer extends React.Component {
 
         this.setState(prevState => {
             return {...prevState, selectedCategory: (prevState.selectedCategory === element ? undefined : element)};
-        }, () => this.props.filterItems());
+        }, () => this.props.filter());
     }
 
     appendCategory(color) {
