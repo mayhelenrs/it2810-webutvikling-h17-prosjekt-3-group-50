@@ -135,24 +135,23 @@ export default class ToDo extends React.Component {
         return (
             <View>
                 <View>
-                    <View>
-                        {this.renderToDoItems()}
-                    </View>
-                    <TextInput
-                        style={styles.todoText}
-                        onChangeText={(text) => this.setState({value: text})}
-                        placeholder="  Write your todo's here"
-                        value={this.state.value}
-                    />
-
-                    <Button
-                        onPress={this.handleSubmit}
-                        title='ADD'
-                        backgroundColor="#4CAF50"
-                        fontFamily='IntroRust'
-                        containerViewStyle={styles.todoButton}
-                    />
+                    {this.renderToDoItems()}
                 </View>
+                <TextInput
+                    style={styles.todoText}
+                    onChangeText={(text) => this.setState({value: text})}
+                    placeholder="Write your todo's here"
+                    value={this.state.value}
+                    underlineColorAndroid='rgba(0,0,0,0)'
+                />
+
+                <Button
+                    onPress={this.handleSubmit}
+                    title='ADD'
+                    backgroundColor="#4CAF50"
+                    fontFamily='IntroRust'
+                    containerViewStyle={styles.todoButton}
+                />
             </View>
         );
     }
@@ -163,7 +162,8 @@ const styles = StyleSheet.create({
         height: 40,
         borderColor: 'lightgrey',
         backgroundColor: 'white',
-        borderWidth: 0.5
+        borderWidth: 0.5,
+        paddingLeft: 15
     },
     todoButton: {
         width:  '100%',
