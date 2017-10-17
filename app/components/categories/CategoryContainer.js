@@ -1,6 +1,7 @@
 import React from 'react';
 import Category from "./Category";
-import {ScrollView, View, Text, Button, StyleSheet} from 'react-native';
+import {Button} from 'react-native-elements';
+import {ScrollView, View, Text, StyleSheet, AsyncStorage} from 'react-native';
 import update from 'react-addons-update';
 
 export default class CategoryContainer extends React.Component {
@@ -14,21 +15,32 @@ export default class CategoryContainer extends React.Component {
         this.state = {
             categories: [this.generateCategory("School"), this.generateCategory("Home")]
         };
+        //If the component has not been saved before, save it
+        AsyncStorage.getItem("Categories").then((data) => {
+            if (data === null) {
+                this.save();
+            }
+        }).catch((ex) => {
+
+        });
     }
 
     componentDidMount() {
-        this.props.updateCategoryFilter(this.state.categories.map(category => {
-            return category.props.color;
-        }));
+        this.load();
     }
 
     render() {
         return (
             <ScrollView style={styles.CategoryCreatorHolder}>
-                <Text>Categories</Text>
+                <Text style={{fontFamily: 'IntroRust', fontSize: 20}}>Categories</Text>
                 {this.state.categories}
                 <View style={styles.AddCategory}>
-                    <Button style={styles.AddButton} title={"Add"} onPress={() => this.appendCategory()} />
+                    <Button
+                        onPress={() => this.appendCategory()}
+                        title='ADD'
+                        fontFamily={'IntroRust'}
+                        backgroundColor="#4CAF50"
+                    />
                 </View>
             </ScrollView>
         );
@@ -38,11 +50,14 @@ export default class CategoryContainer extends React.Component {
     //to add the category to the filter
     appendCategory() {
         this.setState(prevState => {
-                return {...prevState, categories: update(this.state.categories,
-                    {$push: [this.generateCategory("New category")]})};
+                return {
+                    ...prevState, categories: update(this.state.categories,
+                        {$push: [this.generateCategory("New category")]})
+                };
             },
             () => {
                 this.props.updateCategoryFilter([this.state.categories[this.state.categories.length - 1].props.color]);
+                this.save();
             }
         );
     }
@@ -72,6 +87,35 @@ export default class CategoryContainer extends React.Component {
         return this.generateCategoryWithId(text, id, this.getNextColor());
     }
 
+    //Saves the stored category ids and colors
+    save() {
+        try {
+            AsyncStorage.setItem("Categories", JSON.stringify(this.state.categories.map((category) => [category.props.color, category.props.id])));
+        } catch (error) {
+
+        }
+    }
+
+    //Loads the saved category ids/colors and adds it to the category list
+    load() {
+        AsyncStorage.getItem("Categories").then((data) => {
+            let categories = [];
+            if (data !== null && data !== undefined) {
+                JSON.parse(data).forEach((data) => {
+                    categories.push(this.generateCategoryWithId(null, data[1], data[0]));
+                    this.categoryCount = data[1] + 1;
+                    this.colorIndex++;
+                });
+                this.setState((prevState) => {
+                    return {...prevState, categories: categories};
+                }, () => this.props.updateCategoryFilter(this.state.categories.map(category => {
+                    return category.props.color;
+                })));
+            }
+        }).catch((ex) => {
+
+        });
+    }
 
 
 }

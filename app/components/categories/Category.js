@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {View, TextInput, StyleSheet, AsyncStorage} from 'react-native';
 
 
 export default class Category extends React.Component {
@@ -10,13 +10,29 @@ export default class Category extends React.Component {
         this.state = {
             color: props.color,
             text: props.text
-        }
+        };
+
+        //If the component has not been saved before, save it
+        AsyncStorage.getItem("Category" + this.props.id).then((data) => {
+            if (data === null) {
+                this.save();
+                this.load();
+            }
+        }).catch((ex) => {
+
+        });
     }
 
+    //Will load the state of the component right before its mounted
+    componentWillMount() {
+        this.load();
+    }
+
+    //Input listener that updates the text written in the category name filed
     onInputChange(text) {
         this.setState(prevState => {
             return {...prevState, text: text};
-        });
+        }, () => this.save());
     }
 
     render() {
@@ -24,10 +40,32 @@ export default class Category extends React.Component {
             <View style={styles.Category}>
                 <View style={[styles.CategoryColor, {backgroundColor: '' + this.state.color}]}/>
                 <View style={styles.CategoryInput}>
-                    <TextInput style={styles.CategoryInput} onChangeText={this.onInputChange} value={this.state.text}/>
+                    <TextInput style={[styles.CategoryInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onInputChange} value={this.state.text}/>
                 </View>
             </View>
         );
+    }
+
+    //Saves the category
+    save() {
+        try {
+            AsyncStorage.setItem("Category" + this.props.id, JSON.stringify(this.state));
+        } catch (error) {
+        }
+    }
+
+    //Loads the past category state
+    load() {
+        AsyncStorage.getItem("Category" + this.props.id).then((data) => {
+            if (data !== null) {
+                data = JSON.parse(data);
+                this.setState(() => {
+                    return data;
+                });
+            }
+        }).catch((ex) => {
+
+        });
     }
 
 }
