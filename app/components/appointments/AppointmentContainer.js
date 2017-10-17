@@ -1,7 +1,7 @@
 import React from 'react';
 import update from 'react-addons-update';
 import {AppointmentItem} from './AppointmentItem.js';
-import '../../assets/styles/appointment.css';
+import {View, TextInput, StyleSheet} from 'react-native';
 
 export class AppointmentContainer extends React.Component {
 
@@ -10,9 +10,9 @@ export class AppointmentContainer extends React.Component {
         this.state = {
             list: [],
             displayList: [],
-            desc: '',
-            time: '',
-            date: ''
+            desc: 'Insert desc',
+            time: 'Insert time',
+            date: 'Insert date'
         }
         this.appointmentCount = 0;
         this.handleRemove = this.removeAppointment.bind(this)
@@ -53,18 +53,13 @@ export class AppointmentContainer extends React.Component {
             newList.push(newAppointment)
             this.setState({
                 list: newList,
-                desc:'',
-                time:'',
-                date:''
+                desc:'Insert dasc',
+                time:'Insert time',
+                date:'Insert date'
             }, () => this.filter())
 
         }
         e.preventDefault()
-    }
-
-    generateAppointment(desc, time, date, color) {
-        const id = this.appointmentCount++;
-        return this.generateAppointmentWithId(desc, time, date, color, id);
     }
 
     generateAppointmentWithId(desc, time, date, color, id) {
@@ -94,23 +89,6 @@ export class AppointmentContainer extends React.Component {
         }
     }
 
-    save() {
-        if (this.state.list.length === 0)
-            localStorage.removeItem("AppointmentIds");
-        else
-            localStorage.setItem("AppointmentIds", this.state.list.map(appointment => {
-                return appointment.props.id
-            }));
-        }
-
-    load() {
-        if ("AppointmentIds" in localStorage)
-            return localStorage.getItem("AppointmentIds").split(",").map((id) => {
-                return parseInt(id, 10)
-            });
-        return null;
-    }
-
     removeAppointment(element) {
         this.state.list.forEach((appointment, index) => {
             if (appointment.props.id === element.props.id) {
@@ -129,19 +107,14 @@ export class AppointmentContainer extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="appointmentCards">
+            <View>
+                <View>
                     {this.state.displayList}
-                </div>
-                <form onSubmit={this.formSubmit} className="formAppointment">
-                    <input type="text" className="appointmentInput" name="desc" value={this.state.desc} onChange={this.handleChange.bind(this)} placeholder="Insert description"/>
-                    <input type="text" className="appointmentInput" name="time" value={this.state.time} onChange={this.handleChange.bind(this)} placeholder="Insert time"/>
-                    <input type="text" className="appointmentInput" name="date" value={this.state.date} onChange={this.handleChange.bind(this)} placeholder="Insert date"/>
-                    <button onSubmit={this.formSubmit} id="formButton">
-                        Add
-                    </button>
-                </form>
-            </div>
+                </View>
+                <TextInput name={"desc"} value={this.state.desc} onChangeText={this.handleChange.bind(this)}/>
+                <TextInput name={"time"} value={this.state.time} onChange={this.handleChange.bind(this)}/>
+                <TextInput name={"date"} value={this.state.date} onChange={this.handleChange.bind(this)}/>
+            </View>
         );
     }
 }

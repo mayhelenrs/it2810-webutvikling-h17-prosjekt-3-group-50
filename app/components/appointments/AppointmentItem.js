@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../assets/styles/appointment.css';
+import {View, Text} from 'react-native';
+import {Button} from 'react-native-elements';
 
 export class AppointmentItem extends React.Component {
     constructor(props) {
@@ -45,27 +46,31 @@ export class AppointmentItem extends React.Component {
     render() {
         const text = this.state.checked;
         return (
-            <div className="tile-wrapper" key={this.props.index}>
-                <div className="color-tile" style={{
+            <View key={this.props.index}>
+                <View style={{
                     backgroundColor: '' + this.state.color,
                     borderColor: '' + this.state.color
-                }}></div>
-                <div className="textComponents">
-                    <div className="titleText">
-                        <p>{this.state.description}</p>
-                    </div>
-                    <div className="timeText">
-                        <p>{this.state.time}</p>
-                    </div>
-                    <div className="dateText">
-                        <p>{this.state.date}</p>
-                    </div>
-                </div>
-                <div className="deleteButtonWrap">
-                    <input type="button" className="deleteButton" label={text}
-                        onClick={() => {this.removeAppointment()}} onChange={() => this.handleClick()}/>
-                </div>
-            </div>
+                }}></View>
+                <View>
+                    <View>
+                        <Text>{this.state.description}</Text>
+                    </View>
+                    <View className="timeText">
+                        <Text>{this.state.time}</Text>
+                    </View>
+                    <View className="dateText">
+                        <Text>{this.state.date}</Text>
+                    </View>
+                </View>
+                <View>
+                    <Button
+                        onPress={() => this.removeAppointment()}
+                        title='remove'
+                        fontFamily={'IntroRust'}
+                        backgroundColor="#4CAF50"
+                    />
+                </View>
+            </View>
         );
     }
 }
