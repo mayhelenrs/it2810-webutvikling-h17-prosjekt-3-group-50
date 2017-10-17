@@ -29,6 +29,7 @@
     height: 50px;
     margin: 20px;
     width: 100%;
+    align-items: center;
     display: flex;
     -webkit-box-shadow: 0 0 51px -20px rgba(0,0,0,0.4);
     -moz-box-shadow: 0 0 51px -20px rgba(0,0,0,0.4);
@@ -56,9 +57,6 @@
     display: flex;
 }
 
-.todo-text {
-    margin-top: 17px;
-}
 
 .todo-info {
     font-size: 14px;
@@ -95,7 +93,7 @@
 }
 
 .todo-checkbox {
-    margin-top: 3%;
+
     width: 1.8em;
     height: 1.8em;
     background-color: white;
