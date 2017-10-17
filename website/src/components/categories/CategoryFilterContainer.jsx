@@ -1,5 +1,5 @@
 import React from 'react';
-import './Categories.css';
+import '../../assets/styles/Categories.css';
 import {CategoryFilter} from './CategoryFilter.jsx';
 import update from 'react-addons-update';
 

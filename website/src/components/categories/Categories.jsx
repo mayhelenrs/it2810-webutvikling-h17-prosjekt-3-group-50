@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/styles/NoteView.css';
 import {CategoryContainer} from "./CategoryContainer";
 import {CategoryFilterContainer} from "./CategoryFilterContainer";
 
