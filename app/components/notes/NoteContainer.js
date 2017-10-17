@@ -1,6 +1,7 @@
 import React from 'react';
 import Note from './Note.js';
-import {View, StyleSheet, Button, AsyncStorage} from 'react-native';
+import {Button} from 'react-native-elements';
+import {View, StyleSheet, AsyncStorage} from 'react-native';
 import update from 'react-addons-update';
 
 export default class NoteContainer extends React.Component {
@@ -18,11 +19,7 @@ export default class NoteContainer extends React.Component {
     }
 
     componentDidMount() {
-        //this.load();
-    }
-
-    componentDidUpdate() {
-        //this.save();
+        this.load();
     }
 
     render() {
@@ -32,7 +29,12 @@ export default class NoteContainer extends React.Component {
                     {this.state.displayedNotes}
                 </View>
                 <View>
-                    <Button style={styles.AddButton} title={"Add"} onPress={() => this.appendNote(this.props.selectedColor())} />
+                    <Button
+                        title='ADD'
+                        backgroundColor="#4CAF50"
+                        fontFamily={'IntroRust'}
+                        onPress={() => this.appendNote(this.props.selectedColor())}
+                    />
                 </View>
             </View>
         );
@@ -53,7 +55,10 @@ export default class NoteContainer extends React.Component {
             if (note.props.id === element.props.id) {
                 this.setState(prevState => {
                     return {notes: update(prevState.notes, {$splice: [[index, 1]]})};
-                }, () => this.filter());
+                }, () => {
+                    this.save();
+                    this.filter();
+                });
             }
         });
     }
@@ -62,6 +67,7 @@ export default class NoteContainer extends React.Component {
         this.setState(prevState => {
             return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color === undefined ? "#016D91" : color, "Click me to edit ")]})};
         }, () => {
+            this.save();
             this.filter();
         });
     }
@@ -72,27 +78,42 @@ export default class NoteContainer extends React.Component {
         });
     }
 
+
     getFilteredNotes(color) {
+        console.log(this.state.notes);
         if (color !== undefined)
-            return this.state.notes.filter((note) => note.props.color === color);
+            return this.state.notes.filter((note) => {
+                return note.props.color === color;
+            });
         return this.state.notes;
     }
 
+    //Saves all the note ids
     save() {
         try {
-            AsyncStorage.setItem("Notes", JSON.stringify(this.state.notes.map((note) => note.props.id)));
+            AsyncStorage.setItem("Notes", JSON.stringify(this.state.notes.map((note) => [note.props.id, note.props.color])));
         } catch(error) {
 
         }
     }
 
-    async load() {
+    //Loads the different notes by ID
+    load() {
         try {
-            console.log("Loading note container");
-            let data = await AsyncStorage.getItem("Notes");
-            if (data !== null && data !== undefined) {
-                data = JSON.parse(data).map((index) => "Note" + index);
-            }
+            AsyncStorage.getItem("Notes").then((data) => {
+                let notes = [];
+                if (data !== null && data !== undefined) {
+                    JSON.parse(data).forEach((data) => {
+                        notes.push(this.generateNoteWithId(data[1], null, data[0]));
+                        this.noteCount = data[0] + 1;
+                    });
+                    this.setState((prevState) => {
+                        return {...prevState, notes: notes};
+                    }, () => this.filter());
+                }
+            }).catch((ex) => {
+                
+            });
         } catch (error) {
         }
     }
@@ -102,6 +123,7 @@ export default class NoteContainer extends React.Component {
 
 const styles = StyleSheet.create({
     NoteContainer: {
+        marginBottom: 10,
     },
     AddButton: {
         backgroundColor: '#3Cb54C',

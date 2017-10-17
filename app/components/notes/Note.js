@@ -15,26 +15,34 @@ export default class Note extends React.Component {
             color: props.color,
             text: 'This is your note text. Click here to change!',
         };
+        //Checks if the note already exists, if it doesn't it will save it
+        AsyncStorage.getItem("Note" + this.props.id).then((data) => {
+            if (data === null) {
+                this.save();
+                this.load();
+            }
+        }).catch((ex) => {
+
+        });
     }
 
-    componentDidMount() {
-        //this.load();
+    //Loads the component right before its mounted
+    componentWillMount() {
+        this.load();
     }
 
-    componentDidUpdate() {
-        //this.save();
-    }
-
+    //Input listener for the note title field
     onInputChange(text) {
         this.setState(prevState => {
             return {...prevState, title: text};
-        });
+        }, () => this.save());
     }
 
+    //Input listener for the note text field
     onTextChange(text) {
         this.setState(prevState => {
             return {...prevState, text: text};
-        });
+        }, () => this.save());
     }
 
     render() {
@@ -44,15 +52,18 @@ export default class Note extends React.Component {
                     <View style={styles.RemoveNote}>
                         <View style={styles.Title}>
                             <TouchableOpacity onPress={() => this.toggleNote()}>
-                                <Image style={styles.BackButton} onClick={() => {this.removeNote()}} alt={'Remove'}
+                                <Image style={styles.BackButton} onClick={() => {
+                                    this.removeNote()
+                                }} alt={'Remove'}
                                        source={require('../../assets/images/arrow_right.png')}/>
                             </TouchableOpacity>
-                            <TextInput style={styles.TitleInput} onChangeText={this.onInputChange} value={this.state.title}
-                                underlineColorAndroid={'rgba(0, 0, 0, 0)'}/>
+                            <TextInput style={[styles.TitleInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onInputChange}
+                                       value={this.state.title}
+                                       underlineColorAndroid={'rgba(0, 0, 0, 0)'}/>
                         </View>
-                        <TextInput style={styles.TextInput} onChangeText={this.onTextChange} value={this.state.text}
+                        <TextInput style={[styles.TextInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onTextChange} value={this.state.text}
                                    underlineColorAndroid={'rgba(0, 0, 0, 0)'} multiline={true} numberOfLines={10}
-                                    blurOnSubmit={false}/>
+                                   blurOnSubmit={false}/>
                     </View>
                 </View>
             );
@@ -60,8 +71,10 @@ export default class Note extends React.Component {
             <View style={[styles.Note, {backgroundColor: this.state.color}]}>
                 <View style={styles.RemoveNote}>
                     <TouchableOpacity onPress={() => this.removeNote()}>
-                        <Image onClick={() => {this.removeNote()}} alt={'Remove'}
-                         source={require('../../assets/images/close.png')}/>
+                        <Image onClick={() => {
+                            this.removeNote()
+                        }} alt={'Remove'}
+                               source={require('../../assets/images/close.png')}/>
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={() => {
@@ -69,10 +82,11 @@ export default class Note extends React.Component {
                 }}>
                     <View style={styles.NoteContent}>
                         <View style={styles.NoteIcon} className="NoteIcon">
-                            <Image style={styles.NoteImage} alt={'Remove'} source={require('../../assets/images/notes.png')}/>
+                            <Image style={styles.NoteImage} alt={'Remove'}
+                                   source={require('../../assets/images/notes.png')}/>
                         </View>
                         <View style={styles.NoteName}>
-                            <Text style={styles.TitleText}>{this.state.title}</Text>
+                            <Text style={[styles.TitleText, {fontFamily: 'IntroRust'}]}>{this.state.title}</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -80,46 +94,50 @@ export default class Note extends React.Component {
         );
     }
 
+    //Removes the note from its container and localstorage
     removeNote() {
         this.props.handleRemove(this);
         AsyncStorage.removeItem("Note" + this.props.id);
     }
 
+    //Updates the title of the note
     updateTitle(title) {
         this.setState(prevState => {
             return {...prevState, title: title};
         });
     }
 
+    //Toggles the selected state of the note
     toggleNote() {
         this.setState(prevState => {
             return {...prevState, selected: !prevState.selected};
         });
     }
 
+    //Function for saving the state of the note
     save() {
         try {
-            console.log("Saving: Note" + this.props.id + this.state.color);
-            AsyncStorage.setItem("Note" + this.props.id, JSON.stringify(this.state));
-        } catch(error) {
+            //We create this object to make sure it saves as unselected
+            //This way it won't be open next time we reload the note
+            let state = Object.assign({}, this.state, {selected: false});
+            AsyncStorage.setItem("Note" + this.props.id, JSON.stringify(state));
+        } catch (error) {
 
         }
     }
 
-    async load() {
-        try {
-            let data = await AsyncStorage.getItem("Note" + this.props.id);
-            console.log("Loading: Note" + this.props.id + " " + data);
+    //Function for loading the state of the enote
+    load() {
+        AsyncStorage.getItem("Note" + this.props.id).then((data) => {
             if (data !== null) {
                 data = JSON.parse(data);
-                console.log("We got the data: " + data.color);
                 this.setState(() => {
-                    return {data};
+                    return data;
                 }, () => this.filter());
             }
-        } catch (error) {
+        }).catch((ex) => {
 
-        }
+        });
     }
 }
 
@@ -145,7 +163,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     Title: {
-      flexDirection: 'row',
+        flexDirection: 'row',
     },
     Absolute: {
         top: 0,
@@ -159,12 +177,8 @@ const styles = StyleSheet.create({
     NoteName: {
         marginTop: 10,
     },
-    NoteImage: {
-
-    },
-    NoteIcon: {
-
-    },
+    NoteImage: {},
+    NoteIcon: {},
     RemoveNote: {
         margin: 10,
     },
