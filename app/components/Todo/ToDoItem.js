@@ -15,12 +15,10 @@ export default class ToDoItem extends React.Component {
         this.setState({checked: !this.state.checked});
     }
     render() {
-
         return (
-
             <View key={this.props.index} style={styles.itemTodo}>
 
-                <View style={styles.categoryColorTodo}/>
+                <View style={[{backgroundColor: this.props.color}, styles.categoryColorTodo]}/>
                 <CheckBox
                     title={this.props.value}
                     key={this.props.index}
@@ -30,6 +28,7 @@ export default class ToDoItem extends React.Component {
                         this.handleClick();
                         this.props.onClick();
                     }}
+                    textStyle={{fontFamily: 'IntroRust'}}
                     containerStyle={styles.checkboxTodo}
                 />
             </View>
@@ -42,25 +41,24 @@ const styles = StyleSheet.create({
         width: '15%',
         margin: 0,
         padding: 0,
-        backgroundColor: 'lightblue',
     },
     checkboxTodo: {
-        width: '100%',
+        width: '90%',
         height:'100%',
         marginTop: 0,
         marginLeft: 0,
         backgroundColor: 'white',
 
-
     },
     itemTodo: {
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: 30,
+        marginBottom: 15,
         marginTop: 0,
-        shadowOffset: { width: 2, height: 2 },
+        width: '95%',
+        shadowOffset: { width: 1, height: 1 },
         shadowColor: 'grey',
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.15,
 
     }
 });

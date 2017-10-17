@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     tilegrid: {
         justifyContent: 'center',
         alignItems: 'center',
-        flexWrap: "wrap",
         width: "100%",
         backgroundColor: "transparent",
         flexWrap: 'wrap',

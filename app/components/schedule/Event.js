@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
     eventDescription: {
         flex: 1
     }
-})
+});
