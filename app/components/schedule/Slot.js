@@ -19,7 +19,7 @@ export default class Slot extends React.Component {
             <View style={[{backgroundColor: '' + this.state.color}, styles.slot]}>
                 <View style={[{backgroundColor: '' + this.state.color}, styles.time]}>
                     <Text style={[styles.slotInterval, styles.slotIntervalStart]}>{this.state.interval[0]}</Text>
-                    <Text>-</Text>
+                    <Text style={styles.slotInterval}>-</Text>
                     <Text style={[styles.slotInterval, styles.slotIntervalEnd]}>{this.state.interval[1]}</Text>
                 </View>
                 <View style={styles.text}>
@@ -47,10 +47,13 @@ const styles = StyleSheet.create({
 
     },
     time: {
-        flex: 1
+        flex: 1,
+        alignItems: "center",
     },
 
-    slotInterval: {},
+    slotInterval: {
+        color: "white"
+    },
     slotIntervalStart: {},
     slotIntervalEnd: {}
 });
