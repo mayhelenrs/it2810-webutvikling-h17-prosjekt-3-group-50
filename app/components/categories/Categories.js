@@ -31,7 +31,7 @@ export default class Categories extends React.Component {
         return (
             <ScrollView style={styles.View}>
                 <View style={styles.Categories}>
-                    <Text style={{fontSize: 20}}>This is your categories for now</Text>
+                    <Text style={{fontSize: 20, fontFamily: 'IntroRust'}}>This is your categories for now</Text>
                     <View style={styles.MarginTop}>
                         {this.state.categoryFilterContainer}
                     </View>

@@ -18,7 +18,7 @@ export default class CategoryFilterContainer extends React.Component {
     render() {
         return (
             <View>
-                <Text>Categories - Select to filter your notes and add new ones!</Text>
+                <Text style={{fontFamily: 'IntroRust'}}>Categories - Select to filter your notes and add new ones!</Text>
                 <View style={styles.Notes}>
                     {this.state.categories}
                 </View>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Category from "./Category";
-import {ScrollView, View, Text, Button, StyleSheet, AsyncStorage} from 'react-native';
+import {Button} from 'react-native-elements';
+import {ScrollView, View, Text, StyleSheet, AsyncStorage} from 'react-native';
 import update from 'react-addons-update';
 
 export default class CategoryContainer extends React.Component {
@@ -31,10 +32,15 @@ export default class CategoryContainer extends React.Component {
     render() {
         return (
             <ScrollView style={styles.CategoryCreatorHolder}>
-                <Text>Categories</Text>
+                <Text style={{fontFamily: 'IntroRust', fontSize: 20}}>Categories</Text>
                 {this.state.categories}
                 <View style={styles.AddCategory}>
-                    <Button style={styles.AddButton} title={"Add"} onPress={() => this.appendCategory()}/>
+                    <Button
+                        onPress={() => this.appendCategory()}
+                        title='ADD'
+                        fontFamily={'IntroRust'}
+                        backgroundColor="#4CAF50"
+                    />
                 </View>
             </ScrollView>
         );

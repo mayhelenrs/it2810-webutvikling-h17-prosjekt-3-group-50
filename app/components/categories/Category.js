@@ -40,7 +40,7 @@ export default class Category extends React.Component {
             <View style={styles.Category}>
                 <View style={[styles.CategoryColor, {backgroundColor: '' + this.state.color}]}/>
                 <View style={styles.CategoryInput}>
-                    <TextInput style={styles.CategoryInput} onChangeText={this.onInputChange} value={this.state.text}/>
+                    <TextInput style={[styles.CategoryInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onInputChange} value={this.state.text}/>
                 </View>
             </View>
         );
