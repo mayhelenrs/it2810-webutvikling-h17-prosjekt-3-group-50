@@ -52,7 +52,6 @@ export class NoteDisplay extends React.Component {
             height: window.innerWidth <= 525 ? this.state.height > 0 ? "300px" : this.state.height + "px" : this.state.height + "px",
             backgroundColor: '' + this.state.color,
             opacity: '0.95'
-
         }
     }
 

@@ -25,7 +25,6 @@ export default class ToDo extends React.Component {
         this.filter = this.filter.bind(this);
         this.getItems();
 
-
     }
 
     async getItems() {
