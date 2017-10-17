@@ -1,4 +1,5 @@
 import React from "react";
+import {LocalStorage} from "../../service/LocalStorage";
 
 export class Event extends React.Component {
 
@@ -38,27 +39,11 @@ export class Event extends React.Component {
     }
 
     componentDidUpdate() {
-        this.save();
+        LocalStorage.save(this.getSaveName(), this.state);
     }
 
     componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(() => data);
-        } else {
-            this.save();
-        }
-    }
-
-
-    save() {
-        localStorage.setItem(this.getSaveName(), JSON.stringify(this.state))
-    }
-
-    load() {
-        return this.getSaveName() in localStorage
-            ? JSON.parse(localStorage.getItem(this.getSaveName()))
-            : null;
+        LocalStorage.loadToState(this.getSaveName(), this);
     }
 
     getSaveName() {

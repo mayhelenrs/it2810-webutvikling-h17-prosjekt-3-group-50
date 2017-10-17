@@ -1,5 +1,6 @@
 import React from "react";
 import {Event} from "./Event.jsx";
+import {LocalStorage} from "../../service/LocalStorage";
 
 export class Slot extends React.Component {
     constructor(props) {
@@ -53,7 +54,7 @@ export class Slot extends React.Component {
 
 
     componentDidUpdate() {
-        this.save()
+        LocalStorage.save(this.getSaveName(), this.state);
     }
 
     /*
@@ -61,22 +62,11 @@ export class Slot extends React.Component {
     If not, then this is the first time the component is mounted and we save the state for later
     */
     componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(() => data);
-        } else {
-            this.save();
-        }
+        LocalStorage.loadToState(this.getSaveName(), this);
     }
 
     save() {
-        localStorage.setItem(this.getSaveName(), JSON.stringify(this.state))
-    }
-
-    load() {
-        return this.getSaveName() in localStorage
-            ? JSON.parse(localStorage.getItem(this.getSaveName()))
-            : null;
+        LocalStorage.save(this.getSaveName(), this.state);
     }
 
     getSaveName() {
