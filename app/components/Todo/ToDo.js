@@ -9,6 +9,7 @@ export default class ToDo extends React.Component {
         super(props);
         let todos = [];
         let colors_todo = [];
+
         this.state = {
             value: '',
             filter: '',
@@ -28,15 +29,16 @@ export default class ToDo extends React.Component {
     }
 
     async getItems() {
-        let todos;
-        let colors;
+        let todos = [];
+        let colors = [];
         try {
-            todos = await AsyncStorage.getItem('ToDo');
-            //const colors = JSON.parse(AsyncStorage.getItem('Colors'));
-            if (todos !== null){
+            const todos_async = await AsyncStorage.getItem('ToDo');
+            const colors_async = await AsyncStorage.getItem('Colors');
+            if (todos_async !== null && colors_async !== null){
                 // We have data!!
-                todos = JSON.parse(todos);
-                this.setState({data: todos});
+                todos = JSON.parse(todos_async);
+                colors = JSON.parse(colors_async);
+                this.setState({color_data: colors, data: todos, displayed_colors: colors, displayed_data: todos});
             }
         } catch (error) {
             console.log(error);
@@ -55,7 +57,6 @@ export default class ToDo extends React.Component {
             this.state.color_data.filter((color, index) => color === this.props.selectedColor());
         let displayed_data = this.props.selectedColor() === undefined ? this.state.data :
             this.state.data.filter((todo, index) => this.state.color_data[index] === this.props.selectedColor());
-
         this.setState({displayed_colors: displayed_colors, displayed_data: displayed_data});
 
     }
@@ -74,10 +75,11 @@ export default class ToDo extends React.Component {
         if (this.state.value.length > 0) {
             todos.push(this.state.value);
             colors.push(this.state.current_color);
-            this.setState({data: todos, color_data: colors});
+
+            this.setState({data: todos, color_data: colors}, () => this.filter());
             try {
                 AsyncStorage.setItem("ToDo", JSON.stringify(todos));
-                AsyncStorage.setItem("Colors", JSON.stringify(todos));
+                AsyncStorage.setItem("Colors", JSON.stringify(colors));
             } catch (error) {
                 console.log(error);
             }
@@ -93,10 +95,11 @@ export default class ToDo extends React.Component {
        let colors;
        try {
            todos = await AsyncStorage.getItem('ToDo');
-           //const colors = JSON.parse(AsyncStorage.getItem('Colors'));
+           colors = await AsyncStorage.getItem('Colors');
            if (todos !== null){
                // We have data!!
                todos = JSON.parse(todos);
+               colors = JSON.parse(colors);
            }
        } catch (error) {
            console.log(error);
@@ -106,11 +109,12 @@ export default class ToDo extends React.Component {
        for (let i = 0; i < todos.length; i++) {
            if (i !== index) {
                 handledTodos.push(todos[i]);
-                //handledColors.push(colors[i]);
+                handledColors.push(colors[i]);
             }
         }
-       this.setState({ data: handledTodos, color_data: handledColors});
+       this.setState({ data: handledTodos, color_data: handledColors}, () => this.filter());
        try {
+
            AsyncStorage.setItem("ToDo", JSON.stringify(handledTodos));
            AsyncStorage.setItem("Colors", JSON.stringify(handledColors));
        } catch (error) {
@@ -118,17 +122,12 @@ export default class ToDo extends React.Component {
        }
     }
 
-
-
-
-
     renderToDoItems() {
-        if(this.state.data.length != 0) {
-            return this.state.data.map((todo, index) =>
-                <ToDoItem value={todo} key={index} index={index}
-                          onClick={() => this.handleClicks(index)}/>
-            );
-        }
+        return this.state.displayed_data.map((todo, index) =>
+            <ToDoItem value={todo} key={index} index={index} color={this.state.displayed_colors[index]}
+                      onClick={() => this.handleClicks(index)}/>
+        );
+
 
     }
 
@@ -142,15 +141,15 @@ export default class ToDo extends React.Component {
                     <TextInput
                         style={styles.todoText}
                         onChangeText={(text) => this.setState({value: text})}
-                        placeholder="Write your todo's here"
+                        placeholder="  Write your todo's here"
                         value={this.state.value}
                     />
 
                     <Button
-                        large
                         onPress={this.handleSubmit}
                         title='ADD'
                         backgroundColor="#4CAF50"
+                        fontFamily='IntroRust'
                         containerViewStyle={styles.todoButton}
                     />
                 </View>
@@ -169,7 +168,10 @@ const styles = StyleSheet.create({
     todoButton: {
         width:  '100%',
         marginLeft: 0,
-    }
+        marginBottom: 20,
+    },
+
+
 
 
 });
