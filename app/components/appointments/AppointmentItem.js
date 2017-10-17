@@ -17,40 +17,18 @@ export class AppointmentItem extends React.Component {
     handleClick() {
         this.setState({checked: !this.state.checked})
     }
-    componentDidUpdate() {
-        this.save();
-    }
-
-    componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(prevState => {
-                return {...prevState, data}
-            });
-        }
-        this.save();
-    }
-
-    save() {
-        localStorage.setItem("Appointment" + this.props.id, JSON.stringify(this.state));
-    }
-
-    load() {
-        return JSON.parse(localStorage.getItem("Appointment" + this.props.id));
-    }
 
     removeAppointment() {
         this.props.handleRemove(this);
-        localStorage.removeItem("Appointment" + this.props.id)
     }
+
     render() {
         const text = this.state.checked;
         return (
-            <View key={this.props.index}>
-                <View style={{
-                    backgroundColor: '' + this.state.color,
-                    borderColor: '' + this.state.color
-                }}></View>
+            <View style={{
+                backgroundColor: '' + this.state.color,
+                borderColor: '' + this.state.color
+            }}>
                 <View>
                     <View>
                         <Text>{this.state.description}</Text>
