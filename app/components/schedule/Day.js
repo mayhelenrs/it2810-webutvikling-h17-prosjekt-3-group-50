@@ -8,7 +8,7 @@ export default class Day extends React.Component {
         return(
             <View style={styles.day}>
                 <View style={styles.dayText}>
-                    <Text style={{color: 'white'}}>{this.props.day}</Text>
+                    <Text style={{color: 'black'}}>{this.props.day}</Text>
                 </View>
                 <SlotGrid day={this.props.day}/>
             </View>
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     dayText:{
         borderBottomWidth: 1 / PixelRatio.get(),
         borderBottomColor: 'black',
-        backgroundColor: '#6bbbd6',
+        backgroundColor: 'white',
     }
 });
