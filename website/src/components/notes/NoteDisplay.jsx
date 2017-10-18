@@ -66,7 +66,7 @@ export class NoteDisplay extends React.Component {
             this.setState((prevState) => {
                 return {...prevState, color: data.color, text: data.text, title: data.title};
             }, () => this.props.updateTitle(this.state.title));
-        });
+        }, {color: this.state.color, text: this.state.text, title: this.state.title});
     }
 
     componentDidUpdate() {
