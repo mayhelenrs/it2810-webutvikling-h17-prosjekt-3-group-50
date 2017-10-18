@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../assets/styles/App.css';
-import '../assets/styles/Component.css';
+import '../../assets/styles/Component.css';
 
 // This component is used to display some generic text that looks the same for each page, though the text itself may
 // change.

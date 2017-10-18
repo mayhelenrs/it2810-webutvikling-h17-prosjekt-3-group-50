@@ -10,7 +10,7 @@ export class Tile extends React.Component {
                 <h3>{this.props.tileTitle}</h3>
                 <a href={this.props.view} className="enter-button">
                     Enter
-                    <img alt={"Arrow pointing to the right"} src={require("../assets/images/arrow_right.png")}/>
+                    <img alt={"Arrow pointing to the right"} src={require("../../assets/images/arrow_right.png")}/>
                 </a>
             </div>
         );
