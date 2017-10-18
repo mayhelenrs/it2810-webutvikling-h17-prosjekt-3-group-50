@@ -16,7 +16,7 @@ export class NoteView extends React.Component {
 
     render() {
         return (
-            <Categories id={1} filter={() => this.noteContainer.filter()}>
+            <Categories id={1} title={"notes"} filter={() => this.noteContainer.filter()}>
                 {this.state.noteContainer}
             </Categories>
         );

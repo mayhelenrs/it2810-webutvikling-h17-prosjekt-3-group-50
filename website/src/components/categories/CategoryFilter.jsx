@@ -1,5 +1,4 @@
 import React from 'react';
-import './Categories.css';
 
 export class CategoryFilter extends React.Component {
 

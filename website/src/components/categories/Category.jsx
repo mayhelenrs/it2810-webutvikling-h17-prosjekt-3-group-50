@@ -1,5 +1,4 @@
 import React from 'react';
-import './Categories.css';
 
 export class Category extends React.Component {
 
@@ -39,7 +38,7 @@ export class Category extends React.Component {
                 <div style={{backgroundColor: '' + this.state.color}} className={"CategoryColor"}>
                 </div>
                 <div>
-                    <input className={"CategoryName"} onChange={this.onInputChange} value={this.state.text}/>
+                    <input className={"CategoryName"} spellCheck={false} onChange={this.onInputChange} value={this.state.text}/>
                 </div>
             </div>
         );

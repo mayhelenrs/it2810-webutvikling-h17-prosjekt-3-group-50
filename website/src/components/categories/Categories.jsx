@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/styles/NoteView.css';
 import {CategoryContainer} from "./CategoryContainer";
 import {CategoryFilterContainer} from "./CategoryFilterContainer";
 
@@ -28,7 +27,7 @@ export class Categories extends React.Component {
         return (
             <div className="NoteView">
                 <div className="Left-Page">
-                    <p>This is your TODO for now</p>
+                    <p>This is your {this.props.title} for now</p>
                     <div>
                         {this.state.categoryFilterContainer}
                     </div>
