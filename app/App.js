@@ -11,19 +11,6 @@ import {Font} from 'expo';
 
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            fontLoaded: false
-        }
-        AsyncStorage.clear();
-    }
-    async componentDidMount() {
-        await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
-        this.setState({
-            fontLoaded: true
-        })
-    }
     render() {
         let app = this.state.fontLoaded ? <Navigator/> : null
         return(
@@ -31,6 +18,8 @@ export default class App extends React.Component {
         );
     }
 };
+
+// Used to navigate between different windows on the app
 const Navigator = StackNavigator({
     Home: {screen: Frontpage},
     Schedule: {screen: Schedule},
