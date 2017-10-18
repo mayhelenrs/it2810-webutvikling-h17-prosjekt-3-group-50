@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderColor: 'lightgrey',
         backgroundColor: 'white',
-        borderWidth: 0.5,
+        borderWidth: 1,
         marginBottom: 5,
     },
     DateInput: {
@@ -184,6 +184,6 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: 'white',
         borderColor: 'lightgrey',
-        marginBottom: 5,
+        marginBottom: 10,
     }
 });

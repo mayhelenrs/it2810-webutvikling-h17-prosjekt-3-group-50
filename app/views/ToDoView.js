@@ -6,7 +6,14 @@ import {ScrollView, StyleSheet} from 'react-native';
 //Parent of components/ToDo
 export default class ToDoView extends React.Component {
     static navigationOptions = {
-        title: 'TODOS'
+        title: 'TODOS',
+        headerTitleStyle: {
+            color: 'black',
+            fontFamily: 'IntroRust'
+        },
+        headerStyle: {
+            backgroundColor: 'white',
+        }
     };
 
     constructor(props) {

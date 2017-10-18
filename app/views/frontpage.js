@@ -5,14 +5,14 @@ import TileGrid from "../components/TileGrid";
 
 export default class Frontpage extends React.Component {
     static navigationOptions = {
-        title: 'DASHBOARD',
+        title: 'Home',
         headerTitleStyle: {
             color: 'black',
             fontFamily: 'IntroRust'
         },
         headerStyle: {
             backgroundColor: 'white',
-        }
+        },
     };
 
     render() {

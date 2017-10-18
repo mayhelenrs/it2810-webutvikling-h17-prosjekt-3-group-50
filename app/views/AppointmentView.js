@@ -6,7 +6,14 @@ import {ScrollView, StyleSheet} from 'react-native';
 export default class AppointmentView extends React.Component {
 
     static navigationOptions = {
-        title: 'APPOINTMENTS'
+        title: 'APPOINTMENTS',
+        headerTitleStyle: {
+            color: 'black',
+            fontFamily: 'IntroRust'
+        },
+        headerStyle: {
+            backgroundColor: 'white',
+        }
     };
 
     constructor(props) {

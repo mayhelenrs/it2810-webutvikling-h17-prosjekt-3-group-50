@@ -73,15 +73,13 @@ export class AppointmentItem extends React.Component {
                     <Text style={[styles.border, styles.textStyling]}>{this.state.date}</Text>
                     <Text style={styles.textStyling}>{this.state.time}</Text>
                 </View>
-                <View>
                     <Button
                         onPress={() => this.removeAppointment()}
                         title='remove'
                         style={styles.Button}
                         fontFamily={'IntroRust'}
-                        backgroundColor="#4CAF50"
+                        backgroundColor="transparent"
                     />
-                </View>
             </View>
         );
     }
@@ -93,7 +91,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     Button: {
-        width: '90%'
+        width: '100%'
     },
     border: {
         borderTopWidth: 0.3,
@@ -104,7 +102,7 @@ const styles = StyleSheet.create({
         fontFamily: 'IntroRust',
         textAlign: 'center',
         alignItems: 'center',
-        color:"white"
+        color: 'white'
     },
     textWrap: {
         alignItems: 'center',
