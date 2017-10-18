@@ -1,28 +1,29 @@
 ## IT2810 - Web Development - Project 3 - Group 50
 
-With this application you get your very own Personal Information Manager, PIM. 
+With this application you get your very own Personal Information Manager, PIM.
 It lets you keep track of your weekly schedule, appointments, notes and todos.
 
 ### Table of contents:
 1. [file structure](#FileStruct)
 2. [setup](#Setup)
+3. [how to run locally](#local)
 
 ### General file structure of the project <a name="FileStruct"></a>
 We have split our project into two main folders: `app` and `website`.
 
 The code is very similar in both parts,
-but some changes has been made 
+but some changes has been made
 to accommodate for the differences between React and React Native.
 
 #### Website
 * `website/public` contains the html file in which we put all our javascript into,
  to make it render. Also the favicon is placed in this folder.
- 
+
 * `website/src` contains, basically, our whole website. Everything is build up using react and javascript.
     * `website/src/assets` contains fonts, images and our css.
     * `website/src/components` contains all our components, which are used to construct our views.
         * `website/src/components/appointments` contains components related to our appointment-view.
-        * `website/src/components/categories` contains components for categories. 
+        * `website/src/components/categories` contains components for categories.
         Categories are used to filter between different types of notes and todos.
         * `website/src/components/common` contains the components that are common for all the views.
         * `website/src/components/frontpage` contains components related to our front page.
@@ -33,7 +34,7 @@ to accommodate for the differences between React and React Native.
     * `website/src/service` contains our service worker which allows for offline capabilities etc.
     * `website/src/views` contains all our views, these are all the different pages the website consists of.
     * `website/src/index.jsx` used to route between different views.
-    
+
 
 ### App
 The file structure for the app is basically the same as for the website.
@@ -72,17 +73,15 @@ Dependencies:
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
     "react-navigation": "^1.0.0-beta.13"
-    
-    
-##### Setup:
+
+
+##### Setup: <a name="local"></a>
 * Website (assuming webserver has react and node installed):
-    * Upload the source code to the server
-    * If he webserver does not do so automatically, download all the necessary dependencies.
+    * Upload the source code to the server.
+    * If the webserver does not do so automatically, download all the necessary dependencies by running `npm install` in your commandline.
     * On the server,  run `npm start`.
 * App (assuming you have react native and node installed):
-    * Download all necessary dependencies.
-    * Install the Expo app on your phone.
+    * Download all necessary dependencies by running `npm install` in your commandline
+    * Install the Expo app on your phone via AppStore or GooglePlay
     * Run `npm start`.
-    * Use Expo on your phone to view the app.
-
-
+    * Use Expo on your phone to scan the QR-code and wait until the app loads.
