@@ -27,7 +27,6 @@ export class Note extends React.Component {
     }
 
     componentWillMount() {
-        console.log(localStorage.getItem(this.getSaveName()));
         LocalStorage.loadToState(this.getSaveName(), this);
     }
 
@@ -51,18 +50,26 @@ export class Note extends React.Component {
         );
     }
 
+    //Removes the given note from the container and localstorage
     removeNote() {
         this.props.handleRemove(this);
-        localStorage.removeItem("Note" + this.props.id);
-        localStorage.removeItem("NoteDisplay" + this.props.id);
+        LocalStorage.delete("Note" + this.props.id);
+        LocalStorage.delete("NoteDisplay" + this.props.id);
     }
 
+    /**
+     * Updates the title state
+     * @param title
+     */
     updateTitle(title) {
         this.setState(prevState => {
             return {...prevState, title: title};
         });
     }
 
+    /**
+     * Toggles the note content
+     */
     toggleNote() {
         this.noteDisplay.setState(prevState => {
             return {...prevState, color: prevState.color, width: prevState.width === 400 ? 0 : 400, height: prevState.height === 400 ? 0 : 400};

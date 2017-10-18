@@ -61,8 +61,10 @@ export class CategoryContainer extends React.Component {
         );
     }
 
-    //Appends a new category to the createCategoryContainer, the callback updates the categoryContainer
-    //to add the category to the filter
+    /**
+     * Appends a new category to the createCategoryContainer, the callback updates the categoryContainer
+     * to add the category to the filter
+     */
     appendCategory() {
         this.setState(prevState => {
                 return {
@@ -76,6 +78,11 @@ export class CategoryContainer extends React.Component {
         );
     }
 
+    /**
+     * Will return a predefined color if the current colorindex is within the length of the colorlist
+     * if not it will return a random color
+     * @returns {string}
+     */
     getNextColor() {
         if (this.colorIndex >= this.colors.length)
             return this.randomColor();

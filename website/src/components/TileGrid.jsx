@@ -28,12 +28,13 @@ export class TileGrid extends React.Component {
             <div className="tilegrid">
                 {
                     //map tileInfo to Tile-components and render
-                    this.state.tiles.map((info) =>
+                    this.state.tiles.map((info, index) =>
                         <Tile
                             tileTitle={info[0]}
                             tileIcon={info[1]}
                             color={info[2]}
                             view={info[4]}
+                            key={index}
                         />
                     )
 
