@@ -45,8 +45,8 @@ export class NoteContainer extends React.Component {
     render() {
         return (
             <div>
-                <div className="NoteHolder">
-                    <div className="Notes">
+                <div className="FlexContainer">
+                    <div className="FlexContent">
                         {this.state.displayedNotes}
                     </div>
                 </div>

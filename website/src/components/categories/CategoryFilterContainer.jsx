@@ -17,9 +17,9 @@ export class CategoryFilterContainer extends React.Component {
 
     render() {
         return (
-            <div className="NoteHolder">
-                <p><orange>Categories</orange> - Select to filter your notes and add new ones!</p>
-                <div className="Notes">
+            <div className="FlexContainer">
+                <p><orange>Categories</orange> - Select to filter your {this.props.title} and add new ones!</p>
+                <div className="FlexContent">
                     {this.state.categories}
                 </div>
             </div>
