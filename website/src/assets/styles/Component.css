@@ -43,7 +43,7 @@
 }
 .Pagetext-container-small {
     font-family: Lato, sans-serif;
-    font-family:rgba(0,0,0,0.7);
+    font-color:rgba(0,0,0,0.7);
     font-size: 14px;
     margin: 10px 0;
 }

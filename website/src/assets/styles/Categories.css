@@ -10,9 +10,9 @@ div {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    -webkit-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
-    -moz-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
-    box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
+    -webkit-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
 }
 
 orange {
@@ -46,7 +46,7 @@ orange {
 
 .CategoryCreatorHolder > p {
     font-weight: bold;
-    color: black;
+    color: rgba(0, 0, 0, 0.7);
     font-size: 1.5em;
 }
 
@@ -63,15 +63,16 @@ orange {
     min-height: 40px;
     max-width: 40px;
     max-height: 40px;
-    -webkit-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
-    -moz-box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
-    box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.42);
+    -webkit-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
     margin-right: 10px;
 }
 
 .CategoryName {
     border: none;
     background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.7);
     border-bottom: 1px solid black;
     padding-bottom: 3px;
     font-weight: bold;
@@ -87,6 +88,7 @@ orange {
     .CategoryCreatorHolder {
         align-items: center;
     }
+
     .AddCategory {
         justify-content: center;
     }
