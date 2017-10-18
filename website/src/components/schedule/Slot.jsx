@@ -13,19 +13,15 @@ export class Slot extends React.Component {
         };
 
 
-        this.onIntervalChange = this.onIntervalChange.bind(this);
-        this.generateNewEvent = this.generateNewEvent.bind(this);
     }
 
     render() {
         return (
             <div className={"slot"} style={{backgroundColor: '' + this.state.color}}>
                 <div>
-                    <input className={"slot-interval slot-interval-start"} value={this.state.interval[0]}
-                           onChange={this.onIntervalChange}/>
-                    -
-                    <input className={"slot-interval slot-interval-end"} value={this.state.interval[1]}
-                           onChange={this.onIntervalChange}/>
+                     <span className={"slot-interval"}>
+                        {this.state.interval[0]} - {this.state.interval[1]}
+                    </span>
                 </div>
                 {
                     this.generateNewEvent()
@@ -42,35 +38,13 @@ export class Slot extends React.Component {
         return <Event day={this.props.day} slotId={this.props.id} id={this.i}/>
     }
 
-    /**
-     * updates the itnerval in the Slot. This is done by updating the current state with the new itnerval values.
-     * @param target the input field that is changed (targeted)
-     */
-    onIntervalChange({target}) {
-
-        let classNames = target.className.split(" ");
-        let tempInterval = [];
-        if (classNames[1] === "slot-interval-start") {
-            tempInterval.push(target.value);
-            tempInterval.push(this.state.interval[1]);
-
-        } else {
-            tempInterval.push(this.state.interval[0]);
-            tempInterval.push(target.value);
-        }
-        this.setState({color: this.state.color, interval: tempInterval});
-
-    }
 
     /**
      * Runs each time the component is updated, saving the state to local storage using our LocalStorage-function if
      * the interval values are valid
      */
     componentDidUpdate() {
-        if (new RegExp(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]/).test(this.state.interval[0])
-            && new RegExp(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]/).test(this.state.interval[1])) {
-            LocalStorage.save(this.getSaveName(), {color: this.state.color, interval: this.state.interval});
-        }
+        LocalStorage.save(this.getSaveName(), {color: this.state.color});
     }
 
 
@@ -82,9 +56,9 @@ export class Slot extends React.Component {
     componentDidMount() {
         LocalStorage.load(this.getSaveName(), (data) => {
             this.setState((prevState) => {
-                return {...prevState, color: data.color, interval: data.interval};
+                return {...prevState, color: data.color};
             });
-        }, {color: this.state.color, interval: this.state.interval});
+        }, {color: this.state.color});
     }
 
     // returns the key that will be searched for/saved to in local storage
