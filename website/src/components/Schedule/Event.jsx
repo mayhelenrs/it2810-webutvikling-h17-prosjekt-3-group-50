@@ -30,22 +30,33 @@ export class Event extends React.Component {
         )
     }
 
+    /**
+     * Updating the value of the input field "title" when user changes it
+     * @param target
+     */
     onTitleChange({target}) {
         this.setState({eventTitle: target.value, eventDescription: this.state.eventDescription});
     }
 
+    /**
+     * Updating the value of the input field "description" when user changes it
+     * @param target
+     */
     onDescriptionChange({target}) {
         this.setState({eventTitle: this.state.eventTitle, eventDescription: target.value});
     }
 
+    // Runs each time the component updates
     componentDidUpdate() {
         LocalStorage.save(this.getSaveName(), this.state);
     }
 
+    // Runs when the component mounts for the frist time
     componentDidMount() {
         LocalStorage.loadToState(this.getSaveName(), this);
     }
 
+    // returns the key that will be searched for/saved to in local storage
     getSaveName() {
         return "" + this.props.day + this.props.slotId + this.props.id;
     }

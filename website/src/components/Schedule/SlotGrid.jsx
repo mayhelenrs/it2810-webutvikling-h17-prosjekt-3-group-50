@@ -32,14 +32,23 @@ export class SlotGrid extends React.Component {
         );
     }
 
-
+    /**
+     * Generates a new slot
+     * @param interval that will be displayed in the schedule
+     * @returns {XML} component Slot
+     */
     generateNewSlot(interval) {
         this.i++;
         return <Slot day={this.props.day} id={this.i} interval={interval} color={this.nextColor()}/>
     }
 
+    /**
+     * Picks a color to be sent down to the child element. If a color is stored in local storage, that element is
+     * chosen, if not, a new random color is picked from a pool of colors.
+     * @returns {string}
+     */
     nextColor() {
-        if(localStorage.getItem(this.props.day + this.i)) {
+        if (localStorage.getItem(this.props.day + this.i)) {
             return localStorage.getItem(this.props.day + this.i);
         } else {
             let j = Math.round(Math.random() * 3);

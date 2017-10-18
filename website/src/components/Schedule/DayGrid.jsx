@@ -4,9 +4,9 @@ import {Day} from "./Day.jsx";
 
 
 export class DayGrid extends React.Component {
+
     constructor(props) {
         super(props);
-
 
         const days = [
             ["Mo"],
@@ -25,7 +25,7 @@ export class DayGrid extends React.Component {
 
     render() {
 
-        return(
+        return (
             <div className={"daygrid"}>
                 {
                     //Map days to Date component
