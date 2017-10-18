@@ -1,7 +1,7 @@
 import React from 'react';
 import Category from "./Category";
 import {Button} from 'react-native-elements';
-import {ScrollView, View, Text, StyleSheet, AsyncStorage} from 'react-native';
+import {AsyncStorage, ScrollView, StyleSheet, Text, View} from 'react-native';
 import update from 'react-addons-update';
 
 export default class CategoryContainer extends React.Component {

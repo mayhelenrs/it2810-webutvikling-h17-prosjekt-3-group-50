@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/styles/NoteView.css';
 import {NoteContainer} from '../components/notes/NoteContainer.jsx'
 import {Categories} from "../components/categories/Categories";
-import {Navbar} from "../components/Navbar";
+import {Navbar} from "../components/common/Navbar";
 
 export class NoteView extends React.Component {
 

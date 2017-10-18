@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 
 export default class CategoryFilter extends React.Component {
 
@@ -17,8 +17,10 @@ export default class CategoryFilter extends React.Component {
                 this.toggleElement();
                 this.props.selectCategory(this);
             }}>
-                <View style={[styles.CategoryFilter, {backgroundColor: '' + this.state.color,
-                    width: (this.state.selected ? 100 : 75), height: (this.state.selected ? 100 : 75)}]}>
+                <View style={[styles.CategoryFilter, {
+                    backgroundColor: '' + this.state.color,
+                    width: (this.state.selected ? 100 : 75), height: (this.state.selected ? 100 : 75)
+                }]}>
                     {this.state.selected}
                 </View>
             </TouchableOpacity>

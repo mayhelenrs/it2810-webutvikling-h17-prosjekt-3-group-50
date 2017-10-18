@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/Component.css';
+import '../../assets/styles/Component.css';
 
 // Tile component used on the frontpage. Used to link to different underpages
 export class Tile extends React.Component {

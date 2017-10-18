@@ -12,7 +12,10 @@ export class CategoryFilter extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '' + this.state.color, border: (this.state.selected ? this.state.color + " solid 6px" : "none")}} className={"CategoryFilter"} onClick={() => {
+            <div style={{
+                backgroundColor: '' + this.state.color,
+                border: (this.state.selected ? this.state.color + " solid 6px" : "none")
+            }} className={"CategoryFilter"} onClick={() => {
                 this.toggleElement();
                 this.props.selectCategory(this);
             }}>

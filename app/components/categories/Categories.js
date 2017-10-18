@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryContainer from "./CategoryContainer";
 import CategoryFilterContainer from "./CategoryFilterContainer";
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
 export default class Categories extends React.Component {
 
@@ -13,7 +13,8 @@ export default class Categories extends React.Component {
             categoryFilterContainer: <CategoryFilterContainer ref={instance => {
                 this.categoryFilterContainer = instance
             }} filter={this.props.filter}/>,
-            categoryContainer: <CategoryContainer filter={this.props.filter} updateCategoryFilter={this.updateCategoryFilter} id={this.props.id}/>
+            categoryContainer: <CategoryContainer filter={this.props.filter}
+                                                  updateCategoryFilter={this.updateCategoryFilter} id={this.props.id}/>
         }
     }
 

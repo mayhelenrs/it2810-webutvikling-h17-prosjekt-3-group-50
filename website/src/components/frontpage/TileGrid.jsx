@@ -1,6 +1,6 @@
 import React from 'react';
-import {Tile} from '../components/Tile';
-import '../assets/styles/Component.css';
+import {Tile} from './Tile';
+import '../../assets/styles/Component.css';
 
 
 // container component for files on the frontpage.

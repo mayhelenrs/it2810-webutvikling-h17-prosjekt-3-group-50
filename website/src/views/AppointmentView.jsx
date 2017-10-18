@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/styles/NoteView.css';
 import {AppointmentContainer} from '../components/appointments/AppointmentContainer.jsx'
 import {Categories} from "../components/categories/Categories";
-import {Navbar} from "../components/Navbar";
+import {Navbar} from "../components/common/Navbar";
 
 export class AppointmentView extends React.Component {
 

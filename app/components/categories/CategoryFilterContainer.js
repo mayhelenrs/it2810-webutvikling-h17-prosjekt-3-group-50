@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, AsyncStorage} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import CategoryFilter from './CategoryFilter.js';
 import update from 'react-addons-update';
 
@@ -18,7 +18,8 @@ export default class CategoryFilterContainer extends React.Component {
     render() {
         return (
             <View>
-                <Text style={{fontFamily: 'IntroRust'}}>Categories - Select to filter your notes and add new ones!</Text>
+                <Text style={{fontFamily: 'IntroRust'}}>Categories - Select to filter your notes and add new
+                    ones!</Text>
                 <View style={styles.Notes}>
                     {this.state.categories}
                 </View>
@@ -60,16 +61,17 @@ export default class CategoryFilterContainer extends React.Component {
     addCategories(colors) {
         const categoryList = colors.map(color => this.generateCategory(color));
         this.setState(prevState => {
-            return {...prevState,
-                categories: update(this.state.categories, {$push: categoryList})};
+            return {
+                ...prevState,
+                categories: update(this.state.categories, {$push: categoryList})
+            };
         });
     }
 
 }
 
 const styles = StyleSheet.create({
-    NoteHolder: {
-    },
+    NoteHolder: {},
     Notes: {
         flexDirection: 'row',
         justifyContent: 'center',

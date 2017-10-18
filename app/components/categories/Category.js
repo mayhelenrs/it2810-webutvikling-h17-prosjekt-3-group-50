@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, StyleSheet, AsyncStorage} from 'react-native';
+import {AsyncStorage, StyleSheet, TextInput, View} from 'react-native';
 
 
 export default class Category extends React.Component {
@@ -39,7 +39,8 @@ export default class Category extends React.Component {
             <View style={styles.Category}>
                 <View style={[styles.CategoryColor, {backgroundColor: '' + this.state.color}]}/>
                 <View style={styles.CategoryInput}>
-                    <TextInput style={[styles.CategoryInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onInputChange} value={this.state.text}/>
+                    <TextInput style={[styles.CategoryInput, {fontFamily: 'IntroRust'}]}
+                               onChangeText={this.onInputChange} value={this.state.text}/>
                 </View>
             </View>
         );

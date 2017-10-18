@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/styles/ToDo.css';
 import {ToDo} from '../components/todo/ToDo.jsx';
 import {Categories} from '../components/categories/Categories.jsx';
-import {Navbar} from "../components/Navbar";
+import {Navbar} from "../components/common/Navbar";
 
 //Parent of components/ToDo
 export class ToDoView extends React.Component {

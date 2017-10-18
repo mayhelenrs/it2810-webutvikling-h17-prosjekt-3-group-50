@@ -2,7 +2,7 @@ import React from 'react';
 import update from 'react-addons-update';
 import {AppointmentItem} from './AppointmentItem.js';
 import {Button} from 'react-native-elements';
-import {View, TextInput, StyleSheet, AsyncStorage} from 'react-native';
+import {AsyncStorage, StyleSheet, TextInput, View} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 export default class AppointmentContainer extends React.Component {
@@ -100,7 +100,7 @@ export default class AppointmentContainer extends React.Component {
     save() {
         try {
             AsyncStorage.setItem("Appointment", JSON.stringify(this.state.list.map((appointment) => [appointment.props.desc, appointment.props.time, appointment.props.date, appointment.props.color, appointment.props.id])));
-        } catch(error) {
+        } catch (error) {
 
         }
     }
@@ -132,17 +132,21 @@ export default class AppointmentContainer extends React.Component {
                 <View style={styles.listWrap}>
                     {this.state.displayList}
                 </View>
-                <TextInput  style={styles.TextInput} name={"desc"} value={this.state.desc} placeholder={"Description"}
-                            onChangeText={(text) => this.setState({desc: text})} underlineColorAndroid='rgba(0,0,0,0)'
+                <TextInput style={styles.TextInput} name={"desc"} value={this.state.desc} placeholder={"Description"}
+                           onChangeText={(text) => this.setState({desc: text})} underlineColorAndroid='rgba(0,0,0,0)'
                 />
                 <DatePicker style={styles.DateInput} date={this.state.date} mode="date" placeholder="Select date"
                             format="DD-MM-YYYY" confirmBtnText="Confirm" cancelBtnText="Cancel"
                             showIcon={false}
-                            onDateChange={(date) => {this.setState({date: date})}}
+                            onDateChange={(date) => {
+                                this.setState({date: date})
+                            }}
                 />
                 <DatePicker style={styles.DateInput} date={this.state.time} mode="time" placeholder="Select time"
                             format="HH:mm" confirmBtnText="Confirm" cancelBtnText="Cancel" is24Hour={true}
-                            onDateChange={(time) => {this.setState({time: time})}} showIcon={false}
+                            onDateChange={(time) => {
+                                this.setState({time: time})
+                            }} showIcon={false}
                 />
                 <View style={{width: '100%'}}>
                     <Button

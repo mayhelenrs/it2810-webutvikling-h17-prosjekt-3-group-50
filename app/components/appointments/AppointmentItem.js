@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, AsyncStorage} from 'react-native';
+import {AsyncStorage, StyleSheet, Text, View} from 'react-native';
 import {Button} from 'react-native-elements';
 
 export class AppointmentItem extends React.Component {
@@ -22,6 +22,7 @@ export class AppointmentItem extends React.Component {
 
         });
     }
+
     //Loads the component right before its mounted
     componentWillMount() {
         this.load();
@@ -73,13 +74,13 @@ export class AppointmentItem extends React.Component {
                     <Text style={[styles.border, styles.textStyling]}>{this.state.date}</Text>
                     <Text style={styles.textStyling}>{this.state.time}</Text>
                 </View>
-                    <Button
-                        onPress={() => this.removeAppointment()}
-                        title='remove'
-                        style={styles.Button}
-                        fontFamily={'IntroRust'}
-                        backgroundColor="transparent"
-                    />
+                <Button
+                    onPress={() => this.removeAppointment()}
+                    title='remove'
+                    style={styles.Button}
+                    fontFamily={'IntroRust'}
+                    backgroundColor="transparent"
+                />
             </View>
         );
     }
