@@ -4,7 +4,7 @@
 }
 
 .tile-wrapper {
-    margin: 1em;
+    margin: 1rem;
     font-size: 10px;
     width:inherit;
     height: auto;
@@ -53,11 +53,6 @@
     border-style: solid;
     flex-wrap: wrap;
     text-align: center;
-}
-
-.tile-wrapper:hover>.textComponents>.titleText, .tile-wrapper:hover>.textComponents>.dateText,
- .tile-wrapper:hover>.textComponents>.timeText, .tile-wrapper:hover>.deleteButtonWrap {
-    background-color: #efefef;
 }
 
 .formAppointment {
