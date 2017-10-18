@@ -40,16 +40,33 @@ export default class NoteContainer extends React.Component {
         );
     }
 
+    /**
+     * Generates a new note with the given parameters
+     * @param color
+     * @param text
+     * @param index
+     * @returns {XML}
+     */
     generateNoteWithId(color, text, index) {
         return <Note text={text} handleClick={this.handleClick} handleRemove={this.handleRemove} key={index}
                      color={color} id={index}/>;
     }
 
+    /**
+     * Generates a new note with the parameters
+     * @param color
+     * @param text
+     * @returns {XML}
+     */
     generateNote(color, text) {
         const id = this.noteCount++;
         return this.generateNoteWithId(color, text, id);
     }
 
+    /**
+     * Removes the provided note from the container
+     * @param element
+     */
     removeNote(element) {
         this.state.notes.forEach((note, index) => {
             if (note.props.id === element.props.id) {
@@ -63,6 +80,10 @@ export default class NoteContainer extends React.Component {
         });
     }
 
+    /**
+     * Appends a new note with the given color to the container
+     * @param color
+     */
     appendNote(color) {
         this.setState(prevState => {
             return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color === undefined ? "#016D91" : color, "Click me to edit ")]})};
@@ -78,9 +99,13 @@ export default class NoteContainer extends React.Component {
         });
     }
 
-
+    /**
+     * Finds all notes with the given color. If no color is specified it will return
+     * every note
+     * @param color
+     * @returns {Array.<*>}
+     */
     getFilteredNotes(color) {
-        console.log(this.state.notes);
         if (color !== undefined)
             return this.state.notes.filter((note) => {
                 return note.props.color === color;

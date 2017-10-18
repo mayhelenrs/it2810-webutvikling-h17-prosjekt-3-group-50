@@ -44,12 +44,20 @@ export default class Categories extends React.Component {
         );
     }
 
+    /**
+     * Returns the selected color in the category filter. This function will be passed down to the component
+     * wrapped by this class
+     * @returns {string}
+     */
     getSelectedColor() {
         const selectedCategory = this.categoryFilterContainer.state.selectedCategory;
         return selectedCategory === undefined ? selectedCategory : selectedCategory.props.color;
     }
 
-    //Since our CategoryFilter is a 100% dumb component we load it from the CategoryContainer component
+    /**
+     * Will add new colors to the category filter
+     * @param colors
+     */
     updateCategoryFilter(colors) {
         this.categoryFilterContainer.addCategories(colors);
     }

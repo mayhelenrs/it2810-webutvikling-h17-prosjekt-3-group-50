@@ -29,8 +29,8 @@ export class DayGrid extends React.Component {
             <div className={"daygrid"}>
                 {
                     //Map days to Date component
-                    this.state.days.map((info) =>
-                        <Day day={info[0]}/>
+                    this.state.days.map((info, index) =>
+                        <Day day={info[0]} key={index} id={index}/>
                     )
                 }
             </div>

@@ -48,12 +48,19 @@ export class Event extends React.Component {
 
     // Runs each time the component updates
     componentDidUpdate() {
-        LocalStorage.save(this.getSaveName(), this.state);
+        LocalStorage.save(this.getSaveName(), {
+            eventTitle: this.state.eventTitle,
+            eventDescription: this.state.eventDescription
+        });
     }
 
     // Runs when the component mounts for the frist time
     componentDidMount() {
-        LocalStorage.loadToState(this.getSaveName(), this);
+        LocalStorage.load(this.getSaveName(), (data) => {
+            this.setState((prevState) => {
+                return {...prevState, eventTitle: data.eventTitle, eventDescription: data.eventDescription};
+            });
+        }, {eventTitle: this.state.eventTitle, eventDescription: this.state.eventDescription});
     }
 
     // returns the key that will be searched for/saved to in local storage

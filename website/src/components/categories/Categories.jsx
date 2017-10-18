@@ -16,11 +16,14 @@ export class Categories extends React.Component {
         }
     }
 
+    //Filters the component its wrapping once it is mounted
     componentDidMount() {
         this.props.filter();
     }
 
     render() {
+        //Clones the element and adds a function prop that returns the selected category color
+        //This way the wrapped component can filter based on the selected category color
         const child = React.cloneElement(this.props.children,
             {selectedColor: this.getSelectedColor}
         );
@@ -42,12 +45,21 @@ export class Categories extends React.Component {
         );
     }
 
+    /**
+     * Returns the selected color in the category filter. This function will be passed down to the component
+     * wrapped by this class
+     * @returns {string}
+     */
     getSelectedColor() {
         const selectedCategory = this.categoryFilterContainer.state.selectedCategory;
         return selectedCategory === undefined ? selectedCategory : selectedCategory.props.color;
     }
 
-    //Since our CategoryFilter is a 100% dumb component we load it from the CategoryContainer component
+    /**
+     * Will add new colors to the category filter. Since its a dumb component this function
+     * has to tell it whenever a new category has been added
+     * @param colors
+     */
     updateCategoryFilter(colors) {
         this.categoryFilterContainer.addCategories(colors);
     }

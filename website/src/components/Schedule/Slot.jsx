@@ -66,7 +66,7 @@ export class Slot extends React.Component {
      * Runs each time the component is updated, saving the state to local storage using our LocalStorage-function
      */
     componentDidUpdate() {
-        LocalStorage.save(this.getSaveName(), this.state);
+        LocalStorage.save(this.getSaveName(), {color: this.state.color, interval: this.state.interval});
     }
 
 
@@ -76,9 +76,12 @@ export class Slot extends React.Component {
      * mounted and we save the state for later
      */
     componentDidMount() {
-        LocalStorage.loadToState(this.getSaveName(), this);
+        LocalStorage.load(this.getSaveName(), (data) => {
+            this.setState((prevState) => {
+                return {...prevState, color: data.color, interval: data.interval};
+            });
+        }, {color: this.state.color, interval: this.state.interval});
     }
-
 
     // returns the key that will be searched for/saved to in local storage
     getSaveName() {
