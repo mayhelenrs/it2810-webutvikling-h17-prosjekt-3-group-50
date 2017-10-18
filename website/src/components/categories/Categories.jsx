@@ -1,6 +1,7 @@
 import React from 'react';
 import {CategoryContainer} from "./CategoryContainer";
 import {CategoryFilterContainer} from "./CategoryFilterContainer";
+import {Pagetext} from "../Pagetext";
 
 export class Categories extends React.Component {
 
@@ -29,8 +30,8 @@ export class Categories extends React.Component {
         );
         return (
             <div className="NoteView">
+                <Pagetext text={"This is your " + this.props.title + " for now"}/>
                 <div className="Left-Page">
-                    <p>This is your {this.props.title} for now</p>
                     <div>
                         {this.state.categoryFilterContainer}
                     </div>
