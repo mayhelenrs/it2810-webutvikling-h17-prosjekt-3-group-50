@@ -64,7 +64,6 @@ export class NoteDisplay extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log("State");
         LocalStorage.save(this.getSaveName(), {color: this.state.color, text: this.state.text, title: this.state.title, width: this.state.width, height: this.state.height});
     }
 

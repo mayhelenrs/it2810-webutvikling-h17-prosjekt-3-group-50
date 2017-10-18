@@ -2,6 +2,7 @@ import React from 'react';
 import update from 'react-addons-update';
 import './Notes.css';
 import {Note} from './Note.jsx';
+import {LocalStorage} from "../../service/LocalStorage";
 
 export class NoteContainer extends React.Component {
 
@@ -18,14 +19,20 @@ export class NoteContainer extends React.Component {
     }
 
     componentDidUpdate() {
-        this.save();
+        LocalStorage.save("NoteIds", this.state.notes.map(note => {
+            return note.props.id;
+        }));
     }
 
+    //Since we can't keep all the data of the notes in the container we have to
+    //Use a custom loading function to parse the data in
     componentDidMount() {
-        const notes = [];
-        const noteIds = this.load();
-        if (noteIds !== null) {
-            noteIds.forEach(id => {
+        LocalStorage.load("NoteIds", (data) => {
+            let ids = data.map((id) => {
+                return parseInt(id, 10);
+            });
+            let notes = [];
+            ids.forEach(id => {
                 const note = JSON.parse(localStorage.getItem("Note" + id));
                 notes.push(this.generateNoteWithId(note.color, note.title, id));
                 this.noteCount = id + 1;
@@ -33,7 +40,7 @@ export class NoteContainer extends React.Component {
             this.setState(prevState => {
                 return {...prevState, notes: notes, displayNotes: notes}
             }, () => this.filter());
-        }
+        });
     }
 
     render() {
@@ -77,25 +84,6 @@ export class NoteContainer extends React.Component {
         }, () => {
             this.filter();
         });
-    }
-
-    //Saves the IDs for the notes in the container
-    save() {
-        if (this.state.notes.length === 0)
-            localStorage.removeItem("NoteIds");
-        else
-            localStorage.setItem("NoteIds", this.state.notes.map(note => {
-                return note.props.id
-            }));
-    }
-
-    //Loads the ids for the notes in the container
-    load() {
-        if ("NoteIds" in localStorage)
-            return localStorage.getItem("NoteIds").split(",").map((id) => {
-                return parseInt(id, 10);
-            });
-        return null;
     }
 
     filter() {
