@@ -2,9 +2,8 @@ import React from 'react';
 import {Tile} from '../components/Tile';
 import '../assets/styles/Component.css';
 
-//import {frontpage, NoteView, Todo, Calendar, Notification } from '../views';
 
-
+// container component for files on the frontpage.
 export class TileGrid extends React.Component {
 
     constructor(props) {
@@ -36,7 +35,6 @@ export class TileGrid extends React.Component {
                             view={info[4]}
                         />
                     )
-
                 }
             </div>
         );
