@@ -17,7 +17,6 @@ export class CategoryContainer extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log("Yes " + this.state.categories.length);
         LocalStorage.save(this.getSaveName(), this.state.categories.map(category => {
             return category.props.id;
         }));

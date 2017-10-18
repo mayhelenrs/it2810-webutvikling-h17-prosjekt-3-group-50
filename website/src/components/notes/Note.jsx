@@ -23,10 +23,11 @@ export class Note extends React.Component {
     }
 
     componentDidUpdate() {
-        LocalStorage.save(this.getSaveName(), this.state);
+        LocalStorage.save(this.getSaveName(), {color: this.state.color, title: this.state.title});
     }
 
     componentWillMount() {
+        console.log(localStorage.getItem(this.getSaveName()));
         LocalStorage.loadToState(this.getSaveName(), this);
     }
 

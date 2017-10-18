@@ -57,15 +57,16 @@ export class NoteDisplay extends React.Component {
         }
     }
 
-    componentWillMount() {
-        LocalStorage.loadToState(this.getSaveName(), this, () => {
-            console.log(this.state.text);
-            this.props.updateTitle(this.state.title);
+    componentDidMount() {
+        LocalStorage.load(this.getSaveName(), (data) => {
+            this.setState((prevState) => {
+                return {...prevState, color: data.color, text: data.text, title: data.title};
+            }, () => this.props.updateTitle(this.state.title));
         });
     }
 
     componentDidUpdate() {
-        LocalStorage.save(this.getSaveName(), {color: this.state.color, text: this.state.text, title: this.state.title, width: this.state.width, height: this.state.height});
+        LocalStorage.save(this.getSaveName(), {color: this.state.color, text: this.state.text, title: this.state.title});
     }
 
     getSaveName() {

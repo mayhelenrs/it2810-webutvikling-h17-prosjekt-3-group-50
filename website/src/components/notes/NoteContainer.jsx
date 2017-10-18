@@ -18,7 +18,7 @@ export class NoteContainer extends React.Component {
     }
 
     componentDidUpdate() {
-        LocalStorage.save("NoteIds", this.state.notes.map(note => {
+        LocalStorage.save(this.getSaveName(), this.state.notes.map(note => {
             return note.props.id;
         }));
     }
@@ -26,7 +26,7 @@ export class NoteContainer extends React.Component {
     //Since we can't keep all the data of the notes in the container we have to
     //Use a custom loading function to parse the data in
     componentDidMount() {
-        LocalStorage.load("NoteIds", (data) => {
+        LocalStorage.load(this.getSaveName(), (data) => {
             let ids = data.map((id) => {
                 return parseInt(id, 10);
             });
@@ -95,6 +95,10 @@ export class NoteContainer extends React.Component {
         if (color !== undefined)
             return this.state.notes.filter((note) => note.props.color === color);
         return this.state.notes;
+    }
+
+    getSaveName() {
+        return "NoteIds";
     }
 
 }
