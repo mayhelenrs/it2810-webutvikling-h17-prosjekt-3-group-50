@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/styles/ToDo.css';
-import {ToDo} from '../components/Todo/ToDo.jsx';
+import {ToDo} from '../components/todo/ToDo.jsx';
 import {Categories} from '../components/categories/Categories.jsx';
 
 //Parent of components/ToDo
@@ -10,7 +10,6 @@ export class ToDoView extends React.Component {
 
         this.state = {
             todo: <ToDo ref={instance => {
-
                 this.todo = instance
             }}/>
         }
