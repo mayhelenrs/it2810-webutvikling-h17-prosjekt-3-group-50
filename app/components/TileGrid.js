@@ -46,7 +46,10 @@ export default class TileGrid extends React.Component {
     }
 }
 const styles = StyleSheet.create({
+<<<<<<< HEAD
 
+=======
+>>>>>>> b46c62e4fbfec79cd535c918ac5b7c589112a048
     scrollContainer: {
         width: "100%",
         paddingTop: 10,
