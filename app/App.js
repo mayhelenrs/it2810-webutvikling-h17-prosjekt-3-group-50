@@ -16,8 +16,8 @@ export default class App extends React.Component {
         this.state = {
             fontLoaded: false
         }
-        AsyncStorage.clear();
     }
+
     async componentDidMount() {
         await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
         this.setState({

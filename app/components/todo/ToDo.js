@@ -25,8 +25,6 @@ export default class ToDo extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClicks = this.handleClicks.bind(this);
         this.filter = this.filter.bind(this);
-
-
     }
 
     //Loads items from AsyncStorage and sets the states if something is stored.
@@ -34,7 +32,6 @@ export default class ToDo extends React.Component {
         AsyncStorage.getItem('ToDo').then((data) => {
             if (data !== null) {
                 data = JSON.parse(data);
-
                 this.setState({data: data[1], colorData: data[0]},
                     () => this.filter());
             }
@@ -58,13 +55,12 @@ export default class ToDo extends React.Component {
         let displayed_data = this.props.selectedColor() === undefined ? this.state.data :
             this.state.data.filter((todo, index) => this.state.colorData[index] === this.props.selectedColor());
         let indexList = [];
-        this.state.colorData.forEach((data, index)=>{
-            if(this.props.selectedColor() === undefined || this.props.selectedColor()  === color) {
+        this.state.colorData.forEach((color, index)=> {
+            if(this.props.selectedColor() === undefined || this.props.selectedColor() === color) {
                 indexList.push(index);
             }
         });
         this.setState({displayedColors: displayed_colors, displayedData: displayed_data, indexList: indexList});
-
     }
 
     //Fires when Add button is clicked, updates states and stores data in localstorage.
