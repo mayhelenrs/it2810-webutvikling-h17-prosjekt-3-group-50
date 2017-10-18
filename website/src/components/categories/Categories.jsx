@@ -30,13 +30,15 @@ export class Categories extends React.Component {
         );
         return (
             <div className="NoteView">
-                <Pagetext text={"This is your " + this.props.title + " for now"}/>
-                <div className="Left-Page">
-                    <div>
-                        {this.state.categoryFilterContainer}
-                    </div>
-                    <div className="Middle-Page">
-                        {child}
+                <div className={"Left-Page"}>
+                    <div className="Left-Page-Container">
+                        <Pagetext text={"This is your " + this.props.title + " for now"}/>
+                        <div>
+                            {this.state.categoryFilterContainer}
+                        </div>
+                        <div className="Middle-Page">
+                            {child}
+                        </div>
                     </div>
                 </div>
                 <div className="Right-Page">
