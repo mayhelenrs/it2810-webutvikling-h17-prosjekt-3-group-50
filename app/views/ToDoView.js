@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDo from '../components/Todo/ToDo';
+import ToDo from '../components/todo/ToDo';
 import Categories from '../components/categories/Categories';
 import {View, StyleSheet} from 'react-native';
 

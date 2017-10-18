@@ -133,7 +133,7 @@ export default class ToDo extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.todoView}>
                 <View>
                     {this.renderToDoItems()}
                 </View>
@@ -158,16 +158,23 @@ export default class ToDo extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    todoView: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 5,
+
+    },
     todoText: {
         height: 40,
         borderColor: 'lightgrey',
         backgroundColor: 'white',
-        borderWidth: 0.5,
-        paddingLeft: 15
+        borderWidth: 1,
+        paddingLeft: 15,
+        width: '90%',
     },
     todoButton: {
-        width:  '100%',
-        marginLeft: 0,
+        width: '90%',
         marginBottom: 20,
     },
 
