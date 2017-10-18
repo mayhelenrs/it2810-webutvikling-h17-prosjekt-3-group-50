@@ -13,7 +13,7 @@ export default class SlotGrid extends React.Component {
             ["08:00", "10:00"], ["10:00", "12:00"], ["12:00", "14:00"], ["14:00", "16:00"]
         ];
         const backgroundColors = [
-            "#9C624C", "#D28261", "#D56945", "#E6A784"
+            "#f9a7a9", "#20c2af", "#006e8e", "#c7b9e5"
         ];
 
 

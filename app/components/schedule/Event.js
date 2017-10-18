@@ -48,9 +48,8 @@ export default class Event extends React.Component {
     }
 
     // Loading from async storage.
-    async load() {
-        try {
-            let eData = await AsyncStorage.getItem(this.getKey());
+    load() {
+        AsyncStorage.getItem(this.getKey()).then((eData) => {
             if (eData !== null) {
                 // We have data!!
                 eData = JSON.parse(eData);
@@ -59,9 +58,9 @@ export default class Event extends React.Component {
                     eventDescription: eData[1]
                 });
             }
-        } catch (error) {
+        }).catch((error) => {
             console.log(error);
-        }
+        });
     }
 
     // Returns the key used to save and load from storage

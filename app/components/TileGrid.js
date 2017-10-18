@@ -15,6 +15,7 @@ export default class TileGrid extends React.Component {
             ["Appointments", require("../assets/images/notifications.png"), "#D56945", "appointments"],
             ["Todo", require("../assets/images/todo.png"), "#D28261", "todo"],
             ["Notes", require("../assets/images/notes.png"), "#9C624C", "note"]
+
         ];
         //set state values
         this.state = {
@@ -48,6 +49,7 @@ export default class TileGrid extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
     scrollContainer: {
         width: "100%",
         paddingTop: 10,
