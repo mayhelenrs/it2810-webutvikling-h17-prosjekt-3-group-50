@@ -27,7 +27,11 @@ export default class ToDo extends React.Component {
 
     }
 
-    //Gets items in AsyncStorage and sets the states if something is stored.
+
+    /**
+     * Gets items from AsynchStorage and sets the states if something is stored
+     * @returns {Promise.<void>}
+     */
     async getItems() {
         let todos = [];
         let colors = [];
@@ -45,8 +49,11 @@ export default class ToDo extends React.Component {
         }
     }
 
-    //Handles the color from category selection and shows all elements if no category is chosen.
-    //If a category is chosen, then filter will ensure that only the given category items is shown.
+
+    /**
+     * Handles the color from category selection and shows all elements if no category is chosen.
+     * If a category is chose, the filter will ensure that only the given category items is shown.
+     */
     filter() {
         let color = this.props.selectedColor();
         this.setState({filter: color});
@@ -63,7 +70,10 @@ export default class ToDo extends React.Component {
 
     }
 
-    //Fires when Add button is clicked, updates states and stores data in localstorage.
+    /**
+     * Runs when Add button is clicked. function updates states and stores data in AsyncStorage
+     * @param event
+     */
     handleSubmit(event) {
         let todos = this.state.data;
         let colors = this.state.color_data;
@@ -85,7 +95,11 @@ export default class ToDo extends React.Component {
 
     }
 
-    //Handles checkbox clicks from child and removes the clicked item.
+    /**
+     * Handles checkbox clicks from child and removes the clicked item.
+     * @param index identifies the clicked item
+     * @returns {Promise.<void>}
+     */
     async handleClicks(index) {
         let todos;
         let colors;
@@ -117,14 +131,16 @@ export default class ToDo extends React.Component {
             console.log(error);
         }
     }
-    //Render the child elements from ToDoItem, sends down the displayed todoData and colors.
+
+    /**
+     * Returns the displayed todoData and colors.
+     * @returns {Array}
+     */
     renderToDoItems() {
         return this.state.displayed_data.map((todo, index) =>
             <ToDoItem value={todo} key={index} index={index} color={this.state.displayed_colors[index]}
                       onClick={() => this.handleClicks(index)}/>
         );
-
-
     }
 
     render() {
