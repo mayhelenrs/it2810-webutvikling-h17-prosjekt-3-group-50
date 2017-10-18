@@ -24,7 +24,7 @@ export class ToDo extends React.Component {
             data: todos,
             displayed_data: todos,
             displayed_colors: colors_todo,
-
+            indexList: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,7 +45,13 @@ export class ToDo extends React.Component {
             this.state.color_data.filter((color, index) => color === this.props.selectedColor());
         let displayed_data = this.props.selectedColor() === undefined ? this.state.data :
             this.state.data.filter((todo, index) => this.state.color_data[index] === this.props.selectedColor());
-        this.setState({displayed_colors: displayed_colors, displayed_data: displayed_data});
+        let indexList = [];
+        this.state.colorData.forEach((color, index)=> {
+            if(this.props.selectedColor() === undefined || this.props.selectedColor() === color) {
+                indexList.push(index);
+            }
+        });
+        this.setState({displayedColors: displayed_colors, displayedData: displayed_data, indexList: indexList});
     }
 
     //Fires everytime the input text field change, updates value
@@ -92,10 +98,9 @@ export class ToDo extends React.Component {
     //Render the child elements from ToDoItem, sends down the displayed todoData and colors.
     renderToDoItems() {
         return this.state.displayed_data.map((todo, index) =>
-            <ToDoItem className="items" value={todo} key={index} color={this.state.displayed_colors[index]}
-                      onClick={() => this.handleClicks(index)}/>
+            <ToDoItem className="items" value={todo} key={this.state.indexList[index]} color={this.state.displayed_colors[index]}
+                      onClick={() => this.handleClicks(this.state.indexList[index])}/>
         );
-
     }
 
     render() {
