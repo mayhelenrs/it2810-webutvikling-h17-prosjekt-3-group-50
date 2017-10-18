@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import Day from "./Day.js";
 
-
+// Container component used to hold Day-components
 export default class DayGrid extends React.Component {
     constructor(props) {
         super(props);
@@ -27,16 +27,16 @@ export default class DayGrid extends React.Component {
 
         return (
             <View style={styles.dayGrid}>
-                <ScrollView 
+                <ScrollView
                     contentContainerStyle={styles.contentContainer}
                     keyboardDismissMode={'on-drag'}
-                    pagingEnabled={false} 
+                    pagingEnabled={false}
                 >
-                {
-                    //Map days to Date component
-                    this.state.days.map((info, index) => <Day day={info[0]} key={index}/>
-                    )
-                }
+                    {
+                        //Map days to Date component
+                        this.state.days.map((info, index) => <Day day={info[0]} key={index}/>
+                        )
+                    }
                 </ScrollView>
             </View>
         );
@@ -44,8 +44,6 @@ export default class DayGrid extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    dayGrid: {
-    },
-    contentContainer: {
-    }
+    dayGrid: {},
+    contentContainer: {}
 });

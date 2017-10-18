@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     textStyling: {
         fontFamily: 'IntroRust',
         textAlign: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        color:"white"
     },
     textWrap: {
         alignItems: 'center',

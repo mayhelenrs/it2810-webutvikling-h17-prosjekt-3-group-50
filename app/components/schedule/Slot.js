@@ -1,12 +1,10 @@
 import React from "react";
-import {StyleSheet, Text, TextInput, View, PixelRatio} from 'react-native';
+import {PixelRatio, StyleSheet, Text, View} from 'react-native';
 import Event from "./Event.js";
 
 export default class Slot extends React.Component {
     constructor(props) {
         super(props);
-
-        this.i = 0;
 
         this.state = {
             color: this.props.color,

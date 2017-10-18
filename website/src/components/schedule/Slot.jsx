@@ -22,9 +22,11 @@ export class Slot extends React.Component {
         return (
             <div className={"slot"} style={{backgroundColor: '' + this.state.color}}>
                 <div>
-                    <input className={"slot-interval slot-interval-start"} value={this.state.interval[0]} onChange={this.onIntervalChange} />
+                    <input className={"slot-interval slot-interval-start"} value={this.state.interval[0]}
+                           onChange={this.onIntervalChange}/>
                     -
-                    <input className={"slot-interval slot-interval-end"} value={this.state.interval[1]} onChange={this.onIntervalChange}/>
+                    <input className={"slot-interval slot-interval-end"} value={this.state.interval[1]}
+                           onChange={this.onIntervalChange}/>
                 </div>
                 {
                     this.generateNewEvent()
@@ -33,10 +35,18 @@ export class Slot extends React.Component {
         )
     }
 
+    /**
+     * Generates a new Event component
+     * @returns {XML}
+     */
     generateNewEvent() {
         return <Event day={this.props.day} slotId={this.props.id} id={this.i}/>
     }
 
+    /**
+     * updates the itnerval in the Slot. This is done by updating the current state with the new itnerval values.
+     * @param target the input field that is changed (targeted)
+     */
     onIntervalChange({target}) {
 
         let classNames = target.className.split(" ");
@@ -52,24 +62,28 @@ export class Slot extends React.Component {
 
     }
 
-
+    /**
+     * Runs each time the component is updated, saving the state to local storage using our LocalStorage-function
+     */
     componentDidUpdate() {
         LocalStorage.save(this.getSaveName(), {color: this.state.color, interval: this.state.interval});
     }
 
-    /*
-    When the component mounts we check to see if there is data saved in localStorage related to it.
-    If not, then this is the first time the component is mounted and we save the state for later
-    */
+
+    /**
+     * Runs when the component mounts for the first time. The functions calls LocalStorage.loadToState which checks
+     * if these is data saved in local storage realted to it. if not, then it is the first time the component is
+     * mounted and we save the state for later
+     */
     componentDidMount() {
         LocalStorage.load(this.getSaveName(), (data) => {
             this.setState((prevState) => {
                 return {...prevState, color: data.color, interval: data.interval};
             });
         }, {color: this.state.color, interval: this.state.interval});
-        //LocalStorage.loadToState(this.getSaveName(), this);
     }
 
+    // returns the key that will be searched for/saved to in local storage
     getSaveName() {
         return "" + this.props.day + this.props.id;
     }

@@ -1,20 +1,25 @@
 import React from 'react';
-import {Button, Image, StyleSheet, Text, View, TouchableOpacity} from "react-native"
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native"
 
 
+// Component used to represent the tiles on the frontpage. Pretty similar to the one on the website, with some
+// changes to elements to make it compatible with react-native
 export default class Tile extends React.Component {
     render() {
         const {navigate} = this.props.navigation;
-        return(
-            <TouchableOpacity activeOpacity={0.6} style={[{backgroundColor: '' + this.props.color}, styles.tile]} onPress={() => navigate(this.props.tileTitle)}>
-                <Image  style={styles.image} source ={this.props.tileIcon} alt={"Icon for tile"}/>
+        return (
+            <TouchableOpacity activeOpacity={0.6} style={[{backgroundColor: '' + this.props.color}, styles.tile]}
+                              onPress={() => navigate(this.props.tileTitle)}>
+                <Image style={styles.image} source={this.props.tileIcon} alt={"Icon for tile"}/>
                 <View style={styles.textWrapper}>
-                  <Text style={styles.text}>{this.props.tileTitle}</Text>
+                    <Text style={styles.text}>{this.props.tileTitle}</Text>
                 </View>
             </TouchableOpacity>
         );
     }
 }
+
+// Styling
 const styles = StyleSheet.create({
     tile: {
         width: '90%',
@@ -24,7 +29,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        shadowOffset: { width: 2, height: 2 },
+        shadowOffset: {width: 2, height: 2},
         shadowColor: 'grey',
         shadowOpacity: 0.5,
     },

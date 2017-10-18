@@ -24,14 +24,20 @@ export class SlotGrid extends React.Component {
             <div className={"slotgrid"}>
                 {
                     this.state.hours.map((interval, index) =>
-                        <Slot day={this.props.day} key={index} id={index} interval={interval} color={this.nextColor()}/>)
+                        <Slot day={this.props.day} key={index} id={index} interval={interval}
+                              color={this.nextColor()}/>)
                 }
             </div>
         );
     }
 
+    /**
+     * Picks a color to be sent down to the child element. If a color is stored in local storage, that element is
+     * chosen, if not, a new random color is picked from a pool of colors.
+     * @returns {string}
+     */
     nextColor() {
-        if(localStorage.getItem(this.props.day + this.i)) {
+        if (localStorage.getItem(this.props.day + this.i)) {
             return localStorage.getItem(this.props.day + this.i);
         } else {
             let j = Math.round(Math.random() * 3);
