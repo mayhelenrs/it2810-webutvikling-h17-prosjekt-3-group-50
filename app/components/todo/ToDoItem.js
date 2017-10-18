@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {CheckBox} from 'react-native-elements';
 
+//Child of Todo.jsx
 export default class ToDoItem extends React.Component {
     constructor(props) {
         super(props);
@@ -10,10 +11,11 @@ export default class ToDoItem extends React.Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
-
+    //Updates the state of whether the checkbox is clicked or not.
     handleClick() {
         this.setState({checked: !this.state.checked});
     }
+
     render() {
         return (
             <View key={this.props.index} style={styles.itemTodo}>
@@ -36,6 +38,7 @@ export default class ToDoItem extends React.Component {
         );
     }
 }
+//Styles the elements
 const styles = StyleSheet.create({
     categoryColorTodo: {
         height: '100%',
