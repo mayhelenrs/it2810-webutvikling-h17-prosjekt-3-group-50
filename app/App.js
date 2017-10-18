@@ -11,9 +11,24 @@ import {Font} from 'expo';
 
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fontLoaded: false
+        };
+        AsyncStorage.clear();
+    }
+
+    async componentDidMount() {
+        await Font.loadAsync({'IntroRust': require('./assets/fonts/IntroRust.otf')});
+        this.setState({
+            fontLoaded: true
+        })
+    }
+
     render() {
         let app = this.state.fontLoaded ? <Navigator/> : null
-        return(
+        return (
             app
         );
     }

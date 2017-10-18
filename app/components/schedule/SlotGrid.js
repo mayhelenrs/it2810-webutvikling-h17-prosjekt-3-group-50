@@ -41,24 +41,7 @@ export default class SlotGrid extends React.Component {
             </View>
         );
     }
-
-    /*
-        generateNewSlot(interval) {
-            this.i++;
-            return <Slot day={this.props.day} id={this.i} interval={interval} color={this.nextColor()}/>
-        }
-
-        nextColor() {
-            if(localStorage.getItem(this.props.day + this.i)) {
-                return localStorage.getItem(this.props.day + this.i);
-            } else {
-                let j = Math.round(Math.random() * 3);
-                return this.state.backgroundColors[j];
-            }
-        }
-    */
 }
-
 
 const styles = StyleSheet.create({
     slotGrid: {

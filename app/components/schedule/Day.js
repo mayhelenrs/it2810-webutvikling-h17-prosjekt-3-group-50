@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View, StyleSheet, PixelRatio} from 'react-native'
+import {PixelRatio, StyleSheet, Text, View} from 'react-native'
 import SlotGrid from "./SlotGrid.js";
+
 
 export default class Day extends React.Component {
 
     render() {
-        return(
+        return (
             <View style={styles.day}>
                 <View style={styles.dayText}>
                     <Text style={{color: 'black'}}>{this.props.day}</Text>
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
         flex: 1
 
     },
-    dayText:{
+    dayText: {
         borderBottomWidth: 1 / PixelRatio.get(),
         borderBottomColor: 'black',
         backgroundColor: 'white',
