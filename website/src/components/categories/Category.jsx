@@ -1,5 +1,6 @@
 import React from 'react';
 import './Categories.css';
+import {LocalStorage} from "../../service/LocalStorage";
 
 export class Category extends React.Component {
 
@@ -14,17 +15,11 @@ export class Category extends React.Component {
 
     //When the component has loaded it will load its previous state back in
     componentDidMount() {
-        const data = this.load();
-        if (data != null) {
-            this.setState(prevState => {
-                return {...prevState, data};
-            });
-        }
-        this.save();
+        LocalStorage.loadToState(this.getSaveName(), this);
     }
 
     componentDidUpdate() {
-        this.save();
+        LocalStorage.save(this.getSaveName(), this.state);
     }
 
     onInputChange({target}) {
@@ -43,16 +38,6 @@ export class Category extends React.Component {
                 </div>
             </div>
         );
-    }
-
-    save() {
-        localStorage.setItem(this.getSaveName(), JSON.stringify(this.state));
-    }
-
-    load() {
-        return this.getSaveName() in localStorage
-            ? JSON.parse(localStorage.getItem(this.getSaveName()))
-            : null;
     }
 
     getSaveName() {
