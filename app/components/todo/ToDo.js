@@ -110,7 +110,7 @@ export default class ToDo extends React.Component {
 
 
     }
-    
+
     /**
      * Returns an array of child elements from ToDoItem.
      * @returns {Array}
