@@ -87,22 +87,22 @@ export default class AppointmentContainer extends React.Component {
 
     render() {
         return (
-            <View style={{marginBottom: 10}}>
-                <View style={styles.AppointmentContainer}>
-                    <View>
-                        {this.state.displayList}
-                    </View>
-                    <TextInput style={styles.TextInput} name={"desc"} value={this.state.desc} placeholder={"Description"} onChangeText={(text) => this.setState({desc: text})}/>
-                    <TextInput style={styles.TextInput} name={"time"} value={this.state.time} placeholder={"Time"} onChangeText={(text) => this.setState({time: text})}/>
-                    <TextInput style={styles.TextInput} name={"date"} value={this.state.date} placeholder={"Date"} onChangeText={(text) => this.setState({date: text})}/>
+            <View style={styles.AppointmentContainer}>
+                <View style={styles.listWrap}>
+                    {this.state.displayList}
                 </View>
-                <Button
-                    onPress={() => this.formSubmit()}
-                    style={styles.Button}
-                    title='ADD'
-                    fontFamily={'IntroRust'}
-                    backgroundColor="#4CAF50"
-                />
+                <TextInput style={styles.TextInput} name={"desc"} value={this.state.desc} placeholder={"Description"} onChangeText={(text) => this.setState({desc: text})}/>
+                <TextInput style={styles.TextInput} name={"time"} value={this.state.time} placeholder={"Time"} onChangeText={(text) => this.setState({time: text})}/>
+                <TextInput style={styles.TextInput} name={"date"} value={this.state.date} placeholder={"Date"} onChangeText={(text) => this.setState({date: text})}/>
+                <View style={{width: '100%'}}>
+                    <Button
+                        onPress={() => this.formSubmit()}
+                        style={styles.button}
+                        title='ADD'
+                        fontFamily={'IntroRust'}
+                        backgroundColor="#4CAF50"
+                    />
+                </View>
             </View>
         );
     }
@@ -110,11 +110,15 @@ export default class AppointmentContainer extends React.Component {
 
 const styles = StyleSheet.create({
     AppointmentContainer: {
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 10
     },
-    Button: {
-        minWidth: '90%',
+    listWrap: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%'
     },
     TextInput: {
         width: '90%',
