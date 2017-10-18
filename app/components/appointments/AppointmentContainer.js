@@ -2,7 +2,7 @@ import React from 'react';
 import update from 'react-addons-update';
 import {AppointmentItem} from './AppointmentItem.js';
 import {Button} from 'react-native-elements';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {View, TextInput, StyleSheet, AsyncStorage} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 export default class AppointmentContainer extends React.Component {
@@ -52,8 +52,10 @@ export default class AppointmentContainer extends React.Component {
                 desc: '',
                 time: '',
                 date: ''
-            }, () => this.filter());
-
+            }, () => {
+                this.filter();
+                this.save();
+            });
         }
     }
 
@@ -62,12 +64,8 @@ export default class AppointmentContainer extends React.Component {
                                 handleRemove={this.handleRemove}/>
     }
 
-    componentDidUpdate() {
-
-    }
-
     componentDidMount() {
-
+        this.load();
     }
 
     removeAppointment(element) {
@@ -81,9 +79,42 @@ export default class AppointmentContainer extends React.Component {
                             ]
                         })
                     };
-                }, () => this.filter());
+                }, () => {
+                    this.filter();
+                    this.save();
+                });
             }
         });
+    }
+
+    //Saves all the appointment ids
+    save() {
+        try {
+            AsyncStorage.setItem("Appointment", JSON.stringify(this.state.list.map((appointment) => [appointment.props.desc, appointment.props.time, appointment.props.date, appointment.props.color, appointment.props.id])));
+        } catch(error) {
+
+        }
+    }
+
+    //Loads the different appointments by ID
+    load() {
+        try {
+            AsyncStorage.getItem("Appointment").then((data) => {
+                let appointments = [];
+                if (data !== null && data !== undefined) {
+                    JSON.parse(data).forEach((data) => {
+                        appointments.push(this.generateAppointmentWithId(data[0], data[1], data[2], data[3], data[4]));
+                        this.appointmentCount = data[4] + 1;
+                    });
+                    this.setState((prevState) => {
+                        return {...prevState, list: appointments};
+                    }, () => this.filter());
+                }
+            }).catch((ex) => {
+
+            });
+        } catch (error) {
+        }
     }
 
     render() {
