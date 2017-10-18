@@ -5,8 +5,8 @@ import update from 'react-addons-update';
 
 export class CategoryFilterContainer extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.categoryCount = 0;
         this.selectCategory = this.selectCategory.bind(this);
         this.state = {
