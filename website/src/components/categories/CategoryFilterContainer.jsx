@@ -5,8 +5,8 @@ import update from 'react-addons-update';
 
 export class CategoryFilterContainer extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.categoryCount = 0;
         this.selectCategory = this.selectCategory.bind(this);
         this.state = {
@@ -17,9 +17,12 @@ export class CategoryFilterContainer extends React.Component {
 
     render() {
         return (
-            <div className="NoteHolder">
-                <p><orange>CATEGORIES</orange> - Select to filter your notes and add new ones!</p>
-                <div className="Notes">
+            <div className="FlexContainer">
+                <p>
+                    <orange>Categories</orange>
+                    - Select to filter your {this.props.title} and add new ones!
+                </p>
+                <div className="FlexContent">
                     {this.state.categories}
                 </div>
             </div>
@@ -52,7 +55,7 @@ export class CategoryFilterContainer extends React.Component {
             return {...prevState, categories: update(prevState.categories, {$push: [this.generateCategory(color)]})};
         });
     }
-    
+
     /**
      * A function used to add new colors to the category filter
      * This function is called interally by the Categories component whenever a new category is added
@@ -61,8 +64,10 @@ export class CategoryFilterContainer extends React.Component {
     addCategories(colors) {
         const categoryList = colors.map(color => this.generateCategory(color));
         this.setState(prevState => {
-            return {...prevState,
-                categories: update(this.state.categories, {$push: categoryList})};
+            return {
+                ...prevState,
+                categories: update(this.state.categories, {$push: categoryList})
+            };
         });
     }
 

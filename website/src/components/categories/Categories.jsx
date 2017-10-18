@@ -12,7 +12,7 @@ export class Categories extends React.Component {
         this.state = {
             categoryFilterContainer: <CategoryFilterContainer ref={instance => {
                 this.categoryFilterContainer = instance
-            }} filter={this.props.filter}/>,
+            }} filter={this.props.filter} title={this.props.title}/>,
             categoryContainer: <CategoryContainer updateCategoryFilter={this.updateCategoryFilter} id={this.props.id}/>
         }
     }
