@@ -28,7 +28,7 @@ export default class ToDoItem extends React.Component {
                         this.handleClick();
                         this.props.onClick();
                     }}
-                    textStyle={{fontFamily: 'IntroRust'}}
+                    fontFamily='IntroRust'
                     containerStyle={styles.checkboxTodo}
                 />
             </View>
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
         marginTop: 0,
         marginLeft: 0,
         backgroundColor: 'white',
-
     },
     itemTodo: {
         display: 'flex',

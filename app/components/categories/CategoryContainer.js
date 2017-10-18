@@ -16,9 +16,10 @@ export default class CategoryContainer extends React.Component {
             categories: [this.generateCategory("School"), this.generateCategory("Home")]
         };
         //If the component has not been saved before, save it
-        AsyncStorage.getItem("Categories").then((data) => {
+        AsyncStorage.getItem("Categories" + this.props.id).then((data) => {
             if (data === null) {
                 this.save();
+                this.load();
             }
         }).catch((ex) => {
 
@@ -90,7 +91,7 @@ export default class CategoryContainer extends React.Component {
     //Saves the stored category ids and colors
     save() {
         try {
-            AsyncStorage.setItem("Categories", JSON.stringify(this.state.categories.map((category) => [category.props.color, category.props.id])));
+            AsyncStorage.setItem("Categories" + this.props.id, JSON.stringify(this.state.categories.map((category) => [category.props.color, category.props.id])));
         } catch (error) {
 
         }
@@ -98,7 +99,7 @@ export default class CategoryContainer extends React.Component {
 
     //Loads the saved category ids/colors and adds it to the category list
     load() {
-        AsyncStorage.getItem("Categories").then((data) => {
+        AsyncStorage.getItem("Categories" + this.props.id).then((data) => {
             let categories = [];
             if (data !== null && data !== undefined) {
                 JSON.parse(data).forEach((data) => {
