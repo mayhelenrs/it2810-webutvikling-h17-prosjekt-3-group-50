@@ -40,8 +40,10 @@ export default class ToDo extends React.Component {
         });
     }
 
-    //Handles the color from category selection and shows all elements if no category is chosen.
-    //If a category is chosen, then filter will ensure that only the given category items is shown.
+    /**
+     * Handles the color from category selection and shows all elements if no category is chosen.
+     * If a category is chosen, then filter will ensure that only the given category items is shown
+     */
     filter() {
         let color = this.props.selectedColor();
         this.setState({filter: color});
@@ -55,15 +57,17 @@ export default class ToDo extends React.Component {
         let displayed_data = this.props.selectedColor() === undefined ? this.state.data :
             this.state.data.filter((todo, index) => this.state.colorData[index] === this.props.selectedColor());
         let indexList = [];
-        this.state.colorData.forEach((color, index)=> {
-            if(this.props.selectedColor() === undefined || this.props.selectedColor() === color) {
+        this.state.colorData.forEach((color, index) => {
+            if (this.props.selectedColor() === undefined || this.props.selectedColor() === color) {
                 indexList.push(index);
             }
         });
         this.setState({displayedColors: displayed_colors, displayedData: displayed_data, indexList: indexList});
     }
 
-    //Fires when Add button is clicked, updates states and stores data in localstorage.
+    /**
+     * Is called when Add button is clicked. Updates states and stores data AsyncStorage
+     */
     handleSubmit() {
         let todos = this.state.data;
         let colors = this.state.colorData;
@@ -83,7 +87,10 @@ export default class ToDo extends React.Component {
         this.setState({value: ""});
     }
 
-    //Handles checkbox clicks from child and removes the clicked item.
+    /**
+     * Handles checkbox clicks from child and removes the clicked item.
+     * @param index identifies the checkbox
+     */
     handleClicks(index) {
 
         this.setState((prevState) => {
@@ -102,11 +109,14 @@ export default class ToDo extends React.Component {
         });
 
 
-
     }
-    //Render the child elements from ToDoItem, sends down the displayed todoData and colors.
+
+    /**
+     * Returns an array of child elements from ToDoItem.
+     * @returns {Array}
+     */
     renderToDoItems() {
-        if(this.state.displayedData !== undefined) {
+        if (this.state.displayedData !== undefined) {
             return this.state.displayedData.map((todo, index) =>
                 <ToDoItem value={todo} key={this.state.indexList[index]} index={this.state.indexList[index]}
                           color={this.state.displayedColors[index]}

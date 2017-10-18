@@ -49,13 +49,23 @@
 }
 .AddNote {
     margin: 30px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .AddCategory {
+    width: 251px;
     margin: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .Middle-Page {
+}
+
+.Left-Page-Container {
+    display: flex;
+    flex-direction: column;
 }
 
 .Left-Page > p {
@@ -64,9 +74,17 @@
 }
 
 .add-button {
+    min-width: 175px;
+    width: 50%;
+    background-color: #4CAF50;
     border: none;
-    background-color: #3Cb54C;
     color: white;
-    font-size: 18px;
-    padding: 5px 20px 5px 20px;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
 }

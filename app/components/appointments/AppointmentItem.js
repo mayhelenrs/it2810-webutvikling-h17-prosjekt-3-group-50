@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, AsyncStorage} from 'react-native';
 import {Button} from 'react-native-elements';
 
 export class AppointmentItem extends React.Component {
+    //initiating states and binds functions to this
     constructor(props) {
         super(props);
         this.state = {

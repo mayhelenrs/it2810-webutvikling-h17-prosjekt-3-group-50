@@ -6,7 +6,7 @@ import {View, TextInput, StyleSheet, AsyncStorage} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 export default class AppointmentContainer extends React.Component {
-
+    //initiating states and binds functions to this
     constructor(props) {
         super(props);
         this.state = {
@@ -22,6 +22,7 @@ export default class AppointmentContainer extends React.Component {
         this.filter = this.filter.bind(this);
     }
 
+    //filters which appointments to show based on selected category
     filter() {
         const appointList = this.props.selectedColor() === undefined
             ? this.state.list.map((item) => item)
@@ -34,6 +35,7 @@ export default class AppointmentContainer extends React.Component {
         })
     }
 
+    //returns selectedColor
     getColor() {
         const color = this.props.selectedColor();
         return color === undefined
@@ -41,6 +43,9 @@ export default class AppointmentContainer extends React.Component {
             : color
     }
 
+    //checks if all inputfields have content, then makes a new list so we doesnt directly manipulate state
+    //next a new appointment is made and pushed to the new list, then the state gets updated to the new list
+    //and inputfields are clear by setting state to nothing
     formSubmit() {
         if (this.state.desc.length > 0 && this.state.time.length > 0 && this.state.date.length > 0) {
             const newList = this.state.list.slice();
@@ -59,6 +64,7 @@ export default class AppointmentContainer extends React.Component {
         }
     }
 
+    //simple way to create a new appointment
     generateAppointmentWithId(desc, time, date, color, id) {
         return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id}
                                 handleRemove={this.handleRemove}/>
@@ -68,6 +74,9 @@ export default class AppointmentContainer extends React.Component {
         this.load();
     }
 
+
+    //used for deleting one specified appointment by checking if the specified appointment is in the list.
+    //if it is, it is remeved and the list is updated to the new list without the specified appointment
     removeAppointment(element) {
         this.state.list.forEach((appointment, index) => {
             if (appointment.props.id === element.props.id) {

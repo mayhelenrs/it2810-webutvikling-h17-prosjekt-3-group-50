@@ -14,7 +14,7 @@
 
 .day-text {
     color: orange;
-    width:100%;
+    width: 100%;
     text-align: center;
 }
 
@@ -44,7 +44,7 @@
     horiz-align: center;
     width: 40%;
     text-align: center;
-    font-weight: bold;
+
 }
 
 .event {
@@ -55,6 +55,10 @@
 .event-title, .event-description {
     width: 80%;
     margin: auto;
+    margin-top: 5px;
     border-bottom: 1px solid white;
+}
 
+.event-description {
+    margin-bottom: 15px;
 }
