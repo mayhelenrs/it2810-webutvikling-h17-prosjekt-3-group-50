@@ -1,7 +1,7 @@
 import React from 'react';
 import update from 'react-addons-update';
-import './Notes.css';
 import {Note} from './Note.jsx';
+import '../../assets/styles/Notes.css';
 
 export class NoteContainer extends React.Component {
 

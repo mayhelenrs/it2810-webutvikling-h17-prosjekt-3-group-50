@@ -1,5 +1,5 @@
 import React from 'react';
-import './Categories.css';
+import '../../assets/styles/Categories.css';
 import {CategoryFilter} from './CategoryFilter.jsx';
 import update from 'react-addons-update';
 
@@ -38,7 +38,7 @@ export class CategoryFilterContainer extends React.Component {
 
         this.setState(prevState => {
             return {...prevState, selectedCategory: (prevState.selectedCategory === element ? undefined : element)};
-        }, () => this.props.filterItems());
+        }, () => this.props.filter());
     }
 
     appendCategory(color) {

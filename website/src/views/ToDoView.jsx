@@ -21,8 +21,7 @@ export class ToDoView extends React.Component {
 
     render() {
         return (
-
-            <Categories id={2} filter={() => this.todo.filter()}>
+            <Categories id={2} title={"todos"} filter={() => this.todo.filter()}>
                 {this.state.todo}
             </Categories>
         );

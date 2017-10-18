@@ -16,7 +16,7 @@ export class AppointmentView extends React.Component {
 
     render() {
         return (
-            <Categories id={3} filter={() => this.appointmentContainer.filter()}>
+            <Categories id={3} title={"appointments"} filter={() => this.appointmentContainer.filter()}>
                 {this.state.appointmentContainer}
             </Categories>
         );
