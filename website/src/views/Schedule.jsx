@@ -1,5 +1,5 @@
 import React from 'react';
-import {DayGrid} from "../components/Schedule/DayGrid";
+import {DayGrid} from "../components/schedule/DayGrid";
 import {Pagetext} from "../components/Pagetext";
 import "../assets/styles/App.css"
 import "../assets/styles/Schedule.css"
