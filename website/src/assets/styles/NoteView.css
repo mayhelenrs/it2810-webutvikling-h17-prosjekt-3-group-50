@@ -46,17 +46,26 @@
 
 .NoteView {
     font-family: IntroRust;
-    flex-direction: column;
 }
 .AddNote {
     margin: 30px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .AddCategory {
+    width: 251px;
     margin: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .Middle-Page {
+}
+
+.Left-Page-Container {
+    display: flex;
+    flex-direction: column;
 }
 
 .Left-Page > p {
@@ -65,7 +74,8 @@
 }
 
 .add-button {
-    width: 100%;
+    min-width: 175px;
+    width: 50%;
     background-color: #4CAF50;
     border: none;
     color: white;
