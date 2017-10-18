@@ -1,9 +1,12 @@
 import React from 'react';
-import '../assets/styles/NoteView.css';
-import {AppointmentContainer} from '../components/appointments/AppointmentContainer.jsx'
-import {Categories} from "../components/categories/Categories";
+import AppointmentContainer from '../components/appointments/AppointmentContainer.js'
+import Categories from "../components/categories/Categories";
 
-export class AppointmentView extends React.Component {
+export default class AppointmentView extends React.Component {
+
+    static navigationOptions = {
+        title: 'AppointmentView'
+    };
 
     constructor(props) {
         super(props);
@@ -16,7 +19,7 @@ export class AppointmentView extends React.Component {
 
     render() {
         return (
-            <Categories id={3} title={"appointments"} filter={() => this.appointmentContainer.filter()}>
+            <Categories id={3} filter={() => this.appointmentContainer.filter()}>
                 {this.state.appointmentContainer}
             </Categories>
         );

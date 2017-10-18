@@ -1,6 +1,5 @@
 import React from 'react';
 import update from 'react-addons-update';
-import './Notes.css';
 import {Note} from './Note.jsx';
 import {LocalStorage} from "../../service/LocalStorage";
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Notes.css';
 import {LocalStorage} from "../../service/LocalStorage";
 

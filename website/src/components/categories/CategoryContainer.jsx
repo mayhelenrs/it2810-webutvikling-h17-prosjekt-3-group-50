@@ -1,5 +1,4 @@
 import React from 'react';
-import './Categories.css';
 import {Category} from "./Category";
 import {LocalStorage} from "../../service/LocalStorage";
 import update from 'react-addons-update';

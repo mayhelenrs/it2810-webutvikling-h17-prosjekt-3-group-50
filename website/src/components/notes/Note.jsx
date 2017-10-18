@@ -1,5 +1,4 @@
 import React from 'react';
-import './Notes.css';
 import {NoteDisplay} from "./NoteDisplay";
 import {LocalStorage} from "../../service/LocalStorage";
 
