@@ -1,5 +1,8 @@
 import React from 'react';
 
+import '../../assets/styles/Notes.css';
+import {LocalStorage} from "../../service/LocalStorage";
+
 export class NoteDisplay extends React.Component {
 
     constructor(props) {
@@ -17,13 +20,13 @@ export class NoteDisplay extends React.Component {
 
     onInputChange({target}) {
         this.setState(prevState => {
-           return {...prevState, color: prevState.color, title: target.value, text: prevState.text};
+           return {...prevState, color: prevState.color, title: target.value};
         }, () => this.props.updateTitle(this.state.title));
     }
 
     onTextAreaChange({target}) {
         this.setState(prevState => {
-            return {...prevState, color: prevState.color, text: target.value};
+            return {...prevState, text: target.value};
         });
     }
 
@@ -55,24 +58,18 @@ export class NoteDisplay extends React.Component {
     }
 
     componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(prevState => {
+        LocalStorage.load(this.getSaveName(), (data) => {
+            this.setState((prevState) => {
                 return {...prevState, color: data.color, text: data.text, title: data.title};
             }, () => this.props.updateTitle(this.state.title));
-        }
-        this.save();
+        });
     }
 
     componentDidUpdate() {
-        this.save();
+        LocalStorage.save(this.getSaveName(), {color: this.state.color, text: this.state.text, title: this.state.title});
     }
 
-    save() {
-        localStorage.setItem("NoteDisplay" + this.props.id, JSON.stringify(this.state));
-    }
-
-    load() {
-        return JSON.parse(localStorage.getItem("NoteDisplay" + this.props.id));
+    getSaveName() {
+        return "NoteDisplay" + this.props.id;
     }
 }

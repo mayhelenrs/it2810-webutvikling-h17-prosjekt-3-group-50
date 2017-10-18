@@ -13,10 +13,9 @@ export default class Category extends React.Component {
         };
 
         //If the component has not been saved before, save it
-        AsyncStorage.getItem("Category" + this.props.id).then((data) => {
+        AsyncStorage.getItem("Category" + this.props.id + "-" + this.props.parentId).then((data) => {
             if (data === null) {
                 this.save();
-                this.load();
             }
         }).catch((ex) => {
 
@@ -24,7 +23,7 @@ export default class Category extends React.Component {
     }
 
     //Will load the state of the component right before its mounted
-    componentWillMount() {
+    componentDidMount() {
         this.load();
     }
 
@@ -49,14 +48,14 @@ export default class Category extends React.Component {
     //Saves the category
     save() {
         try {
-            AsyncStorage.setItem("Category" + this.props.id, JSON.stringify(this.state));
+            AsyncStorage.setItem("Category" + this.props.id + "-" + this.props.parentId, JSON.stringify(this.state));
         } catch (error) {
         }
     }
 
     //Loads the past category state
     load() {
-        AsyncStorage.getItem("Category" + this.props.id).then((data) => {
+        AsyncStorage.getItem("Category" + this.props.id + "-" + this.props.parentId).then((data) => {
             if (data !== null) {
                 data = JSON.parse(data);
                 this.setState(() => {

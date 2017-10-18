@@ -1,5 +1,6 @@
 import React from 'react';
 import {NoteDisplay} from "./NoteDisplay";
+import {LocalStorage} from "../../service/LocalStorage";
 
 export class Note extends React.Component {
 
@@ -22,17 +23,12 @@ export class Note extends React.Component {
     }
 
     componentDidUpdate() {
-        this.save();
+        LocalStorage.save(this.getSaveName(), {color: this.state.color, title: this.state.title});
     }
 
-    componentDidMount() {
-        const data = this.load();
-        if (data !== null) {
-            this.setState(prevState => {
-                return {...prevState, data}
-            });
-        }
-        this.save();
+    componentWillMount() {
+        console.log(localStorage.getItem(this.getSaveName()));
+        LocalStorage.loadToState(this.getSaveName(), this);
     }
 
     render() {
@@ -73,11 +69,7 @@ export class Note extends React.Component {
         });
     }
 
-    save() {
-        localStorage.setItem("Note" + this.props.id, JSON.stringify(this.state));
-    }
-
-    load() {
-        return JSON.parse(localStorage.getItem("Note" + this.props.id));
+    getSaveName() {
+        return "Note" + this.props.id;
     }
 }
