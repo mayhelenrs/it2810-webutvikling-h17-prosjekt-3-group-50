@@ -1,6 +1,7 @@
 import React from 'react';
 import NoteContainer from '../components/notes/NoteContainer';
 import Categories from '../components/categories/Categories';
+import {ScrollView, StyleSheet} from 'react-native';
 
 export default class NoteView extends React.Component {
 
@@ -19,12 +20,23 @@ export default class NoteView extends React.Component {
 
     render() {
         return (
-            <Categories id={0} filter={() => this.noteContainer.filter()}>
-                {this.state.noteContainer}
-            </Categories>
+            <ScrollView style={styles.backgroundNote}>
+                <Categories id={0} filter={() => this.noteContainer.filter()}>
+                    {this.state.noteContainer}
+                </Categories>
+            </ScrollView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    backgroundNote: {
+        backgroundColor: 'white',
+    },
+
+
+});
+
 
 
 
