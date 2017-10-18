@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/styles/appointment.css';
+import '../../assets/styles/Appointment.css';
 import {LocalStorage} from "../../service/LocalStorage";
 
 export class AppointmentItem extends React.Component {
@@ -25,6 +25,7 @@ export class AppointmentItem extends React.Component {
     getSaveName() {
         return "Appointment" + this.props.id;
     }
+
     render() {
         return (
             <div className="tile-wrapper" key={this.props.index}>
@@ -45,7 +46,9 @@ export class AppointmentItem extends React.Component {
                 </div>
                 <div className="deleteButtonWrap">
                     <input type="button" className="deleteButton"
-                        onClick={() => {this.removeAppointment()}} />
+                           onClick={() => {
+                               this.removeAppointment()
+                           }}/>
                 </div>
             </div>
         );

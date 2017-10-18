@@ -1,7 +1,7 @@
 import React from 'react';
 import {CategoryContainer} from "./CategoryContainer";
 import {CategoryFilterContainer} from "./CategoryFilterContainer";
-import {Pagetext} from "../Pagetext";
+import {Pagetext} from "../common/Pagetext";
 
 export class Categories extends React.Component {
 

@@ -1,24 +1,24 @@
 import React from 'react';
 import update from 'react-addons-update';
 import {AppointmentItem} from './AppointmentItem.jsx';
-import '../../assets/styles/appointment.css';
+import '../../assets/styles/Appointment.css';
 import {LocalStorage} from "../../service/LocalStorage";
 
 export class AppointmentContainer extends React.Component {
     //initiating states and binds functions to this
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             list: [],
             displayList: [],
             desc: '',
             time: '',
             date: ''
-        }
+        };
         this.appointmentCount = 0;
-        this.handleRemove = this.removeAppointment.bind(this)
-        this.formSubmit = this.formSubmit.bind(this)
-        this.filter = this.filter.bind(this)
+        this.handleRemove = this.removeAppointment.bind(this);
+        this.formSubmit = this.formSubmit.bind(this);
+        this.filter = this.filter.bind(this);
     }
 
     //changes a state when given a target, is used on inputfields
@@ -39,9 +39,10 @@ export class AppointmentContainer extends React.Component {
             }
         })
     }
+
     //retruns selectedColor or a predefined color in none is chosen
     getColor() {
-        const color = this.props.selectedColor()
+        const color = this.props.selectedColor();
         return color === undefined
             ? '#016D91'
             : color
@@ -52,15 +53,15 @@ export class AppointmentContainer extends React.Component {
     //and inputfields are clear by setting state to nothing
     formSubmit(e) {
         if (this.state.desc.length > 0 && this.state.time.length > 0 && this.state.date.length > 0) {
-            const newList = this.state.list.slice()
-            const index = newList.length
+            const newList = this.state.list.slice();
+            const index = newList.length;
             const newAppointment = this.generateAppointmentWithId(this.state.desc, this.state.time, this.state.date, this.getColor(), index);
-            newList.push(newAppointment)
+            newList.push(newAppointment);
             this.setState({
                 list: newList,
-                desc:'',
-                time:'',
-                date:''
+                desc: '',
+                time: '',
+                date: ''
             }, () => this.filter())
 
         }
@@ -75,13 +76,20 @@ export class AppointmentContainer extends React.Component {
 
     //simple way to create a new appointment
     generateAppointmentWithId(desc, time, date, color, id) {
-        return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id} handleRemove={this.handleRemove}/>
+        return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id}
+                                handleRemove={this.handleRemove}/>
     }
 
     //when a component is updated its state will be saved
     componentDidUpdate() {
         LocalStorage.save(this.getSaveName(), this.state.list.map(appointment => {
-            return {desc: appointment.props.description, time: appointment.props.time, date: appointment.props.date, color: appointment.props.color, id: appointment.props.id};
+            return {
+                desc: appointment.props.description,
+                time: appointment.props.time,
+                date: appointment.props.date,
+                color: appointment.props.color,
+                id: appointment.props.id
+            };
         }));
     }
 
@@ -127,9 +135,12 @@ export class AppointmentContainer extends React.Component {
                     {this.state.displayList}
                 </div>
                 <form onSubmit={this.formSubmit} className="formAppointment">
-                    <input type="text" className="appointmentInput" name="desc" value={this.state.desc} onChange={this.handleChange.bind(this)} placeholder="Insert description"/>
-                    <input type="text" className="appointmentInput" name="time" value={this.state.time} onChange={this.handleChange.bind(this)} placeholder="Insert time"/>
-                    <input type="text" className="appointmentInput" name="date" value={this.state.date} onChange={this.handleChange.bind(this)} placeholder="Insert date"/>
+                    <input type="text" className="appointmentInput" name="desc" value={this.state.desc}
+                           onChange={this.handleChange.bind(this)} placeholder="Insert description"/>
+                    <input type="text" className="appointmentInput" name="time" value={this.state.time}
+                           onChange={this.handleChange.bind(this)} placeholder="Insert time"/>
+                    <input type="text" className="appointmentInput" name="date" value={this.state.date}
+                           onChange={this.handleChange.bind(this)} placeholder="Insert date"/>
                     <button onSubmit={this.formSubmit} id="formButton">
                         Add
                     </button>

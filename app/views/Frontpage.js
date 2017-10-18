@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import Navbar from '../components/Navbar';
-import TileGrid from "../components/TileGrid";
+import TileGrid from "../components/frontpage/TileGrid";
 
 export default class Frontpage extends React.Component {
     static navigationOptions = {

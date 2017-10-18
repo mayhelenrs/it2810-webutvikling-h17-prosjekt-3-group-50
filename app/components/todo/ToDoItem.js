@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View} from 'react-native';
 import {CheckBox} from 'react-native-elements';
 
 //Child of Todo.jsx

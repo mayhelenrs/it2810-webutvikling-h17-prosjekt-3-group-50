@@ -7,7 +7,8 @@ export class LocalStorage {
      * @param instance
      * @param callback
      */
-    static loadToState(name, instance, callback=() => {}) {
+    static loadToState(name, instance, callback = () => {
+    }) {
         if (name in localStorage) {
             let data = JSON.parse(localStorage.getItem(name));
             instance.setState((prevState) => {

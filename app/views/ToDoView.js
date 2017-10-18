@@ -26,8 +26,8 @@ export default class ToDoView extends React.Component {
         }
 
     }
-    //Encapsulates the ToDo inside the category component, which renders both category and Todo.
 
+    //Encapsulates the ToDo inside the category component, which renders both category and Todo.
     render() {
         return (
             <ScrollView style={styles.backgroundTodo}>

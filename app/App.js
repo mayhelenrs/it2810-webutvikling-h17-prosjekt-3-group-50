@@ -1,7 +1,7 @@
 import React from 'react';
 import {Platform, StatusBar} from 'react-native';
 import {StackNavigator} from 'react-navigation';
-import Frontpage from "./views/frontpage";
+import Frontpage from "./views/Frontpage";
 import Schedule from "./views/Schedule";
 import NoteView from "./views/NoteView";
 import TodoView from "./views/ToDoView";

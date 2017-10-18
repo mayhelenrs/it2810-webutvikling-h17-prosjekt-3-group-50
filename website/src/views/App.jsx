@@ -1,8 +1,7 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import '../assets/styles/App.css';
-import {Navbar} from '../components';
-import {Schedule,AppointmentView, Frontpage, NoteView, ToDoView} from '../views';
+import {AppointmentView, Frontpage, NoteView, Schedule, ToDoView} from '../views';
 
 
 export class App extends React.Component {

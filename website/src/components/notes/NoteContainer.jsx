@@ -51,7 +51,9 @@ export class NoteContainer extends React.Component {
                     </div>
                 </div>
                 <div className="AddNote">
-                    <button className="add-button" onClick={() => this.appendNote(this.props.selectedColor())}>Add note</button>
+                    <button className="add-button" onClick={() => this.appendNote(this.props.selectedColor())}>Add
+                        note
+                    </button>
                 </div>
             </div>
         );
@@ -100,7 +102,10 @@ export class NoteContainer extends React.Component {
      */
     appendNote(color) {
         this.setState(prevState => {
-            return {...prevState, notes: update(prevState.notes, {$push: [this.generateNote(color === undefined ? "#016D91" : color, "Click me to edit ")]})};
+            return {
+                ...prevState,
+                notes: update(prevState.notes, {$push: [this.generateNote(color === undefined ? "#016D91" : color, "Click me to edit ")]})
+            };
         }, () => {
             this.filter();
         });

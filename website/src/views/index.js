@@ -1,4 +1,4 @@
-export * from './frontpage.jsx';
+export * from './Frontpage.jsx';
 export * from './App.jsx';
 export * from './AppointmentView.jsx';
 export * from './NoteView.jsx';

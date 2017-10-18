@@ -9,6 +9,7 @@ export class ToDoItem extends React.Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
+
     //Updates the state of whether the checkbox is clicked or not.
     handleClick() {
         this.setState({checked: !this.state.checked});
@@ -29,7 +30,7 @@ export class ToDoItem extends React.Component {
                            this.props.onClick();
                        }}
                        checked={this.state.checked}
-                       />
+                />
                 <p className="todo-text">{this.props.value}</p>
             </li>
         );

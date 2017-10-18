@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, StyleSheet, TouchableOpacity, AsyncStorage, TextInput} from 'react-native';
+import {AsyncStorage, Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 
 export default class Note extends React.Component {
 
@@ -57,11 +57,13 @@ export default class Note extends React.Component {
                                 }} alt={'Remove'}
                                        source={require('../../assets/images/arrow_right.png')}/>
                             </TouchableOpacity>
-                            <TextInput style={[styles.TitleInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onInputChange}
+                            <TextInput style={[styles.TitleInput, {fontFamily: 'IntroRust'}]}
+                                       onChangeText={this.onInputChange}
                                        value={this.state.title}
                                        underlineColorAndroid={'rgba(0, 0, 0, 0)'}/>
                         </View>
-                        <TextInput style={[styles.TextInput, {fontFamily: 'IntroRust'}]} onChangeText={this.onTextChange} value={this.state.text}
+                        <TextInput style={[styles.TextInput, {fontFamily: 'IntroRust'}]}
+                                   onChangeText={this.onTextChange} value={this.state.text}
                                    underlineColorAndroid={'rgba(0, 0, 0, 0)'} multiline={true} numberOfLines={10}
                                    blurOnSubmit={false}/>
                     </View>
