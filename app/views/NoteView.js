@@ -5,7 +5,7 @@ import Categories from '../components/categories/Categories';
 export default class NoteView extends React.Component {
 
     static navigationOptions = {
-        title: 'NoteView'
+        title: 'NOTES'
     };
 
     constructor(props) {

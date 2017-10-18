@@ -5,7 +5,7 @@ import Categories from "../components/categories/Categories";
 export default class AppointmentView extends React.Component {
 
     static navigationOptions = {
-        title: 'AppointmentView'
+        title: 'APPOINTMENTS'
     };
 
     constructor(props) {
