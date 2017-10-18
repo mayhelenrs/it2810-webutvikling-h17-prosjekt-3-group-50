@@ -2,57 +2,47 @@ import React from 'react';
 import ToDoItem from './ToDoItem.js';
 import {AsyncStorage, StyleSheet, TextInput, View} from 'react-native';
 import {Button} from 'react-native-elements';
+import update from 'immutability-helper';
+
 
 //Parent of TodoItem and child of views/TodoView
 export default class ToDo extends React.Component {
     constructor(props) {
         super(props);
-        let todos = [];
-        let colors_todo = [];
+        let index = 0;
 
         this.state = {
             value: '',
             filter: '',
-            current_color: '',
-            color_data: colors_todo,
-            data: todos,
-            displayed_data: todos,
-            displayed_colors: colors_todo,
+            currentColor: '',
+            colorData: [],
+            data: [],
+            displayedData: [],
+            displayedColors: [],
+            indexList: [],
 
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClicks = this.handleClicks.bind(this);
         this.filter = this.filter.bind(this);
-        this.getItems();
-
     }
 
-
-    /**
-     * Gets items from AsynchStorage and sets the states if something is stored
-     * @returns {Promise.<void>}
-     */
-    async getItems() {
-        let todos = [];
-        let colors = [];
-        try {
-            const todos_async = await AsyncStorage.getItem('ToDo');
-            const colors_async = await AsyncStorage.getItem('Colors');
-            if (todos_async !== null && colors_async !== null) {
-                // We have data!!
-                todos = JSON.parse(todos_async);
-                colors = JSON.parse(colors_async);
-                this.setState({color_data: colors, data: todos, displayed_colors: colors, displayed_data: todos});
+    //Loads items from AsyncStorage and sets the states if something is stored.
+    componentDidMount() {
+        AsyncStorage.getItem('ToDo').then((data) => {
+            if (data !== null) {
+                data = JSON.parse(data);
+                this.setState({data: data[1], colorData: data[0]},
+                    () => this.filter());
             }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+        }).catch((ex) => {
 
+        });
+    }
 
     /**
      * Handles the color from category selection and shows all elements if no category is chosen.
-     * If a category is chose, the filter will ensure that only the given category items is shown.
+     * If a category is chosen, then filter will ensure that only the given category items is shown
      */
     filter() {
         let color = this.props.selectedColor();
@@ -60,87 +50,81 @@ export default class ToDo extends React.Component {
         if (color === undefined) {
             color = "#016D91";
         }
-        this.setState({current_color: color});
+        this.setState({currentColor: color});
 
-        let displayed_colors = this.props.selectedColor() === undefined ? this.state.color_data :
-            this.state.color_data.filter((color, index) => color === this.props.selectedColor());
+        let displayed_colors = this.props.selectedColor() === undefined ? this.state.colorData :
+            this.state.colorData.filter((color, index) => color === this.props.selectedColor());
         let displayed_data = this.props.selectedColor() === undefined ? this.state.data :
-            this.state.data.filter((todo, index) => this.state.color_data[index] === this.props.selectedColor());
-        this.setState({displayed_colors: displayed_colors, displayed_data: displayed_data});
-
+            this.state.data.filter((todo, index) => this.state.colorData[index] === this.props.selectedColor());
+        let indexList = [];
+        this.state.colorData.forEach((color, index) => {
+            if (this.props.selectedColor() === undefined || this.props.selectedColor() === color) {
+                indexList.push(index);
+            }
+        });
+        this.setState({displayedColors: displayed_colors, displayedData: displayed_data, indexList: indexList});
     }
 
     /**
-     * Runs when Add button is clicked. function updates states and stores data in AsyncStorage
-     * @param event
+     * Is called when Add button is clicked. Updates states and stores data AsyncStorage
      */
-    handleSubmit(event) {
+    handleSubmit() {
         let todos = this.state.data;
-        let colors = this.state.color_data;
+        let colors = this.state.colorData;
+        let indexList = this.state.indexList;
         if (this.state.value.length > 0) {
             todos.push(this.state.value);
-            colors.push(this.state.current_color);
+            colors.push(this.state.currentColor);
+            indexList.push(this.index++);
 
-            this.setState({data: todos, color_data: colors}, () => this.filter());
+            this.setState({data: todos, colorData: colors, indexList: indexList}, () => this.filter());
             try {
-                AsyncStorage.setItem("ToDo", JSON.stringify(todos));
-                AsyncStorage.setItem("Colors", JSON.stringify(colors));
+                AsyncStorage.setItem("ToDo", JSON.stringify([colors, todos]));
             } catch (error) {
-                console.log(error);
+
             }
         }
         this.setState({value: ""});
-        event.preventDefault();
-
-
     }
 
     /**
      * Handles checkbox clicks from child and removes the clicked item.
-     * @param index identifies the clicked item
-     * @returns {Promise.<void>}
+     * @param index identifies the checkbox
      */
-    async handleClicks(index) {
-        let todos;
-        let colors;
-        try {
-            todos = await AsyncStorage.getItem('ToDo');
-            colors = await AsyncStorage.getItem('Colors');
-            if (todos !== null) {
-                // We have data!!
-                todos = JSON.parse(todos);
-                colors = JSON.parse(colors);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-        let handledTodos = [];
-        let handledColors = [];
-        for (let i = 0; i < todos.length; i++) {
-            if (i !== index) {
-                handledTodos.push(todos[i]);
-                handledColors.push(colors[i]);
-            }
-        }
-        this.setState({data: handledTodos, color_data: handledColors}, () => this.filter());
-        try {
+    handleClicks(index) {
 
-            AsyncStorage.setItem("ToDo", JSON.stringify(handledTodos));
-            AsyncStorage.setItem("Colors", JSON.stringify(handledColors));
-        } catch (error) {
-            console.log(error);
-        }
+        this.setState((prevState) => {
+            return {
+                ...prevState,
+                colorData: update(prevState.colorData, {$splice: [[index, 1]]}),
+                data: update(prevState.data, {$splice: [[index, 1]]}),
+            };
+        }, () => {
+            this.filter();
+            try {
+                AsyncStorage.setItem("ToDo", JSON.stringify([this.state.colorData, this.state.data]));
+            } catch (error) {
+
+            }
+        });
+
+
     }
-
+    
     /**
-     * Returns the displayed todoData and colors.
+     * Returns an array of child elements from ToDoItem.
      * @returns {Array}
      */
     renderToDoItems() {
-        return this.state.displayed_data.map((todo, index) =>
-            <ToDoItem value={todo} key={index} index={index} color={this.state.displayed_colors[index]}
-                      onClick={() => this.handleClicks(index)}/>
-        );
+        if (this.state.displayedData !== undefined) {
+            return this.state.displayedData.map((todo, index) =>
+                <ToDoItem value={todo} key={this.state.indexList[index]} index={this.state.indexList[index]}
+                          color={this.state.displayedColors[index]}
+                          onClick={() => this.handleClicks(this.state.indexList[index])}/>
+            );
+        }
+
+
     }
 
     render() {
