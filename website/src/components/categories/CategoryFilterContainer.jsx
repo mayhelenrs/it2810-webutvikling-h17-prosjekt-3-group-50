@@ -26,10 +26,12 @@ export class CategoryFilterContainer extends React.Component {
         );
     }
 
+
     generateCategory(color) {
         return <CategoryFilter selectCategory={this.selectCategory} key={this.categoryCount++} color={color}/>;
     }
 
+    //Selectes the given category and unselects the previously selected category
     selectCategory(element) {
         const selectedCategory = this.state.selectedCategory;
 
@@ -41,12 +43,21 @@ export class CategoryFilterContainer extends React.Component {
         }, () => this.props.filter());
     }
 
+    /**
+     * Appends a new category with the provided color
+     * @param color
+     */
     appendCategory(color) {
         this.setState(prevState => {
             return {...prevState, categories: update(prevState.categories, {$push: [this.generateCategory(color)]})};
         });
     }
-
+    
+    /**
+     * A function used to add new colors to the category filter
+     * This function is called interally by the Categories component whenever a new category is added
+     * @param colors
+     */
     addCategories(colors) {
         const categoryList = colors.map(color => this.generateCategory(color));
         this.setState(prevState => {

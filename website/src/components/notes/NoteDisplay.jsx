@@ -18,12 +18,14 @@ export class NoteDisplay extends React.Component {
         }
     }
 
+    //Handler that updates the title
     onInputChange({target}) {
         this.setState(prevState => {
-           return {...prevState, color: prevState.color, title: target.value};
+           return {...prevState, title: target.value};
         }, () => this.props.updateTitle(this.state.title));
     }
 
+    //Handler that updates the text
     onTextAreaChange({target}) {
         this.setState(prevState => {
             return {...prevState, text: target.value};
@@ -48,6 +50,7 @@ export class NoteDisplay extends React.Component {
         );
     }
 
+    //Returns a style given by its current state
     getStyle() {
         return {
             width: window.innerWidth <= 525 ? this.state.width > 0 ? "100%" : this.state.width + "px" : this.state.width + "px",
@@ -57,6 +60,7 @@ export class NoteDisplay extends React.Component {
         }
     }
 
+    //
     componentDidMount() {
         LocalStorage.load(this.getSaveName(), (data) => {
             this.setState((prevState) => {

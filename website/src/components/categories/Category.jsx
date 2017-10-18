@@ -17,6 +17,7 @@ export class Category extends React.Component {
         LocalStorage.loadToState(this.getSaveName(), this);
     }
 
+    //Saves the state of the component whenever it is updated
     componentDidUpdate() {
         LocalStorage.save(this.getSaveName(), this.state);
     }
