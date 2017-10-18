@@ -3,6 +3,7 @@ import update from 'react-addons-update';
 import {AppointmentItem} from './AppointmentItem.js';
 import {Button} from 'react-native-elements';
 import {View, TextInput, StyleSheet} from 'react-native';
+import DatePicker from 'react-native-datepicker';
 
 export default class AppointmentContainer extends React.Component {
 
@@ -91,9 +92,18 @@ export default class AppointmentContainer extends React.Component {
                 <View style={styles.listWrap}>
                     {this.state.displayList}
                 </View>
-                <TextInput style={styles.TextInput} name={"desc"} value={this.state.desc} placeholder={"Description"} onChangeText={(text) => this.setState({desc: text})}/>
-                <TextInput style={styles.TextInput} name={"time"} value={this.state.time} placeholder={"Time"} onChangeText={(text) => this.setState({time: text})}/>
-                <TextInput style={styles.TextInput} name={"date"} value={this.state.date} placeholder={"Date"} onChangeText={(text) => this.setState({date: text})}/>
+                <TextInput  style={styles.TextInput} name={"desc"} value={this.state.desc} placeholder={"Description"}
+                            onChangeText={(text) => this.setState({desc: text})} underlineColorAndroid='rgba(0,0,0,0)'
+                />
+                <DatePicker style={styles.DateInput} date={this.state.date} mode="date" placeholder="Select date"
+                            format="DD-MM-YYYY" confirmBtnText="Confirm" cancelBtnText="Cancel"
+                            showIcon={false}
+                            onDateChange={(date) => {this.setState({date: date})}}
+                />
+                <DatePicker style={styles.DateInput} date={this.state.time} mode="time" placeholder="Select time"
+                            format="HH:mm" confirmBtnText="Confirm" cancelBtnText="Cancel" is24Hour={true}
+                            onDateChange={(time) => {this.setState({time: time})}} showIcon={false}
+                />
                 <View style={{width: '100%'}}>
                     <Button
                         onPress={() => this.formSubmit()}
@@ -122,11 +132,18 @@ const styles = StyleSheet.create({
     },
     TextInput: {
         width: '90%',
+        textAlign: 'center',
         height: 40,
         borderColor: 'lightgrey',
         backgroundColor: 'white',
         borderWidth: 0.5,
-        paddingLeft: 15,
         marginBottom: 5,
     },
+    DateInput: {
+        width: '90%',
+        height: 40,
+        backgroundColor: 'white',
+        borderColor: 'lightgrey',
+        marginBottom: 5,
+    }
 });

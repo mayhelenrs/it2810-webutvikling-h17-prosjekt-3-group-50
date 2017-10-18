@@ -31,8 +31,8 @@ export class AppointmentItem extends React.Component {
             }, styles.wrapper]}>
                 <View style={styles.textWrap}>
                     <Text style={styles.textStyling}>{this.state.description}</Text>
-                    <Text style={[styles.border, styles.textStyling]}>{this.state.time}</Text>
-                    <Text style={styles.textStyling}>{this.state.date}</Text>
+                    <Text style={[styles.border, styles.textStyling]}>{this.state.date}</Text>
+                    <Text style={styles.textStyling}>{this.state.time}</Text>
                 </View>
                 <View>
                     <Button
@@ -68,5 +68,7 @@ const styles = StyleSheet.create({
     },
     textWrap: {
         alignItems: 'center',
+        paddingBottom: 5,
+        paddingTop: 5
     }
 });
