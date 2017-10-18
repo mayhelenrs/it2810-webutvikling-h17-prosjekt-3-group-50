@@ -42,8 +42,12 @@ div {
     flex-wrap: wrap;
 }
 
+
 .NoteHolder > p {
-    font-size: 18px;
+    font-family: Lato, sans-serif;
+    font-color:rgba(0,0,0,0.7);
+    font-size: 14px;
+    margin: 10px 0;
 }
 
 orange {

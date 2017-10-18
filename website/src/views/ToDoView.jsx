@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/styles/ToDo.css';
 import {ToDo} from '../components/todo/ToDo.jsx';
 import {Categories} from '../components/categories/Categories.jsx';
+import {Navbar} from "../components/Navbar";
 
 //Parent of components/ToDo
 export class ToDoView extends React.Component {
@@ -20,9 +21,12 @@ export class ToDoView extends React.Component {
 
     render() {
         return (
-            <Categories id={2} title={"todos"} filter={() => this.todo.filter()}>
-                {this.state.todo}
-            </Categories>
+            <div className={"body-fullwidth"}>
+                <Navbar navbarLocation={"TODOS"} navbarImage={require("../assets/images/navbar_leftarrow.png")}/>
+                <Categories id={2} title={"todos"} filter={() => this.todo.filter()}>
+                    {this.state.todo}
+                </Categories>
+            </div>
         );
     }
 }
