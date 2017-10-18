@@ -1,6 +1,6 @@
 import React from 'react';
 import {Category} from "./Category";
-import '../../assets/styles/Categories.css';
+import {LocalStorage} from "../../service/LocalStorage";
 import update from 'react-addons-update';
 
 export class CategoryContainer extends React.Component {
@@ -17,27 +17,36 @@ export class CategoryContainer extends React.Component {
     }
 
     componentDidUpdate() {
-        this.save();
+        LocalStorage.save(this.getSaveName(), this.state.categories.map(category => {
+            return category.props.id;
+        }));
     }
 
-    //When the component is finished mounting it adds the stored categories to its list
+    //Since we can't keep all the data of the notes in the container we have to
+    //Use a custom loading function to parse the data in
     componentDidMount() {
-        const categories = [];
-        const categoryIds = this.load();
-        if (categoryIds !== null) {
-            categoryIds.forEach(id => {
+        //Since we always want two categories make sure they are saved before the initial load
+        if (!LocalStorage.exists(this.getSaveName())) {
+            LocalStorage.save(this.getSaveName(), [0, 1]);
+        }
+        //Custom function that
+        LocalStorage.load(this.getSaveName(), (data) => {
+            let ids = data.map((id) => {
+                return parseInt(id, 10);
+            });
+            let categories = [];
+            ids.forEach(id => {
                 const category = JSON.parse(localStorage.getItem("Category" + id + "-" + this.props.id));
                 categories.push(this.generateCategoryWithId(category.text, id, category.color));
                 this.categoryCount = id + 1; //To ensure unique key and ids
             });
-            this.colorIndex = categoryIds.length;
+            this.colorIndex = ids.length;
             this.setState(prevState => {
-               return {...prevState, categories: categories}
+                return {...prevState, categories: categories}
             }, () => this.props.updateCategoryFilter(this.state.categories.map(category => {
                 return category.props.color;
             })));
-        }
-        this.save();
+        });
     }
 
     render() {
@@ -56,8 +65,10 @@ export class CategoryContainer extends React.Component {
     //to add the category to the filter
     appendCategory() {
         this.setState(prevState => {
-                return {...prevState, categories: update(this.state.categories,
-                    {$push: [this.generateCategory("New category")]})};
+                return {
+                    ...prevState, categories: update(this.state.categories,
+                        {$push: [this.generateCategory("New category")]})
+                };
             },
             () => {
                 this.props.updateCategoryFilter([this.state.categories[this.state.categories.length - 1].props.color]);
@@ -90,24 +101,9 @@ export class CategoryContainer extends React.Component {
         return this.generateCategoryWithId(text, id, this.getNextColor());
     }
 
-    //Saves the IDs for the notes in the container
-    save() {
-        if (this.state.categories.length === 0)
-            localStorage.removeItem("CategoryIds" + this.props.id);
-        else
-            localStorage.setItem("CategoryIds" + this.props.id, this.state.categories.map(category => {
-                return category.props.id
-            }));
-    }
-
-    //Loads the ids for the notes in the container
-    load() {
-        if ("CategoryIds" + this.props.id in localStorage)
-            return localStorage.getItem("CategoryIds" + this.props.id).split(",").map((id) => {
-                return parseInt(id, 10);
-            });
-        return [0, 1];  //Returning a list with the ID 0 and 1 because we always want the two
-        //Preloaded categories to be loaded
+    getSaveName() {
+        return "CategoryIds" + this.props.id;
     }
 
 }
+

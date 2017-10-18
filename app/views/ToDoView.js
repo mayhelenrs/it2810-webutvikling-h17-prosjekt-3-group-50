@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDo from '../components/todo/ToDo';
 import Categories from '../components/categories/Categories';
-import {View, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 
 //Parent of components/ToDo
 export default class ToDoView extends React.Component {
@@ -23,11 +23,11 @@ export default class ToDoView extends React.Component {
 
     render() {
         return (
-            <View style={styles.backgroundTodo}>
+            <ScrollView style={styles.backgroundTodo}>
                 <Categories id={2} filter={() => this.todo.filter()}>
                     {this.state.todo}
                 </Categories>
-            </View>
+            </ScrollView>
         );
     }
 }
