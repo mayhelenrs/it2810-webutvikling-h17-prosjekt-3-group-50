@@ -9,7 +9,6 @@ export class App extends React.Component {
     render() {
         return (
             <div className="body-fullwidth">
-                <Navbar navbarLocation={"DASHBOARD"}/>
                 <div id="content-container">
                     <Switch>
                         <Route exact path='/' component={Frontpage}/>
