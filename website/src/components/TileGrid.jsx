@@ -11,10 +11,10 @@ export class TileGrid extends React.Component {
 
         //define tiles
         const standardTiles = [
-            ["Schedule", require("../assets/images/calendar.png"), "#c7b9e5", "red", "schedule"],
-            ["Appointments", require("../assets/images/notifications.png"), "#006e8e", "green", "appointments"],
-            ["Todo", require("../assets/images/todo.png"), "#20c2af", "yellow", "todo"],
-            ["Notes", require("../assets/images/notes.png"), "#f9a7a9", "red", "note"]
+            ["Schedule", require("../assets/images/calendar.png"), "#c7b9e5", "schedule"],
+            ["Appointments", require("../assets/images/notifications.png"), "#006e8e", "appointments"],
+            ["Todo", require("../assets/images/todo.png"), "#20c2af", "todo"],
+            ["Notes", require("../assets/images/notes.png"), "#f9a7a9", "note"]
         ];
         //set state values
         this.state = {
@@ -32,7 +32,7 @@ export class TileGrid extends React.Component {
                             tileTitle={info[0]}
                             tileIcon={info[1]}
                             color={info[2]}
-                            view={info[4]}
+                            view={info[3]}
                             key={index}
                         />
                     )
