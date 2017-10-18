@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Notes.css';
+import '../../assets/styles/Notes.css';
 import {LocalStorage} from "../../service/LocalStorage";
 
 export class NoteDisplay extends React.Component {
