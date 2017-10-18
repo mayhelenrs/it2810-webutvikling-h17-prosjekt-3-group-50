@@ -6,7 +6,7 @@ import {ScrollView, StyleSheet} from 'react-native';
 export default class AppointmentView extends React.Component {
 
     static navigationOptions = {
-        title: 'AppointmentView'
+        title: 'APPOINTMENTS'
     };
 
     constructor(props) {

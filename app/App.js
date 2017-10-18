@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {AsyncStorage} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Frontpage from "./views/frontpage";
 import Schedule from "./views/Schedule";
