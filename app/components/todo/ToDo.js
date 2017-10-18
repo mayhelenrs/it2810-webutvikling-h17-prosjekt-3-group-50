@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 15,
         width: '90%',
+        marginBottom: 10
     },
     todoButton: {
         width: '90%',

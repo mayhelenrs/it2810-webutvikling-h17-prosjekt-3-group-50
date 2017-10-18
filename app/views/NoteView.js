@@ -6,7 +6,14 @@ import {ScrollView, StyleSheet} from 'react-native';
 export default class NoteView extends React.Component {
 
     static navigationOptions = {
-        title: 'NOTES'
+        title: 'NOTES',
+        headerTitleStyle: {
+            color: 'black',
+            fontFamily: 'IntroRust'
+        },
+        headerStyle: {
+            backgroundColor: 'white',
+        }
     };
 
     constructor(props) {

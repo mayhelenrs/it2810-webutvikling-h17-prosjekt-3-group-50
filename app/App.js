@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Platform, StatusBar} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Frontpage from "./views/frontpage";
 import Schedule from "./views/Schedule";
@@ -24,7 +24,7 @@ export default class App extends React.Component {
         })
     }
     render() {
-        let app = this.state.fontLoaded ? <Navigator/> : null
+        let app = this.state.fontLoaded ? <Navigator style={{paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}/> : null
         return(
             app
         );
@@ -34,6 +34,7 @@ const Navigator = StackNavigator({
     Home: {screen: Frontpage},
     Schedule: {screen: Schedule},
     Todo: {screen: TodoView},
-    Notes: {screen: NoteView},
     Appointments: {screen: AppointmentView},
+    Notes: {screen: NoteView}
 });
+

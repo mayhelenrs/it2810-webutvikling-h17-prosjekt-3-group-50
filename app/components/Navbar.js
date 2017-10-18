@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#00ACCE',
         flexDirection: 'row',
         paddingTop: '3%',
-        paddingBottom: '1%'
+        paddingBottom: '1%',
+        alignContent: 'center'
     },
     navbarText: {
-        textAlign: 'center',
         justifyContent: 'center',
         fontWeight: 'bold',
         flex: 1

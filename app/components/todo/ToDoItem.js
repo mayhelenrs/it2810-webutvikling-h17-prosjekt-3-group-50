@@ -22,7 +22,6 @@ export default class ToDoItem extends React.Component {
 
                 <View style={[{backgroundColor: this.props.color}, styles.categoryColorTodo]}/>
                 <CheckBox
-                    title={this.props.value}
                     key={this.props.index}
 
                     checkedIcon='dot-circle-o'
@@ -34,6 +33,7 @@ export default class ToDoItem extends React.Component {
                     fontFamily='IntroRust'
                     containerStyle={styles.checkboxTodo}
                 />
+                <Text style={styles.todoText}>{this.props.value}</Text>
             </View>
         );
     }
@@ -42,18 +42,22 @@ export default class ToDoItem extends React.Component {
 const styles = StyleSheet.create({
     categoryColorTodo: {
         height: '100%',
-        width: '20%',
-
+        flex: 1
     },
     checkboxTodo: {
-        width: '65%',
         borderColor: 'transparent',
-        height:'100%',
         backgroundColor: 'white',
+        flex: 1
+    },
+    todoText: {
+        flex: 4,
+        fontFamily: 'IntroRust'
     },
     itemTodo: {
         display: 'flex',
+        width: '90%',
         flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         marginBottom: 15,
         shadowOffset: { width: 1, height: 1 },
