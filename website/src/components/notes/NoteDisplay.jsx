@@ -38,10 +38,10 @@ export class NoteDisplay extends React.Component {
                 </div>
                 <div className={"NoteDisplay"}
                      style={this.getStyle()}>
-
-                    <input onChange={this.onInputChange}
+                    <input style={{display: this.state.width === 0 ? 'none' : 'block'}}
+                           onChange={this.onInputChange} className={"NoteFont"}
                            value={this.state.title}/>
-                    <textarea style={{display: this.state.width === 0 ? 'none' : 'block'}}
+                    <textarea style={{display: this.state.width === 0 ? 'none' : 'block'}} className={"NoteFont"}
                               onChange={this.onTextAreaChange} spellCheck={"false"} value={this.state.text} />
                 </div>
             </div>
@@ -52,8 +52,8 @@ export class NoteDisplay extends React.Component {
         return {
             width: window.innerWidth <= 525 ? this.state.width > 0 ? "100%" : this.state.width + "px" : this.state.width + "px",
             height: window.innerWidth <= 525 ? this.state.height > 0 ? "300px" : this.state.height + "px" : this.state.height + "px",
+            opacity: this.state.width > 0 ? 0.95 : 0,
             backgroundColor: '' + this.state.color,
-            opacity: '0.95'
         }
     }
 
