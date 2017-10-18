@@ -7,7 +7,6 @@ export class Slot extends React.Component {
         super(props);
 
         this.i = 0;
-        const REGEX = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]/;
         this.state = {
             color: this.props.color,
             interval: this.props.interval
@@ -54,7 +53,7 @@ export class Slot extends React.Component {
         if (classNames[1] === "slot-interval-start") {
             tempInterval.push(target.value);
             tempInterval.push(this.state.interval[1]);
-            
+
         } else {
             tempInterval.push(this.state.interval[0]);
             tempInterval.push(target.value);
