@@ -10,10 +10,10 @@ export default class TileGrid extends React.Component {
 
         //define tiles
         const standardTiles = [
-            ["Schedule", require("../assets/images/calendar.png"), "#E6A784", "red", "schedule"],
-            ["Appointments", require("../assets/images/notifications.png"), "#D56945", "green", "appointments"],
-            ["Todo", require("../assets/images/todo.png"), "#D28261", "yellow", "todo"],
-            ["Notes", require("../assets/images/notes.png"), "#9C624C", "red", "note"]
+            ["Schedule", require("../assets/images/calendar.png"), "#f9a7a9", "red", "schedule"],
+            ["Appointments", require("../assets/images/notifications.png"), "#20c2af", "green", "appointments"],
+            ["Todo", require("../assets/images/todo.png"), "#006e8e", "yellow", "todo"],
+            ["Notes", require("../assets/images/notes.png"), "#c7b9e5", "red", "note"]
         ];
         //set state values
         this.state = {
