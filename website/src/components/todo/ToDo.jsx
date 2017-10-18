@@ -16,7 +16,7 @@ export class ToDo extends React.Component {
             data: [],
             displayedData: [],
             displayedColors: [],
-
+            indexList: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,9 +28,12 @@ export class ToDo extends React.Component {
         LocalStorage.load(this.getSaveName(), (data) => {
             let colorData = data[0];
             let todoData = data[1];
-            this.setState({
-                colorData: colorData,
-                data: todoData,
+            this.setState((prevState) => {
+                return {
+                ...prevState,
+                    colorData: colorData,
+                    data: todoData,
+                };
             }, () => this.filter());
         }, [this.state.colorData, this.state.data]);
     }
@@ -43,11 +46,18 @@ export class ToDo extends React.Component {
         if (color === undefined) {
             color = "#016D91";
         }
+        this.setState({currentColor: color});
         let displayedColors = this.props.selectedColor() === undefined ? this.state.colorData :
             this.state.colorData.filter((color, index) => color === this.props.selectedColor());
         let displayedData = this.props.selectedColor() === undefined ? this.state.data :
             this.state.data.filter((todo, index) => this.state.colorData[index] === this.props.selectedColor());
-        this.setState({currentColor: color, displayedColors: displayedColors, displayedData: displayedData});
+        let indexList = [];
+        this.state.colorData.forEach((color, index)=> {
+            if(this.props.selectedColor() === undefined || this.props.selectedColor() === color) {
+                indexList.push(index);
+            }
+        });
+        this.setState({displayedColors: displayedColors, displayedData: displayedData, indexList: indexList});
     }
 
     //Fires everytime the input text field change, updates value
@@ -90,12 +100,10 @@ export class ToDo extends React.Component {
 
     //Render the child elements from ToDoItem, sends down the displayed todoData and colors.
     renderToDoItems() {
-        return this.state.displayedData.map((todo, index) => {
-                return <ToDoItem className="items" value={todo} key={index} color={this.state.displayedColors[index]}
-                                 onClick={() => this.handleClicks(index)}/>
-            }
+        return this.state.displayedData.map((todo, index) =>
+            <ToDoItem className="items" value={todo} key={this.state.indexList[index]} color={this.state.displayedColors[index]}
+                      onClick={() => this.handleClicks(this.state.indexList[index])}/>
         );
-
     }
 
     render() {

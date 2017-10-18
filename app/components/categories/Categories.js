@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     },
     View: {
         margin: 10,
+
     },
     Categories: {
         flexDirection: 'column',
