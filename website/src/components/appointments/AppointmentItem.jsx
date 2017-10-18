@@ -4,14 +4,20 @@ import {LocalStorage} from "../../service/LocalStorage";
 
 export class AppointmentItem extends React.Component {
 
+    //because of the way new appointments are created in AppointmentContainer I
+    //do not need a constructor og states in this class
+
+    //when a component is updated it is saved to LocalStorage
     componentDidUpdate() {
         LocalStorage.save(this.getSaveName(), this.state);
     }
 
+    //way to bring back saved appointment from LocalStorage
     componentDidMount() {
         LocalStorage.loadToState(this.getSaveName(), this);
     }
 
+    //binds this removeAppointment to handleRemove
     removeAppointment() {
         this.props.handleRemove(this);
     }

@@ -5,7 +5,7 @@ import '../../assets/styles/appointment.css';
 import {LocalStorage} from "../../service/LocalStorage";
 
 export class AppointmentContainer extends React.Component {
-
+    //initiating states and binds functions to this
     constructor(props) {
         super(props)
         this.state = {
@@ -21,6 +21,7 @@ export class AppointmentContainer extends React.Component {
         this.filter = this.filter.bind(this)
     }
 
+    //changes a state when given a target, is used on inputfields
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -38,7 +39,7 @@ export class AppointmentContainer extends React.Component {
             }
         })
     }
-
+    //retruns selectedColor or a predefined color in none is chosen
     getColor() {
         const color = this.props.selectedColor()
         return color === undefined
@@ -46,6 +47,9 @@ export class AppointmentContainer extends React.Component {
             : color
     }
 
+    //checks if all inputfields have content, then makes a new list so we doesnt directly manipulate state
+    //next a new appointment is made and pushed to the new list, then the state gets updated to the new list
+    //and inputfields are clear by setting state to nothing
     formSubmit(e) {
         if (this.state.desc.length > 0 && this.state.time.length > 0 && this.state.date.length > 0) {
             const newList = this.state.list.slice()
@@ -63,20 +67,24 @@ export class AppointmentContainer extends React.Component {
         e.preventDefault()
     }
 
+    //way to generate and appointment when you dont have any id
     generateAppointment(desc, time, date, color) {
         const id = this.appointmentCount++;
         return this.generateAppointmentWithId(desc, time, date, color, id);
     }
 
+    //simple way to create a new appointment
     generateAppointmentWithId(desc, time, date, color, id) {
         return <AppointmentItem description={desc} time={time} date={date} key={id} color={color} id={id} handleRemove={this.handleRemove}/>
     }
 
+    //when a component is updated its state will be saved
     componentDidUpdate() {
         LocalStorage.save(this.getSaveName(), this.state.list.map(appointment => {
             return {desc: appointment.props.description, time: appointment.props.time, date: appointment.props.date, color: appointment.props.color, id: appointment.props.id};
         }));
     }
+
 
     componentDidMount() {
         LocalStorage.load(this.getSaveName(), (data) => {
@@ -90,6 +98,8 @@ export class AppointmentContainer extends React.Component {
         });
     }
 
+    //used for deleting one specified appointment by checking if the specified appointment is in the list.
+    //if it is, it is remeved and the list is updated to the new list without the specified appointment
     removeAppointment(element) {
         this.state.list.forEach((appointment, index) => {
             if (appointment.props.id === element.props.id) {

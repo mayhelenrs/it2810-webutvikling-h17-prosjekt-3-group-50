@@ -156,14 +156,22 @@
     flex-wrap: wrap;
 }
 
+.tile-grid-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (min-width: 1109px) {
+
     .tilegrid {
         justify-content: flex-start;
     }
+
 }
 
 @media screen and (max-width: 1108px) {
     .tilegrid {
+        max-width: 779px;
         justify-content: center;
     }
 }
