@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {CheckBox} from 'react-native-elements';
 
+//Child of Todo.jsx
 export default class ToDoItem extends React.Component {
     constructor(props) {
         super(props);
@@ -10,10 +11,11 @@ export default class ToDoItem extends React.Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
-
+    //Updates the state of whether the checkbox is clicked or not.
     handleClick() {
         this.setState({checked: !this.state.checked});
     }
+
     render() {
         return (
             <View key={this.props.index} style={styles.itemTodo}>
@@ -22,6 +24,7 @@ export default class ToDoItem extends React.Component {
                 <CheckBox
                     title={this.props.value}
                     key={this.props.index}
+
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     onPress={() => {
@@ -35,26 +38,24 @@ export default class ToDoItem extends React.Component {
         );
     }
 }
+//Styles the elements
 const styles = StyleSheet.create({
     categoryColorTodo: {
         height: '100%',
-        width: '15%',
-        margin: 0,
-        padding: 0,
+        width: '20%',
+
     },
     checkboxTodo: {
-        width: '90%',
+        width: '65%',
+        borderColor: 'transparent',
         height:'100%',
-        marginTop: 0,
-        marginLeft: 0,
         backgroundColor: 'white',
     },
     itemTodo: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems: 'center',
         marginBottom: 15,
-        marginTop: 0,
-        width: '95%',
         shadowOffset: { width: 1, height: 1 },
         shadowColor: 'grey',
         shadowOpacity: 0.15,

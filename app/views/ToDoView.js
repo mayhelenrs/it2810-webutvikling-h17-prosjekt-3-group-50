@@ -1,8 +1,9 @@
 import React from 'react';
-import ToDo from '../components/Todo/ToDo';
+import ToDo from '../components/todo/ToDo';
 import Categories from '../components/categories/Categories';
 import {View, StyleSheet} from 'react-native';
 
+//Parent of components/ToDo
 export default class ToDoView extends React.Component {
     static navigationOptions = {
         title: 'ToDoView'
@@ -18,6 +19,7 @@ export default class ToDoView extends React.Component {
         }
 
     }
+    //Encapsulates the ToDo inside the category component, which renders both category and Todo.
 
     render() {
         return (
