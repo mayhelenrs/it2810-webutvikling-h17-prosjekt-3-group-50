@@ -6,7 +6,7 @@ import {ScrollView, StyleSheet} from 'react-native';
 //Parent of components/ToDo
 export default class ToDoView extends React.Component {
     static navigationOptions = {
-        title: 'ToDoView'
+        title: 'TODOS'
     };
 
     constructor(props) {
