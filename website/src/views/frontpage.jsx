@@ -11,7 +11,9 @@ export class Frontpage extends React.Component {
                     <br/>
                     <Pagetext text={"VELKOMMEN!"}/>
                     <br/><br/>
-                    <TileGrid/>
+                    <div>
+                        <TileGrid/>
+                    </div>
                 </div>
             </div>
         );
