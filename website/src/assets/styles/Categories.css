@@ -15,6 +15,13 @@ div {
     box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.42);
 }
 
+.FlexContainer > p{
+    font-family: Lato, sans-serif;
+    color:rgba(0,0,0,0.7);
+    font-size: 14px;
+    margin: 10px 0;
+}
+
 orange {
     color: orange;
 }

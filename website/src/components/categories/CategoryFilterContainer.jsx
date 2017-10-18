@@ -19,8 +19,8 @@ export class CategoryFilterContainer extends React.Component {
         return (
             <div className="FlexContainer">
                 <p>
-                    <orange>Categories</orange>
-                    - Select to filter your {this.props.title} and add new ones!
+                    <orange>CATEGORIES </orange>
+                    - SELECT TO FILTER YOUR {this.props.title.toUpperCase()} AND ADD NEW ONES!
                 </p>
                 <div className="FlexContent">
                     {this.state.categories}
