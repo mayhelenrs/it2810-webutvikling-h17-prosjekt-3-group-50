@@ -39,11 +39,18 @@ export class Event extends React.Component {
     }
 
     componentDidUpdate() {
-        LocalStorage.save(this.getSaveName(), this.state);
+        LocalStorage.save(this.getSaveName(), {
+            eventTitle: this.state.eventTitle,
+            eventDescription: this.state.eventDescription
+        });
     }
 
     componentDidMount() {
-        LocalStorage.loadToState(this.getSaveName(), this);
+        LocalStorage.load(this.getSaveName(), (data) => {
+            this.setState((prevState) => {
+                return {...prevState, eventTitle: data.eventTitle, eventDescription: data.eventDescription};
+            });
+        }, {eventTitle: this.state.eventTitle, eventDescription: this.state.eventDescription});
     }
 
     getSaveName() {

@@ -54,7 +54,7 @@ export class Slot extends React.Component {
 
 
     componentDidUpdate() {
-        LocalStorage.save(this.getSaveName(), this.state);
+        LocalStorage.save(this.getSaveName(), {color: this.state.color, interval: this.state.interval});
     }
 
     /*
@@ -62,11 +62,12 @@ export class Slot extends React.Component {
     If not, then this is the first time the component is mounted and we save the state for later
     */
     componentDidMount() {
-        LocalStorage.loadToState(this.getSaveName(), this);
-    }
-
-    save() {
-        LocalStorage.save(this.getSaveName(), this.state);
+        LocalStorage.load(this.getSaveName(), (data) => {
+            this.setState((prevState) => {
+                return {...prevState, color: data.color, interval: data.interval};
+            });
+        }, {color: this.state.color, interval: this.state.interval});
+        //LocalStorage.loadToState(this.getSaveName(), this);
     }
 
     getSaveName() {

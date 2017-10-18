@@ -9,6 +9,7 @@ export class LocalStorage {
      */
     static loadToState(name, instance, callback=() => {}) {
         if (name in localStorage) {
+            console.log(localStorage.getItem(name));
             let data = JSON.parse(localStorage.getItem(name));
             instance.setState((prevState) => {
                 return {...prevState, data};
@@ -31,7 +32,6 @@ export class LocalStorage {
             let data = JSON.parse(localStorage.getItem(name));
             handleData(data);
         } else {
-            console.log("Saving: " + name + " " + saveData);
             LocalStorage.save(name, saveData);
         }
     }
