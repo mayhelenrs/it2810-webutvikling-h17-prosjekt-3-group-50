@@ -1,0 +1,1065 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Appointment Component Renders renders the Appointment Component 1`] = `
+<div>
+  <div
+    className="appointmentCards"
+  />
+  <form
+    className="formAppointment"
+    onSubmit={[Function]}
+  >
+    <input
+      className="appointmentInput"
+      name="desc"
+      onChange={[Function]}
+      placeholder="Insert description"
+      type="text"
+      value=""
+    />
+    <input
+      className="appointmentInput"
+      name="time"
+      onChange={[Function]}
+      placeholder="Insert time"
+      type="text"
+      value=""
+    />
+    <input
+      className="appointmentInput"
+      name="date"
+      onChange={[Function]}
+      placeholder="Insert date"
+      type="text"
+      value=""
+    />
+    <button
+      id="formButton"
+      onSubmit={[Function]}
+    >
+      Add
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Appointment Component Renders renders the AppointmentItem Component 1`] = `
+<div
+  className="tile-wrapper"
+>
+  <div
+    className="color-tile"
+    style={
+      Object {
+        "backgroundColor": "undefined",
+        "borderColor": "undefined",
+      }
+    }
+  />
+  <div
+    className="textComponents"
+  >
+    <div
+      className="titleText"
+    >
+      <p />
+    </div>
+    <div
+      className="timeText"
+    >
+      <p />
+    </div>
+    <div
+      className="dateText"
+    >
+      <p />
+    </div>
+  </div>
+  <div
+    className="deleteButtonWrap"
+  >
+    <input
+      className="deleteButton"
+      label={false}
+      onChange={[Function]}
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
+</div>
+`;
+
+exports[`Appointment Overview renders the whole Appointment application 1`] = `
+<div
+  className="NoteView"
+>
+  <div
+    className="Left-Page"
+  >
+    <p>
+      This is your TODO for now
+    </p>
+    <div>
+      <div
+        className="NoteHolder"
+      >
+        <p>
+          <orange>
+            Categories
+          </orange>
+           - Select to filter your notes and add new ones!
+        </p>
+        <div
+          className="Notes"
+        >
+          <div
+            className="CategoryFilter"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#016D91",
+                "border": "none",
+              }
+            }
+          />
+          <div
+            className="CategoryFilter"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#E53F6F",
+                "border": "none",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="Middle-Page"
+    >
+      <div>
+        <div
+          className="appointmentCards"
+        />
+        <form
+          className="formAppointment"
+          onSubmit={[Function]}
+        >
+          <input
+            className="appointmentInput"
+            name="desc"
+            onChange={[Function]}
+            placeholder="Insert description"
+            type="text"
+            value=""
+          />
+          <input
+            className="appointmentInput"
+            name="time"
+            onChange={[Function]}
+            placeholder="Insert time"
+            type="text"
+            value=""
+          />
+          <input
+            className="appointmentInput"
+            name="date"
+            onChange={[Function]}
+            placeholder="Insert date"
+            type="text"
+            value=""
+          />
+          <button
+            id="formButton"
+            onSubmit={[Function]}
+          >
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Right-Page"
+  >
+    <div
+      className="CategoryCreatorHolder"
+    >
+      <p>
+        Categories
+      </p>
+      <div
+        className="Category"
+      >
+        <div
+          className="CategoryColor"
+          style={
+            Object {
+              "backgroundColor": "#016D91",
+            }
+          }
+        />
+        <div>
+          <input
+            className="CategoryName"
+            onChange={[Function]}
+            value="Other"
+          />
+        </div>
+      </div>
+      <div
+        className="Category"
+      >
+        <div
+          className="CategoryColor"
+          style={
+            Object {
+              "backgroundColor": "#E53F6F",
+            }
+          }
+        />
+        <div>
+          <input
+            className="CategoryName"
+            onChange={[Function]}
+            value="School"
+          />
+        </div>
+      </div>
+      <div
+        className="AddCategory"
+      >
+        <button
+          className="add-button"
+          onClick={[Function]}
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AppointmentItem instantiates properties and state properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AppointmentItem
+    className="items"
+    color="rgb(43, 186, 178)"
+    date="24.04.2017"
+    description="FFS"
+    onClick={[Function]}
+    time="00:24"
+    value={
+        ShallowWrapper {
+            "length": 1,
+            Symbol(enzyme.__root__): [Circular],
+            Symbol(enzyme.__unrendered__): <AppointmentContainer />,
+            Symbol(enzyme.__renderer__): Object {
+              "batchedUpdates": [Function],
+              "getNode": [Function],
+              "render": [Function],
+              "simulateEvent": [Function],
+              "unmount": [Function],
+            },
+            Symbol(enzyme.__node__): Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="appointmentCards"
+        >
+                    
+        </div>,
+                  <form
+                    className="formAppointment"
+                    onSubmit={[Function]}
+        >
+                    <input
+                                className="appointmentInput"
+                                name="desc"
+                                onChange={[Function]}
+                                placeholder="Insert description"
+                                type="text"
+                                value=""
+                    />
+                    <input
+                                className="appointmentInput"
+                                name="time"
+                                onChange={[Function]}
+                                placeholder="Insert time"
+                                type="text"
+                                value=""
+                    />
+                    <input
+                                className="appointmentInput"
+                                name="date"
+                                onChange={[Function]}
+                                placeholder="Insert date"
+                                type="text"
+                                value=""
+                    />
+                    <button
+                                id="formButton"
+                                onSubmit={[Function]}
+                    >
+                                Add
+                    </button>
+        </form>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [],
+                    "className": "appointmentCards",
+                  },
+                  "ref": null,
+                  "rendered": Array [],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <input
+                        className="appointmentInput"
+                        name="desc"
+                        onChange={[Function]}
+                        placeholder="Insert description"
+                        type="text"
+                        value=""
+        />,
+                      <input
+                        className="appointmentInput"
+                        name="time"
+                        onChange={[Function]}
+                        placeholder="Insert time"
+                        type="text"
+                        value=""
+        />,
+                      <input
+                        className="appointmentInput"
+                        name="date"
+                        onChange={[Function]}
+                        placeholder="Insert date"
+                        type="text"
+                        value=""
+        />,
+                      <button
+                        id="formButton"
+                        onSubmit={[Function]}
+        >
+                        Add
+        </button>,
+                    ],
+                    "className": "formAppointment",
+                    "onSubmit": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "appointmentInput",
+                        "name": "desc",
+                        "onChange": [Function],
+                        "placeholder": "Insert description",
+                        "type": "text",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "appointmentInput",
+                        "name": "time",
+                        "onChange": [Function],
+                        "placeholder": "Insert time",
+                        "type": "text",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "appointmentInput",
+                        "name": "date",
+                        "onChange": [Function],
+                        "placeholder": "Insert date",
+                        "type": "text",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Add",
+                        "id": "formButton",
+                        "onSubmit": [Function],
+                      },
+                      "ref": null,
+                      "rendered": "Add",
+                      "type": "button",
+                    },
+                  ],
+                  "type": "form",
+                },
+              ],
+              "type": "div",
+            },
+            Symbol(enzyme.__nodes__): Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div
+                      className="appointmentCards"
+        >
+                      
+        </div>,
+                    <form
+                      className="formAppointment"
+                      onSubmit={[Function]}
+        >
+                      <input
+                                    className="appointmentInput"
+                                    name="desc"
+                                    onChange={[Function]}
+                                    placeholder="Insert description"
+                                    type="text"
+                                    value=""
+                      />
+                      <input
+                                    className="appointmentInput"
+                                    name="time"
+                                    onChange={[Function]}
+                                    placeholder="Insert time"
+                                    type="text"
+                                    value=""
+                      />
+                      <input
+                                    className="appointmentInput"
+                                    name="date"
+                                    onChange={[Function]}
+                                    placeholder="Insert date"
+                                    type="text"
+                                    value=""
+                      />
+                      <button
+                                    id="formButton"
+                                    onSubmit={[Function]}
+                      >
+                                    Add
+                      </button>
+        </form>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [],
+                      "className": "appointmentCards",
+                    },
+                    "ref": null,
+                    "rendered": Array [],
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        <input
+                          className="appointmentInput"
+                          name="desc"
+                          onChange={[Function]}
+                          placeholder="Insert description"
+                          type="text"
+                          value=""
+        />,
+                        <input
+                          className="appointmentInput"
+                          name="time"
+                          onChange={[Function]}
+                          placeholder="Insert time"
+                          type="text"
+                          value=""
+        />,
+                        <input
+                          className="appointmentInput"
+                          name="date"
+                          onChange={[Function]}
+                          placeholder="Insert date"
+                          type="text"
+                          value=""
+        />,
+                        <button
+                          id="formButton"
+                          onSubmit={[Function]}
+        >
+                          Add
+        </button>,
+                      ],
+                      "className": "formAppointment",
+                      "onSubmit": [Function],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "appointmentInput",
+                          "name": "desc",
+                          "onChange": [Function],
+                          "placeholder": "Insert description",
+                          "type": "text",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "input",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "appointmentInput",
+                          "name": "time",
+                          "onChange": [Function],
+                          "placeholder": "Insert time",
+                          "type": "text",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "input",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "appointmentInput",
+                          "name": "date",
+                          "onChange": [Function],
+                          "placeholder": "Insert date",
+                          "type": "text",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "input",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Add",
+                          "id": "formButton",
+                          "onSubmit": [Function],
+                        },
+                        "ref": null,
+                        "rendered": "Add",
+                        "type": "button",
+                      },
+                    ],
+                    "type": "form",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            Symbol(enzyme.__options__): Object {
+              "adapter": ReactSixteenAdapter {
+                "options": Object {
+                  "enableComponentDidUpdateOnSetState": true,
+                },
+              },
+            },
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="color-tile"
+          style={
+                    Object {
+                              "backgroundColor": "rgb(43, 186, 178)",
+                              "borderColor": "rgb(43, 186, 178)",
+                            }
+          }
+/>,
+        <div
+          className="textComponents"
+>
+          <div
+                    className="titleText"
+          >
+                    <p>
+                              FFS
+                    </p>
+          </div>
+          <div
+                    className="timeText"
+          >
+                    <p>
+                              00:24
+                    </p>
+          </div>
+          <div
+                    className="dateText"
+          >
+                    <p>
+                              24.04.2017
+                    </p>
+          </div>
+</div>,
+        <div
+          className="deleteButtonWrap"
+>
+          <input
+                    className="deleteButton"
+                    label={false}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    type="button"
+          />
+</div>,
+      ],
+      "className": "tile-wrapper",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "className": "color-tile",
+          "style": Object {
+            "backgroundColor": "rgb(43, 186, 178)",
+            "borderColor": "rgb(43, 186, 178)",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="titleText"
+>
+              <p>
+                            FFS
+              </p>
+</div>,
+            <div
+              className="timeText"
+>
+              <p>
+                            00:24
+              </p>
+</div>,
+            <div
+              className="dateText"
+>
+              <p>
+                            24.04.2017
+              </p>
+</div>,
+          ],
+          "className": "textComponents",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": <p>
+                FFS
+</p>,
+              "className": "titleText",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": "FFS",
+              },
+              "ref": null,
+              "rendered": "FFS",
+              "type": "p",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": <p>
+                00:24
+</p>,
+              "className": "timeText",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": "00:24",
+              },
+              "ref": null,
+              "rendered": "00:24",
+              "type": "p",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": <p>
+                24.04.2017
+</p>,
+              "className": "dateText",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": "24.04.2017",
+              },
+              "ref": null,
+              "rendered": "24.04.2017",
+              "type": "p",
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": <input
+            className="deleteButton"
+            label={false}
+            onChange={[Function]}
+            onClick={[Function]}
+            type="button"
+/>,
+          "className": "deleteButtonWrap",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "className": "deleteButton",
+            "label": false,
+            "onChange": [Function],
+            "onClick": [Function],
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="color-tile"
+            style={
+                        Object {
+                                    "backgroundColor": "rgb(43, 186, 178)",
+                                    "borderColor": "rgb(43, 186, 178)",
+                                  }
+            }
+/>,
+          <div
+            className="textComponents"
+>
+            <div
+                        className="titleText"
+            >
+                        <p>
+                                    FFS
+                        </p>
+            </div>
+            <div
+                        className="timeText"
+            >
+                        <p>
+                                    00:24
+                        </p>
+            </div>
+            <div
+                        className="dateText"
+            >
+                        <p>
+                                    24.04.2017
+                        </p>
+            </div>
+</div>,
+          <div
+            className="deleteButtonWrap"
+>
+            <input
+                        className="deleteButton"
+                        label={false}
+                        onChange={[Function]}
+                        onClick={[Function]}
+                        type="button"
+            />
+</div>,
+        ],
+        "className": "tile-wrapper",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "className": "color-tile",
+            "style": Object {
+              "backgroundColor": "rgb(43, 186, 178)",
+              "borderColor": "rgb(43, 186, 178)",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="titleText"
+>
+                <p>
+                                FFS
+                </p>
+</div>,
+              <div
+                className="timeText"
+>
+                <p>
+                                00:24
+                </p>
+</div>,
+              <div
+                className="dateText"
+>
+                <p>
+                                24.04.2017
+                </p>
+</div>,
+            ],
+            "className": "textComponents",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": <p>
+                  FFS
+</p>,
+                "className": "titleText",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "FFS",
+                },
+                "ref": null,
+                "rendered": "FFS",
+                "type": "p",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": <p>
+                  00:24
+</p>,
+                "className": "timeText",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "00:24",
+                },
+                "ref": null,
+                "rendered": "00:24",
+                "type": "p",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": <p>
+                  24.04.2017
+</p>,
+                "className": "dateText",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "24.04.2017",
+                },
+                "ref": null,
+                "rendered": "24.04.2017",
+                "type": "p",
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": <input
+              className="deleteButton"
+              label={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              type="button"
+/>,
+            "className": "deleteButtonWrap",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "className": "deleteButton",
+              "label": false,
+              "onChange": [Function],
+              "onClick": [Function],
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

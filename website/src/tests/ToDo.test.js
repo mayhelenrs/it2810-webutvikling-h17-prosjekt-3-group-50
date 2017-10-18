@@ -10,6 +10,7 @@ import {ToDoView} from "../views/ToDoView";
 import {ToDo} from "../components/Todo/ToDo";
 import {ToDoItem} from "../components/Todo/ToDoItem";
 
+
 Enzyme.configure({ adapter: new Adapter() });
 
 /* Main function for testing the: */
@@ -55,8 +56,7 @@ describe('TodoItem', () => {
 
     //Tests if the handleClick function changes the state from false to true
     it('handleClick changes state', ()=> {
-        const instance = wrapper.instance()['_instance'];
-
+        const instance = wrapper.instance();
         expect(instance.state).toEqual({"checked": false});
         instance.handleClick();
         expect(instance.state).toEqual({"checked": true});
@@ -66,7 +66,7 @@ describe('TodoItem', () => {
     it('renderToDoItems by colors and data', () => {
         const liste = ["test1", "test2", "test3"];
         const colors = ["rgb(43, 186, 178)", "rgb(43, 186, 178)", "rgb(43, 186, 178)"];
-        const instance = todo.instance()['_instance'];
+        const instance = todo.instance();
 
         instance.setState({ displayed_data: liste });
         instance.setState({ displayed_colors: colors});
@@ -76,7 +76,7 @@ describe('TodoItem', () => {
 
     //Checks if handleSubmit with input exists, and executes handleSubmit
     it('handleSubmit handles new input from onClick', () => {
-        const instance = todo.instance()['_instance'];
+        const instance = todo.instance();
         const liste = ["test1", "test2", "test3"];
         const colors = ["rgb(43, 186, 178)", "rgb(43, 186, 178)", "rgb(43, 186, 178)"];
 
@@ -92,8 +92,7 @@ describe('TodoItem', () => {
         todo.setProps({ selectedColor: () => "rgb(0, 0, 0)"});
         expect(instance.state.data).toEqual(liste);
         expect(instance.state.value).toEqual("test4");
-        instance.handleSubmit();
+        instance.handleSubmit;
         expect(instance.state.data).toEqual(["test1", "test2", "test3", "test4"]);
-        console.log(instance);
     });
 });
