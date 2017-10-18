@@ -55,7 +55,6 @@
 /* Tile container */
 .tilegrid {
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
     width: 100%;
     background-color: transparent;
@@ -151,4 +150,16 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+@media screen and (min-width: 1109px) {
+    .tilegrid {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 1108px) {
+    .tilegrid {
+        justify-content: center;
+    }
 }

@@ -79,6 +79,10 @@ orange {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+.NoteFont {
+    font-family: 'IntroRust';
+}
+
 .NoteDisplay {
     width: 0;
     height: 0;
@@ -87,6 +91,7 @@ orange {
     left: calc((100%/2) - 200px);
     transition: all .5s ease-in-out;
     background-color: rgba(0, 0, 0, .8);
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     color: white;
